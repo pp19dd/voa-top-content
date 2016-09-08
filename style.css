@@ -1,0 +1,103 @@
+/*
+Theme Name: VOA Top Content
+*/
+
+/*
+need reset
+
+* { margin:0; padding: 0 }
+*/
+
+/*
+body {
+    background-image:url(http://localhost/top-content/2016-08_mockup-expanded_r2_deskgrid-default.jpg);
+    background-repeat:no-repeat;
+}
+
+rows { opacity: 0.8; padding-top: 186px;}
+*/
+
+header, rows, footer {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+}
+
+header {
+    background-color: blue;
+    color: white;
+}
+
+header logo, header menu item {
+    padding:1em;
+}
+
+footer {
+    background-color: gray;
+    color: white;
+}
+
+footer item { padding:1em }
+
+h1 {
+    text-align: center;
+    margin:auto;
+    font-family: 'Lato Light', sans-serif;
+    font-weight: 300;
+    font-size:3.5em;
+}
+
+rows {
+    display: flex;
+    flex-direction: column;
+    background-color: ghostwhite;
+}
+
+row {
+    padding-bottom:1em;
+    margin-top:1em;
+    display: flex;
+    flex-direction: row;
+}
+
+row.rows_1 inner { padding:0 }
+row.rows_3 article { width: 25% }
+row.rows_3 article.column_1 { width: 50% }
+
+row.rows_2 article { width: 50% }
+
+row.rows_2 inner {
+    display: flex;
+}
+
+row.rows_2 inner part.two {
+    display: flex;
+    flex-direction: column;
+}
+
+part headline { font-size: 1em }
+part.two { padding-left: 1em}
+
+article {
+    display:flex;
+    flex-direction: column;
+}
+
+inner {
+    padding:1em;
+    line-height:1.3em;
+}
+
+headline {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size:1.5em;
+    line-height:1.3em;
+}
+
+
+@media all and (max-width:1200px){
+    article img { width:100% }
+}
