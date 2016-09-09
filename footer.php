@@ -1,4 +1,8 @@
 
 <footer>
-    <item>About VOA</item>
+    <inner>
+        <item>About VOA</item>
+        <item>Contact VOA</item>
+        <item>Media Relations</item>
+    </inner>
 </footer>

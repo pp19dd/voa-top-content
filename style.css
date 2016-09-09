@@ -4,9 +4,8 @@ Theme Name: VOA Top Content
 
 /*
 need reset
-
-* { margin:0; padding: 0 }
 */
+* { margin:0; padding: 0 }
 
 /*
 body {
@@ -18,28 +17,71 @@ rows { opacity: 0.8; padding-top: 186px;}
 */
 
 header, rows, footer {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
     font-family: 'Lato', sans-serif;
     font-size: 18px;
 }
 
+rows {
+    display: flex;
+    margin: auto;
+    max-width: 1200px;
+}
+
 header {
-    background-color: blue;
+    background-color: #1331bf;
     color: white;
 }
 
-header logo, header menu item {
-    padding:1em;
+header inner {
+    margin:auto;
+    display: flex;
+    max-width: 1200px;
+    justify-content: space-between;
 }
+
+header logo {
+    background-repeat: no-repeat;
+    background-image: url(voa.png);
+    width:79px;
+    height:50px;
+}
+
+header menu {
+    display: flex;
+    flex-direction: row;
+}
+
+header menu a {
+    padding:0.8em;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+    transition: background-color 200ms linear;
+}
+header a:hover {
+    background-color: white;
+    color:#1331bf;
+}
+
+/* ======================================================================== */
 
 footer {
     background-color: gray;
     color: white;
 }
 
+footer inner {
+    display: flex;
+    margin: auto;
+    max-width: 1200px;
+}
+
 footer item { padding:1em }
+footer item:first-child { padding-left:0 }
+
+/* ======================================================================== */
 
 h1 {
     text-align: center;
@@ -48,6 +90,33 @@ h1 {
     font-weight: 300;
     font-size:3.5em;
 }
+
+/* ======================================================================== */
+
+breakup {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+}
+
+blank-space {
+    border-bottom: 1px solid #888;
+    flex-grow: 10;
+}
+
+breakup h2 {
+    flex-grow: 1;
+    font-size: 0.9em;
+    font-weight: normal;
+    margin: auto;
+    text-align: center;
+    text-transform: uppercase;
+    color: #888;
+}
+
+/* ======================================================================== */
 
 rows {
     display: flex;
@@ -63,19 +132,23 @@ row {
 }
 
 row.rows_1 inner { padding:0 }
-row.rows_3 article { width: 25% }
-row.rows_3 article.column_1 { width: 50% }
+row.rows_3 article { width: 22.75% }
+row.rows_3 article.column_2 { padding-right: 3% }
+row.rows_3 article.column_1 { width: 48.5%; padding-right:3% }
 
-row.rows_2 article { width: 50% }
+row.rows_2 article { width: 48.5% }
+row.rows_2 article.column_1 { padding-right:3% }
 
-row.rows_2 inner {
-    display: flex;
-}
+row.rows_2 inner { display: flex; align-items: stretch; }
+row.rows_3 inner { display: flex; flex-direction: column;}
+
 
 row.rows_2 inner part.two {
     display: flex;
     flex-direction: column;
 }
+
+/* ======================================================================== */
 
 part headline { font-size: 1em }
 part.two { padding-left: 1em}
@@ -86,7 +159,6 @@ article {
 }
 
 inner {
-    padding:1em;
     line-height:1.3em;
 }
 
@@ -97,6 +169,7 @@ headline {
     line-height:1.3em;
 }
 
+/* ======================================================================== */
 
 @media all and (max-width:1200px){
     article img { width:100% }

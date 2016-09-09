@@ -10,10 +10,12 @@
 <body>
 
     <header>
-        <logo>VOA</logo>
-        <menu>
-            <item>About</item>
-            <item>Archives</item>
-            <item>Search</item>
-        </menu>
+        <inner>
+            <logo></logo>
+            <menu>
+                <a href="about">About</a>
+                <a href="about">Archives</a>
+                <a href="about">Search</a>
+            </menu>
+        </inner>
     </header>
