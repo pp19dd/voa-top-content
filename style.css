@@ -5,7 +5,7 @@ Theme Name: VOA Top Content
 /*
 need reset
 */
-* { margin:0; padding: 0 }
+* { margin:0; padding: 0; }
 
 /*
 body {
@@ -131,7 +131,6 @@ row {
     flex-direction: row;
 }
 
-row.rows_1 inner { padding:0 }
 row.rows_3 article { width: 22.75% }
 row.rows_3 article.column_2 { padding-right: 3% }
 row.rows_3 article.column_1 { width: 48.5%; padding-right:3% }
@@ -151,15 +150,19 @@ row.rows_2 inner part.two {
 /* ======================================================================== */
 
 part headline { font-size: 1em }
-part.two { padding-left: 1em}
+part { width: 46.5%;  }
+part.one { padding-right: 6% }
+part.two { }
+part a { color: black !important }
 
 article {
     display:flex;
     flex-direction: column;
 }
 
-inner {
+row.rows_3 inner, row.rows_1 inner {
     line-height:1.3em;
+    position: relative;
 }
 
 headline {
@@ -168,6 +171,38 @@ headline {
     font-size:1.5em;
     line-height:1.3em;
 }
+
+.hovering headline span, .hovering excerpt span {
+    background-color: rgba(19,49,191, 0.7);
+}
+
+article.hovering inner { background-color: rgba(19,49,191, 0.7) }
+
+
+row.rows_3 anchor, row.rows_1 anchor { position: absolute; display: flex; flex-direction: column; }
+headline a, continue a { text-decoration: none; color: white; }
+row.rows_3 headline {  }
+row.rows_3 excerpt {  }
+
+headline span, excerpt span, row.rows_1 excerpt span {
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    padding:1.1px;
+    line-height:1.2em;
+}
+
+excerpt { margin-top: 0.5em }
+
+row.rows_3 .column_1 headline, row.rows_3 .column_1 excerpt {
+    width: 45%;
+}
+
+row.rows_1 .column_1 headline, row.rows_1 .column_1 excerpt {
+    width: 45%;
+}
+
+continue { margin-top: 1em }
+continue span { padding:3px; background-color: rgba(19,49,191, 0.8); color: white }
 
 /* ======================================================================== */
 

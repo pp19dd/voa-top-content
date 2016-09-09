@@ -2,6 +2,9 @@
 
 show_admin_bar( false );
 add_theme_support( "post-thumbnails" );
+remove_action( "wp_head", "print_emoji_detection_script", 7 );
+remove_action( "wp_print_styles", "print_emoji_styles" );
+wp_enqueue_script( "jquery" );
 
 // crop: x can be left, center, right
 //       y can be top, center, bottom

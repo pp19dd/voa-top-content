@@ -22,6 +22,7 @@ while( have_posts() ) {
     $posts_html[] = array(
         "id" => $post->ID,
         "title" => get_the_title(),
+        "permalink" => get_the_permalink( $post->ID ),
         "thumbnail_id" => get_post_thumbnail_id( $post->ID ),
         "excerpt" => get_the_excerpt(),
         "content" => get_the_content()
@@ -46,32 +47,34 @@ $posts_html = voa_top_content_breakup_posts($row_layout, $posts_html);
         </row>
 <?php foreach( $posts_html as $posts ) { ?>
         <row class="rows_<?php echo count($posts) ?>">
-<?php foreach( $posts as $k => $post ) { ?>
-<?php $image = voa_top_content_get_image_url($post["thumbnail_id"], $k, count($posts) ); ?>
-            <article class="column column_<?php echo $k + 1 ?>">
-<?php if( count($posts) === 2 ) { ?>
-                <inner>
-                    <part>
-                        <img src="<?php echo $image ?>" />
-                    </part>
-                    <part class="two">
-                        <headline><?php echo $post["title"] ?></headline>
-                        <excerpt><?php echo /*trim_words(*/$post["excerpt"]/*, 40)*/ ?></excerpt>
-                    </part>
-                </inner>
-
-<?php } else { ?>
-                <inner>
-                    <img src="<?php echo $image ?>" />
-                    <headline><?php echo $post["title"] ?></headline>
-                    <excerpt><?php echo $post["excerpt"] ?></excerpt>
-                </inner>
-<?php } ?>
-            </article>
-<?php } ?>
+<?php
+        foreach( $posts as $k => $post ) {
+            $image = voa_top_content_get_image_url($post["thumbnail_id"], $k, count($posts) );
+            set_query_var( "k", $k );
+            set_query_var( "image", $image );
+            get_template_part("article", count($posts) );
+        }
+     ?>
         </row>
-<?php } ?>
+<?php } #foreach posts_html  ?>
     </rows>
 
+<script>
+jQuery("row.rows_3 article").mouseover(function() {
+    jQuery(this).addClass("hovering");
+    jQuery("excerpt, continue", this).stop().animate({opacity: 1}, 200);
+}).mouseout(function() {
+    jQuery(this).removeClass("hovering");
+    jQuery("excerpt, continue", this).stop().animate({opacity: 0}, 200);
+});
+
+jQuery("row.rows_2 article").mouseover(function() {
+    jQuery(this).addClass("hovering");
+}).mouseout(function() {
+    jQuery(this).removeClass("hovering");
+});
+
+jQuery("row.rows_3 article excerpt, row.rows_3 article continue").css({opacity: 0});
+</script>
 
 <?php get_footer(); ?>
