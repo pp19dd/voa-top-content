@@ -29,6 +29,9 @@ function top_content_custom_sizes( $sizes ) {
     );
 }
 
+/*
+currently unused, but in case we need to force-trim excerpts
+*/
 function trim_words($text, $words = 20) {
     $temp = str_word_count($text, 1);
     if( count($temp) <= $words ) return( $text );
@@ -95,9 +98,43 @@ function voa_top_content_get_image_url($thumbnail_id, $col, $cols) {
     return( $image );
 }
 
-#the_post_thumbnail( array(582, 582), array("center", "center") );
+/*
+edit bylines are a meta field
+*/
 
-# the_post_thumbnail( "thumbnail" );
-# the_post_thumbnail( "medium" );
-# the_post_thumbnail( "large" );
-# the_post_thumbnail( "full" );
+add_action( 'add_meta_boxes', 'voa_top_content_meta_byline_add' );
+function voa_top_content_meta_byline_add() {
+    add_meta_box(
+        "voa-top-content-meta-01",
+        "Byline",
+        "voa_top_content_meta_byline",
+        null,
+        "side"
+    );
+}
+
+add_action( 'save_post', 'voa_top_content_meta_byline_save' );
+function voa_top_content_meta_byline_save( $post_id ) {
+    if( !isset( $_POST['voa-byline']) ) return;
+
+    $value = $_POST['voa-byline'];
+    filter_var( $value, FILTER_SANITIZE_STRING );
+    $value = trim($value);
+    
+    update_post_meta( $post_id, "_voa_byline", $value );
+}
+
+function voa_top_content_meta_byline($post) {
+    $value = get_post_meta($post->ID, "_voa_byline", true);
+    filter_var( $value, FILTER_SANITIZE_STRING );
+?>
+    <input
+        style="width:100%"
+        name="voa-byline"
+        type="text"
+        autocomplete="off"
+        spellcheck="false"
+        value="<?php echo $value ?>"
+    />
+<?php
+}

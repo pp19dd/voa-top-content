@@ -2,6 +2,7 @@
     <inner>
         <anchor>
             <headline><span><a href="<?php echo $post["permalink"] ?>"><?php echo $post["title"] ?></a></span></headline>
+            <?php get_template_part("byline") ?>
             <excerpt><span><?php echo $post["excerpt"] ?></span></excerpt>
             <continue><span><a href="<?php echo $post["permalink"] ?>">Continue Reading</a></span></continue>
         </anchor>
