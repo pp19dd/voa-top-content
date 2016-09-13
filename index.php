@@ -60,21 +60,38 @@ $posts_html = voa_top_content_breakup_posts($row_layout, $posts_html);
     </rows>
 
 <script>
+jQuery("article").mouseover(function() {
+    jQuery(this).addClass("hovering");
+}).mouseout(function() {
+    jQuery(this).removeClass("hovering");
+});
 jQuery("row.rows_3 article").mouseover(function() {
-    jQuery(this).addClass("hovering");
+    //jQuery(this).addClass("hovering");
     jQuery("excerpt, continue", this).stop().animate({opacity: 1}, 200);
-}).mouseout(function() {
-    jQuery(this).removeClass("hovering");
-    jQuery("excerpt, continue", this).stop().animate({opacity: 0}, 200);
+});
+jQuery("row.rows_3 article").mouseout(function() {
+    //jQuery(this).removeClass("hovering");
+    jQuery("excerpt, continue", this).stop().animate({opacity: 0}, 100);
 });
 
-jQuery("row.rows_2 article").mouseover(function() {
+
+jQuery("row.rows_1 article").mouseover(function() {
+    //jQuery(this).addClass("hovering");
+    jQuery("continue", this).stop().animate({opacity: 1}, 200);
+});
+jQuery("row.rows_1 article").mouseout(function() {
+    //jQuery(this).removeClass("hovering");
+    jQuery("continue", this).stop().animate({opacity: 0}, 200);
+});
+/*
+jQuery("row.rows_2 article, row.rows_1 article").mouseover(function() {
     jQuery(this).addClass("hovering");
 }).mouseout(function() {
     jQuery(this).removeClass("hovering");
 });
+*/
 
-jQuery("row.rows_3 article excerpt, row.rows_3 article continue").css({opacity: 0});
+jQuery("row.rows_3 article excerpt, row.rows_3 article continue, row.rows_1 article continue").css({opacity: 0});
 </script>
 
 <?php get_footer(); ?>

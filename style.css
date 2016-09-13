@@ -6,7 +6,8 @@ Theme Name: VOA Top Content
 need reset
 */
 * { margin:0; padding: 0; }
-
+body, html { overflow-x: hidden; width:100%; height:100%; }
+article { overflow: hidden }
 /*
 body {
     background-image:url(http://localhost/top-content/2016-08_mockup-expanded_r2_deskgrid-default.jpg);
@@ -149,6 +150,25 @@ row.rows_2 inner part.two {
 
 /* ======================================================================== */
 
+/* multi-line padding text trick */
+row.rows_3 headline, row.rows_1 headline {
+    line-height:1.3;
+    padding: 2px 0;
+    border-left: 20px solid rgba(0,0,0,1);
+}
+row.rows_3 headline span, row.rows_1 headline span {
+    background-color: rgba(0,0,0,1);
+    padding: 3px 0;
+    display: inline;
+    margin: 0;
+}
+row.rows_3 headline span a, row.rows_1 headline span a {
+    position: relative;
+    left: -10px;
+}
+/* end multi-line padding text trick */
+
+
 part headline { font-size: 1em }
 part { width: 46.5%;  }
 part.one { padding-right: 6% }
@@ -172,11 +192,24 @@ headline {
     line-height:1.3em;
 }
 
-.hovering headline span, .hovering excerpt span {
-    background-color: rgba(19,49,191, 0.7);
+row.rows_3 article.hovering headline,
+row.rows_1 article.hovering headline
+{
+    border-left: 20px solid rgba(19,49,191,1);
+}
+row.rows_3 article.hovering headline span,
+row.rows_1 article.hovering headline span
+{
+    background-color: rgba(19,49,191,1);
 }
 
-article.hovering inner { background-color: rgba(19,49,191, 0.7) }
+row.rows_1 byline, row.rows_3 byline { padding-left: 10px; color: white }
+row.rows_1 excerpt, row.rows_3 excerpt { padding-left: 10px; }
+
+
+/* bw */
+row.rows_3 article.hovering inner, row.rows_1 article.hovering inner { background-color: black }
+row.rows_3 article.hovering img, row.rows_1 article.hovering img { opacity:0.5 }
 
 
 row.rows_3 anchor, row.rows_1 anchor { position: absolute; display: flex; flex-direction: column; }
@@ -184,14 +217,10 @@ headline a, continue a { text-decoration: none; color: white; }
 row.rows_3 headline {  }
 row.rows_3 excerpt {  }
 
-headline span, excerpt span, row.rows_1 excerpt span {
-    background-color: rgba(0,0,0,0.8);
+row.rows_3 excerpt, row.rows_1 excerpt {
     color: white;
-    padding:1.1px;
-    line-height:1.2em;
 }
-
-excerpt { margin-top: 0.5em }
+excerpt { margin-top: 0.5em; }
 
 row.rows_3 .column_1 headline, row.rows_3 .column_1 excerpt {
     width: 45%;
@@ -201,8 +230,8 @@ row.rows_1 .column_1 headline, row.rows_1 .column_1 excerpt {
     width: 45%;
 }
 
-continue { margin-top: 1em }
-continue span { padding:3px; background-color: rgba(19,49,191, 0.8); color: white }
+continue { margin-top: 1em; }
+continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white }
 
 /* ======================================================================== */
 
