@@ -238,3 +238,15 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white
 @media all and (max-width:1200px){
     article img { width:100% }
 }
+
+/* ======================================================================== */
+/* single article */
+/* ======================================================================== */
+.single p {
+    margin-top:1em;
+    line-height: 1.75em;
+}
+
+.single article {
+    background-repeat: no-repeat;
+}

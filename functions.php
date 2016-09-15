@@ -78,7 +78,7 @@ function voa_top_content_breakup_posts( $row_layout, $posts_html ) {
 }
 
 // full-width      half-width      quarter-width   quarter-width-small
-function voa_top_content_get_image_url($thumbnail_id, $col, $cols) {
+function voa_top_content_get_image_url($thumbnail_id, $col, $cols = 1) {
     switch( $cols ) {
         case 1:
             $size = "full-width";
@@ -91,6 +91,11 @@ function voa_top_content_get_image_url($thumbnail_id, $col, $cols) {
         case 3:
             $size = "quarter-width";
             if( $col === 0 ) $size = "half-width";
+        break;
+
+        // allows to directly override size
+        default:
+            $size = $col;
         break;
     }
     $image = wp_get_attachment_image_src($thumbnail_id, $size);
@@ -120,7 +125,7 @@ function voa_top_content_meta_byline_save( $post_id ) {
     $value = $_POST['voa-byline'];
     filter_var( $value, FILTER_SANITIZE_STRING );
     $value = trim($value);
-    
+
     update_post_meta( $post_id, "_voa_byline", $value );
 }
 

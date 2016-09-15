@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" />
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 
     <header>
         <inner>
