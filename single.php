@@ -9,8 +9,9 @@ $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 ?>
 <rows>
 <row class="rows_1">
-    <article style="background-image: url(<?php echo $image ?>)">
+    <article>
         <headline><?php the_title(); ?></headline>
+        <img src="<?php echo $image ?>" />
 <?php the_content(); ?>
     </article>
 </row>
