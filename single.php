@@ -10,9 +10,18 @@ $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 <rows>
 <row class="rows_1">
     <article>
+<!--
         <headline><?php the_title(); ?></headline>
         <img src="<?php echo $image ?>" />
+-->
+        <content>
 <?php the_content(); ?>
+        </content>
+        <sidebar>
+            <sidebar-inner>
+                <?php dynamic_sidebar( 'sidebar_article_right' ); ?>
+            </sidebar-inner>
+        </sidebar>
     </article>
 </row>
 </rows>

@@ -143,3 +143,21 @@ function voa_top_content_meta_byline($post) {
     />
 <?php
 }
+
+function voa_top_content_widgets_init() {
+    register_sidebar( array(
+        'name'          => 'Article right sidebar',
+        'id'            => 'sidebar_article_right',
+        'before_widget' => '<div class="sidebar-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="sidebar-title">',
+        'after_title'   => '</h2>',
+    ) );
+}
+
+add_action( 'widgets_init', 'voa_top_content_widgets_init' );
+
+function my_image_class_filter($classes) {
+    return $classes . ' another-image-class';
+}
+add_filter('get_image_tag_class', 'my_image_class_filter');
