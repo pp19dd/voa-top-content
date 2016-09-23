@@ -1,4 +1,5 @@
 <?php
+require_once( "functions-layout.php" );
 
 show_admin_bar( false );
 add_theme_support( "post-thumbnails" );
@@ -14,6 +15,14 @@ add_image_size( 'quarter-width', 273, 582, array("center", "center") );
 add_image_size( 'quarter-width-small', 273, 218, array("left", "top") );
 
 add_filter( 'image_size_names_choose', 'top_content_custom_sizes' );
+
+/*
+voa_top_content_admin_menu function is located in functions-layout.php
+*/
+function voa_top_content_admin_menu_loader() {
+    add_menu_page("Homepage Layout", "Homepage Layout", "edit_posts", "voa-homepage-layout", "voa_top_content_admin_menu");
+}
+add_action('admin_menu', 'voa_top_content_admin_menu_loader');
 
 function top_content_custom_sizes( $sizes ) {
     return(
@@ -40,67 +49,6 @@ function trim_words($text, $words = 20) {
     $out = implode(" ", $shorter) . " ...";
 
     return( $out );
-}
-
-/*
-input: array of posts
-output: array of array of posts
-*/
-function voa_top_content_breakup_posts( $row_layout, $posts_html ) {
-    $ret = array();
-    $temp = array();
-
-    $copy_of_row_layout = $row_layout;
-
-    $limiter = array_shift($row_layout);
-
-    while( !empty($posts_html) ) {
-        $temp[] = array_shift($posts_html);
-
-        if( count($temp) >= $limiter ) {
-            $ret[] = $temp;
-            $temp = array();
-
-            if( empty($row_layout) ) {
-                $row_layout = $copy_of_row_layout;
-            }
-
-            $limiter = array_shift($row_layout);
-        }
-    }
-
-    // any unattended leftovers?
-    if( !empty($temp) ) {
-        $ret[] = $temp;
-    }
-
-    return( $ret );
-}
-
-// full-width      half-width      quarter-width   quarter-width-small
-function voa_top_content_get_image_url($thumbnail_id, $col, $cols = 1) {
-    switch( $cols ) {
-        case 1:
-            $size = "full-width";
-        break;
-
-        case 2:
-            $size = "quarter-width-small";
-        break;
-
-        case 3:
-            $size = "quarter-width";
-            if( $col === 0 ) $size = "half-width";
-        break;
-
-        // allows to directly override size
-        default:
-            $size = $col;
-        break;
-    }
-    $image = wp_get_attachment_image_src($thumbnail_id, $size);
-    $image = $image[0];
-    return( $image );
 }
 
 /*
@@ -144,6 +92,9 @@ function voa_top_content_meta_byline($post) {
 <?php
 }
 
+/*
+add ability to set focus point - right next to #remove-post-thumbnail
+*/
 function voa_top_content_widgets_init() {
     register_sidebar( array(
         'name'          => 'Article right sidebar',
