@@ -20,6 +20,7 @@ add_filter( 'image_size_names_choose', 'top_content_custom_sizes' );
 voa_top_content_admin_menu function is located in functions-layout.php
 */
 function voa_top_content_admin_menu_loader() {
+    add_filter("admin_head", "voa_top_content_admin_menu_css" );
     add_menu_page("Homepage Layout", "Homepage Layout", "edit_posts", "voa-homepage-layout", "voa_top_content_admin_menu");
 }
 add_action('admin_menu', 'voa_top_content_admin_menu_loader');

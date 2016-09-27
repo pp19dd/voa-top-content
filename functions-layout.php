@@ -12,11 +12,83 @@ function voa_top_content_get_row_layout() {
     return( $r );
 }
 
+function voa_top_content_admin_menu_css() {
+?>
+
+<style>
+voa-layout { display: flex; flex-direction:column }
+voa-row { display: flex; flex-direction: row; padding-bottom:1em }
+voa-indicator { padding-top: 1em }
+voa-control { padding: 1em; display: flex; flex-direction: column }
+voa-control button { }
+</style>
+
+<?php
+}
+
 function voa_top_content_admin_menu() {
+    $base = get_theme_root_uri() . '/' . get_template();
+    $rows = get_option( "voa-top-content-rows", 5 );
 ?>
 <div class="wrap">
     <h1>Homepage Layout</h1>
+
+    <p>Show <select id="voa-change-rows" name="voa-top-content-rows">
+<?php for( $i = 1; $i <= 30; $i++ ) { ?>
+        <option <?php if( $i === $rows ) { echo 'selected'; } ?>><?php echo $i ?> row<?php if( $i > 1 ) echo 's'; ?></option>
+<?php } ?>
+    </select> on homepage to start.</p>
+
+    <voa-layout>
+        <voa-row>
+            <voa-indicator>
+                <img src="<?php echo $base ?>/layout-1.png" />
+            </voa-indicator>
+            <voa-control>
+                <button data-columns="1">1</button>
+                <button data-columns="2">2</button>
+                <button data-columns="3">3</button>
+            </voa-control>
+        </voa-row>
+    </voa-layout>
 </div>
+
+<script>
+function voa_setColumns(row, columns) {
+    jQuery("img", row).attr("src", "<?php echo $base ?>/layout-" + columns + ".png");
+}
+
+function voa_setRows(rows) {
+
+    var all = jQuery("voa-row");
+
+    // remove excess
+    jQuery("voa-row:gt(" + rows + ")").remove();
+
+    // add as needed
+    if( all.length <= rows ) {
+        for( var i = 0; i <= (rows - all.length); i++ )(function() {
+            var first = jQuery("voa-row:eq(0)").clone(true);
+            jQuery(first).appendTo(jQuery("voa-layout"));
+        })();
+    }
+
+}
+
+jQuery("#voa-change-rows").change(function() {
+    var rows = parseInt(jQuery(this).val());
+    voa_setRows(rows-1);
+});
+
+voa_setRows(<?php echo $rows ?>);
+
+jQuery("voa-control button").click(function() {
+    var columns = jQuery(this).attr("data-columns");
+    var row = jQuery(this).parent().parent();
+    voa_setColumns( row, columns );
+});
+</script>
+
 <?php
 }
 
