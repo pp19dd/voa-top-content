@@ -124,7 +124,7 @@ rows {
     flex-direction: column;
 }
 
-row {
+rows row.rows_1, rows row.rows_2, rows row.rows_3 {
     padding-bottom:1em;
     margin-top:1em;
     display: flex;
@@ -235,7 +235,8 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white
 /* ======================================================================== */
 
 @media all and (max-width:1200px){
-    article img { width:100% }
+    .single article content img { width:100% }
+    article inner img { width:100% }
 }
 
 /* ======================================================================== */
@@ -274,6 +275,10 @@ body.single {
 ::selection {
     background-color: #7FDBFF;
 }
+
+/* ======================================================================== */
+/* sidebar on single articles */
+/* ======================================================================== */
 
 .single sidebar {
     padding-left: 3%;
@@ -320,3 +325,11 @@ body.single {
 .single div.sidebar-widget a:hover {
     text-decoration: underline;
 }
+
+/* no thanks, wordpress */
+.single a.rsswidget img { display: none }
+
+leading { display: flex; flex-direction: column; }
+leading img { width: 100%; max-width: 100%;  }
+
+antirows img { }
