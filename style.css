@@ -211,7 +211,7 @@ row.rows_3 article.hovering inner, row.rows_1 article.hovering inner { backgroun
 row.rows_3 article.hovering img, row.rows_1 article.hovering img { opacity:0.5 }
 
 
-row.rows_3 anchor, row.rows_1 anchor { position: absolute; display: flex; flex-direction: column; }
+row.rows_3 anchor, row.rows_1 anchor { position: absolute; display: flex; flex-direction: column; z-index: 100; }
 headline a, continue a { text-decoration: none; color: white; }
 row.rows_3 headline {  }
 row.rows_3 excerpt {  }
