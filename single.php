@@ -35,6 +35,9 @@ $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
         <article>
             <content>
 <?php the_content(); ?>
+<section class="prevnext">
+previous/next
+</section>
             </content>
             <sidebar>
                 <sidebar-inner>
