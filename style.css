@@ -147,21 +147,27 @@ row.rows_2 inner part.two {
     flex-direction: column;
 }
 
+row.rows_1 article.column_1 { width: 100%; }
+row.rows_1 article.column_1 inner a img { height: auto; max-width: 100%; width: 100%; }
+
 /* ======================================================================== */
 
 /* multi-line padding text trick */
-row.rows_3 headline, row.rows_1 headline {
+row.rows_3 headline, row.rows_1 headline, row.rows_1 excerpt {
     line-height:1.3;
     padding: 2px 0;
     border-left: 20px solid rgba(0,0,0,1);
 }
-row.rows_3 headline span, row.rows_1 headline span {
+row.rows_3 headline span, row.rows_1 headline span, row.rows_1 excerpt span {
     background-color: rgba(0,0,0,1);
     padding: 3px 0;
     display: inline;
     margin: 0;
 }
-row.rows_3 headline span a, row.rows_1 headline span a {
+
+row.rows_1 excerpt span { padding: 2.5px 0; }
+
+row.rows_3 headline span a, row.rows_1 headline span a, row.rows_1 excerpt span span {
     position: relative;
     left: -10px;
 }
@@ -171,8 +177,19 @@ row.rows_3 headline span a, row.rows_1 headline span a {
 part headline { font-size: 1em }
 part { width: 46.5%;  }
 part.one { padding-right: 6% }
+
+part.one img { height: auto; width: 100%; }
+part.one .part-one-img { position: relative; }
+
 part.two { }
-part a { color: black !important }
+part.two byline {
+    color: #666;
+    font-size: .8em;
+    margin-top: .5em;
+}
+
+part a { color: #333 !important }
+part a:hover { color: #1330bf !important; }
 
 article {
     display:flex;
@@ -202,8 +219,13 @@ row.rows_1 article.hovering headline span
     background-color: rgba(19,49,191,1);
 }
 
-row.rows_1 byline, row.rows_3 byline { padding-left: 10px; color: white }
-row.rows_1 excerpt, row.rows_3 excerpt { padding-left: 10px; }
+row.rows_1 byline, row.rows_3 byline {
+    background: rgba(255, 255, 255, .8);
+    color: #000; 
+    margin: .5em auto 1em 0;
+    padding: .25em 10px;
+}
+row.rows_3 excerpt { padding-left: 10px; }
 
 
 /* bw */
@@ -231,6 +253,42 @@ row.rows_1 .column_1 headline, row.rows_1 .column_1 excerpt {
 
 continue { margin-top: 1em; }
 continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white }
+
+
+.video-icon {
+    display: block;
+    position: absolute; 
+    top: 0; 
+    right: 0;
+    z-index: 1000;
+}
+
+.video-icon-inner {
+    background-color: #1330bf;
+    border-left: 4px solid #fff;
+    border-bottom: 4px solid #fff; 
+    color: #fff;
+    text-align: center;
+}
+
+.video-icon-inner .fa-video-camera { font-size: 1em; margin: 1em; }
+
+.language-service {
+    display: block;
+    position: absolute;
+    bottom: 1em;
+    right: 0;
+    z-index: 1000;
+}
+
+.language-service-inner {
+    background-color: #d41010;
+    color: #fff;
+    font-size: .8em;
+    padding: .25em .8em .25em .5em;
+}
+
+
 
 /* ======================================================================== */
 

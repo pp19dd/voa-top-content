@@ -6,6 +6,9 @@
             <excerpt><span><span><?php echo $post["excerpt"] ?></span></span></excerpt>
             <continue><span><a href="<?php echo $post["permalink"] ?>">Continue Reading</a></span></continue>
         </anchor>
+        <?php if ( $cat = get_the_category( $post['id'] )) { if ( $cat[0]->slug && $cat[0]->slug != 'uncategorized' ) { ?>
+        <div class="language-service"><div class="language-service-inner"><?php echo $cat[0]->name; ?></div></div>
+        <?php } } ?>
         <a href="<?php echo $post["permalink"] ?>"><img src="<?php echo $image ?>" /></a>
     </inner>
 </article>
