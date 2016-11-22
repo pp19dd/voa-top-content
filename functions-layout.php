@@ -153,3 +153,42 @@ function voa_top_content_get_image_url($thumbnail_id, $col, $cols = 1) {
     $image = $image[0];
     return( $image );
 }
+
+
+// used to show previous/next posts with thumbnail images
+// $direction can be 'previous' or 'next'
+// returns an array or FALSE if no post found
+function voa_top_content_adjacent_post($direction = 'previous') {
+    global $post;
+
+    switch ($direction) {
+        case 'next':
+            $previous = (bool) false;
+            break;
+        
+        default:
+            $previous = (bool) true;
+            break;
+    }
+
+    $adjacent = get_adjacent_post( false, '', $previous );
+
+    if ( $adjacent ) {
+
+        $adjacent_thumbnail_id = get_post_thumbnail_id( $adjacent->ID );
+        $adjacent_image_url = voa_top_content_get_image_url($adjacent_thumbnail_id, "quarter-width-small", 2);
+
+        $voa_adjacent = array(
+            'ID' => $adjacent->ID,
+            'post_title' => $adjacent->post_title,
+            'permalink' => get_permalink( $adjacent->ID ),
+            'image_url' => $adjacent_image_url
+        );
+
+        return $voa_adjacent;
+
+    } else {
+        return (bool) false;
+    }
+
+}
