@@ -21,16 +21,6 @@ $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 				</div>
 			</header>
 			<div class="undermedia"><img src="<?php echo $image ?>" /></div>
-			<!-- <leading>
-				<inner class="hovering">
-					<anchor>
-						<headline><span><a><?php the_title(); ?></a></span></headline>
-						<excerpt>test</excerpt>
-						<continue>Click Me</continue>
-					</anchor>
-					<a href="#"><img src="<?php echo $image ?>" /></a>
-				</inner>
-			</leading> -->
 		</section>
 	</row>
 </antirows>
