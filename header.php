@@ -12,7 +12,7 @@
 
     <header>
         <inner>
-            <logo></logo>
+            <logo><a href="http://www.voanews.com/"><img src="<?php echo get_template_directory_uri() ?>/img/voa.png" width="79" height="50" alt="VOA" /></a></logo>
             <menu>
                 <a href="about">About</a>
                 <a href="about">Archives</a>
