@@ -31,9 +31,6 @@ $posts_html = voa_top_content_breakup_posts($row_layout, $posts_html);
 ?>
     <rows>
         <row class="rows_1">
-            <h1><?php bloginfo("name") ?></h1>
-        </row>
-        <row class="rows_1">
             <breakup>
                 <blank-space></blank-space>
                 <h2>Tuesday, August 23</h2>
