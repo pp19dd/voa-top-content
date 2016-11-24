@@ -7,11 +7,6 @@ $thumbnail_id = get_post_thumbnail_id( $post->ID );
 $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 
 ?>
-<rows>
-	<row class="rows_1">
-		<h1><?php bloginfo("name") ?></h1>
-	</row>
-</rows>
 <antirows>
 	<row class="rows_1">
 		<section class="article-intro">
@@ -31,7 +26,10 @@ $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 				<section class="content-part article-author">
 					
 					<?php $voa_byline = get_post_meta( get_the_ID(), '_voa_byline', true ); ?>
-					<div class="author-avatar"><?php if ( !$voa_byline ) { echo get_avatar( get_the_author_meta( 'ID' ), 67 ); } ?></div>
+					
+					<?php if ( !$voa_byline ) { ?>
+					<div class="author-avatar"><?php echo get_avatar( get_the_author_meta( 'ID' ), 67 ); ?></div>
+					<?php } ?>
 
 					<div class="author-pubdate">
 						<address class="author"><?php if ( $voa_byline ) { echo $voa_byline; } else { the_author(); } ?></address>
@@ -72,7 +70,9 @@ $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 						</div>
 
 						<?php } else { ?>
-							<p>There are no previous posts.</p>
+							<div class="adjacent-post-text no-previous-post">
+								<p>There are no previous posts.</p>
+							</div>
 						<?php } ?>
 						</div>
 					</section>
@@ -89,7 +89,9 @@ $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 						<div class="adjacent-post-image"><a href="<?php echo $next_post['permalink']; ?>"><img src="<?php echo $next_post['image_url']; ?>" /></a></div>
 
 						<?php } else { ?>
-							<p>You're viewing the latest post.</p>
+							<div class="adjacent-post-text no-next-post">
+								<p>You're viewing the latest post.</p>
+							</div>
 						<?php } ?>
 						</div>
 					</section>
@@ -97,7 +99,7 @@ $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 				</section><!-- end .prevnext -->
 
 				
-				<section class="content-part comments">
+				<section id="comment-section" class="content-part comments">
 
 					<header>Comments</header>
 
@@ -121,7 +123,11 @@ $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 			</content>
 			<sidebar>
 				<sidebar-inner>
+					
+					<div id="comment-shortcut"><a href="#comment-section"><span class="comment-icon"><i class="fa fa-comment fa-2x" aria-hidden="true"></i></span><span class="comment-text"><span class="comment-count">17 Comments</span> <span class="comment-cta">Join the Discussion</span></span></a></div>
+
 					<?php dynamic_sidebar( 'sidebar_article_right' ); ?>
+
 				</sidebar-inner>
 			</sidebar>
 		</article>
