@@ -12,11 +12,17 @@
 
     <header>
         <inner>
-            <logo><a href="http://www.voanews.com/"><img src="<?php echo get_template_directory_uri() ?>/img/voa.png" width="79" height="50" alt="VOA" /></a></logo>
+            <logo><a href="http://www.voanews.com/"><img src="<?php echo get_template_directory_uri() ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" alt="VOA" /></a></logo>
             <menu>
-                <a href="about">About</a>
-                <a href="about">Archives</a>
-                <a href="about">Search</a>
+                <a href="#">About</a>
+                <a href="#">Archives</a>
+                <a href="#">Search</a>
             </menu>
         </inner>
     </header>
+
+    <rows>
+        <row class="rows_1">
+            <h1><a href="<?php echo home_url( '/' ); ?>"><?php bloginfo("name"); ?></a></h1>
+        </row>
+    </rows>
