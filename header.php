@@ -2,7 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+
     <title><?php the_title(); ?></title>
+    
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/style.css?rand=<?php echo time() ?>" />
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" />
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/font-awesome.min.css" />
