@@ -39,9 +39,15 @@ $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 					<div class="author-social"></div>
 
 				</section>
+				
+				
+				<?php get_template_part( "partials/share-buttons" ); ?>
 
 				
 				<section class="content-part article-body"><?php the_content(); ?></section>
+				
+				
+				<?php get_template_part( "partials/share-buttons" ); ?>
 
 				
 				<section class="content-part article-categories">

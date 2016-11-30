@@ -321,13 +321,16 @@ body.single {
 	background-color: #fcfcfc;
 }
 
+/* breaks section into block */
 .single content .article-tags,
 .single content .adjacent-post,
 .single content .comments {
 	margin-bottom: 2em;
 }
 
+
 .single content .article-author,
+.single content .article-share,
 .single content .article-body,
 .single content .article-categories,
 .single content .article-tags {
@@ -365,11 +368,16 @@ body.single {
 
 
 .single content .article-author,
+.single content .article-share,
 .single content .article-body > p,
 .single content .article-categories,
 .single content .article-tags {
 	padding-left:  13.583333%; /* roughly 8.583333% of full page -- FIX THIS so it's exact */
 	padding-right: 13.583333%; /* roughly 8.583333% of full page -- FIX THIS so it's exact */
+}
+
+.single content .article-categories {
+	padding-top: 3em;
 }
 
 .single content .article-categories header,
@@ -528,6 +536,67 @@ antirows img { }
 
 
 
+.article-share-inner {
+	display: flex;
+	flex-direction: row;
+}
+
+.article-share-inner header {
+	align-self: stretch;
+	background-color: #ddd;
+	color: #999;
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	font-size: .8em;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.article-share-inner header div {
+	align-self: center;
+	text-align: center;
+	width: 100%;
+}
+
+.article-share-inner ul.social-share-buttons {
+	display: flex;
+	flex-direction: row;
+	flex-grow: 5;
+}
+
+.article-share-inner ul li {
+	flex-grow: 1;
+	list-style: none;
+	margin-left: .25em;
+	width: 100%;
+}
+
+.article-share-inner ul li a {
+	background-color: #666;
+	color: #fff;
+	display: block;
+	padding: .5em 0;
+	text-align: center;
+	width: 100%;
+}
+
+.article-share-inner ul li.share-facebook   a { background-color: #3b5998; }
+.article-share-inner ul li.share-googleplus a { background-color: #db4437; }
+.article-share-inner ul li.share-linkedin   a { background-color: #0077b5; }
+.article-share-inner ul li.share-pinterest  a { background-color: #bd081c; }
+.article-share-inner ul li.share-reddit     a { background-color: #ff4500; }
+.article-share-inner ul li.share-twitter    a { background-color: #55acee; }
+
+/* hover colors exactly 10% darker than official brand colors */
+.article-share-inner ul li.share-facebook   a:hover { background-color: #324a80; }
+.article-share-inner ul li.share-googleplus a:hover { background-color: #c23d30; }
+.article-share-inner ul li.share-linkedin   a:hover { background-color: #00659c; }
+.article-share-inner ul li.share-pinterest  a:hover { background-color: #a30719; }
+.article-share-inner ul li.share-reddit     a:hover { background-color: #e53d00; }
+.article-share-inner ul li.share-twitter    a:hover { background-color: #4c99d4; }
+
+
 
 .single content .article-categories header,
 .single content .article-tags header {
@@ -641,6 +710,8 @@ antirows img { }
 .single content .adjacent-post-inner h4 > a:hover { color: #1330bf; text-decoration: none; }
 
 
+/* article sidebar shortcut teaser *******************************************/
+
 #comment-shortcut {
 	margin-bottom: 4em;
 }
@@ -652,6 +723,7 @@ antirows img { }
 	display: block;
 	font-size: 1em;
 	text-decoration: none;
+	transition: border-color 1s, color 1s;
 }
 
 #comment-shortcut > a > span {
@@ -662,6 +734,7 @@ antirows img { }
 	background-color: #1330bf;
 	color: #fff;
 	padding: 1em;
+	transition: background-color 1s;
 }
 
 #comment-shortcut > a > .comment-text > span {
@@ -679,6 +752,20 @@ antirows img { }
 	font-size: .8em;
 	text-transform: uppercase;
 }
+
+#comment-shortcut > a:hover { 
+	border-color: #d41010; 
+	color: #d41010; 
+	transition: border-color 0.25s, color 0.25s; 
+}
+
+#comment-shortcut > a:hover > span.comment-icon { 
+	background-color: #d41010; 
+	transition: background-color 0.25s; 
+}
+
+
+/* article comment section ***************************************************/
 
 .comments > header {
 	background: #333 none repeat scroll 0 0;
@@ -771,6 +858,7 @@ antirows img { }
 	h1 { font-size: 2.5em; }
 
 	.single content .article-author,
+	.single content .article-share,
 	.single content .article-body > p,
 	.single content .article-categories,
 	.single content .article-tags {
@@ -814,9 +902,13 @@ antirows img { }
 
 	row.rows_3 excerpt, row.rows_2 excerpt, row.rows_1 excerpt { display: none !important; }
 
-	body > header menu a { padding: 1.25em .8em;
+	body > header menu a { padding: 1.25em .8em; }
 
 	continue { display: none !important; opacity: 0 !important; visibility: hidden !important; }
+	
+	
+	.article-share-inner header { display: none; }
+	.article-share-inner ul li:first-child { margin-left: 0; }
 
 }
 
