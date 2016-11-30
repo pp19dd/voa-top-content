@@ -6,6 +6,20 @@ the_post();
 $thumbnail_id = get_post_thumbnail_id( $post->ID );
 $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 
+if ( !function_exists( 'voa_the_content') || !is_single() ) {
+	function voa_the_content( $content ) {
+		global $post;
+
+		$voa_dateline = '<p class="voa-dateline">SAMPLE DATELINE &mdash; </p>';
+		$voa_content  = $voa_dateline . $content;
+
+		return $voa_content;
+	}
+	add_filter( 'the_content', 'voa_the_content' );
+}
+
+
+
 ?>
 <antirows>
 	<row class="rows_1">
