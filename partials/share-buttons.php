@@ -8,8 +8,8 @@ $share_image = urlencode( voa_top_content_get_image_url( get_post_thumbnail_id( 
 
 $twitter_account = 'VOANews';
 
-/* tweet text length must be 60 chars or LESS after shortened url and via @VOANews */
-$twitter_text = urlencode( text_shortenerer( get_the_title(), 60, '...' ) );
+/* tweet text length must be 103 chars or LESS after shortened url and via @VOANews */
+$twitter_text = urlencode( text_shortenerer( get_the_title(), 100, '...' ) );
 
 ?>
 
