@@ -6,6 +6,7 @@ the_post();
 $thumbnail_id = get_post_thumbnail_id( $post->ID );
 $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 
+
 if ( !function_exists( 'voa_the_content') || !is_single() ) {
 	function voa_the_content( $content ) {
 		global $post;
@@ -34,7 +35,8 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 					<h1 class="article-title-text"><?php the_title(); ?></h1>
 				</div>
 			</header>
-			<div class="undermedia"><img src="<?php echo $image ?>" /></div>
+			<div class="undermedia"><img src="<?php echo $image; ?>" /></div>
+			<!-- <div class="undermedia-caption">Here's some text.</div> -->
 		</section>
 	</row>
 </antirows>
@@ -61,7 +63,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 				
 				
 				<?php get_template_part( "partials/share-buttons" ); ?>
-
+				
 				
 				<section class="content-part article-body"><?php the_content(); ?></section>
 				

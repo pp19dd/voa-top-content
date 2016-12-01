@@ -7,3 +7,8 @@
         <item><a href="#">Media Relations</a></item>
     </inner>
 </footer>
+
+<!-- <script async defer src="//assets.pinterest.com/js/pinit.js"></script> -->
+
+</body>
+</html>

@@ -41,6 +41,7 @@ function top_content_custom_sizes( $sizes ) {
 
 /*
 currently unused, but in case we need to force-trim excerpts
+smekosh note: REPLACE WITH https://developer.wordpress.org/reference/functions/wp_trim_words/ ?
 */
 function trim_words($text, $words = 20) {
     $temp = str_word_count($text, 1);
@@ -51,6 +52,29 @@ function trim_words($text, $words = 20) {
 
     return( $out );
 }
+
+
+
+/*
+mostly used to shorten article titles for Tweets
+*/
+function text_shortenerer( $text, $maxlen = 60, $more = '...' ) {
+    if ( mb_strlen( $text ) <= $maxlen ) { 
+        return $text;
+    } else {
+        $text_maxlen = (int) $maxlen - mb_strlen( $more );
+        $word_estimate = round( $text_maxlen / 5 );
+        
+        while ( mb_strlen( $text ) >= $text_maxlen ) {
+            $text = wp_trim_words( $text, $word_estimate, '' );
+            $word_estimate--;
+        }
+        
+        return $text . $more;
+    }
+}
+
+
 
 /*
 edit bylines are a meta field

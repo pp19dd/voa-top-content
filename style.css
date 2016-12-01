@@ -96,13 +96,15 @@ footer item a {
 h1 {
 	color: #333;
 	text-align: center;
-	margin:auto;
+	margin: auto;
 	font-family: 'Lato Light', sans-serif;
 	font-weight: 300;
 	font-size: 3.5em;
 }
 
 h1 a, h1 a:hover { color: #333; text-decoration: none; }
+
+h1.site-title { line-height: 100%; margin: .75em auto; padding: 0; }
 
 /* ======================================================================== */
 
@@ -314,8 +316,9 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white
 /* ======================================================================== */
 body.single {
 	background-color: #eee;
-	xxxxbackground-color: red;
 }
+
+.single .rows_1 { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
 
 .single content .content-part {
 	background-color: #fcfcfc;
@@ -351,21 +354,12 @@ body.single {
 }
 
 .single content {
-	xxxxpadding-left: 8.58%;
 	width: 65.666666%;
-	xxxxpadding-right: 8.58%;
 }
 
 .single article {
 	flex-direction: row;
 }
-
-/*.single content *:last-child {
-	padding-bottom: 11.17%;
-}*/
-
-
-
 
 .single content .article-author,
 .single content .article-share,
@@ -403,6 +397,7 @@ body.single {
 /* ======================================================================== */
 
 .single sidebar {
+	padding-top: 2.25em;
 	padding-left: 3%;
 	width:31.333333%;
 }
@@ -494,11 +489,14 @@ antirows img { }
 }
 
 .undermedia {
+	max-height: 900px;
+	overflow: hidden;
 	width: 100%;
 	z-index: 50;
 }
 
 .undermedia > img {
+	display: block; /* needed to remove blank space below img */
 	height: auto;
 	max-width: 100%;
 	width: 100%;
