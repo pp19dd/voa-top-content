@@ -9,13 +9,18 @@ $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 if ( !function_exists( 'voa_the_content') || !is_single() ) {
 	function voa_the_content( $content ) {
 		global $post;
+		
+		$dateline = get_post_meta( $post->ID, "_voa_dateline", true );
+		
+		if ( $dateline != '' ) {
+			$voa_dateline = '<span class="voa-dateline">'. $dateline .' &mdash; </span>';
+			$content  = $voa_dateline . $content;
+		}
 
-		$voa_dateline = '<p class="voa-dateline">SAMPLE DATELINE &mdash; </p>';
-		$voa_content  = $voa_dateline . $content;
-
-		return $voa_content;
+		return $content;
 	}
-	add_filter( 'the_content', 'voa_the_content' );
+	
+	add_filter( 'the_content', 'voa_the_content', 0 );
 }
 
 

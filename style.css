@@ -376,6 +376,8 @@ body.single {
 	padding-right: 13.583333%; /* roughly 8.583333% of full page -- FIX THIS so it's exact */
 }
 
+.single content .voa-dateline { text-transform: uppercase; }
+
 .single content .article-categories {
 	padding-top: 3em;
 }

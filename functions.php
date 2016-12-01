@@ -93,6 +93,51 @@ function voa_top_content_meta_byline($post) {
 <?php
 }
 
+
+
+/*
+edit datelines are a meta field
+*/
+
+add_action( 'add_meta_boxes', 'voa_top_content_meta_dateline_add' );
+function voa_top_content_meta_dateline_add() {
+    add_meta_box(
+        "voa-top-content-meta-02",
+        "Dateline",
+        "voa_top_content_meta_dateline",
+        null,
+        "side"
+    );
+}
+
+add_action( 'save_post', 'voa_top_content_meta_dateline_save' );
+function voa_top_content_meta_dateline_save( $post_id ) {
+    if( !isset( $_POST['voa-dateline']) ) return;
+
+    $value = $_POST['voa-dateline'];
+    filter_var( $value, FILTER_SANITIZE_STRING );
+    $value = trim($value);
+
+    update_post_meta( $post_id, "_voa_dateline", $value );
+}
+
+function voa_top_content_meta_dateline($post) {
+    $value = get_post_meta($post->ID, "_voa_dateline", true);
+    filter_var( $value, FILTER_SANITIZE_STRING );
+?>
+    <input
+        style="width:100%"
+        name="voa-dateline"
+        type="text"
+        autocomplete="off"
+        spellcheck="false"
+        value="<?php echo $value ?>"
+    />
+<?php
+}
+
+
+
 /*
 add ability to set focus point - right next to #remove-post-thumbnail
 */
