@@ -16,6 +16,11 @@ add_image_size( 'quarter-width-small', 273, 218, array("left", "top") );
 
 add_filter( 'image_size_names_choose', 'top_content_custom_sizes' );
 
+function theme_slug_setup() {
+    add_theme_support( 'title-tag' );
+}
+add_action( 'after_setup_theme', 'theme_slug_setup' );
+
 /*
 voa_top_content_admin_menu function is located in functions-layout.php
 */
