@@ -307,8 +307,13 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white
 /* ======================================================================== */
 
 @media all and (max-width:1200px){
-	.single article content img { height: auto; width:100% }
-	article inner img { height: auto; width:100% }
+	
+	.single article content img,
+	.page article content img,
+	article inner img { 
+		height: auto; 
+		width: 100%;
+	}
 }
 
 /* ======================================================================== */
@@ -318,7 +323,8 @@ body.single {
 	background-color: #eee;
 }
 
-.single .rows_1 { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
+.single .rows_1,
+.page .rows_1 { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
 
 .single content .content-part {
 	background-color: #fcfcfc;
@@ -353,11 +359,13 @@ body.single {
 	padding: 0 .4em 1.6em .4em;
 }
 
-.single content {
+.single content,
+.page content {
 	width: 65.666666%;
 }
 
-.single article {
+.single article,
+.page .rows_1 > article {
 	flex-direction: row;
 }
 
@@ -396,18 +404,18 @@ body.single {
 /* sidebar on single articles */
 /* ======================================================================== */
 
-.single sidebar {
+sidebar {
 	padding-top: 2.25em;
 	padding-left: 3%;
 	width:31.333333%;
 }
 
-.single sidebar-inner {
+sidebar-inner {
 	padding-left:1.75;
 	padding-right:1.50%;
 }
 
-.single sidebar h2 {
+sidebar h2 {
 	border-bottom: 4px solid #1330bf;
 	font-size:0.8em;
 	color: #1330bf;
@@ -415,38 +423,38 @@ body.single {
 	padding-left: 1em;
 	text-transform: uppercase;
 }
-.single sidebar h2 a,
-.single sidebar h2 a:hover {
+sidebar h2 a,
+sidebar h2 a:hover {
 	color: #1330bf !important;
 	text-decoration: none !important;
 }
 
-.single div.sidebar-widget {
+div.sidebar-widget {
 	margin-bottom:2em;
 }
 
-.single div.sidebar-widget ul {
+div.sidebar-widget ul {
 	margin-top:1em;
 }
 
-.single div.sidebar-widget li {
+div.sidebar-widget li {
 	list-style: none;
 	margin-bottom:1em;
 	padding-left: 1.67%;
 	font-size:0.9em;
 }
 
-.single div.sidebar-widget a {
+div.sidebar-widget a {
 	color: black;
 	text-decoration: none;
 }
 
-.single div.sidebar-widget a:hover {
+div.sidebar-widget a:hover {
 	text-decoration: underline;
 }
 
 /* no thanks, wordpress */
-.single a.rsswidget img { display: none }
+a.rsswidget img { display: none }
 
 leading { display: flex; flex-direction: column; }
 leading img { width: 100%; max-width: 100%;  }
@@ -779,6 +787,20 @@ antirows img { }
 .single content .comments .comments-inner {
 	margin-left: calc(1em - 8px);
 	margin-right: calc(1em - 8px);
+}
+
+
+
+/* ARCHIVE PAGE **************************************************************/
+
+.archive-teasers {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.archive-teasers article {
+	width: 33.333333%;
 }
 
 
