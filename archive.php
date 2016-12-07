@@ -67,6 +67,8 @@ the_post();
 						?>
 						
 						<article class="archive-teaser">
+							<!-- Convert the image to a background image for better responsive fit on height? -->
+							<?php the_post_thumbnail( $post->ID, 'medium' ); ?>
 							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 						</article>
 						

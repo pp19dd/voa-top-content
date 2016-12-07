@@ -797,11 +797,31 @@ antirows img { }
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 .archive-teasers article {
-	width: 33.333333%;
+	padding: 1em 0;
+	width: 31.333333%;
 }
+
+.archive-teasers article img {
+	display: block; /* needed to remove blank space below img */
+	height: auto;
+	max-width: 100%;
+	width: 100%;
+}
+
+.archive-teasers article h2 {
+	font-size: .9em;
+}
+
+.archive-teasers article h2 a {
+	color: #1330bf;
+	text-decoration: none;
+}
+
+.archive-teasers article h2 a:hover { color: #d41010; }
 
 
 
