@@ -117,7 +117,7 @@ breakup {
 }
 
 blank-space {
-	border-bottom: 1px solid #888;
+	border-bottom: 1px solid #ccc;
 	flex-grow: 10;
 }
 
@@ -128,7 +128,7 @@ breakup h2 {
 	margin: auto;
 	text-align: center;
 	text-transform: uppercase;
-	color: #888;
+	color: #999;
 }
 
 /* ======================================================================== */
@@ -791,7 +791,40 @@ antirows img { }
 
 
 
+/* PAGES *********************************************************************/
+
+.page .rows_1 > article > content {
+	background-color: #fcfcfc;
+	padding-top: 2em;
+}
+
+.page .article-title {
+	background-color: #ddd;
+	position: relative;
+	top: 0;
+	z-index: 0;
+}
+
+.page .article-title-text {
+	background: #ddd;
+	color: #d41010;
+	line-height: 100%;
+	max-width: 100%;
+	padding: .25em 1.5% .1em 1.5%;
+}
+
+.page .page-content {
+	padding: 0 1.5% 2em 1.5%;
+}
+
+
+
 /* ARCHIVE PAGE **************************************************************/
+
+.page .archive-date > breakup {
+	background-color: #eee;
+	padding: 2em 0;
+}
 
 .archive-teasers {
 	display: flex;
@@ -814,14 +847,15 @@ antirows img { }
 .archive-teasers article .teaser-img-container .teaser-img {
 	background-position: center;
 	background-size: cover;
+	border: 1px solid #999;
 	display: block;
 	height: 100%;
-	width: 100%;
+	width: calc(100% - 2px);
 }
 
 .archive-teasers article h2 {
-	font-size: .9em;
-	padding-top: .5em;
+	font-size: .8em;
+	padding-top: .25em;
 }
 
 .archive-teasers article a {

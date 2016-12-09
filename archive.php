@@ -17,7 +17,6 @@ the_post();
 					<h1 class="article-title-text"><?php the_title(); ?></h1>
 				</div>
 			</header>
-			<div class="undermedia"></div>
 		</section>
 	</row>
 </antirows>
@@ -27,6 +26,8 @@ the_post();
 		<article>
 		
 			<content>
+				
+				<div class="page-content"><?php the_content(); ?></div>
 				
 				<?php 
 				$posts = new WP_Query(array('posts_per_page' => -1));
