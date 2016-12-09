@@ -67,8 +67,8 @@ the_post();
 						?>
 						
 						<article class="archive-teaser">
-							<!-- Convert the image to a background image for better responsive fit on height? -->
-							<?php the_post_thumbnail( $post->ID, 'medium' ); ?>
+							<div class="teaser-img-container"><a class="teaser-img" href="<?php the_permalink(); ?>" style="background-image: url(<?php echo voa_top_content_get_image_url( get_post_thumbnail_id( $post->ID ), 1, "half-width" ); ?>);"></a></div>
+							<!-- <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( $post->ID, 'medium' ); ?></a> -->
 							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 						</article>
 						
