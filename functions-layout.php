@@ -42,7 +42,7 @@ function voa_top_content_admin_menu() {
     <voa-layout>
         <voa-row>
             <voa-indicator>
-                <img src="<?php echo $base ?>/layout-1.png" />
+                <img src="<?php echo $base ?>/img/layout-1.png" />
             </voa-indicator>
             <voa-control>
                 <button data-columns="1">1</button>
@@ -55,7 +55,7 @@ function voa_top_content_admin_menu() {
 
 <script>
 function voa_setColumns(row, columns) {
-    jQuery("img", row).attr("src", "<?php echo $base ?>/layout-" + columns + ".png");
+    jQuery("img", row).attr("src", "<?php echo $base ?>/img/layout-" + columns + ".png");
 }
 
 function voa_setRows(rows) {
