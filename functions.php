@@ -1,5 +1,6 @@
 <?php
 require_once( "functions-layout.php" );
+require_once( "functions-widgets.php" );
 
 show_admin_bar( false );
 add_theme_support( "post-thumbnails" );

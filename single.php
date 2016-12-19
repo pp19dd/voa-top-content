@@ -134,6 +134,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 
 						<div class="fb-comments" data-href="http://blogs.voanews.com/REPLACE_THIS_WITH_REAL_URL" data-width="100%" data-numposts="5"></div>
 
+						<?php /*
 						<div id="fb-root"></div>
 						<script>(function(d, s, id) {
 						  var js, fjs = d.getElementsByTagName(s)[0];
@@ -142,6 +143,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 						  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=490219017808002";
 						  fjs.parentNode.insertBefore(js, fjs);
 						}(document, 'script', 'facebook-jssdk'));</script>
+						*/ ?>
 
 					</div>
 

@@ -51,7 +51,7 @@ $posts_html = voa_top_content_breakup_posts($row_layout, $posts_html);
             $image = voa_top_content_get_image_url($post["thumbnail_id"], $k, count($posts) );
             set_query_var( "k", $k );
             set_query_var( "image", $image );
-            get_template_part("article", count($posts) );
+            get_template_part("partials/article", count($posts) );
         }
      ?>
         </row>
