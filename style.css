@@ -841,6 +841,7 @@ antirows img { }
 .archive-teasers article .teaser-img-container {
 	height: 150px;
 	max-width: 100%;
+	position: relative;
 	width: 100%;
 }
 
@@ -850,7 +851,17 @@ antirows img { }
 	border: 1px solid #999;
 	display: block;
 	height: 100%;
+	line-height: 100%;
 	width: calc(100% - 2px);
+}
+
+.archive-teasers article .teaser-img-container .teaser-img > .language-service {
+	bottom: .5em;
+	right: 1px;
+}
+
+.archive-teasers article .teaser-img-container .teaser-img > .language-service  > .language-service-inner {
+	line-height: 100%;
 }
 
 .archive-teasers article h2 {

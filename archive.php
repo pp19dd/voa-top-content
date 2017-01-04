@@ -68,7 +68,7 @@ the_post();
 						?>
 						
 						<article class="archive-teaser">
-							<div class="teaser-img-container"><a class="teaser-img" href="<?php the_permalink(); ?>" style="background-image: url(<?php echo voa_top_content_get_image_url( get_post_thumbnail_id( $post->ID ), 1, "half-width" ); ?>);"></a></div>
+							<div class="teaser-img-container"><a class="teaser-img" href="<?php the_permalink(); ?>" style="background-image: url(<?php echo voa_top_content_get_image_url( get_post_thumbnail_id( $post->ID ), 1, "half-width" ); ?>);"><span class="language-service"><span class="language-service-inner">VOA English</span></span></a></div>
 							<!-- <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( $post->ID, 'medium' ); ?></a> -->
 							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 						</article>
@@ -90,8 +90,7 @@ the_post();
 			<sidebar>
 				<sidebar-inner>
 					
-					[NEED ARCHIVE PAGE SIDEBAR]
-					<?php //dynamic_sidebar( 'sidebar_article_right' ); ?>
+					<?php dynamic_sidebar( 'sidebar_archive_page' ); ?>
 
 				</sidebar-inner>
 			</sidebar>
