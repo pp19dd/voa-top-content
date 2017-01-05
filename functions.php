@@ -83,6 +83,38 @@ function text_shortenerer( $text, $maxlen = 60, $more = '...' ) {
 
 
 /*
+get FB comment count for a URL; returns int
+*/
+function voa_fb_comment_count( $url ) {
+    
+    $count = 0;
+    
+    // random article with lots of FB comments for testing
+    //$url = 'https://www.buzzfeed.com/claudiakoerner/four-people-in-custody-after-man-tortured-in-disturbing-face';
+    
+    if ($url) {
+        $query = 
+            sprintf( 
+                'https://graph.facebook.com/v2.5/?id=%s&access_token=%d|%s', 
+                $url, 
+                FB_APP_ID, 
+                FB_APP_SECRET
+        );
+        
+        // should probably switch this to curl...
+        $result = json_decode( file_get_contents( $query ) );
+        $count  = $result->share->comment_count;
+        
+        if (!$count) { $count = 0; }
+        
+    }
+    
+    return $count;
+}
+
+
+
+/*
 edit bylines are a meta field
 */
 
