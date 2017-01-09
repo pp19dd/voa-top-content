@@ -46,7 +46,7 @@ while( have_posts() ) {
 // ===========================================================================
 
 // REMOVE PRIOR TO LAUNCH - hardcoded for demo
-//$posts_html = array_slice( $posts_html, 0, 6 );
+$posts_html = array_slice( $posts_html, 0, 6 );
 
 $posts_html = voa_top_content_breakup_posts($row_layout, $posts_html);
 ?>
