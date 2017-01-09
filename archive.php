@@ -65,12 +65,20 @@ the_post();
 							
 							<?php
 						}
+
+						$redirect_url = voa_has_redirect_url( $post->ID );
+
+						if ( !$redirect_url ) {
+							$url = get_the_permalink( $post->ID );
+						} else {
+							$url = $redirect_url;
+						}
 						?>
 						
 						<article class="archive-teaser">
-							<div class="teaser-img-container"><a class="teaser-img" href="<?php the_permalink(); ?>" style="background-image: url(<?php echo voa_top_content_get_image_url( get_post_thumbnail_id( $post->ID ), 1, "half-width" ); ?>);"><span class="language-service"><span class="language-service-inner">VOA English</span></span></a></div>
-							<!-- <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( $post->ID, 'medium' ); ?></a> -->
-							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							<div class="teaser-img-container"><a class="teaser-img" href="<?php echo $url; ?>" style="background-image: url(<?php echo voa_top_content_get_image_url( get_post_thumbnail_id( $post->ID ), 1, "half-width" ); ?>);"><span class="language-service"><span class="language-service-inner">VOA English</span></span></a></div>
+							<!-- <a href="<?php echo $url; ?>"><?php the_post_thumbnail( $post->ID, 'medium' ); ?></a> -->
+							<h2><a href="<?php echo $url; ?>"><?php the_title(); ?></a></h2>
 						</article>
 						
 						<?php
