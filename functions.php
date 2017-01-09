@@ -201,6 +201,64 @@ function voa_top_content_meta_dateline($post) {
 
 
 /*
+redirect URLs are a meta field
+*/
+
+add_action( 'add_meta_boxes', 'voa_top_content_meta_redirect_url_add' );
+function voa_top_content_meta_redirect_url_add() {
+    add_meta_box(
+        "voa-top-content-meta-03",
+        "Redirect URL",
+        "voa_top_content_meta_redirect_url",
+        null,
+        "side"
+    );
+}
+
+add_action( 'save_post', 'voa_top_content_meta_redirect_url_save' );
+function voa_top_content_meta_redirect_url_save( $post_id ) {
+    if( !isset( $_POST['voa-redirect_url']) ) return;
+
+    $value = $_POST['voa-redirect_url'];
+    filter_var( $value, FILTER_SANITIZE_STRING );
+    $value = trim($value);
+
+    update_post_meta( $post_id, "_voa_redirect_url", $value );
+}
+
+function voa_top_content_meta_redirect_url($post) {
+    $value = get_post_meta($post->ID, "_voa_redirect_url", true);
+    filter_var( $value, FILTER_SANITIZE_STRING );
+?>
+    <input
+        style="width:100%"
+        name="voa-redirect_url"
+        type="text"
+        autocomplete="off"
+        spellcheck="false"
+        value="<?php echo $value ?>"
+    />
+<?php
+}
+
+
+
+/*
+checks if post has a meta redirect_url
+*/
+
+function voa_has_redirect_url( $post_id ) {
+    $redirect = get_post_meta($post_id, "_voa_redirect_url", true);
+    if( strlen($redirect) > 0 ) {
+        return $redirect;
+    } else {
+        return (bool) false;
+    }
+}
+
+
+
+/*
 add ability to set focus point - right next to #remove-post-thumbnail
 */
 function voa_top_content_widgets_init() {
