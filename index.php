@@ -20,19 +20,11 @@ $posts_html = array();
 while( have_posts() ) {
     the_post();
 
-    $redirect_url = voa_has_redirect_url( $post->ID );
-
-    if ( !$redirect_url ) {
-        $url = get_the_permalink( $post->ID );
-    } else {
-        $url = $redirect_url;
-    }
-
     // full-width      half-width      quarter-width   quarter-width-small
     $posts_html[] = array(
         "id" => $post->ID,
         "title" => get_the_title(),
-        "permalink" => $url,
+        "permalink" => get_the_permalink( $post->ID ),
         "thumbnail_id" => get_post_thumbnail_id( $post->ID ),
         "excerpt" => get_the_excerpt(),
         "content" => get_the_content()

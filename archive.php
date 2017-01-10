@@ -66,13 +66,7 @@ the_post();
 							<?php
 						}
 
-						$redirect_url = voa_has_redirect_url( $post->ID );
-
-						if ( !$redirect_url ) {
-							$url = get_the_permalink( $post->ID );
-						} else {
-							$url = $redirect_url;
-						}
+						$url = get_the_permalink( $post->ID );
 						?>
 						
 						<article class="archive-teaser">

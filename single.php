@@ -1,8 +1,23 @@
-<?php get_header(); ?>
+<?php 
 
-<?php
+function voa_redirect() {
+	global $post;
+	
+	$redirect_url = get_post_meta( $post->ID, "_voa_redirect_url", true );
+	
+	if( strlen(trim( $redirect_url )) > 0 ) {
+		wp_redirect( $redirect_url, 301 );
+		exit;
+	}
+}
+
+// should we redirect or just show the post?
+voa_redirect();
+
+get_header();
+
 the_post();
-#$id = get_the_ID();
+
 $thumbnail_id = get_post_thumbnail_id( $post->ID );
 $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 
