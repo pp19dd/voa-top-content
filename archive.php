@@ -92,6 +92,30 @@ the_post();
 			<sidebar>
 				<sidebar-inner>
 					
+					<div class="top-tags-widget">
+						
+						<h2 class="sidebar-title">Top Tags</h2>
+					
+						<div class="top-tags">
+							
+							<ul class="tags">
+							<?php 
+							$tags = get_tags( array( 'orderby' => 'count', 'order' => 'DESC' ) );
+							foreach( $tags as $tag ) {
+							?>
+							
+							<li><a href="<?php echo get_tag_link( $tag->term_id ); ?>"><span class="tag"><?php echo $tag->name; ?></span><span class="tag-count"><?php echo $tag->count; ?> post<?php echo ($tag->count != 1 ? 's' : ''); ?></span></a></li>
+							
+							<?php } // end foreach tag ?>
+							</ul><!-- end .tags -->
+							
+							<?php /*
+							<pre><?php print_r($tags); ?></pre>
+							*/ ?>
+						</div>
+						
+					</div>
+					
 					<?php dynamic_sidebar( 'sidebar_archive_page' ); ?>
 
 				</sidebar-inner>
