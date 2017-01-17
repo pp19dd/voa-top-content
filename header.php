@@ -17,8 +17,8 @@ if ( is_front_page() ) {
 	
 } else {
 	
-	$vmeta['canonical_url'] = the_permalink();
-	$vmeta['title'] = the_title();
+	$vmeta['canonical_url'] = get_the_permalink();
+	$vmeta['title'] = get_the_title();
 	$vmeta['description'] = '';
 	$vmeta['date_published'] = ''; // $post->post_date
 	
@@ -91,7 +91,7 @@ if ( is_front_page() ) {
 			<menu>
 				<a href="<?php echo home_url( '' ); ?>/about/">About</a>
 				<a href="<?php echo home_url( '' ); ?>/archives/">Archives</a>
-				<a href="#">Search</a>
+				<?php /* <a href="#">Search</a> */ ?>
 			</menu>
 		</inner>
 	</header>
