@@ -1,5 +1,5 @@
 <?php
-
+require_once( "class.calendar.php" );
 
 // a = full wide            1 post
 // b = 1/2 + 1/4 + 1/4      3 posts
@@ -13,31 +13,104 @@ function voa_top_content_get_row_layout() {
 }
 
 function voa_top_content_admin_menu_css() {
-?>
+    include( "functions-admin-css.php" );
+}
 
-<style>
-voa-layout { display: flex; flex-direction:column }
-voa-row { display: flex; flex-direction: row; padding-bottom:1em }
-voa-indicator { padding-top: 1em }
-voa-control { padding: 1em; display: flex; flex-direction: column }
-voa-control button { }
-</style>
+function voa_top_content_get_calendar($year, $month) {
+    $cal = new VOA_Calendar($year, $month);
 
-<?php
+    return( $cal->getMonth() );
 }
 
 function voa_top_content_admin_menu() {
     $base = get_theme_root_uri() . '/' . get_template();
-    $rows = get_option( "voa-top-content-rows", 5 );
+
+    $hardcoded_default = array(
+        "row_count" => 3,
+        "rows" => array(3, 2, 1)
+    );
+
+    // fixme: delete
+    delete_option( "voa-layout-2017-01-23");
+    update_option( "voa-layout-2017-01-23", $hardcoded_default );
+
+    $layout = get_option( "voa-layout-default", $hardcoded_default );
+
+    if( isset( $_GET['day']) ) {
+        $retrieved_layout = get_option( "voa-layout-{$_GET['day']}", false );
+        $layout = $retrieved_layout;
+        if( $layout === false ) $layout = array(
+            "row_count" => 1,
+            "rows" => array(1)
+        );
+    }
+
+    $current_year = 2017;
+    $current_month = 1;
+    $current_ts = strtotime("{$current_year}-{$current_month}-01");
+
+    $month = voa_top_content_get_calendar($current_year, $current_month);
 ?>
 <div class="wrap">
-    <h1>Homepage Layout</h1>
+    <h1>Page Layout<?php
+
+if( isset( $_GET['day']) ) {
+
+}
+
+?></h1>
+
+<div class="voa-top-content-layout-nav-container">
+
+<table class="voa-top-content-layout-nav">
+    <thead>
+        <caption><?php echo date("F Y", $current_ts) ?></caption>
+        <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+        </tr>
+    </thead>
+    <tbody>
+<?php foreach( $month as $week ) { ?>
+        <tr>
+<?php foreach( $week as $k => $day ) { ?>
+<?php
+    $has_layout = get_option("voa-layout-{$day}", false);
+    $classes = [];
+    if( $k === 0 || $k === 6) $classes[] = "satsun";
+    if( $has_layout !== false ) $classes[] = "laid-out";
+    if( $day === "" ) $classes[] = "not-a-day";
+?>
+            <td class="<?php echo implode(" ", $classes); ?>">
+<?php if( $day === "") { ?>
+                &nbsp;
+<?php } else { ?>
+                <a href="?page=voa-homepage-layout&amp;day=<?php echo $day ?>"><?php echo date("d", strtotime($day) ) ?></a>
+<?php } ?>
+            </td>
+<?php } ?>
+        </tr>
+<?php } ?>
+    </tbody>
+</table>
+<p>Green marks a day with a customized layout.</p>
+<p>Unmarked days use a default pattern.</p>
+<p><a href="?page=voa-homepage-layout&amp;day=default">Set default pattern.</a></p>
+</div>
+
+<?php if( isset( $_GET['day']) ) { ?>
 
     <p>Show <select id="voa-change-rows" name="voa-top-content-rows">
+        <option value="0" <?php if( $retrieved_layout === false ) { echo 'selected'; } ?>>0 rows - use default</option>
 <?php for( $i = 1; $i <= 30; $i++ ) { ?>
-        <option <?php if( $i === $rows ) { echo 'selected'; } ?>><?php echo $i ?> row<?php if( $i > 1 ) echo 's'; ?></option>
+        <option value="<?php echo $i ?>" <?php if( $i === $rows ) { echo 'selected'; } ?>><?php echo $i ?> row<?php if( $i > 1 ) echo 's'; ?></option>
 <?php } ?>
-    </select> on homepage to start.</p>
+    </select> on the page.</p>
 
     <voa-layout>
         <voa-row>
@@ -77,17 +150,35 @@ function voa_setRows(rows) {
 
 jQuery("#voa-change-rows").change(function() {
     var rows = parseInt(jQuery(this).val());
+    if( rows === 0 ) {
+        jQuery("voa-row").hide();
+    } else {
+        jQuery("voa-row").show();
+    }
     voa_setRows(rows-1);
 });
-
-voa_setRows(<?php echo $rows ?>);
 
 jQuery("voa-control button").click(function() {
     var columns = jQuery(this).attr("data-columns");
     var row = jQuery(this).parent().parent();
     voa_setColumns( row, columns );
 });
+
+// load current layout
+var layout = <?php echo json_encode($retrieved_layout) ?>;
+
+if( layout === false ) {
+    jQuery("voa-row:eq(0)").hide();
+} else {
+    voa_setRows(layout.row_count - 1);
+    jQuery("#voa-change-rows").val(layout.row_count);
+    for( var i = 0; i < layout.row_count; i++ ) {
+        voa_setColumns( jQuery("voa-row:eq(" + i + ")"), layout.rows[i] );
+    }
+}
 </script>
+
+<?php } # if isset day ?>
 
 <?php
 }
@@ -165,7 +256,7 @@ function voa_top_content_adjacent_post($direction = 'previous') {
         case 'next':
             $previous = (bool) false;
             break;
-        
+
         default:
             $previous = (bool) true;
             break;
