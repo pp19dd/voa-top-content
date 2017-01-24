@@ -12,8 +12,29 @@ function voa_top_content_get_row_layout() {
     return( $r );
 }
 
+function voa_top_content_stories_on_day($date) {
+    global $wpdb;
+
+    $statement = $wpdb->prepare(
+        "select " .
+            "ID, post_status, post_title " .
+        "from " .
+            "`{$wpdb->posts}` " .
+        "where " .
+            "date(post_date)=%s and " .
+            "post_type='post' and " .
+            "post_status in ('publish', 'draft')" .
+            "order by post_date desc",
+        $date
+    );
+
+    $res = $wpdb->get_results($statement);
+    return( $res );
+}
+
 function voa_top_content_admin_menu_css() {
     include( "functions-admin-css.php" );
+    echo "\n<script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js'></script>\n";
 }
 
 function voa_top_content_get_calendar($year, $month) {
@@ -26,8 +47,8 @@ function voa_top_content_admin_menu() {
     $base = get_theme_root_uri() . '/' . get_template();
 
     $hardcoded_default = array(
-        "row_count" => 3,
-        "rows" => array(3, 2, 1)
+        "row_count" => 4,
+        "rows" => array(3, 2, 1, 3)
     );
 
     // fixme: delete
@@ -101,34 +122,58 @@ if( isset( $_GET['day']) ) {
 <p>Green marks a day with a customized layout.</p>
 <p>Unmarked days use a default pattern.</p>
 <p><a href="?page=voa-homepage-layout&amp;day=default">Set default pattern.</a></p>
-</div>
+
+</div><!-- .voa-top-content-layout-nav-container -->
 
 <?php if( isset( $_GET['day']) ) { ?>
 
+    <show-items>
     <p>Show <select id="voa-change-rows" name="voa-top-content-rows">
         <option value="0" <?php if( $retrieved_layout === false ) { echo 'selected'; } ?>>0 rows - use default</option>
 <?php for( $i = 1; $i <= 30; $i++ ) { ?>
         <option value="<?php echo $i ?>" <?php if( $i === $rows ) { echo 'selected'; } ?>><?php echo $i ?> row<?php if( $i > 1 ) echo 's'; ?></option>
 <?php } ?>
     </select> on the page.</p>
+    </show-items>
 
-    <voa-layout>
-        <voa-row>
-            <voa-indicator>
-                <img src="<?php echo $base ?>/img/layout-1.png" />
-            </voa-indicator>
-            <voa-control>
-                <button data-columns="1">1</button>
-                <button data-columns="2">2</button>
-                <button data-columns="3">3</button>
-            </voa-control>
-        </voa-row>
-    </voa-layout>
+    <voa-today>
+        <voa-layout>
+            <voa-row>
+                <voa-indicator>
+                    <placeholder />
+                </voa-indicator>
+                <voa-control>
+                    <button data-columns="1">1</button>
+                    <button data-columns="2">2</button>
+                    <button data-columns="3">3</button>
+                </voa-control>
+            </voa-row>
+        </voa-layout>
+        <available-stories>
+<?php
+$stories = voa_top_content_stories_on_day($_GET['day']);
+foreach( $stories as $story ) {
+?>
+    <div class='voa-layout-story'>
+        # <?php echo $story->ID ?> <?php echo $story->post_title ?>
+<?php if( $story->post_status == 'draft' ) { ?> (draft)<?php } ?>
+    </div>
+<?php
+}
+?>
+        </available-stories>
+    </voa-today>
 </div>
 
 <script>
 function voa_setColumns(row, columns) {
-    jQuery("img", row).attr("src", "<?php echo $base ?>/img/layout-" + columns + ".png");
+    var ht = [
+        "<table class='vtcmb' border='1' width='200px'><tr><td style='width:100%'>@</td></tr></table>",
+        "<table class='vtcmb' border='1' width='200px'><tr><td style='width:50%'>@</td><td>@</td></tr></table>",
+        "<table class='vtcmb' border='1' width='200px'><tr><td style='width:50%'>@</td><td style='width:25%'>@</td><td>@</td></tr></table>"
+    ];
+    console.info( columns );
+    jQuery("placeholder", row).html( ht[columns-1].split("@").join("<div class='vtcmbdd'></div>") );
 }
 
 function voa_setRows(rows) {
@@ -176,6 +221,22 @@ if( layout === false ) {
         voa_setColumns( jQuery("voa-row:eq(" + i + ")"), layout.rows[i] );
     }
 }
+
+var manager;
+
+function reset_draggable() {
+
+    manager = dragula([jQuery("available-stories")[0]]);
+
+    jQuery("voa-indicator, .vtcmbdd").each(function(e) {
+         manager.containers.push(this);
+    });
+
+    //vtcmbdd
+}
+
+reset_draggable();
+
 </script>
 
 <?php } # if isset day ?>
