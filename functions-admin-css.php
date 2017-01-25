@@ -1,25 +1,49 @@
 <style>
 voa-layout { margin-right: 1em; display: flex; flex-direction:column }
-voa-row { display: flex; flex-direction: row; padding-bottom:1em }
-voa-indicator { padding-top: 1em }
-voa-control { padding: 1em; display: flex; flex-direction: column }
+voa-row { display: flex; flex-direction: row; }
+voa-indicator { padding-top: 1em; width: 400px; }
+voa-control { display: flex; flex-direction: row; align-items: flex-end; }
 voa-control button { }
 
 voa-today { display: flex; flex-direction: row }
 
+/* s */
+save-things { display: flex; margin-top:3em }
+#save-layout { padding: 1em }
 /* drag and drop */
+
+available-stories {
+    width: 100%;
+    min-height: 3em;
+    background-color: #DDDDDD;
+}
+
 .voa-layout-story {
     border: 1px solid #c0c0c0;
     margin-bottom: 3px;
     padding: 3px;
     width: 100%;
+    word-break: break-all;
 }
 
+.gu-transit { background-color: #FF851B }
+
+table.vtcmb { width: 100% }
+.vtcmb td {
+    border-bottom:4px solid #0074D9;
+    border-right: 4px solid #0074D9;
+}
+.vtcmbdd .voa-layout-story {
+    border: 0;
+}
+.vtcmb td:last-child { border-right: 0; }
+voa-row:last-child td { border-bottom: 0; }
 .vtcmb td { padding:0.5em; vertical-align: top }
-.vtcmbdd { padding: 1em; background-color: yellow }
+.vtcmbdd {}
+.vtcmbdd:empty { background-color: #FFDC00; padding:1em;  }
 
 /* calendar */
-.voa-top-content-layout-nav-container { float: right }
+.voa-top-content-layout-nav-container { }
 .voa-top-content-layout-nav { }
 .voa-top-content-layout-nav th,
 .voa-top-content-layout-nav td a,

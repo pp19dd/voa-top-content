@@ -31,6 +31,10 @@ function voa_top_content_admin_menu_loader() {
 }
 add_action('admin_menu', 'voa_top_content_admin_menu_loader');
 
+// ajax save options (layout)
+add_action( 'wp_ajax_wpa_4471252017', 'wpa_4471252017_callback' );
+add_action( 'wp_ajax_nopriv_wpa_4471252017', 'wpa_4471252017_callback' );
+
 function top_content_custom_sizes( $sizes ) {
     return(
         array_merge(
@@ -65,17 +69,17 @@ function trim_words($text, $words = 20) {
 mostly used to shorten article titles for Tweets
 */
 function text_shortenerer( $text, $maxlen = 60, $more = '...' ) {
-    if ( mb_strlen( $text ) <= $maxlen ) { 
+    if ( mb_strlen( $text ) <= $maxlen ) {
         return $text;
     } else {
         $text_maxlen = (int) $maxlen - mb_strlen( $more );
         $word_estimate = round( $text_maxlen / 5 );
-        
+
         while ( mb_strlen( $text ) >= $text_maxlen ) {
             $text = wp_trim_words( $text, $word_estimate, '' );
             $word_estimate--;
         }
-        
+
         return $text . $more;
     }
 }
@@ -86,29 +90,29 @@ function text_shortenerer( $text, $maxlen = 60, $more = '...' ) {
 get FB comment count for a URL; returns int
 */
 function voa_fb_comment_count( $url ) {
-    
+
     $count = 0;
-    
+
     // random article with lots of FB comments for testing
     //$url = 'https://www.buzzfeed.com/claudiakoerner/four-people-in-custody-after-man-tortured-in-disturbing-face';
-    
+
     if ($url) {
-        $query = 
-            sprintf( 
-                'https://graph.facebook.com/v2.5/?id=%s&access_token=%d|%s', 
-                $url, 
-                FB_APP_ID, 
+        $query =
+            sprintf(
+                'https://graph.facebook.com/v2.5/?id=%s&access_token=%d|%s',
+                $url,
+                FB_APP_ID,
                 FB_APP_SECRET
         );
-        
+
         // should probably switch this to curl...
         $result = json_decode( file_get_contents( $query ) );
         $count  = $result->share->comment_count;
-        
+
         if (!$count) { $count = 0; }
-        
+
     }
-    
+
     return $count;
 }
 
@@ -262,7 +266,7 @@ function voa_has_redirect_url( $post_id ) {
 add ability to set focus point - right next to #remove-post-thumbnail
 */
 function voa_top_content_widgets_init() {
-    
+
     register_sidebar( array(
         'name'          => 'Article right sidebar',
         'id'            => 'sidebar_article_right',
@@ -271,7 +275,7 @@ function voa_top_content_widgets_init() {
         'before_title'  => '<h2 class="sidebar-title">',
         'after_title'   => '</h2>',
     ) );
-    
+
     register_sidebar( array(
         'name'          => 'Archive Page Sidebar',
         'id'            => 'sidebar_archive_page',
@@ -280,7 +284,7 @@ function voa_top_content_widgets_init() {
         'before_title'  => '<h2 class="sidebar-title">',
         'after_title'   => '</h2>',
     ) );
-    
+
     register_sidebar( array(
         'name'          => 'Basic Page Sidebar',
         'id'            => 'sidebar_basic_page',

@@ -1,5 +1,6 @@
 <?php
 require_once( "class.calendar.php" );
+require_once( "functions-admin.php" );
 
 // a = full wide            1 post
 // b = 1/2 + 1/4 + 1/4      3 posts
@@ -43,17 +44,29 @@ function voa_top_content_get_calendar($year, $month) {
     return( $cal->getMonth() );
 }
 
+function wpa_4471252017_callback() {
+    $day = date("Y-m-d", strtotime($_POST['layout']['day']));
+    if( $day != $_POST['layout']['day'] ) return;
+
+    $key = "voa-layout-{$day}";
+    delete_option( $key );
+    update_option( $key, $_POST['layout'] );
+
+    echo "OK {$key} saved";
+}
+
 function voa_top_content_admin_menu() {
+
     $base = get_theme_root_uri() . '/' . get_template();
 
     $hardcoded_default = array(
         "row_count" => 4,
-        "rows" => array(3, 2, 1, 3)
+        "rows" => array(3, 2, 1, 2)
     );
 
     // fixme: delete
-    delete_option( "voa-layout-2017-01-23");
-    update_option( "voa-layout-2017-01-23", $hardcoded_default );
+    // delete_option( "voa-layout-2017-01-23");
+    // update_option( "voa-layout-2017-01-23", $hardcoded_default );
 
     $layout = get_option( "voa-layout-default", $hardcoded_default );
 
@@ -73,55 +86,21 @@ function voa_top_content_admin_menu() {
     $month = voa_top_content_get_calendar($current_year, $current_month);
 ?>
 <div class="wrap">
-    <h1>Page Layout<?php
 
-if( isset( $_GET['day']) ) {
+<?php if( isset( $_GET['day'])) { ?>
+    <h1>Page Layout for <?php echo $_GET['day'] ?> (<?php echo date("D", strtotime($_GET['day'])) ?>)</h1>
+<?php } else { ?>
+    <h1>Page Layout</h1>
 
-}
-
-?></h1>
-
+    <p>Choose a day to edit layout for.</p>
+<?php } ?>
 <div class="voa-top-content-layout-nav-container">
 
-<table class="voa-top-content-layout-nav">
-    <thead>
-        <caption><?php echo date("F Y", $current_ts) ?></caption>
-        <tr>
-            <th>Sun</th>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-        </tr>
-    </thead>
-    <tbody>
-<?php foreach( $month as $week ) { ?>
-        <tr>
-<?php foreach( $week as $k => $day ) { ?>
 <?php
-    $has_layout = get_option("voa-layout-{$day}", false);
-    $classes = [];
-    if( $k === 0 || $k === 6) $classes[] = "satsun";
-    if( $has_layout !== false ) $classes[] = "laid-out";
-    if( $day === "" ) $classes[] = "not-a-day";
+if( !isset( $_GET['day']) ) {
+    voa_top_content_display_calendar( $month, $current_ts );
+}
 ?>
-            <td class="<?php echo implode(" ", $classes); ?>">
-<?php if( $day === "") { ?>
-                &nbsp;
-<?php } else { ?>
-                <a href="?page=voa-homepage-layout&amp;day=<?php echo $day ?>"><?php echo date("d", strtotime($day) ) ?></a>
-<?php } ?>
-            </td>
-<?php } ?>
-        </tr>
-<?php } ?>
-    </tbody>
-</table>
-<p>Green marks a day with a customized layout.</p>
-<p>Unmarked days use a default pattern.</p>
-<p><a href="?page=voa-homepage-layout&amp;day=default">Set default pattern.</a></p>
 
 </div><!-- .voa-top-content-layout-nav-container -->
 
@@ -139,14 +118,14 @@ if( isset( $_GET['day']) ) {
     <voa-today>
         <voa-layout>
             <voa-row>
-                <voa-indicator>
-                    <placeholder />
-                </voa-indicator>
                 <voa-control>
                     <button data-columns="1">1</button>
                     <button data-columns="2">2</button>
                     <button data-columns="3">3</button>
                 </voa-control>
+                <voa-indicator>
+                    <placeholder />
+                </voa-indicator>
             </voa-row>
         </voa-layout>
         <available-stories>
@@ -154,8 +133,8 @@ if( isset( $_GET['day']) ) {
 $stories = voa_top_content_stories_on_day($_GET['day']);
 foreach( $stories as $story ) {
 ?>
-    <div class='voa-layout-story'>
-        # <?php echo $story->ID ?> <?php echo $story->post_title ?>
+    <div class='voa-layout-story' data-id="<?php echo $story->ID ?>">
+        <?php echo $story->post_title ?>
 <?php if( $story->post_status == 'draft' ) { ?> (draft)<?php } ?>
     </div>
 <?php
@@ -163,17 +142,22 @@ foreach( $stories as $story ) {
 ?>
         </available-stories>
     </voa-today>
+
+    <save-things>
+        <button id="save-layout">Save Layout and Story Order</button>
+    </save-things>
+
 </div>
 
 <script>
 function voa_setColumns(row, columns) {
     var ht = [
-        "<table class='vtcmb' border='1' width='200px'><tr><td style='width:100%'>@</td></tr></table>",
-        "<table class='vtcmb' border='1' width='200px'><tr><td style='width:50%'>@</td><td>@</td></tr></table>",
-        "<table class='vtcmb' border='1' width='200px'><tr><td style='width:50%'>@</td><td style='width:25%'>@</td><td>@</td></tr></table>"
+        "<table class='vtcmb'><tr><td style='width:100%'>@</td></tr></table>",
+        "<table class='vtcmb'><tr><td style='width:50%'>@</td><td>@</td></tr></table>",
+        "<table class='vtcmb'><tr><td style='width:50%'>@</td><td style='width:25%'>@</td><td>@</td></tr></table>"
     ];
-    console.info( columns );
     jQuery("placeholder", row).html( ht[columns-1].split("@").join("<div class='vtcmbdd'></div>") );
+    reset_draggable();
 }
 
 function voa_setRows(rows) {
@@ -220,22 +204,97 @@ if( layout === false ) {
     for( var i = 0; i < layout.row_count; i++ ) {
         voa_setColumns( jQuery("voa-row:eq(" + i + ")"), layout.rows[i] );
     }
+
+    // move stories into their places
+    for( var i = 0; i < layout.stories.length; i++ )(function(row, ids) {
+        for( var j = 0; j < ids.length; j++ )(function(id, num) {
+            var node_story = jQuery(".voa-layout-story[data-id='" + id + "']");
+            var node_destination = jQuery("voa-row:eq(" + row + ") .vtcmbdd:eq(" + num + ")");
+
+            jQuery(node_story).appendTo( node_destination );
+            // console.info( node_story, node_destination );
+        })(ids[j], j);
+    })(i, layout.stories[i])
+
 }
 
-var manager;
+// dnd
+var manager = null;
 
 function reset_draggable() {
+    try {
+        //console.info( "destroy" );
+        // manager.destroy();
+        manager.containers = [ ];
+    } catch( e ) {
 
-    manager = dragula([jQuery("available-stories")[0]]);
+    }
 
-    jQuery("voa-indicator, .vtcmbdd").each(function(e) {
-         manager.containers.push(this);
+    var node = jQuery("available-stories")[0];
+
+    manager = dragula([node], {
+        accepts: function(el, target, source, sibling) {
+            if( source == target ) return( false );
+
+            if( jQuery(target).is("div.vtcmbdd") ) {
+                var buddies = jQuery("div.voa-layout-story:not(.gu-transit)", jQuery(target));
+                if( buddies.length === 0 ) {
+                    return( true );
+                } else {
+                    return( false );
+                }
+            }
+
+            return( true);
+        }
+    });
+
+    jQuery(".vtcmbdd").each(function(e) {
+        //console.info( "peck ", this );
+        manager.containers.push(this);
     });
 
     //vtcmbdd
 }
 
-reset_draggable();
+// reset_draggable();
+
+function save_layout() {
+    var new_layout = {
+        day: "<?php echo date('Y-m-d', strtotime($_GET['day'])) ?>",
+        row_count: jQuery("#voa-change-rows").val(),
+        rows: [],
+        stories: []
+    };
+    jQuery("voa-row").each(function(i, e) {
+        var cells = jQuery(".vtcmbdd", this);
+        new_layout.rows.push( cells.length );
+        var new_a = [];
+        cells.each(function(i2, e2) {
+            var story = jQuery(".voa-layout-story", this);
+            var story_id = jQuery(story).attr("data-id");
+            if( typeof story_id === "undefined" ) story_id = "";
+
+            new_a.push( story_id );
+        });
+        new_layout.stories.push( new_a );
+    });
+
+    jQuery.post( ajaxurl, {
+        action: "wpa_4471252017",
+        layout: new_layout,
+    }).error(function() {
+        alert( "error saving" );
+    }).success( function(e) {
+        console.info( "OK SAVED (js)");
+        console.info( e );
+    });
+
+}
+
+jQuery("#save-layout").click(function() {
+    save_layout();
+});
 
 </script>
 
