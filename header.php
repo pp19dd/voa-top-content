@@ -89,7 +89,7 @@ if ( is_front_page() ) {
 		<inner>
 			<logo><a href="http://www.voanews.com/"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a></logo>
 			<menu>
-				<a href="<?php echo home_url( '' ); ?>/about/">About</a>
+				<?php /* <a href="<?php echo home_url( '' ); ?>/about/">About</a> */ ?>
 				<a href="<?php echo home_url( '' ); ?>/archives/">Archives</a>
 				<?php /* <a href="#">Search</a> */ ?>
 			</menu>
