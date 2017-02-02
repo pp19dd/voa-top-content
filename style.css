@@ -1054,9 +1054,25 @@ antirows img { }
 
 	row.rows_3 excerpt, row.rows_1 excerpt, row.rows_2 excerpt { font-size: .9em; }
 
-	.single sidebar-inner { flex-direction: column; padding: 0 1em; }
+	sidebar-inner { flex-direction: column; padding: 0 1em; }
 
-	.single sidebar-inner > * { padding: 0; width: 100%; }
+	sidebar-inner > * { padding: 0; width: 100%; }
+	
+	article.archive-teaser {
+		flex-direction: row;
+		padding: 1em;
+		width: 100%;
+	}
+	
+	article.archive-teaser .teaser-img-container {
+		margin-right: 1.5%;
+		width: 48.5%;
+	}
+	
+	article.archive-teaser h2 {
+		margin-left: 1.5%;
+		width: 48.5%;
+	}
 
 }
 
