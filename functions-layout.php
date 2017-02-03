@@ -2,15 +2,130 @@
 require_once( "class.calendar.php" );
 require_once( "functions-admin.php" );
 
+function voa_top_content_get_day_posts( $date = false ) {
+
+    // sanitize day
+    if( $date === false ) {
+        $voa_top_content_day = voa_top_content_get_most_recently_published_day();
+    } else {
+        $voa_top_content_day = date("Y-m-d", strtotime($date) );
+    }
+    $voa_top_content_day_ts = strtotime($voa_top_content_day);
+
+    // get posts
+    $args = array(
+        "post_type" => "post",
+        "post_status" => "publish",
+        "posts_per_page" => 100,
+        "date_query" => array(
+            "year" => date("Y", $voa_top_content_day_ts),
+            "month" => date("m", $voa_top_content_day_ts),
+            "day" =>date("d", $voa_top_content_day_ts)
+        )
+    );
+    $voa_top_content_query = new WP_Query($args);
+
+    while( $voa_top_content_query->have_posts() ) {
+        $voa_top_content_query->the_post();
+        // full-width      half-width      quarter-width   quarter-width-small
+
+        $id = get_the_ID();
+
+        $posts_html[$id] = array(
+            "id" => $id,
+            "title" => get_the_title(),
+            "permalink" => get_the_permalink( $post->ID ),
+            "thumbnail_id" => get_post_thumbnail_id( $post->ID ),
+            "excerpt" => get_the_excerpt(),
+            "content" => get_the_content()
+        );
+    }
+
+    return( $posts_html );
+}
+
+function voa_top_content_get_next_day($date = false ) {
+    global $wpdb;
+
+    if( $date === false ) {
+        $date = voa_top_content_get_most_recently_published_day();
+    }
+
+    // sanitize and normalize
+    $date = date("Y-m-d", strtotime($date));
+
+    $recently_recent = $wpdb->get_row(
+        "select " .
+            "ID, " .
+            "date(post_date) as `latest` " .
+        "from " .
+            "{$wpdb->posts} " .
+        "where " .
+            "post_status='publish' and " .
+            "post_type='post' and " .
+            "post_date<'{$date}' " .
+        "order by " .
+            "post_date desc " .
+        "limit " .
+            "1"
+    );
+
+    if( is_null($recently_recent) ) return(false);
+    return( $recently_recent->latest );
+}
+
+// returns date in Y-m-d format
+function voa_top_content_get_most_recently_published_day() {
+    global $wpdb;
+
+    $recent = $wpdb->get_row(
+        "select " .
+            "ID, " .
+            "date(post_date) as `latest` " .
+        "from " .
+            "{$wpdb->posts} " .
+        "where " .
+            "post_status='publish' and " .
+            "post_type='post' " .
+        "order by " .
+            "post_date desc " .
+        "limit " .
+            "1"
+    );
+
+    return( $recent->latest );
+}
+
 // a = full wide            1 post
 // b = 1/2 + 1/4 + 1/4      3 posts
 // c = 1/8 + 1/8            2 posts
-function voa_top_content_get_row_layout() {
-    $r = array(
-        3, 2, 1
-    );
+function voa_top_content_get_row_layout($day = false) {
 
-    return( $r );
+    // find most recently published day
+    if( $day == false ) {
+        $day = voa_top_content_get_most_recently_published_day();
+    }
+
+    // retrieve layout
+    $hardcoded_default = array(
+        "row_count" => 4,
+        "rows" => array(3, 2, 1, 2)
+    );
+    $default_layout = get_option( "voa-layout-default", $hardcoded_default );
+    $retrieved_layout = get_option( "voa-layout-{$day}", false );
+
+    // if( $retrieved_layout === false ) return( $default_layout );
+    if( $retrieved_layout === false ) return( $hardcoded_default );
+    return( $retrieved_layout );
+}
+
+function pre($a) {
+    $r = rand(128, 255);
+    $g = rand(128, 255);
+    $b = rand(128, 255);
+    echo "<PRE style='padding:1em; background-color:rgb({$r},{$g},{$b})'>";
+    echo htmlentities(print_r( $a, true ));
+    echo "</PRE>";
 }
 
 function voa_top_content_stories_on_day($date) {
@@ -206,6 +321,8 @@ if( layout === false ) {
     }
 
     // move stories into their places
+    if( typeof layout.stories == "undefined" ) layout.stories = [];
+
     for( var i = 0; i < layout.stories.length; i++ )(function(row, ids) {
         for( var j = 0; j < ids.length; j++ )(function(id, num) {
             var node_story = jQuery(".voa-layout-story[data-id='" + id + "']");
@@ -303,18 +420,51 @@ jQuery("#save-layout").click(function() {
 <?php
 }
 
+/*
+input: [2, 3], [4, 6, 5], [1]
+output: [2, 3, 4, 6, 5, 1]
+*/
+
+function voa_top_content_layout_order_by_id( $row_layout ) {
+    $o = array();
+    if( !isset( $row_layout["stories"]) ) return( $o );
+    foreach( $row_layout["stories"] as $row ) {
+        foreach( $row as $story_id ) {
+            $id = intval($story_id);
+            if( $id != 0 ) $o[] = $story_id;
+        }
+    }
+    return( $o );
+}
 
 /*
-input: array of posts
+input: layout preference, array of posts
 output: array of array of posts
 */
-function voa_top_content_breakup_posts( $row_layout, $posts_html ) {
+function voa_top_content_breakup_posts( $row_layout, $unordered_posts_html ) {
     $ret = array();
     $temp = array();
 
-    $copy_of_row_layout = $row_layout;
+    // sort $posts_html by preferred layout ID
+    $order = voa_top_content_layout_order_by_id($row_layout);
+    $posts_html = array();
+    foreach( $order as $id ) {
 
-    $limiter = array_shift($row_layout);
+        // could be a draft?
+        if( isset($unordered_posts_html[$id]) ) {
+            $posts_html[] = $unordered_posts_html[$id];
+            unset( $unordered_posts_html[$id] );
+        }
+    }
+
+    // any remaining items that haven't been assigned?
+    foreach( $unordered_posts_html as $post ) {
+        $posts_html[] = $post;
+    }
+
+    $copy_of_row_layout = $row_layout["rows"];
+
+    $limiter = array_shift($row_layout["rows"]);
 
     while( !empty($posts_html) ) {
         $temp[] = array_shift($posts_html);
@@ -323,11 +473,11 @@ function voa_top_content_breakup_posts( $row_layout, $posts_html ) {
             $ret[] = $temp;
             $temp = array();
 
-            if( empty($row_layout) ) {
-                $row_layout = $copy_of_row_layout;
+            if( empty($row_layout["rows"]) ) {
+                $row_layout["rows"] = $copy_of_row_layout;
             }
 
-            $limiter = array_shift($row_layout);
+            $limiter = array_shift($row_layout["rows"]);
         }
     }
 
@@ -335,6 +485,9 @@ function voa_top_content_breakup_posts( $row_layout, $posts_html ) {
     if( !empty($temp) ) {
         $ret[] = $temp;
     }
+
+    // limit by stated number of rows, ignore rest
+    $ret = array_slice($ret, 0, $row_layout["row_count"]);
 
     return( $ret );
 }

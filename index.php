@@ -3,7 +3,7 @@
 Template Name: Top Content Homepage
 */
 
-get_header();
+if( !isset( $_GET['vday'])) get_header();
 
 
 
@@ -11,42 +11,38 @@ get_header();
 // ===========================================================================
 // load layout config
 // ===========================================================================
-$row_layout = voa_top_content_get_row_layout();
+if( isset( $_GET['vday']) ) {
+    $voa_day = date("Y-m-d", strtotime($_GET['vday']) );
+} else {
+    $voa_day = voa_top_content_get_most_recently_published_day();
+}
+$voa_day_previous = voa_top_content_get_next_day($voa_day);
 
 // ===========================================================================
 // load data
 // ===========================================================================
-$posts_html = array();
-while( have_posts() ) {
-    the_post();
-
-    // full-width      half-width      quarter-width   quarter-width-small
-    $posts_html[] = array(
-        "id" => $post->ID,
-        "title" => get_the_title(),
-        "permalink" => get_the_permalink( $post->ID ),
-        "thumbnail_id" => get_post_thumbnail_id( $post->ID ),
-        "excerpt" => get_the_excerpt(),
-        "content" => get_the_content()
-    );
-}
-
-
+$posts_html = voa_top_content_get_day_posts($voa_day);
+$row_layout = voa_top_content_get_row_layout($voa_day);
 
 // ===========================================================================
 // break up posts into layout-rows for easier rendering
 // ===========================================================================
 
-// REMOVE PRIOR TO LAUNCH - hardcoded for demo
-$posts_html = array_slice( $posts_html, 0, 6 );
-
 $posts_html = voa_top_content_breakup_posts($row_layout, $posts_html);
+
+/* $x = $voa_day;
+for( $i = 0; $i < 8; $i++ ) {
+    $x = voa_top_content_get_next_day($x);
+    pre( $x );
+    var_dump($x);
+    if( $x === false ) break;
+}*/
 ?>
     <rows>
         <row class="rows_1">
             <breakup>
                 <blank-space></blank-space>
-                <h2>Monday, January 9</h2>
+                <h2><?php echo date("l, F j", strtotime($voa_day)); # Monday, January 9 ?></h2>
                 <blank-space></blank-space>
             </breakup>
         </row>
@@ -63,6 +59,11 @@ $posts_html = voa_top_content_breakup_posts($row_layout, $posts_html);
         </row>
 <?php } #foreach posts_html  ?>
     </rows>
+<?php if( $voa_day_previous !== false ) { ?>
+    <button style="padding:1em; margin:1em;" onclick="voa_load_page('<?php echo $voa_day_previous ?>', this)">load previous <?php echo $voa_day_previous ?></button>
+<?php } ?>
+
+<?php if( !isset( $_GET['vday'])) { ?>
 
 <script>
 jQuery("article").mouseover(function() {
@@ -88,6 +89,14 @@ jQuery("row.rows_1 article").mouseout(function() {
     //jQuery(this).removeClass("hovering");
     jQuery("continue", this).stop().animate({opacity: 0}, 200);
 });
+
+function voa_load_page(vday, that) {
+    jQuery.get("?vday=" + vday, function(rh) {
+        jQuery(that).after(rh);
+        jQuery(that).hide();
+    });
+}
+
 /*
 jQuery("row.rows_2 article, row.rows_1 article").mouseover(function() {
     jQuery(this).addClass("hovering");
@@ -99,4 +108,6 @@ jQuery("row.rows_2 article, row.rows_1 article").mouseover(function() {
 jQuery("row.rows_3 article excerpt, row.rows_3 article continue, row.rows_1 article continue").css({opacity: 0});
 </script>
 
-<?php get_footer(); ?>
+<?php } # end if vday ?>
+
+<?php if( !isset( $_GET['vday'])) get_footer(); ?>
