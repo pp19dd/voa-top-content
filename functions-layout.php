@@ -271,7 +271,10 @@ function voa_setColumns(row, columns) {
         "<table class='vtcmb'><tr><td style='width:50%'>@</td><td>@</td></tr></table>",
         "<table class='vtcmb'><tr><td style='width:50%'>@</td><td style='width:25%'>@</td><td>@</td></tr></table>"
     ];
-    jQuery("placeholder", row).html( ht[columns-1].split("@").join("<div class='vtcmbdd'></div>") );
+    // bugfix: 0 columns situation
+    if( typeof ht[columns-1] != "undefined" ) {
+        jQuery("placeholder", row).html( ht[columns-1].split("@").join("<div class='vtcmbdd'></div>") );
+    }
     reset_draggable();
 }
 
