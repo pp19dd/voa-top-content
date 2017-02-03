@@ -6,7 +6,7 @@ function voa_redirect() {
 	$redirect_url = get_post_meta( $post->ID, "_voa_redirect_url", true );
 	
 	if( strlen(trim( $redirect_url )) > 0 ) {
-		wp_redirect( $redirect_url, 301 );
+		wp_redirect( $redirect_url, 302 );
 		exit;
 	}
 }
