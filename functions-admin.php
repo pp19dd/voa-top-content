@@ -2,11 +2,25 @@
 
 function voa_top_content_display_calendar($month, $current_ts) {
 
+    $next_ts = strtotime("+1 month", $current_ts);
+    $prev_ts = strtotime("-1 month", $current_ts);
+
+    $next_y = date("Y", $next_ts);
+    $next_m = date("m", $next_ts);
+
+    $prev_y = date("Y", $prev_ts);
+    $prev_m = date("m", $prev_ts);
+
 ?>
 
     <table class="voa-top-content-layout-nav">
         <thead>
             <caption><?php echo date("F Y", $current_ts) ?></caption>
+            <tr>
+                <td colspan="3"><a href="?page=voa-homepage-layout&amp;calendar-nav-y=<?php echo $prev_y ?>&amp;calendar-nav-m=<?php echo $prev_m ?>">&lt; <?php echo date("M", $prev_ts) ?></a></td>
+                <td><a href="?page=voa-homepage-layout">Now</a></td>
+                <td colspan="3" style="text-align:right"><a href="?page=voa-homepage-layout&amp;calendar-nav-y=<?php echo $next_y ?>&amp;calendar-nav-m=<?php echo $next_m ?>"><?php echo date("M", $next_ts) ?> &gt;</a></td>
+            </tr>
             <tr>
                 <th>Sun</th>
                 <th>Mon</th>

@@ -194,8 +194,16 @@ function voa_top_content_admin_menu() {
         );
     }
 
-    $current_year = 2017;
-    $current_month = 1;
+    $current_year = date("Y");
+    $current_month = date("m");
+
+    if( isset( $_GET['calendar-nav-y']) ) {
+        $current_year = intval($_GET['calendar-nav-y']);
+    }
+    if( isset( $_GET['calendar-nav-m']) ) {
+        $current_month = intval($_GET['calendar-nav-m']);
+    }
+
     $current_ts = strtotime("{$current_year}-{$current_month}-01");
 
     $month = voa_top_content_get_calendar($current_year, $current_month);
