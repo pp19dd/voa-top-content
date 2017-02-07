@@ -60,7 +60,7 @@ for( $i = 0; $i < 8; $i++ ) {
 <?php } #foreach posts_html  ?>
     </rows>
 <?php if( $voa_day_previous !== false ) { ?>
-    <button style="padding:1em; margin:1em;" onclick="voa_load_page('<?php echo $voa_day_previous ?>', this)">load previous <?php echo $voa_day_previous ?></button>
+    <div class="lazy-load-button" onclick="voa_load_page('<?php echo $voa_day_previous ?>', this)"><span class="lazy-load-button-text">load previous <?php echo $voa_day_previous ?></span></div>
 <?php } ?>
 
 <?php if( !isset( $_GET['vday'])) { ?>
