@@ -943,6 +943,41 @@ antirows img { }
 }
 
 
+/* LAZY LOAD BUTTON **********************************************************/
+
+.lazy-load-button {
+	margin: 1em auto 3em auto;
+	max-width: 1200px;
+	text-align: center;
+}
+
+.lazy-load-button-text {
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.1);
+	color: #1330bf;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: .8em;
+	letter-spacing: .025em;
+	line-height: 100%;
+	margin: 0 auto;
+	max-width: 80%;
+	padding: 1em 1em;
+	text-transform: uppercase;
+}
+
+.lazy-load-button:hover {}
+
+.lazy-load-button:hover .lazy-load-button-text {
+	background: #ccc;
+	box-shadow: none;
+	color: #fff;
+	cursor: pointer;
+}
+
+
 
 
 
