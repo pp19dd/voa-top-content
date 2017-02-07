@@ -2,6 +2,38 @@
 require_once( "class.calendar.php" );
 require_once( "functions-admin.php" );
 
+
+function voa_top_content_get_posts_for_month($year, $month) {
+    global $wpdb;
+
+    $iyear = intval($year);
+    $imonth = intval($month);
+
+    $query = $wpdb->prepare(
+        "select " .
+            "count(*) as rows, " .
+            "date(post_date) as `day` " .
+        "from " .
+            "{$wpdb->posts} " .
+        "where " .
+            "post_type='post' and " .
+            "post_status in ('publish', 'draft') and " .
+            "year(post_date)=%s and ".
+            "month(post_date)=%s" .
+        "group by " .
+            "day",
+        $iyear,
+        $imonth
+    );
+
+    $res = $wpdb->get_results($query);
+    $ret = array();
+    foreach( $res as $k => $v ) {
+        $ret[$v->day] = $v->rows;
+    }
+    return( $ret );
+}
+
 function voa_top_content_get_day_posts( $date = false ) {
 
     // sanitize day
@@ -221,7 +253,10 @@ function voa_top_content_admin_menu() {
 
 <?php
 if( !isset( $_GET['day']) ) {
-    voa_top_content_display_calendar( $month, $current_ts );
+
+    $posts = voa_top_content_get_posts_for_month($current_year, $current_month);
+
+    voa_top_content_display_calendar( $month, $current_ts, $posts );
 }
 ?>
 

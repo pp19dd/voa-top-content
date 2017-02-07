@@ -49,8 +49,12 @@ voa-row:last-child td { border-bottom: 0; }
 .voa-top-content-layout-nav td a,
 .voa-top-content-layout-nav .not-a-day { padding: 0.75em; }
 
-.voa-top-content-layout-nav .satsun { background-color: silver }
-.voa-top-content-layout-nav .laid-out { background-color: #3D9970; }
+.voa-top-content-layout-nav .satsun { background-color: #AAAAAA }
+.voa-top-content-layout-nav .has-posts a { color: #FF4136; font-weight: bold; }
+
+.voa-top-content-layout-nav .laid-out { background-color: #7fdbff; }
+.voa-top-content-layout-nav .has-posts.laid-out { background-color: #0074d9; }
+
 .voa-top-content-layout-nav th { background-color: #001f3f; color: white }
 .voa-top-content-layout-nav a { display: block; }
 .voa-top-content-layout-nav .laid-out a { color: black }
@@ -61,6 +65,7 @@ voa-row:last-child td { border-bottom: 0; }
     margin-bottom: 0.3em;
     margin-top: 0;
 }
+.voa-top-layout-legend p { line-height: 1.5em }
 
 /* dragula */
 .gu-mirror {

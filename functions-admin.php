@@ -1,6 +1,6 @@
 <?php
 
-function voa_top_content_display_calendar($month, $current_ts) {
+function voa_top_content_display_calendar($month, $current_ts, $posts) {
 
     $next_ts = strtotime("+1 month", $current_ts);
     $prev_ts = strtotime("-1 month", $current_ts);
@@ -41,8 +41,10 @@ function voa_top_content_display_calendar($month, $current_ts) {
         if( $k === 0 || $k === 6) $classes[] = "satsun";
         if( $has_layout !== false ) $classes[] = "laid-out";
         if( $day === "" ) $classes[] = "not-a-day";
+
+        if( isset($posts[$day]) ) $classes[] = "has-posts";
     ?>
-                <td class="<?php echo implode(" ", $classes); ?>">
+                <td <?php if(isset($posts[$day])) { ?>title="Posts: <?php echo $posts[$day] ?>"<?php } ?> class="<?php echo implode(" ", $classes); ?>">
     <?php if( $day === "") { ?>
                     &nbsp;
     <?php } else { ?>
@@ -55,9 +57,13 @@ function voa_top_content_display_calendar($month, $current_ts) {
         </tbody>
     </table>
 
-    <p>Green marks a day with a customized layout.</p>
-    <p>Unmarked days use a default pattern.</p>
-    <p><a href="?page=voa-homepage-layout&amp;day=default">Set default pattern.</a></p>
+    <div class="voa-top-layout-legend">
+        <h3>Legend:</h3>
+        <p><span style="background-color:#FF4136">&nbsp;&nbsp;&nbsp;&nbsp;</span> Posts exist (either published or draft), but layout is missing</p>
+        <p><span style="background-color:#7fdbff">&nbsp;&nbsp;&nbsp;&nbsp;</span> Layout exists, but no posts.</p>
+        <p><span style="background-color:#0074d9">&nbsp;&nbsp;&nbsp;&nbsp;</span> Layout exists, posts exist.</p>
+        <p><a href="?page=voa-homepage-layout&amp;day=default">Set default layout pattern.</a></p>
+    </div>
 
 <?php
 }
