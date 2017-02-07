@@ -1,4 +1,7 @@
 <style>
+/* meta box */
+#voa-top-content-meta-01 p { margin-bottom: 0; }
+
 voa-layout {
     margin-right: 1em;
     display: flex;

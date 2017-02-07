@@ -1,6 +1,7 @@
 <?php
 require_once( "functions-layout.php" );
 require_once( "functions-widgets.php" );
+require_once( "functions-meta.php" );
 
 show_admin_bar( false );
 add_theme_support( "post-thumbnails" );
@@ -117,144 +118,10 @@ function voa_fb_comment_count( $url ) {
 }
 
 
-
-/*
-edit bylines are a meta field
-*/
-
-add_action( 'add_meta_boxes', 'voa_top_content_meta_byline_add' );
-function voa_top_content_meta_byline_add() {
-    add_meta_box(
-        "voa-top-content-meta-01",
-        "Byline",
-        "voa_top_content_meta_byline",
-        null,
-        "side"
-    );
-}
-
-add_action( 'save_post', 'voa_top_content_meta_byline_save' );
-function voa_top_content_meta_byline_save( $post_id ) {
-    if( !isset( $_POST['voa-byline']) ) return;
-
-    $value = $_POST['voa-byline'];
-    filter_var( $value, FILTER_SANITIZE_STRING );
-    $value = trim($value);
-
-    update_post_meta( $post_id, "_voa_byline", $value );
-}
-
-function voa_top_content_meta_byline($post) {
-    $value = get_post_meta($post->ID, "_voa_byline", true);
-    filter_var( $value, FILTER_SANITIZE_STRING );
-?>
-    <input
-        style="width:100%"
-        name="voa-byline"
-        type="text"
-        autocomplete="off"
-        spellcheck="false"
-        value="<?php echo $value ?>"
-    />
-<?php
-}
-
-
-
-/*
-edit datelines are a meta field
-*/
-
-add_action( 'add_meta_boxes', 'voa_top_content_meta_dateline_add' );
-function voa_top_content_meta_dateline_add() {
-    add_meta_box(
-        "voa-top-content-meta-02",
-        "Dateline",
-        "voa_top_content_meta_dateline",
-        null,
-        "side"
-    );
-}
-
-add_action( 'save_post', 'voa_top_content_meta_dateline_save' );
-function voa_top_content_meta_dateline_save( $post_id ) {
-    if( !isset( $_POST['voa-dateline']) ) return;
-
-    $value = $_POST['voa-dateline'];
-    filter_var( $value, FILTER_SANITIZE_STRING );
-    $value = trim($value);
-
-    update_post_meta( $post_id, "_voa_dateline", $value );
-}
-
-function voa_top_content_meta_dateline($post) {
-    $value = get_post_meta($post->ID, "_voa_dateline", true);
-    filter_var( $value, FILTER_SANITIZE_STRING );
-?>
-    <input
-        style="width:100%"
-        name="voa-dateline"
-        type="text"
-        autocomplete="off"
-        spellcheck="false"
-        value="<?php echo $value ?>"
-    />
-<?php
-}
-
-
-
-/*
-redirect URLs are a meta field
-*/
-
-add_action( 'add_meta_boxes', 'voa_top_content_meta_redirect_url_add' );
-function voa_top_content_meta_redirect_url_add() {
-    add_meta_box(
-        "voa-top-content-meta-03",
-        "Redirect URL",
-        "voa_top_content_meta_redirect_url",
-        null,
-        "side"
-    );
-}
-
-add_action( 'save_post', 'voa_top_content_meta_redirect_url_save' );
-function voa_top_content_meta_redirect_url_save( $post_id ) {
-    if( !isset( $_POST['voa-redirect_url']) ) return;
-
-    $value = $_POST['voa-redirect_url'];
-    filter_var( $value, FILTER_SANITIZE_STRING );
-    $value = trim($value);
-
-    update_post_meta( $post_id, "_voa_redirect_url", $value );
-}
-
-function voa_top_content_meta_redirect_url($post) {
-    $value = get_post_meta($post->ID, "_voa_redirect_url", true);
-    filter_var( $value, FILTER_SANITIZE_STRING );
-?>
-    <input
-        style="width:100%"
-        name="voa-redirect_url"
-        type="text"
-        autocomplete="off"
-        spellcheck="false"
-        value="<?php echo $value ?>"
-    />
-<?php
-}
-
-
-
-/*
-checks if post has a meta redirect_url
-*/
-
 function voa_has_redirect_url( $post_id ) {
     $redirect = get_post_meta($post_id, "_voa_redirect_url", true);
     if( strlen($redirect) > 0 ) {
-        return $redirect;
+        return( trim($redirect) );
     } else {
         return (bool) false;
     }
