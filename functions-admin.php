@@ -11,6 +11,13 @@ function voa_top_content_display_calendar($month, $current_ts, $posts) {
     $prev_y = date("Y", $prev_ts);
     $prev_m = date("m", $prev_ts);
 
+    $extra = "";
+    if( isset( $_GET['calendar-nav-y']) ) {
+        $extra .= "&amp;calendar-nav-y=" . $_GET['calendar-nav-y'];
+    }
+    if( isset( $_GET['calendar-nav-m']) ) {
+        $extra .= "&amp;calendar-nav-m=" . $_GET['calendar-nav-m'];
+    }
 ?>
 
     <table class="voa-top-content-layout-nav">
@@ -48,7 +55,7 @@ function voa_top_content_display_calendar($month, $current_ts, $posts) {
     <?php if( $day === "") { ?>
                     &nbsp;
     <?php } else { ?>
-                    <a href="?page=voa-homepage-layout&amp;day=<?php echo $day ?>"><?php echo date("d", strtotime($day) ) ?></a>
+                    <a href="?page=voa-homepage-layout&amp;day=<?php echo $day . $extra ?>"><?php echo date("d", strtotime($day) ) ?></a>
     <?php } ?>
                 </td>
     <?php } ?>

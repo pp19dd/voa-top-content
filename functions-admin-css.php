@@ -1,9 +1,26 @@
 <style>
-voa-layout { margin-right: 1em; display: flex; flex-direction:column }
+voa-layout {
+    margin-right: 1em;
+    display: flex;
+    flex-direction:column;
+    flex-basis: 50%;
+}
 voa-row { display: flex; flex-direction: row; }
 voa-indicator { padding-top: 1em; width: 400px; }
-voa-control { display: flex; flex-direction: row; align-items: flex-end; }
-voa-control button { }
+voa-control { display: flex; flex-direction: row; align-items: flex-end; padding-bottom:11px; }
+voa-control button {
+    background-color: #ffffff;
+    border: 1px solid #c0c0c0;
+    border-radius: 15px;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+span.voa-draft {
+    font-weight: bold;
+    word-break: normal;
+    white-space: nowrap;
+}
 
 voa-today { display: flex; flex-direction: row }
 

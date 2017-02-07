@@ -277,12 +277,14 @@ if( !isset( $_GET['day']) ) {
         <voa-layout>
             <voa-row>
                 <voa-control>
-                    <button data-columns="1">1</button>
-                    <button data-columns="2">2</button>
-                    <button data-columns="3">3</button>
+                    <button onclick="voa_setColumns(jQuery(this).parent().parent(), 1)">1</button>
+                    <button onclick="voa_setColumns(jQuery(this).parent().parent(), 2)">2</button>
+                    <button onclick="voa_setColumns(jQuery(this).parent().parent(), 3)">3</button>
                 </voa-control>
                 <voa-indicator>
-                    <placeholder />
+                    <placeholder>
+                        <table class='vtcmb'><tr><td style='width:100%'><div class='vtcmbdd'></div></td></tr></table>
+                    </placeholder>
                 </voa-indicator>
             </voa-row>
         </voa-layout>
@@ -293,7 +295,7 @@ foreach( $stories as $story ) {
 ?>
     <div class='voa-layout-story' data-id="<?php echo $story->ID ?>">
         <?php echo $story->post_title ?>
-<?php if( $story->post_status == 'draft' ) { ?> (draft)<?php } ?>
+<?php if( $story->post_status == 'draft' ) { ?> <span class='voa-draft'>(draft)</span><?php } ?>
     </div>
 <?php
 }
@@ -308,7 +310,19 @@ foreach( $stories as $story ) {
 </div>
 
 <script>
+
+function move_stories_out(row) {
+    var stories = row.find("div.voa-layout-story");
+    stories.each(function(k,v) {
+        jQuery("available-stories").append( v );
+    });
+}
+
 function voa_setColumns(row, columns) {
+
+    // move any stories potentially affected by this row reconfiguration
+    move_stories_out(row);
+
     var ht = [
         "<table class='vtcmb'><tr><td style='width:100%'>@</td></tr></table>",
         "<table class='vtcmb'><tr><td style='width:50%'>@</td><td>@</td></tr></table>",
@@ -325,17 +339,26 @@ function voa_setRows(rows) {
 
     var all = jQuery("voa-row");
 
+    // move any stories potentially affected by this row removal
+    jQuery("voa-row:gt(" + rows + ")").each(function(k,v) {
+        move_stories_out(jQuery(v));
+    });
+
     // remove excess
     jQuery("voa-row:gt(" + rows + ")").remove();
 
     // add as needed
     if( all.length <= rows ) {
         for( var i = 0; i <= (rows - all.length); i++ )(function() {
-            var first = jQuery("voa-row:eq(0)").clone(true);
+            var first = jQuery("voa-row:eq(0)").clone(false);
+            jQuery("placeholder", first).html(
+                "<table class='vtcmb'><tr><td style='width:100%'><div class='vtcmbdd'></div></td></tr></table>"
+            );
             jQuery(first).appendTo(jQuery("voa-layout"));
         })();
     }
 
+    reset_draggable();
 }
 
 jQuery("#voa-change-rows").change(function() {
@@ -346,12 +369,6 @@ jQuery("#voa-change-rows").change(function() {
         jQuery("voa-row").show();
     }
     voa_setRows(rows-1);
-});
-
-jQuery("voa-control button").click(function() {
-    var columns = jQuery(this).attr("data-columns");
-    var row = jQuery(this).parent().parent();
-    voa_setColumns( row, columns );
 });
 
 // load current layout
@@ -385,9 +402,11 @@ if( layout === false ) {
 var manager = null;
 
 function reset_draggable() {
+    jQuery(document).ready(function() {
+
     try {
         //console.info( "destroy" );
-        // manager.destroy();
+        manager.destroy();
         manager.containers = [ ];
     } catch( e ) {
 
@@ -400,12 +419,12 @@ function reset_draggable() {
             if( source == target ) return( false );
 
             if( jQuery(target).is("div.vtcmbdd") ) {
-                var buddies = jQuery("div.voa-layout-story:not(.gu-transit)", jQuery(target));
-                if( buddies.length === 0 ) {
-                    return( true );
-                } else {
-                    return( false );
-                }
+             var buddies = jQuery("div.voa-layout-story:not(.gu-transit)", jQuery(target));
+             if( buddies.length === 0 ) {
+                 return( true );
+             } else {
+                 return( false );
+             }
             }
 
             return( true);
@@ -418,11 +437,14 @@ function reset_draggable() {
     });
 
     //vtcmbdd
+});
+
 }
 
 // reset_draggable();
 
 function save_layout() {
+    jQuery("#save-layout").attr('disabled', true);
     var new_layout = {
         day: "<?php echo date('Y-m-d', strtotime($_GET['day'])) ?>",
         row_count: jQuery("#voa-change-rows").val(),
@@ -430,6 +452,7 @@ function save_layout() {
         stories: []
     };
     jQuery("voa-row").each(function(i, e) {
+
         var cells = jQuery(".vtcmbdd", this);
         new_layout.rows.push( cells.length );
         var new_a = [];
@@ -449,8 +472,18 @@ function save_layout() {
     }).error(function() {
         alert( "error saving" );
     }).success( function(e) {
-        console.info( "OK SAVED (js)");
-        console.info( e );
+        // console.info( "OK SAVED (js)");
+        // console.info( e );
+<?php
+$extra = "";
+if( isset( $_GET['calendar-nav-y']) ) {
+    $extra .= "&amp;calendar-nav-y=" . $_GET['calendar-nav-y'];
+}
+if( isset( $_GET['calendar-nav-m']) ) {
+    $extra .= "&amp;calendar-nav-m=" . $_GET['calendar-nav-m'];
+}
+?>
+        window.location = '?page=voa-homepage-layout<?php echo $extra ?>';
     });
 
 }
