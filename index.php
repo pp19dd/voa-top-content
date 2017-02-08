@@ -101,11 +101,14 @@ voa_apply_events_cluster(jQuery("rows"));
 
 function voa_load_page(vday, that) {
     jQuery.get("?vday=" + vday, function(rh) {
+        jQuery(that).attr("disabled", "disabled");
         jQuery(that).after(rh);
         jQuery(that).hide();
 
         var new_node = jQuery(that).next();
         voa_apply_events_cluster( new_node );
+
+        new_node.hide().slideToggle();
     });
 }
 
