@@ -97,13 +97,11 @@ function voa_load_page(vday, that) {
     });
 }
 
-/*
-jQuery("row.rows_2 article, row.rows_1 article").mouseover(function() {
+jQuery("row.rows_2 article").mouseover(function() {
     jQuery(this).addClass("hovering");
 }).mouseout(function() {
     jQuery(this).removeClass("hovering");
 });
-*/
 
 jQuery("row.rows_3 article excerpt, row.rows_3 article continue, row.rows_1 article continue").css({opacity: 0});
 </script>
