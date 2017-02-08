@@ -477,10 +477,10 @@ function save_layout() {
 <?php
 $extra = "";
 if( isset( $_GET['calendar-nav-y']) ) {
-    $extra .= "&amp;calendar-nav-y=" . $_GET['calendar-nav-y'];
+    $extra .= "&calendar-nav-y=" . $_GET['calendar-nav-y'];
 }
 if( isset( $_GET['calendar-nav-m']) ) {
-    $extra .= "&amp;calendar-nav-m=" . $_GET['calendar-nav-m'];
+    $extra .= "&calendar-nav-m=" . $_GET['calendar-nav-m'];
 }
 ?>
         window.location = '?page=voa-homepage-layout<?php echo $extra ?>';
