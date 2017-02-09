@@ -234,6 +234,8 @@ row.rows_1 article.hovering headline span
 	background-color: rgba(19,49,191,1);
 }
 
+row.rows_2 article img { display: block; }
+
 row.rows_2 article.hovering img {
 	opacity: 0.7;
 }
@@ -243,9 +245,9 @@ row.rows_2 article.hovering headline a {
 }
 
 row.rows_2 article.hovering inner {
-	background-color: rgba(0,0,0,0.8);
+	background-color: rgba(51,51,51,0.8);
 	height: 100%;
-	color: white;
+	color: #ddd;
 }
 
 row.rows_1 byline, row.rows_3 byline {
