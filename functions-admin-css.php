@@ -10,13 +10,23 @@ voa-layout {
 }
 voa-row { display: flex; flex-direction: row; }
 voa-indicator { padding-top: 1em; width: 400px; }
-voa-control { display: flex; flex-direction: row; align-items: flex-end; padding-bottom:11px; }
+voa-control {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-bottom:11px;
+}
+
 voa-control button {
     background-color: #ffffff;
     border: 1px solid #c0c0c0;
     border-radius: 15px;
     margin-right: 4px;
     cursor: pointer;
+}
+
+voa-control button:hover {
+    background-color: #7FDBFF;
 }
 
 span.voa-draft {
@@ -28,8 +38,18 @@ span.voa-draft {
 voa-today { display: flex; flex-direction: row }
 
 /* s */
-save-things { display: flex; margin-top:3em }
-#save-layout { padding: 1em }
+save-things {
+    display: flex;
+    margin-top:3em;
+}
+save-things button {
+    cursor: pointer;
+    margin-right: 1em;
+}
+#save-layout {
+    padding: 1em;
+}
+
 /* drag and drop */
 
 available-stories {
@@ -110,5 +130,10 @@ voa-row:last-child td { border-bottom: 0; }
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20);
 }
+
+/* action verification buttons */
+.verify-action { width: 200px; }
+.action-verified { color: #FF4136; font-weight: bold }
+.action-not-yet { cursor: not-allowed; }
 
 </style>

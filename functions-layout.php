@@ -192,14 +192,28 @@ function voa_top_content_get_calendar($year, $month) {
 }
 
 function wpa_4471252017_callback() {
-    $day = date("Y-m-d", strtotime($_POST['layout']['day']));
-    if( $day != $_POST['layout']['day'] ) return;
 
-    $key = "voa-layout-{$day}";
-    delete_option( $key );
-    update_option( $key, $_POST['layout'] );
+    switch( $_POST['mode'] ) {
+        case "save_layout":
+            $day = date("Y-m-d", strtotime($_POST['layout']['day']));
+            if( $day != $_POST['layout']['day'] ) return;
 
-    echo "OK {$key} saved";
+            $key = "voa-layout-{$day}";
+            delete_option( $key );
+            update_option( $key, $_POST['layout'] );
+
+            echo "OK {$key} saved";
+
+        break;
+
+        case "delete_layout":
+            $day = date("Y-m-d", strtotime($_POST['day']));
+            $key = "voa-layout-{$day}";
+            delete_option( $key );
+            echo "OK {$key} deleted";
+        break;
+    }
+
 }
 
 function voa_top_content_admin_menu() {
@@ -305,6 +319,9 @@ foreach( $stories as $story ) {
 
     <save-things>
         <button id="save-layout">Save Layout and Story Order</button>
+        <button class="verify-action" id="delete-layout">Delete Layout for This Day</button>
+        <!--<button class="verify-action" id="publish-drafts">Publish Drafts</button>-->
+
     </save-things>
 
 </div>
@@ -441,7 +458,22 @@ function reset_draggable() {
 
 }
 
+//
+
 // reset_draggable();
+
+function voa_admin_last_url() {
+    <?php
+    $extra = "";
+    if( isset( $_GET['calendar-nav-y']) ) {
+        $extra .= "&calendar-nav-y=" . $_GET['calendar-nav-y'];
+    }
+    if( isset( $_GET['calendar-nav-m']) ) {
+        $extra .= "&calendar-nav-m=" . $_GET['calendar-nav-m'];
+    }
+    ?>
+    return( "?page=voa-homepage-layout<?php echo $extra ?>" );
+}
 
 function save_layout() {
     jQuery("#save-layout").attr('disabled', true);
@@ -468,28 +500,67 @@ function save_layout() {
 
     jQuery.post( ajaxurl, {
         action: "wpa_4471252017",
+        mode: "save_layout",
         layout: new_layout,
     }).error(function() {
         alert( "error saving" );
     }).success( function(e) {
-        // console.info( "OK SAVED (js)");
-        // console.info( e );
-<?php
-$extra = "";
-if( isset( $_GET['calendar-nav-y']) ) {
-    $extra .= "&calendar-nav-y=" . $_GET['calendar-nav-y'];
-}
-if( isset( $_GET['calendar-nav-m']) ) {
-    $extra .= "&calendar-nav-m=" . $_GET['calendar-nav-m'];
-}
-?>
-        window.location = '?page=voa-homepage-layout<?php echo $extra ?>';
+        window.location = voa_admin_last_url();
     });
 
 }
 
 jQuery("#save-layout").click(function() {
     save_layout();
+});
+
+jQuery.fn.verifyClick = function(click_event) {
+    var that = this;
+
+    this.mouseout(function() {
+        if( that.hasClass("action-verified") ) {
+            that.removeClass("action-verified action-not-yet");
+            that.text( that.attr("original-caption") );
+            that.attr("disabled", null);
+        }
+    });
+
+    this.click(function() {
+        if( !that.hasClass("action-verified") ) {
+            that.addClass("action-verified action-not-yet");
+            that.attr("disabled", "disabled");
+            that.attr("original-caption", that.text());
+            that.text("Are you sure?");
+
+            setTimeout(function() {
+                if( that.hasClass("action-not-yet") ) {
+                    that.removeClass("action-not-yet");
+                    that.attr("disabled", null);
+                }
+            }, 2000);
+        } else {
+            click_event();
+            that.removeClass("action-verified action-not-yet");
+        }
+    });
+
+    return this;
+};
+
+jQuery("#delete-layout").verifyClick(function() {
+    jQuery.post( ajaxurl, {
+        action: "wpa_4471252017",
+        mode: "delete_layout",
+        day: "<?php echo date('Y-m-d', strtotime($_GET['day'])) ?>"
+    }).error(function() {
+        alert( "error deleting layout" );
+    }).success( function(e) {
+        window.location = voa_admin_last_url();
+    });
+});
+
+jQuery("#publish-drafts").verifyClick(function() {
+
 });
 
 </script>
