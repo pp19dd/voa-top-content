@@ -68,11 +68,9 @@ if ( is_front_page() ) {
 $most_recent = voa_top_content_get_most_recently_published_day();
 ?>
 
-<!-- most_recent = <?php echo $most_recent // remove this when done?> -->
-
-	<meta name="DISPLAYDATE"         content="{$slides[0].display_date|strip_tags|trim}" />
-	<meta itemprop="dateModified"    content="{$slides[0].date_modified|strip_tags|trim}" />
-	<meta itemprop="datePublished"   content="{$slides[0].date_published|strip_tags|trim}" />
+	<meta name="DISPLAYDATE"         content="<?php echo date( 'F j, Y', strtotime($most_recent) ); ?>" />
+	<meta itemprop="dateModified"    content="<?php echo $most_recent; ?>" />
+	<meta itemprop="datePublished"   content="<?php echo $most_recent; ?>" />
 
 	<link type="image/x-icon" rel="icon" href="<?php echo $vmeta['template_directory_uri']; ?>/img/favicon.ico" />
 	<link rel="shortcut icon" href="<?php echo $vmeta['template_directory_uri']; ?>/img/favicon.ico" />
