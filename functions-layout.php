@@ -202,8 +202,22 @@ function wpa_4471252017_callback() {
             delete_option( $key );
             update_option( $key, $_POST['layout'] );
 
-            echo "OK {$key} saved";
+            // publish any drafts?
+            if(
+                $_POST['layout']['publish_drafts'] == "yes"
+            ) {
+                foreach( $_POST["layout"]["stories"] as $row => $ids ) {
+                    foreach( $ids as $story_id ) {
+                        $wp_story_id = intval($story_id);
+                        $status = get_post_status( $wp_story_id );
+                        if( $status === "draft" ) {
+                            wp_publish_post( $wp_story_id );
+                        }
+                    }
+                }
+            }
 
+            echo "OK {$key} saved";
         break;
 
         case "delete_layout":
@@ -320,9 +334,10 @@ foreach( $stories as $story ) {
     <save-things>
         <button id="save-layout">Save Layout and Story Order</button>
         <button class="verify-action" id="delete-layout">Delete Layout for This Day</button>
-        <!--<button class="verify-action" id="publish-drafts">Publish Drafts</button>-->
-
     </save-things>
+    <p>
+        <input type="checkbox" id="publish_drafts"/><label for="publish_drafts"> Also Publish drafts</label>
+    </p>
 
 </div>
 
@@ -481,7 +496,8 @@ function save_layout() {
         day: "<?php echo date('Y-m-d', strtotime($_GET['day'])) ?>",
         row_count: jQuery("#voa-change-rows").val(),
         rows: [],
-        stories: []
+        stories: [],
+        publish_drafts: (jQuery("#publish_drafts:checked").length == 0) ? "no" : "yes"
     };
     jQuery("voa-row").each(function(i, e) {
 
@@ -530,7 +546,7 @@ jQuery.fn.verifyClick = function(click_event) {
             that.addClass("action-verified action-not-yet");
             that.attr("disabled", "disabled");
             that.attr("original-caption", that.text());
-            that.text("Are you sure?");
+            that.text("Are you sure?  ");
 
             setTimeout(function() {
                 if( that.hasClass("action-not-yet") ) {
@@ -557,10 +573,6 @@ jQuery("#delete-layout").verifyClick(function() {
     }).success( function(e) {
         window.location = voa_admin_last_url();
     });
-});
-
-jQuery("#publish-drafts").verifyClick(function() {
-
 });
 
 </script>
