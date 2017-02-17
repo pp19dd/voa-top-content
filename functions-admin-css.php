@@ -38,6 +38,15 @@ span.voa-draft {
 voa-today { display: flex; flex-direction: row }
 
 /* s */
+
+show-items {
+    display: flex;
+}
+
+show-items p {
+    margin-right: 5em;
+}
+
 save-things {
     display: flex;
     margin-top:3em;

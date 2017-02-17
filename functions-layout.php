@@ -34,7 +34,9 @@ function voa_top_content_get_posts_for_month($year, $month) {
     return( $ret );
 }
 
-function voa_top_content_get_day_posts( $date = false ) {
+function voa_top_content_get_day_posts( $date = false, $preview_ids_array = false ) {
+
+    $posts_html = array();
 
     // sanitize day
     if( $date === false ) {
@@ -55,6 +57,14 @@ function voa_top_content_get_day_posts( $date = false ) {
             "day" =>date("d", $voa_top_content_day_ts)
         )
     );
+
+    // editing layout needs preview
+    if( $preview_ids_array !== false ) {
+        $args["post_status"] = array("publish", "future", "draft");
+        unset( $args["date_query"] );
+        $args["post__in"] = $preview_ids_array;
+    }
+
     $voa_top_content_query = new WP_Query($args);
 
     while( $voa_top_content_query->have_posts() ) {
@@ -66,13 +76,16 @@ function voa_top_content_get_day_posts( $date = false ) {
         $posts_html[$id] = array(
             "id" => $id,
             "title" => get_the_title(),
+            "pubdate" => get_the_date(),
             "permalink" => get_the_permalink( $post->ID ),
             "thumbnail_id" => get_post_thumbnail_id( $post->ID ),
             "excerpt" => get_the_excerpt(),
             "content" => get_the_content()
         );
     }
-
+#pre( $args );
+#pre($voa_top_content_query->request);
+#var_dump($posts_html); die;
     return( $posts_html );
 }
 
@@ -299,6 +312,7 @@ if( !isset( $_GET['day']) ) {
         <option value="<?php echo $i ?>" <?php if( $i === $rows ) { echo 'selected'; } ?>><?php echo $i ?> row<?php if( $i > 1 ) echo 's'; ?></option>
 <?php } ?>
     </select> on the page.</p>
+    <p><a id="id-preview" href="#">Preview Layout</a> (Opens in new window)</p>
     </show-items>
 
     <voa-today>
@@ -405,6 +419,7 @@ jQuery("#voa-change-rows").change(function() {
 
 // load current layout
 var layout = <?php echo json_encode($retrieved_layout) ?>;
+var home_url = "<?php echo home_url() ?>/";
 
 if( layout === false ) {
     jQuery("voa-row:eq(0)").hide();
@@ -490,6 +505,30 @@ function voa_admin_last_url() {
     return( "?page=voa-homepage-layout<?php echo $extra ?>" );
 }
 
+function get_layout_payload() {
+    var ret = {
+        rows: [],
+        stories: []
+    }
+
+    jQuery("voa-row").each(function(i, e) {
+
+        var cells = jQuery(".vtcmbdd", this);
+        ret.rows.push( cells.length );
+        var new_a = [];
+        cells.each(function(i2, e2) {
+            var story = jQuery(".voa-layout-story", this);
+            var story_id = jQuery(story).attr("data-id");
+            if( typeof story_id === "undefined" ) story_id = "";
+
+            new_a.push( story_id );
+        });
+        ret.stories.push( new_a );
+    });
+
+    return( ret );
+}
+
 function save_layout() {
     jQuery("#save-layout").attr('disabled', true);
     var new_layout = {
@@ -499,20 +538,10 @@ function save_layout() {
         stories: [],
         publish_drafts: (jQuery("#publish_drafts:checked").length == 0) ? "no" : "yes"
     };
-    jQuery("voa-row").each(function(i, e) {
 
-        var cells = jQuery(".vtcmbdd", this);
-        new_layout.rows.push( cells.length );
-        var new_a = [];
-        cells.each(function(i2, e2) {
-            var story = jQuery(".voa-layout-story", this);
-            var story_id = jQuery(story).attr("data-id");
-            if( typeof story_id === "undefined" ) story_id = "";
-
-            new_a.push( story_id );
-        });
-        new_layout.stories.push( new_a );
-    });
+    var temp = get_layout_payload();
+    new_layout.rows = temp.rows;
+    new_layout.stories = temp.stories;
 
     jQuery.post( ajaxurl, {
         action: "wpa_4471252017",
@@ -523,9 +552,23 @@ function save_layout() {
     }).success( function(e) {
         window.location = voa_admin_last_url();
     });
-
 }
 
+jQuery("#id-preview").click(function(e) {
+    var temp = get_layout_payload();
+    var preview_url = home_url + "?preview_layout&rand1=" + Math.random() + "&rand2=" + Math.random() + "&stories=";
+    var p = [];
+    for( var i = 0; i < temp.stories.length; i++ ) {
+        p.push( temp.stories[i].join(",") );
+    }
+    preview_url += p.join("|");
+
+    window.open( preview_url );
+    // console.info( temp.stories );
+    // console.info( preview_url );
+    return(false);
+});
+//jQuery(document).ready(function() { jQuery("#id-preview").click(); });
 jQuery("#save-layout").click(function() {
     save_layout();
 });
