@@ -1,5 +1,8 @@
 <?php
 
+// metrics tracking parameter to add to URLs
+$voa_metrics_tracking_parameter = '?src=voa-editor-picks';
+
 // holder for VOA meta tag values
 $vmeta = array();
 
@@ -90,9 +93,11 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 
 <body <?php body_class(); ?>>
 
+<?php get_template_part( "partials/metrics" ); ?>
+
 	<header>
 		<inner>
-			<logo><a href="http://www.voanews.com/"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a></logo>
+			<logo><a href="http://www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a></logo>
 			<menu>
 				<?php /* <a href="<?php echo home_url( '' ); ?>/about/">About</a> */ ?>
 				<a href="<?php echo home_url( '' ); ?>/archives/">Archives</a>

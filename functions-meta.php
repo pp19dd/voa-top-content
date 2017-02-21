@@ -28,7 +28,7 @@ function voa_top_content_get_meta_fields() {
                 "no" => "No"
             ),
             "default" => "no"
-        ),
+        )
     ));
 }
 
