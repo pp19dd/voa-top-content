@@ -103,6 +103,10 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 
 	<rows>
 		<row class="rows_1" style="margin-top: 0; padding-bottom: 0;">
+<?php if( isset( $_GET['preview_layout']) ) { ?>
+			<h1 class="site-title" style="color:crimson">(Layout Preview)</h1>
+<?php } else { ?>
 			<h1 class="site-title"><a href="<?php echo home_url( '/' ); ?>"><?php bloginfo("name"); ?></a></h1>
+<?php } ?>
 		</row>
 	</rows>

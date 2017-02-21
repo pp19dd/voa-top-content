@@ -650,6 +650,9 @@ function voa_top_content_breakup_posts( $row_layout, $unordered_posts_html ) {
     $ret = array();
     $temp = array();
 
+    // bugfix: in case we get a blank input
+    if( !is_array($unordered_posts_html) ) return($ret);
+
     // sort $posts_html by preferred layout ID
     $order = voa_top_content_layout_order_by_id($row_layout);
     $posts_html = array();

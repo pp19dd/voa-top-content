@@ -25,83 +25,48 @@ if( !isset( $_GET['preview_layout']) ) {
     $posts_html = voa_top_content_get_day_posts($voa_day);
     $row_layout = voa_top_content_get_row_layout($voa_day);
 } else {
-    // reconstruct row-layout based on pulled queries
-    $preview_layout = array(
-        "day" => "",
-        "row_count" => 0,
-        "rows" => array(),
-        "stories" => array()
-    );
-    $rows = explode("|", $_GET['stories']);
-    $row_layout = array();
-    foreach( $rows as $row ) {
-        $temp_row = array();
-        $ids = explode(",", $row);
-        foreach( $ids as $id ) {
-            $preview_layout[] = intval($id);
-            $temp_row[] = intval($id);
+
+    if( is_user_logged_in() ) {
+
+        // reconstruct row-layout based on pulled queries
+        $preview_layout = array(
+            "day" => "",
+            "row_count" => 0,
+            "rows" => array(),
+            "stories" => array()
+        );
+        $rows = explode("|", $_GET['stories']);
+        $row_layout = array();
+        foreach( $rows as $row ) {
+            $temp_row = array();
+            $ids = explode(",", $row);
+            foreach( $ids as $id ) {
+                $preview_layout[] = intval($id);
+                $temp_row[] = intval($id);
+            }
+            $preview_layout["stories"][] = $temp_row;
+            $preview_layout["rows"][] = count($temp_row);
         }
-        $preview_layout["stories"][] = $temp_row;
-        $preview_layout["rows"][] = count($temp_row);
+        $preview_layout["row_count"] = count($preview_layout["stories"]);
+
+        $posts_html = voa_top_content_get_day_posts($voa_day, $preview_layout);
+
+        // extract date from first post
+        $first = array_values($posts_html)[0];
+        $preview_layout["day"] = date("Y-m-d", strtotime($first["pubdate"]));
+
+        $row_layout = $preview_layout;
+    } else {
+        echo "<h1 style='color:crimson'>ERROR: You must be logged-in to preview layouts.</h1>";
     }
-    $preview_layout["row_count"] = count($preview_layout["stories"]);
-
-    $posts_html = voa_top_content_get_day_posts($voa_day, $preview_layout);
-
-    $first = array_values($posts_html)[0];
-
-    $preview_layout["day"] = date("Y-m-d", strtotime($first["pubdate"]));
-    
-    #foreach( )
-
-    // pre($row_layout);
-/*
-Array
-(
-    [day] => 2017-01-23
-    [row_count] => 2
-    [rows] => Array
-        (
-            [0] => 2
-            [1] => 1
-        )
-
-    [stories] => Array
-        (
-            [0] => Array
-                (
-                    [0] => 7
-                    [1] => 15
-                )
-
-            [1] => Array
-                (
-                    [0] => 60
-                )
-
-        )
-
-)
-*/
-
-    #$row_layout = voa_top_content_get_row_layout($voa_day);
 }
 
-#pre($posts_html);
-#pre($row_layout);
 // ===========================================================================
 // break up posts into layout-rows for easier rendering
 // ===========================================================================
 
 $posts_html = voa_top_content_breakup_posts($row_layout, $posts_html);
 
-/* $x = $voa_day;
-for( $i = 0; $i < 8; $i++ ) {
-    $x = voa_top_content_get_next_day($x);
-    pre( $x );
-    var_dump($x);
-    if( $x === false ) break;
-}*/
 ?>
     <rows>
         <row class="rows_1">
