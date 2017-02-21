@@ -2,6 +2,65 @@
 require_once( "class.calendar.php" );
 require_once( "functions-admin.php" );
 
+// used on main page (index), figures out needed query logic and returns posts
+function get_voa_top_posts() {
+
+    // load layout config
+    if( isset( $_GET['vday']) ) {
+        $voa_day = date("Y-m-d", strtotime($_GET['vday']) );
+    } else {
+        $voa_day = voa_top_content_get_most_recently_published_day();
+    }
+    $voa_day_previous = voa_top_content_get_next_day($voa_day);
+
+    $ret = array(
+        "voa_day" => $voa_day,
+        "voa_day_previous" => $voa_day_previous,
+        "posts" => array()
+    );
+
+    // load data
+    if( !isset( $_GET['preview_layout']) ) {
+        $posts_html = voa_top_content_get_day_posts($voa_day);
+        $row_layout = voa_top_content_get_row_layout($voa_day);
+    } else {
+        if( is_user_logged_in() ) {
+
+            // reconstruct row-layout based on pulled queries
+            $preview_layout = array(
+                "day" => "",
+                "row_count" => 0,
+                "rows" => array(),
+                "stories" => array()
+            );
+            $rows = explode("|", $_GET['stories']);
+            $row_layout = array();
+            foreach( $rows as $row ) {
+                $temp_row = array();
+                $ids = explode(",", $row);
+                foreach( $ids as $id ) {
+                    $preview_layout[] = intval($id);
+                    $temp_row[] = intval($id);
+                }
+                $preview_layout["stories"][] = $temp_row;
+                $preview_layout["rows"][] = count($temp_row);
+            }
+            $preview_layout["row_count"] = count($preview_layout["stories"]);
+
+            $posts_html = voa_top_content_get_day_posts($voa_day, $preview_layout);
+
+            // extract date from first post
+            $first = array_values($posts_html)[0];
+            $preview_layout["day"] = date("Y-m-d", strtotime($first["pubdate"]));
+
+            $row_layout = $preview_layout;
+        }
+    }
+
+    // break up posts into layout-rows for easier rendering
+    $ret["posts"] = voa_top_content_breakup_posts($row_layout, $posts_html);
+    return($ret);
+}
 
 function voa_top_content_get_posts_for_month($year, $month) {
     global $wpdb;
