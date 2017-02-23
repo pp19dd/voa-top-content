@@ -283,7 +283,11 @@ function wpa_4471252017_callback() {
                         $wp_story_id = intval($story_id);
                         $status = get_post_status( $wp_story_id );
                         if( $status === "draft" ) {
-                            wp_publish_post( $wp_story_id );
+                            // wp_publish_post( $wp_story_id );
+                            wp_update_post(array(
+                                "ID" => $wp_story_id,
+                                "post_status" => "publish"
+                            ));
                         }
                     }
                 }
