@@ -1,6 +1,6 @@
 <?php
 
-// metrics tracking parameter to add to URLs
+// metrics tracking parameter to add to URLs (also on single.php for redirects)
 $voa_metrics_tracking_parameter = '?src=voa-editor-picks';
 
 // holder for VOA meta tag values
