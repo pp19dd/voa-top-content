@@ -11,9 +11,9 @@
         <div class="video-icon"><div class="video-icon-inner"><i class="fa fa-video-camera" aria-hidden="true"></i></div></div>
         <?php } ?>
         
-        <?php if ( $cat = get_the_category( $post['id'] )) { if ( $cat[0]->slug && $cat[0]->slug != 'uncategorized' ) { ?>
+        <?php /* if ( $cat = get_the_category( $post['id'] )) { if ( $cat[0]->slug && $cat[0]->slug != 'uncategorized' ) { ?>
         <div class="language-service"><div class="language-service-inner"><?php echo $cat[0]->name; ?></div></div>
-        <?php } } ?>
+        <?php } } */ ?>
         
         <a href="<?php echo $post["permalink"] ?>"><img src="<?php echo $image ?>" /></a>
     </inner>
