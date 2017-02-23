@@ -13,7 +13,7 @@ $posts_html = get_voa_top_posts();
         <row class="rows_1">
             <breakup>
                 <blank-space></blank-space>
-                <h2><?php echo date("l, F j", strtotime($voa_day)); # Monday, January 9 ?></h2>
+                <h2><?php echo date("l, F j", strtotime($posts_html["voa_day"])); # Monday, January 9 ?></h2>
                 <blank-space></blank-space>
             </breakup>
         </row>
