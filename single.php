@@ -21,7 +21,8 @@ the_post();
 $thumbnail_id = get_post_thumbnail_id( $post->ID );
 $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 
-$comment_count = voa_fb_comment_count( get_the_permalink() );
+// direct FB API call; TODO needs caching and better error checking
+//$comment_count = voa_fb_comment_count( get_the_permalink() );
 
 
 if ( !function_exists( 'voa_the_content') || !is_single() ) {
@@ -172,7 +173,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 			<sidebar>
 				<sidebar-inner>
 					
-					<div id="comment-shortcut"><a href="#comment-section"><span class="comment-icon"><i class="fa fa-comment fa-2x" aria-hidden="true"></i></span><span class="comment-text"><span class="comment-count"><?php echo $comment_count . ' Comment' . ($comment_count != 1 ? 's' : ''); ?></span> <span class="comment-cta">Join the Discussion</span></span></a></div>
+					<?php /*<div id="comment-shortcut"><a href="#comment-section"><span class="comment-icon"><i class="fa fa-comment fa-2x" aria-hidden="true"></i></span><span class="comment-text"><span class="comment-count"><?php echo $comment_count . ' Comment' . ($comment_count != 1 ? 's' : ''); ?></span> <span class="comment-cta">Join the Discussion</span></span></a></div>*/ ?>
 					
 					<?php dynamic_sidebar( 'sidebar_article_right' ); ?>
 
