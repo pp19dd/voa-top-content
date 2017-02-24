@@ -1,7 +1,14 @@
 <style>
 /* meta box */
 #voa-top-content-meta-01 p { margin-bottom: 0; }
-
+.voa-bad-field { color: red }
+.voa-bad-field input, .voa-bad-url textarea {
+    background-color: crimson;
+    color: white;
+}
+.voa-bad-url::after {
+    content: "Invalid URL, please check";
+}
 voa-layout {
     margin-right: 1em;
     display: flex;

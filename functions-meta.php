@@ -15,6 +15,9 @@ function voa_top_content_get_meta_fields() {
         ),
         array(
             "caption" => "Redirect URL",
+            "validate" => "url",
+            "type" => "textarea",
+            "style" => "min-height:80px",
             "field_name" => "voa-redirect-url",
             "meta_key" => "_voa_redirect_url"
         ),
@@ -28,7 +31,7 @@ function voa_top_content_get_meta_fields() {
                 "no" => "No"
             ),
             "default" => "no"
-        )
+        ),
     ));
 }
 
@@ -58,12 +61,60 @@ function voa_top_content_meta_save( $post_id ) {
     }
 }
 
+function voa_top_content_meta_js_validate_url($container_id, $field_id) {
+
+?>
+
+<script>
+(function() {
+    var container = jQuery("#<?php echo $container_id ?>");
+    var field = jQuery("#<?php echo $field_id ?>");
+
+    function doValidate() {
+        var url = field.val().trim();
+
+        if( url.length === 0 ) {
+            container.removeClass("voa-bad-field voa-bad-url");
+            return;
+        }
+
+        if( url.split(" ").length !== 1 ) {
+            container.addClass("voa-bad-field voa-bad-url");
+            return;
+        }
+
+        if(
+            url.substring(0,7) === "http://" ||
+            url.substring(0,8) === "https://" ||
+            url.substring(0,2) === "//"
+        ) {
+            container.removeClass("voa-bad-field voa-bad-url");
+        } else {
+            container.addClass("voa-bad-field voa-bad-url");
+        }
+    }
+
+    field.on("keyup keydown change", function() {
+        doValidate();
+    });
+
+    doValidate();
+})();
+</script>
+
+<?php
+
+}
+
+
 function voa_top_content_meta($post) {
     $fields = voa_top_content_get_meta_fields();
 
-    foreach( $fields as $field ) {
+    foreach( $fields as $k => $field ) {
         $value = get_post_meta($post->ID, $field["meta_key"], true);
         filter_var( $value, FILTER_SANITIZE_STRING );
+
+        echo "<div class='voa-meta-field' id='voa_input_container_{$k}'>\n";
 
         if( $field["type"] == "radio" ) {
 ?>
@@ -72,10 +123,9 @@ function voa_top_content_meta($post) {
 <?php foreach( $field["options"] as $option_value => $option_caption ) { ?>
     <label>
         <input
-        name="<?php echo $field["field_name"] ?>"
-        type="radio"
-        autocomplete="off"
-        spellcheck="false"
+            id="voa_input_<?php echo $k ?>"
+            name="<?php echo $field["field_name"] ?>"
+            type="radio"
 <?php
 if(
     ($value === $option_value) ||
@@ -84,17 +134,31 @@ if(
     echo "checked='checked'";
 }
 ?>
-        value="<?php echo $option_value ?>"
+            value="<?php echo $option_value ?>"
     /> <?php echo $option_caption ?></label>
 <?php } ?>
 
 <?php
-        } else {
+        } elseif( $field["type"] == "textarea" ) {
+?>
 
+<p><?php echo $field["caption"] ?></p>
+<textarea
+    id="voa_input_<?php echo $k ?>"
+    style="width:100%; <?php if( isset($field["style"]) ) { echo $field['style']; } ?>"
+    name="<?php echo $field["field_name"] ?>"
+    type="text"
+    autocomplete="off"
+    spellcheck="false"
+><?php echo $value ?></textarea>
+
+<?php
+        } else {
     ?>
     <p><?php echo $field["caption"] ?></p>
     <input
-        style="width:100%"
+        id="voa_input_<?php echo $k ?>"
+        style="width:100%; <?php if( isset($field["style"]) ) { echo $field['style']; } ?>"
         name="<?php echo $field["field_name"] ?>"
         type="text"
         autocomplete="off"
@@ -104,5 +168,19 @@ if(
 
     <?php
         } # type
+
+        if( isset( $field["validate"]) ) {
+            switch( $field["validate"] ) {
+                case 'url':
+                    voa_top_content_meta_js_validate_url(
+                        "voa_input_container_{$k}",
+                        "voa_input_{$k}"
+                    );
+                break;
+            }
+        }
+
+        echo "</div>\n";
+
     } # foreach
 }
