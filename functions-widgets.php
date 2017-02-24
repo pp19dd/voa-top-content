@@ -124,20 +124,20 @@ class VOA_Top_Tags extends WP_Widget {
 		
 		<style type="text/css">
 			
-			.top-tags {
+			.top-tags-widget .top-tags {
 				font-size: 1em;
 				line-height: 2em;
 				margin: .8em;
 			}
 
-			.tags {
+			.top-tags-widget .tags {
 				list-style: none;
 				margin: 0;
 				overflow: hidden;
 				padding: 0;
 			}
 
-			.tags li {
+			.top-tags-widget .tags li {
 				background-color: #e6e6e6;
 				border-color: #ddd;
 				border-style: solid;
@@ -146,7 +146,7 @@ class VOA_Top_Tags extends WP_Widget {
 				margin-bottom: .5em;
 			}
 
-			.tag {
+			.top-tags-widget .tag {
 				background: #fff;
 				color: #1330bf;
 				display: inline-block;
@@ -158,7 +158,7 @@ class VOA_Top_Tags extends WP_Widget {
 				transition: color 0.2s;
 			}
 
-			.tag::after {
+			.top-tags-widget .tag::after {
 				background: #e6e6e6;
 				border-bottom: 1em solid transparent;
 				border-left: 1em solid #fff;
@@ -169,16 +169,16 @@ class VOA_Top_Tags extends WP_Widget {
 				top: 0;
 			}
 
-			.tag:hover {
+			.top-tags-widget .tag:hover {
 				background-color: #d41010;
 				color: #fff;
 			}
 
-			.tag:hover::after {
+			.top-tags-widget .tag:hover::after {
 				border-left-color: #d41010;
 			}
 
-			.tag-count {
+			.top-tags-widget .tag-count {
 				border-right: .75em solid #fff;
 				color: #999;
 				float: right;

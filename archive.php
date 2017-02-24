@@ -14,7 +14,7 @@ the_post();
 		<section class="article-intro">
 			<header class="article-title">
 				<div class="article-title-wrap">
-					<h1 class="article-title-text"><?php the_title(); ?></h1>
+					<h1 class="article-title-text"><?php the_archive_title(); ?></h1>
 				</div>
 			</header>
 		</section>
@@ -27,7 +27,9 @@ the_post();
 		
 			<content>
 				
+				<?php if ( is_page() && get_the_content() != ''  ) { ?>
 				<div class="page-content"><?php the_content(); ?></div>
+				<?php } ?>
 				
 				<?php 
 				$posts = new WP_Query(array('posts_per_page' => -1));
@@ -71,7 +73,7 @@ the_post();
 						
 						<article class="archive-teaser">
 							<div class="teaser-img-container"><a class="teaser-img" href="<?php echo $url; ?>" style="background-image: url(<?php echo voa_top_content_get_image_url( get_post_thumbnail_id( $post->ID ), 1, "half-width" ); ?>);"><?php /*<span class="language-service"><span class="language-service-inner">VOA English</span></span>*/ ?></a></div>
-							<!-- <a href="<?php echo $url; ?>"><?php the_post_thumbnail( $post->ID, 'medium' ); ?></a> -->
+							<?php /* <a href="<?php echo $url; ?>"><?php the_post_thumbnail( $post->ID, 'medium' ); ?></a> */ ?>
 							<h2><a href="<?php echo $url; ?>"><?php the_title(); ?></a></h2>
 						</article>
 						

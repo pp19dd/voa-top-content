@@ -328,6 +328,7 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white
 
 	.single article content img,
 	.page article content img,
+	.archive article content img,
 	article inner img {
 		height: auto;
 		width: 100%;
@@ -342,7 +343,8 @@ body.single {
 }
 
 .single .rows_1,
-.page .rows_1 { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
+.page .rows_1,
+.archive .rows_1 { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
 
 .single content .content-part {
 	background-color: #fcfcfc;
@@ -378,12 +380,14 @@ body.single {
 }
 
 .single content,
-.page content {
+.page content,
+.archive content {
 	width: 65.666666%;
 }
 
 .single article,
-.page .rows_1 > article {
+.page .rows_1 > article,
+.archive .rows_1 > article {
 	flex-direction: row;
 }
 
@@ -811,19 +815,21 @@ antirows img { }
 
 /* PAGES *********************************************************************/
 
-.page .rows_1 > article > content {
+.page .rows_1 > article > content,
+.archive .rows_1 > article > content {
 	background-color: #fcfcfc;
-	padding-top: 2em;
 }
 
-.page .article-title {
+.page .article-title,
+.archive .article-title {
 	background-color: #ddd;
 	position: relative;
 	top: 0;
 	z-index: 0;
 }
 
-.page .article-title-text {
+.page .article-title-text,
+.archive .article-title-text {
 	background: #ddd;
 	color: #d41010;
 	line-height: 100%;
@@ -831,15 +837,17 @@ antirows img { }
 	padding: .25em 1.5% .1em 1.5%;
 }
 
-.page .page-content {
-	padding: 0 1.5% 2em 1.5%;
+.page .page-content,
+.archive .page-content {
+	padding: 2em 1.5%;
 }
 
 
 
 /* ARCHIVE PAGE **************************************************************/
 
-.page .archive-date > breakup {
+.page .archive-date > breakup,
+.archive .archive-date > breakup {
 	background-color: #eee;
 	padding: 2em 0;
 }
@@ -976,12 +984,14 @@ antirows img { }
 @media (max-width: 800px) {
 
 	.single article,
-	.page .rows_1 > article {
+	.page .rows_1 > article,
+	.archive .rows_1 > article {
 		flex-direction: column;
 	}
 
 	.single content,
-	.page .rows_1 > article > content {
+	.page .rows_1 > article > content,
+	.archive .rows_1 > article > content {
 		width: auto;
 	}
 
