@@ -72,7 +72,7 @@ the_post();
 						?>
 						
 						<article class="archive-teaser">
-							<div class="teaser-img-container"><a class="teaser-img" href="<?php echo $url; ?>" style="background-image: url(<?php echo voa_top_content_get_image_url( get_post_thumbnail_id( $post->ID ), 1, "half-width" ); ?>);"><?php /*<span class="language-service"><span class="language-service-inner">VOA English</span></span>*/ ?></a></div>
+							<div class="teaser-img-container"><a class="teaser-img" href="<?php echo $url; ?>" style="background-image: url(<?php echo voa_top_content_get_image_url( get_post_thumbnail_id( $post->ID ), 1, "half-width" ); ?>);"><?php voa_language_service_tag( $post->ID, true ); ?></a></div>
 							<?php /* <a href="<?php echo $url; ?>"><?php the_post_thumbnail( $post->ID, 'medium' ); ?></a> */ ?>
 							<h2><a href="<?php echo $url; ?>"><?php the_title(); ?></a></h2>
 						</article>

@@ -128,6 +128,25 @@ function voa_has_redirect_url( $post_id ) {
 }
 
 
+function voa_language_service_tag( $post_id, $display = true ) {
+    
+    $cat = get_the_category( $post_id );
+    
+    if ( $cat[0]->slug && $cat[0]->slug != 'uncategorized' ) {
+
+        if ( $display == true ) {
+            
+            echo '<div class="language-service lang-'.$cat[0]->slug.'"><div class="language-service-inner">'.$cat[0]->name.'</div></div>';
+
+        } else {
+            
+            return $cat[0]->slug;
+        }
+
+    }
+}
+
+
 
 /*
 add ability to set focus point - right next to #remove-post-thumbnail

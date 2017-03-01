@@ -2,9 +2,7 @@
     <inner>
         <part class="one">
         	<div class="part-one-img">
-        		<?php /* if ( $cat = get_the_category( $post['id'] )) { if ( $cat[0]->slug && $cat[0]->slug != 'uncategorized' ) { ?>
-	        	<div class="language-service"><div class="language-service-inner"><?php echo $cat[0]->name; ?></div></div>
-	        	<?php } } */ ?>
+        		<?php voa_language_service_tag( $post['id'], true ); ?>
 	        	<a href="<?php echo $post["permalink"] ?>"><img src="<?php echo $image ?>" /></a>
 	        </div>
         </part>

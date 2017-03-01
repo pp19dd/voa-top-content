@@ -313,6 +313,8 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white
 	z-index: 1000;
 }
 
+.lang-voa-english { display: none; visibility: hidden; }
+
 .language-service-inner {
 	background-color: #d41010;
 	color: #fff;
