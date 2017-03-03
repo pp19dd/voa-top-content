@@ -72,8 +72,12 @@ the_post();
 						?>
 						
 						<article class="archive-teaser">
-							<div class="teaser-img-container"><a class="teaser-img" href="<?php echo $url; ?>" style="background-image: url(<?php echo voa_top_content_get_image_url( get_post_thumbnail_id( $post->ID ), 1, "half-width" ); ?>);"><?php voa_language_service_tag( $post->ID, true ); ?></a></div>
-							<?php /* <a href="<?php echo $url; ?>"><?php the_post_thumbnail( $post->ID, 'medium' ); ?></a> */ ?>
+							<?php 
+							$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'quarter-width-small' );
+							$image = $image[0];
+							?>
+							<div class="teaser-img-container"><a class="teaser-img" href="<?php echo $url; ?>" 
+								style="background-image: url(<?php echo $image; ?>);"><?php voa_language_service_tag( $post->ID, true ); ?></a></div>
 							<h2><a href="<?php echo $url; ?>"><?php the_title(); ?></a></h2>
 						</article>
 						
