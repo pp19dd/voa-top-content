@@ -1076,6 +1076,8 @@ antirows img { }
 		margin-left: 1.5%;
 		width: 48.5%;
 	}
+	
+	.no-mobile { display: none; visibility: hidden; }
 
 }
 
