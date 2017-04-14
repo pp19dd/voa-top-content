@@ -45,6 +45,19 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 
 
 ?>
+
+<!-- <section class="row">
+	<div class="container">
+		<h1><?php the_title(); ?></h1>
+	</div>
+	
+	<div class="undermedia"><img src="<?php echo $image; ?>" /></div>
+	<div class="undermedia-caption">Here's some text.</div>
+</section> -->
+
+
+
+
 <antirows>
 	<row class="rows_1">
 		<section class="article-intro">

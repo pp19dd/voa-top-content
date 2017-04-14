@@ -197,6 +197,10 @@ input[type=button] {
   zoom: 1; }
 
 /* colors for VOA blogs */
+html {
+  font-size: 1.125rem;
+  /* ~18px */ }
+
 body, select, input, textarea {
   color: #333333; }
 
@@ -208,98 +212,81 @@ a {
   color: #1330bf; }
 
 a:hover {
-  color: #d41010; }
+  color: #d41010;
+  cursor: pointer; }
 
 /* Custom text-selection colors (remove any text shadows: http://twitter.com/miketaylr/status/12228805301) */
 ::-moz-selection {
-  background: #fcd700;
-  color: #fff;
+  background: #7fdbff;
+  color: #fcfcfc;
   text-shadow: none; }
 
 ::selection {
-  background: #fcd700;
-  color: #fff;
+  background: #7fdbff;
+  color: #fcfcfc;
   text-shadow: none; }
 
 /*	j.mp/webkit-tap-highlight-color */
 a:link {
-  -webkit-tap-highlight-color: #fcd700; }
+  -webkit-tap-highlight-color: #7fdbff; }
 
 ins {
-  background-color: #fcd700;
-  color: #000;
+  background-color: #7fdbff;
+  color: #333333;
   text-decoration: none; }
 
 mark {
-  background-color: #fcd700;
-  color: #000;
+  background-color: #7fdbff;
+  color: #333333;
   font-style: italic;
   font-weight: bold; }
 
 /* Mozilla dosen't style placeholders by default */
 input:-moz-placeholder {
-  color: #a9a9a9; }
+  color: #919191; }
 
 textarea:-moz-placeholder {
-  color: #a9a9a9; }
+  color: #919191; }
 
 /* let's give blockquotes *some* default styling, because unstyled blockquotes are dangerous */
 blockquote {
   padding: 1em;
   background: #eeeeee; }
 
-* {
-  margin: 0;
-  padding: 0; }
+img {
+  display: block;
+  height: auto;
+  width: 100%; }
 
-body, html {
-  overflow-x: hidden;
-  width: 100%;
-  height: 100%; }
-
-body {
-  background-color: #eee; }
-
-article {
-  overflow: hidden; }
-
-/*
-body {
-	background-image:url(http://localhost/top-content/2016-08_mockup-expanded_r2_deskgrid-default.jpg);
-	background-repeat:no-repeat;
-}
-
-rows { opacity: 0.8; padding-top: 186px;}
-*/
-header, rows, footer {
-  font-family: 'Lato', sans-serif;
-  font-size: 18px; }
+/* helper classes ************************************************************/
+.container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%; }
 
 rows {
   display: flex;
   margin: auto;
   max-width: 1200px; }
 
-body > header {
+#voa-header {
   background-color: #1330bf;
-  color: white; }
+  color: #fcfcfc; }
 
-body > header inner {
-  margin: auto;
-  display: flex;
-  max-width: 1200px;
-  justify-content: space-between;
-  align-items: center; }
+#voa-header > .container {
+  justify-content: space-between; }
 
-body > header a {
-  color: white;
+#voa-header a {
+  color: #fcfcfc;
   text-decoration: none; }
 
-body > header menu {
+#voa-header menu {
   display: flex;
   flex-direction: row; }
 
-body > header menu a {
+#voa-header menu a {
   font-size: .8em;
   font-weight: 700;
   letter-spacing: .025em;
@@ -307,14 +294,14 @@ body > header menu a {
   text-transform: uppercase;
   transition: background-color 200ms linear; }
 
-body > header menu a:hover {
-  background-color: #eee;
+#voa-header menu a:hover {
+  background-color: #eeeeee;
   color: #1330bf; }
 
 /* ======================================================================== */
 footer {
-  background-color: #333;
-  color: #f8f8f8; }
+  background-color: #333333;
+  color: #fcfcfc; }
 
 footer inner {
   display: flex;
@@ -324,7 +311,7 @@ footer inner {
   max-width: 1200px; }
 
 footer item a {
-  color: #f8f8f8;
+  color: #fcfcfc;
   display: inline-block;
   font-size: .8em;
   font-weight: bold;
@@ -334,15 +321,14 @@ footer item a {
 
 /* ======================================================================== */
 h1 {
-  color: #333;
+  color: #333333;
   text-align: center;
   margin: auto;
-  font-family: 'Lato Light', sans-serif;
   font-weight: 300;
   font-size: 3.5em; }
 
 h1 a, h1 a:hover {
-  color: #333;
+  color: #333333;
   text-decoration: none; }
 
 h1.site-title {
@@ -462,7 +448,7 @@ part.two byline {
   margin-top: .5em; }
 
 part a {
-  color: #333 !important; }
+  color: #333333 !important; }
 
 part a:hover {
   color: #1330bf !important; }
@@ -476,7 +462,6 @@ row.rows_3 inner, row.rows_1 inner {
   position: relative; }
 
 headline {
-  font-family: 'Lato', sans-serif;
   font-weight: bold;
   font-size: 1.5em;
   line-height: 1.3em; }
@@ -561,9 +546,9 @@ continue span {
 
 .video-icon-inner {
   background-color: #1330bf;
-  border-left: 4px solid #fff;
-  border-bottom: 4px solid #fff;
-  color: #fff;
+  border-left: 4px solid #eeeeee;
+  border-bottom: 4px solid #eeeeee;
+  color: #fcfcfc;
   text-align: center; }
 
 .video-icon-inner .fa-video-camera {
@@ -666,12 +651,6 @@ body.single {
 .single content .article-tags header {
   margin-left: calc(-1.6em - 16px);
   margin-bottom: .8em; }
-
-::-moz-selection {
-  background-color: #7FDBFF; }
-
-::selection {
-  background-color: #7FDBFF; }
 
 /* ======================================================================== */
 /* sidebar on single articles */
@@ -792,7 +771,7 @@ leading img {
   text-align: right; }
 
 .author-pubdate .author {
-  color: #333;
+  color: #333333;
   font-size: 1em;
   font-style: normal;
   font-weight: 700; }
@@ -986,12 +965,12 @@ leading img {
   text-decoration: none; }
 
 .single content .adjacent-post-inner h4 {
-  color: #333;
+  color: #333333;
   font-size: .8em;
   font-weight: 700; }
 
 .single content .adjacent-post-inner h4 > a {
-  color: #333;
+  color: #333333;
   text-decoration: none; }
 
 .single content .adjacent-post-inner h4 > a:hover {
@@ -1044,7 +1023,7 @@ leading img {
 
 /* article comment section ***************************************************/
 .comments > header {
-  background: #333 none repeat scroll 0 0;
+  background: #333333 none repeat scroll 0 0;
   color: #fff;
   font-size: 0.8em;
   margin-bottom: 1em;
@@ -1141,7 +1120,6 @@ leading img {
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   color: #1330bf;
   display: inline-block;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: .8em;
   letter-spacing: .025em;
   line-height: 100%;
@@ -1313,7 +1291,7 @@ leading img {
   row.rows_3 excerpt, row.rows_2 excerpt, row.rows_1 excerpt {
     display: none !important; }
 
-  body > header menu a {
+  #voa-header menu a {
     padding: 1.25em .8em; }
 
   continue {
@@ -1330,7 +1308,7 @@ leading img {
   h1 {
     font-size: 1.5em; }
 
-  body > header menu a {
+  #voa-header menu a {
     font-weight: 400;
     padding: 1.25em .5em; } }
 
