@@ -266,11 +266,6 @@ img {
   max-width: 1200px;
   width: 100%; }
 
-rows {
-  display: flex;
-  margin: auto;
-  max-width: 1200px; }
-
 #voa-header {
   background-color: #1330bf;
   color: #fcfcfc; }
@@ -278,15 +273,19 @@ rows {
 #voa-header > .container {
   justify-content: space-between; }
 
+.voa-logo {
+  height: 30px;
+  width: 71px; }
+
 #voa-header a {
   color: #fcfcfc;
   text-decoration: none; }
 
-#voa-header menu {
+#voa-header nav {
   display: flex;
   flex-direction: row; }
 
-#voa-header menu a {
+#voa-header nav a {
   font-size: .8em;
   font-weight: 700;
   letter-spacing: .025em;
@@ -294,7 +293,7 @@ rows {
   text-transform: uppercase;
   transition: background-color 200ms linear; }
 
-#voa-header menu a:hover {
+#voa-header nav a:hover {
   background-color: #eeeeee;
   color: #1330bf; }
 
@@ -360,6 +359,8 @@ breakup h2 {
 /* ======================================================================== */
 rows {
   display: flex;
+  margin: auto;
+  max-width: 1200px;
   flex-direction: column; }
 
 rows row.rows_1, rows row.rows_2, rows row.rows_3 {
@@ -453,7 +454,7 @@ part a {
 part a:hover {
   color: #1330bf !important; }
 
-article {
+rows article {
   display: flex;
   flex-direction: column; }
 
@@ -573,19 +574,8 @@ continue span {
   padding: .25em .8em .25em .5em; }
 
 /* ======================================================================== */
-@media all and (max-width: 1200px) {
-  .single article content img,
-  .page article content img,
-  .archive article content img,
-  article inner img {
-    height: auto;
-    width: 100%; } }
-/* ======================================================================== */
 /* single article */
 /* ======================================================================== */
-body.single {
-  background-color: #eee; }
-
 .single .rows_1,
 .page .rows_1,
 .archive .rows_1 {
@@ -1135,7 +1125,7 @@ leading img {
   cursor: pointer; }
 
 @media (max-width: 1200px) {
-  logo {
+  .voa-logo {
     margin-left: 1em; } }
 @media (max-width: 1000px) {
   .article-title-text {
@@ -1279,7 +1269,7 @@ leading img {
     display: none;
     visibility: hidden; } }
 @media (max-width: 450px) {
-  logo {
+  .voa-logo {
     margin-left: .5em; }
 
   h1 {
@@ -1291,7 +1281,7 @@ leading img {
   row.rows_3 excerpt, row.rows_2 excerpt, row.rows_1 excerpt {
     display: none !important; }
 
-  #voa-header menu a {
+  #voa-header nav a {
     padding: 1.25em .8em; }
 
   continue {
@@ -1308,7 +1298,7 @@ leading img {
   h1 {
     font-size: 1.5em; }
 
-  #voa-header menu a {
+  #voa-header nav a {
     font-weight: 400;
     padding: 1.25em .5em; } }
 

@@ -68,11 +68,7 @@ img {
 
 
 
-rows {
-	display: flex;
-	margin: auto;
-	max-width: 1200px;
-}
+
 
 #voa-header {
 	background-color: $voablue;
@@ -83,17 +79,19 @@ rows {
 	justify-content: space-between;
 }
 
+.voa-logo { height: 30px; width: 71px; }
+
 #voa-header a {
 	color: $offwhite;
 	text-decoration: none;
 }
 
-#voa-header menu {
+#voa-header nav {
 	display: flex;
 	flex-direction: row;
 }
 
-#voa-header menu a {
+#voa-header nav a {
 	font-size: .8em;
 	font-weight: 700;
 	letter-spacing: .025em;
@@ -102,7 +100,7 @@ rows {
 	transition: background-color 200ms linear;
 }
 
-#voa-header menu a:hover {
+#voa-header nav a:hover {
 	background-color: $bodybg;
 	color: $voablue;
 }
@@ -175,6 +173,8 @@ breakup h2 {
 
 rows {
 	display: flex;
+	margin: auto;
+	max-width: 1200px;
 	flex-direction: column;
 }
 
@@ -245,7 +245,7 @@ part.two byline {
 part a { color: $offblack !important }
 part a:hover { color: $voablue !important; }
 
-article {
+rows article {
 	display:flex;
 	flex-direction: column;
 }
@@ -364,24 +364,8 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white
 
 
 /* ======================================================================== */
-
-@media all and (max-width:1200px){
-
-	.single article content img,
-	.page article content img,
-	.archive article content img,
-	article inner img {
-		height: auto;
-		width: 100%;
-	}
-}
-
-/* ======================================================================== */
 /* single article */
 /* ======================================================================== */
-body.single {
-	background-color: #eee;
-}
 
 .single .rows_1,
 .page .rows_1,
@@ -513,8 +497,6 @@ a.rsswidget img { display: none }
 
 leading { display: flex; flex-direction: column; }
 leading img { width: 100%; max-width: 100%;  }
-
-antirows img { }
 
 
 
@@ -976,7 +958,7 @@ antirows img { }
 
 @media (max-width: 1200px) {
 
-	logo { margin-left: 1em; }
+	.voa-logo { margin-left: 1em; }
 
 }
 
@@ -1115,7 +1097,7 @@ antirows img { }
 
 @media (max-width: 450px) {
 
-	logo { margin-left: .5em; }
+	.voa-logo { margin-left: .5em; }
 
 	h1 { font-size: 2em; }
 
@@ -1123,7 +1105,7 @@ antirows img { }
 
 	row.rows_3 excerpt, row.rows_2 excerpt, row.rows_1 excerpt { display: none !important; }
 
-	#voa-header menu a { padding: 1.25em .8em; }
+	#voa-header nav a { padding: 1.25em .8em; }
 
 	continue { display: none !important; opacity: 0 !important; visibility: hidden !important; }
 
@@ -1139,7 +1121,7 @@ antirows img { }
 
 	h1 { font-size: 1.5em; }
 
-	#voa-header menu a {
+	#voa-header nav a {
 		font-weight: 400;
 		padding: 1.25em .5em;
 	}

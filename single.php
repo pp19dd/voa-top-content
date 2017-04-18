@@ -46,19 +46,31 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 
 ?>
 
-<!-- <section class="row">
-	<div class="container">
-		<h1><?php the_title(); ?></h1>
-	</div>
+
+<main role="main">
 	
-	<div class="undermedia"><img src="<?php echo $image; ?>" /></div>
-	<div class="undermedia-caption">Here's some text.</div>
-</section> -->
+	<article>
+		<header>
+			<h1><?php the_title(); ?>
+		</header>
+		
+		<section class="content">
+			<?php the_content(); ?>
+		</section>	
+	</article>
+	
+	<aside>
+		<?php dynamic_sidebar( 'sidebar_article_right' ); ?>
+	</aside>
+	
+</main>
 
 
 
 
-<antirows>
+
+
+<!-- <antirows>
 	<row class="rows_1">
 		<section class="article-intro">
 			<header class="article-title">
@@ -70,7 +82,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 			<!-- <div class="undermedia-caption">Here's some text.</div> -->
 		</section>
 	</row>
-</antirows>
+</antirows> -->
 <rows>
 	<row class="rows_1">
 		<article>
