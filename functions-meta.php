@@ -32,6 +32,17 @@ function voa_top_content_get_meta_fields() {
             ),
             "default" => "no"
         ),
+        array(
+            "caption" => "Use Hero Image Intro?",
+            "field_name" => "voa-use-hero-image-intro",
+            "meta_key" => "_voa_use_hero_image_intro",
+            "type" => "radio",
+            "options" => array(
+                "yes" => "Yes",
+                "no" => "No"
+            ),
+            "default" => "no"
+        )
     ));
 }
 

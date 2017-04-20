@@ -207,10 +207,10 @@ html {
   /* ~18px */ }
 
 body, select, input, textarea {
-  color: #333333; }
+  color: #333; }
 
 body {
-  background-color: #eeeeee;
+  background-color: #eee;
   font-family: 'Lato', sans-serif; }
 
 a {
@@ -237,12 +237,12 @@ a:link {
 
 ins {
   background-color: #7fdbff;
-  color: #333333;
+  color: #333;
   text-decoration: none; }
 
 mark {
   background-color: #7fdbff;
-  color: #333333;
+  color: #333;
   font-style: italic;
   font-weight: bold; }
 
@@ -256,7 +256,7 @@ textarea:-moz-placeholder {
 /* let's give blockquotes *some* default styling, because unstyled blockquotes are dangerous */
 blockquote {
   padding: 1em;
-  background: #eeeeee; }
+  background: #eee; }
 
 img {
   display: block;
@@ -299,8 +299,11 @@ img {
   transition: background-color 200ms linear; }
 
 #voa-header nav a:hover {
-  background-color: #eeeeee;
+  background-color: #eee;
   color: #1330bf; }
+
+.blog-head {
+  border-bottom: 1px solid #ddd; }
 
 .content > *:not(.wp-caption) {
   margin: 0 .5rem 1em .5rem; }
@@ -314,9 +317,15 @@ img {
   font-size: .8rem;
   margin: .25em .5rem; }
 
+main > .article {
+  background: #fcfcfc; }
+
+h1.page-title {
+  font-size: 1.5rem; }
+
 /* ======================================================================== */
 footer {
-  background-color: #333333;
+  background-color: #333;
   color: #fcfcfc; }
 
 footer inner {
@@ -337,14 +346,14 @@ footer item a {
 
 /* ======================================================================== */
 h1 {
-  color: #333333;
+  color: #333;
   text-align: center;
   margin: auto;
   font-weight: 300;
   font-size: 3.5em; }
 
 h1 a, h1 a:hover {
-  color: #333333;
+  color: #333;
   text-decoration: none; }
 
 h1.site-title {
@@ -466,7 +475,7 @@ part.two byline {
   margin-top: .5em; }
 
 part a {
-  color: #333333 !important; }
+  color: #333 !important; }
 
 part a:hover {
   color: #1330bf !important; }
@@ -564,8 +573,8 @@ continue span {
 
 .video-icon-inner {
   background-color: #1330bf;
-  border-left: 4px solid #eeeeee;
-  border-bottom: 4px solid #eeeeee;
+  border-left: 4px solid #eee;
+  border-bottom: 4px solid #eee;
   color: #fcfcfc;
   text-align: center; }
 
@@ -778,7 +787,7 @@ leading img {
   text-align: right; }
 
 .author-pubdate .author {
-  color: #333333;
+  color: #333;
   font-size: 1em;
   font-style: normal;
   font-weight: 700; }
@@ -972,12 +981,12 @@ leading img {
   text-decoration: none; }
 
 .single content .adjacent-post-inner h4 {
-  color: #333333;
+  color: #333;
   font-size: .8em;
   font-weight: 700; }
 
 .single content .adjacent-post-inner h4 > a {
-  color: #333333;
+  color: #333;
   text-decoration: none; }
 
 .single content .adjacent-post-inner h4 > a:hover {
@@ -1030,7 +1039,7 @@ leading img {
 
 /* article comment section ***************************************************/
 .comments > header {
-  background: #333333 none repeat scroll 0 0;
+  background: #333 none repeat scroll 0 0;
   color: #fff;
   font-size: 0.8em;
   margin-bottom: 1em;

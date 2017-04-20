@@ -110,6 +110,8 @@ img {
 	color: $voablue;
 }
 
+.blog-head { border-bottom: 1px solid $lightgray; }
+
 
 
 
@@ -127,6 +129,17 @@ img {
 .wp-caption-text {
 	font-size: .8rem;
 	margin: .25em .5rem;
+}
+
+
+
+
+main > .article {
+	background: $offwhite;
+}
+
+h1.page-title {
+	font-size: 1.5rem;
 }
 
 

@@ -18,6 +18,13 @@ get_header();
 
 the_post();
 
+// use the hero intro or show standard post intro
+if ( get_post_meta( $post->ID, "_voa_use_hero_image_intro", true ) == 'yes' ) {
+	$hero = (bool) true;
+} else {
+	$hero = (bool) false;
+}
+
 $thumbnail_id = get_post_thumbnail_id( $post->ID );
 $image = voa_top_content_get_image_url($thumbnail_id, "full-width");
 
@@ -47,11 +54,14 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 ?>
 
 
-<main role="main">
+<main role="main" class="container">
 	
-	<article>
-		<header>
-			<h1><?php the_title(); ?>
+	<article class="article">
+		<header class="<?php echo ( $hero ? 'hero' : 'basic' ); ?>">
+			<h1 class="page-title"><?php the_title(); ?></h1>
+			<?php if ( has_post_thumbnail() ) { ?>
+			<div class="featured-img"><?php the_post_thumbnail(); ?></div>
+			<?php } ?> 
 		</header>
 		
 		<section class="content">
@@ -59,7 +69,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 		</section>	
 	</article>
 	
-	<aside>
+	<aside class="sidebar">
 		<?php dynamic_sidebar( 'sidebar_article_right' ); ?>
 	</aside>
 	
@@ -79,10 +89,11 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 				</div>
 			</header>
 			<div class="undermedia"><img src="<?php echo $image; ?>" /></div>
-			<!-- <div class="undermedia-caption">Here's some text.</div> -->
+			<div class="undermedia-caption">Here's some text.</div>
 		</section>
 	</row>
 </antirows> -->
+
 <rows>
 	<row class="rows_1">
 		<article>
