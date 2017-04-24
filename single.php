@@ -18,8 +18,12 @@ get_header();
 
 the_post();
 
-$thumbnail_id = get_post_thumbnail_id( $post->ID );
-$image = voa_top_content_get_image_url($thumbnail_id, "full-width");
+// use the hero intro or show standard post intro
+if ( get_post_meta( $post->ID, "_voa_use_hero_image_intro", true ) == 'yes' ) {
+	$hero = (bool) true;
+} else {
+	$hero = (bool) false;
+}
 
 // direct FB API call; TODO needs caching and better error checking
 //$comment_count = voa_fb_comment_count( get_the_permalink() );
@@ -42,26 +46,20 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 	add_filter( 'the_content', 'voa_the_content', 0 );
 }
 
-
-
 ?>
-<antirows>
-	<row class="rows_1">
-		<section class="article-intro">
-			<header class="article-title">
-				<div class="article-title-wrap">
-					<h1 class="article-title-text"><?php the_title(); ?></h1>
-				</div>
-			</header>
-			<div class="undermedia"><img src="<?php echo $image; ?>" /></div>
-			<!-- <div class="undermedia-caption">Here's some text.</div> -->
-		</section>
-	</row>
-</antirows>
+
+<?php if ($hero) {
+	get_template_part( 'partials/single-hero-intro' );
+} ?>
+
 <rows>
 	<row class="rows_1">
 		<article>
 			<content>
+				<?php if (!$hero) {
+					get_template_part( 'partials/single-basic-intro' );
+				} ?>
+								
 				<section class="content-part article-author">
 
 					<?php $voa_byline = get_post_meta( get_the_ID(), '_voa_byline', true ); ?>

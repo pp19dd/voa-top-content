@@ -387,8 +387,8 @@ body.single {
   padding-bottom: 2em; }
 
 .single content .article-body p {
-  padding-top: 1em;
-  line-height: 1.66em; }
+  margin-bottom: 1em;
+  line-height: 1.66; }
 
 .single content p.wp-caption-text {
   color: #666;
@@ -412,10 +412,14 @@ body.single {
 .single content .article-body > p,
 .single content .article-categories,
 .single content .article-tags {
-  padding-left: 13.583333%;
-  /* roughly 8.583333% of full page -- FIX THIS so it's exact */
-  padding-right: 13.583333%;
-  /* roughly 8.583333% of full page -- FIX THIS so it's exact */ }
+  padding-left: 4rem;
+  padding-right: 4rem; }
+
+.article-body > p > img {
+  margin-left: -4rem;
+  margin-right: -4rem;
+  max-width: calc(100% + 8rem);
+  width: calc(100% + 8rem); }
 
 .single content .voa-dateline {
   text-transform: uppercase; }
@@ -489,6 +493,22 @@ leading {
 leading img {
   width: 100%;
   max-width: 100%; }
+
+.single-basic-intro {
+  background: #fcfcfc;
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 1px 1px 0 1px; }
+
+.single-basic-intro h1 {
+  font-size: 2em;
+  font-weight: 700;
+  padding: 2rem 4rem;
+  text-align: left; }
+
+.single-basic-intro img {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd; }
 
 .article-intro {
   display: flex;
@@ -661,18 +681,17 @@ leading img {
   color: #1330bf;
   text-decoration: underline; }
 
-.single content .article-body .wp-caption img {
-  height: auto !important;
-  max-width: 100% !important;
-  min-width: 100% !important;
+.wp-caption {
+  height: auto;
+  max-width: 100%;
   width: 100% !important; }
 
-.single content .article-body .wp-caption.alignright {
+.wp-caption.alignright {
   float: right;
   padding-left: 1em;
   width: 50% !important; }
 
-.single content .article-body .wp-caption.alignleft {
+.wp-caption.alignleft {
   float: left;
   padding-right: 1em;
   width: 50% !important; }
@@ -896,7 +915,7 @@ leading img {
   text-align: center; }
 
 .lazy-load-button-text {
-  background: #fff;
+  background: #fcfcfc;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.1);

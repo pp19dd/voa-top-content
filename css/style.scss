@@ -266,7 +266,7 @@ row.rows_2 article.hovering headline a {
 row.rows_2 article.hovering inner {
 	background-color: rgba(51,51,51,0.8);
 	height: 100%;
-	color: #ddd;
+	color: $vltgray;
 }
 
 row.rows_1 byline, row.rows_3 byline {
@@ -388,8 +388,8 @@ body.single {
 }
 
 .single content .article-body p {
-	padding-top: 1em;
-	line-height: 1.66em;
+	margin-bottom: 1em;
+	line-height: 1.66;
 }
 
 .single content p.wp-caption-text {
@@ -417,8 +417,15 @@ body.single {
 .single content .article-body > p,
 .single content .article-categories,
 .single content .article-tags {
-	padding-left:  13.583333%; /* roughly 8.583333% of full page -- FIX THIS so it's exact */
-	padding-right: 13.583333%; /* roughly 8.583333% of full page -- FIX THIS so it's exact */
+	padding-left: 4rem;  //padding-left:  13.583333%; /* roughly 8.583333% of full page -- FIX THIS so it's exact */
+	padding-right: 4rem; //padding-right: 13.583333%; /* roughly 8.583333% of full page -- FIX THIS so it's exact */
+}
+
+.article-body > p > img {
+	margin-left: -4rem;
+	margin-right: -4rem;
+	max-width: calc(100% + 8rem);
+	width: calc(100% + 8rem);
 }
 
 .single content .voa-dateline { text-transform: uppercase; }
@@ -507,6 +514,25 @@ antirows img { }
 
 
 
+.single-basic-intro {
+	background: $offwhite;
+	border-color: $vltgray;
+	border-style: solid;
+	border-width: 1px 1px 0 1px;
+}
+
+.single-basic-intro h1 {
+	font-size: 2em;
+	font-weight: 700;
+	padding: 2rem 4rem;
+	text-align: left;
+}
+
+.single-basic-intro img {
+	border-top: 1px solid $vltgray;
+	border-bottom: 1px solid $vltgray;
+}
+
 .article-intro {
 	display: flex;
 	flex-direction: row;
@@ -594,7 +620,7 @@ antirows img { }
 
 .article-share-inner header {
 	align-self: stretch;
-	background-color: #ddd;
+	background-color: $vltgray;
 	color: #999;
 	display: flex;
 	flex-direction: row;
@@ -665,21 +691,27 @@ antirows img { }
 .single content .article-categories a, .single content .article-tags a { color: #666; text-decoration: none; }
 .single content .article-categories a:hover, .single content .article-tags a:hover { color: $voablue; text-decoration: underline; }
 
-
-.single content .article-body .wp-caption img {
-	height: auto !important;
-	max-width: 100% !important;
-	min-width: 100% !important;
+.wp-caption {
+	height: auto;
+	max-width: 100%;
 	width: 100% !important;
 }
 
-.single content .article-body .wp-caption.alignright {
+
+.wp-caption img {
+	// height: auto !important;
+	// max-width: 100% !important;
+	// min-width: 100% !important;
+	// width: 100% !important;
+}
+
+.wp-caption.alignright {
 	float: right;
 	padding-left: 1em;
 	width: 50% !important;
 }
 
-.single content .article-body .wp-caption.alignleft {
+.wp-caption.alignleft {
 	float: left;
 	padding-right: 1em;
 	width: 50% !important;
@@ -828,6 +860,7 @@ antirows img { }
 }
 
 .single content .comments .comments-inner {
+	// Facebook adds 8px padding
 	margin-left: calc(1em - 8px);
 	margin-right: calc(1em - 8px);
 }
@@ -843,7 +876,7 @@ antirows img { }
 
 .page .article-title,
 .archive .article-title {
-	background-color: #ddd;
+	background-color: $vltgray;
 	position: relative;
 	top: 0;
 	z-index: 0;
@@ -851,7 +884,7 @@ antirows img { }
 
 .page .article-title-text,
 .archive .article-title-text {
-	background: #ddd;
+	background: $vltgray;
 	color: $voared;
 	line-height: 100%;
 	max-width: 100%;
@@ -934,7 +967,7 @@ antirows img { }
 }
 
 .lazy-load-button-text {
-	background: #fff;
+	background: $offwhite;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	box-shadow: 0 1px 1px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.1);
