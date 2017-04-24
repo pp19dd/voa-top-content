@@ -95,9 +95,9 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 
 <?php get_template_part( "partials/metrics" ); ?>
 
-	<header>
+	<header class="voa-masthead">
 		<inner>
-			<logo><a href="http://www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a></logo>
+			<logo class="voa-logo"><a href="http://www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a></logo>
 			<menu>
 				<?php /* <a href="<?php echo home_url( '' ); ?>/about/">About</a> */ ?>
 				<a class="menu-archives-link" href="<?php echo home_url( '' ); ?>/archives/">Archives</a>

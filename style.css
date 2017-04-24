@@ -7,9 +7,6 @@ Author URI:   https://www.voanews.com/
 Version:      1.0
 */
 /* colors for VOA blogs */
-/*
-need reset
-*/
 * {
   margin: 0;
   padding: 0; }
@@ -20,21 +17,20 @@ body, html {
   height: 100%; }
 
 body {
-  background-color: #eee; }
+  background-color: #eee;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400; }
 
 article {
   overflow: hidden; }
 
-/*
-body {
-	background-image:url(http://localhost/top-content/2016-08_mockup-expanded_r2_deskgrid-default.jpg);
-	background-repeat:no-repeat;
-}
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  width: 100%; }
 
-rows { opacity: 0.8; padding-top: 186px;}
-*/
 header, rows, footer {
-  font-family: 'Lato', sans-serif;
   font-size: 18px; }
 
 rows {
@@ -42,26 +38,31 @@ rows {
   margin: auto;
   max-width: 1200px; }
 
-body > header {
+.voa-masthead {
   background-color: #1330bf;
-  color: white; }
+  color: #fcfcfc; }
 
-body > header inner {
+.voa-masthead inner {
   margin: auto;
   display: flex;
   max-width: 1200px;
   justify-content: space-between;
   align-items: center; }
 
-body > header a {
-  color: white;
+.voa-masthead a {
+  display: block;
+  color: #fcfcfc;
   text-decoration: none; }
 
-body > header menu {
+.voa-logo {
+  height: 30px;
+  width: 71px; }
+
+.voa-masthead menu {
   display: flex;
   flex-direction: row; }
 
-body > header menu a {
+.voa-masthead menu a {
   font-size: .8em;
   font-weight: 700;
   letter-spacing: .025em;
@@ -69,14 +70,14 @@ body > header menu a {
   text-transform: uppercase;
   transition: background-color 200ms linear; }
 
-body > header menu a:hover {
+.voa-masthead menu a:hover {
   background-color: #eee;
   color: #1330bf; }
 
 /* ======================================================================== */
 footer {
   background-color: #333;
-  color: #f8f8f8; }
+  color: #fcfcfc; }
 
 footer inner {
   display: flex;
@@ -86,7 +87,7 @@ footer inner {
   max-width: 1200px; }
 
 footer item a {
-  color: #f8f8f8;
+  color: #fcfcfc;
   display: inline-block;
   font-size: .8em;
   font-weight: bold;
@@ -99,7 +100,6 @@ h1 {
   color: #333;
   text-align: center;
   margin: auto;
-  font-family: 'Lato Light', sans-serif;
   font-weight: 300;
   font-size: 3.5em; }
 
@@ -238,8 +238,7 @@ row.rows_3 inner, row.rows_1 inner {
   position: relative; }
 
 headline {
-  font-family: 'Lato', sans-serif;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.5em;
   line-height: 1.3em; }
 
@@ -259,7 +258,7 @@ row.rows_2 article.hovering img {
   opacity: 0.7; }
 
 row.rows_2 article.hovering headline a {
-  color: white !important; }
+  color: #fcfcfc !important; }
 
 row.rows_2 article.hovering inner {
   background-color: rgba(51, 51, 51, 0.8);
@@ -268,7 +267,7 @@ row.rows_2 article.hovering inner {
 
 row.rows_1 byline, row.rows_3 byline {
   background: rgba(255, 255, 255, 0.8);
-  color: #000;
+  color: #333;
   margin: .5em auto 1em 0;
   padding: .25em 10px; }
 
@@ -277,7 +276,7 @@ row.rows_3 excerpt {
 
 /* bw */
 row.rows_3 article.hovering inner, row.rows_1 article.hovering inner {
-  background-color: black; }
+  background-color: #333; }
 
 row.rows_3 article.hovering img, row.rows_1 article.hovering img {
   opacity: 0.5; }
@@ -292,10 +291,10 @@ row.rows_3 anchor, row.rows_1 anchor {
 
 headline a, continue a {
   text-decoration: none;
-  color: white; }
+  color: #fcfcfc; }
 
 row.rows_3 excerpt, row.rows_1 excerpt {
-  color: white; }
+  color: #fcfcfc; }
 
 excerpt {
   margin-top: 0.5em; }
@@ -312,7 +311,7 @@ continue {
 continue span {
   padding: 10px;
   background-color: #1331bf;
-  color: white; }
+  color: #fcfcfc; }
 
 .video-icon {
   display: block;
@@ -323,9 +322,9 @@ continue span {
 
 .video-icon-inner {
   background-color: #1330bf;
-  border-left: 4px solid #fff;
-  border-bottom: 4px solid #fff;
-  color: #fff;
+  border-left: 4px solid #eee;
+  border-bottom: 4px solid #eee;
+  color: #fcfcfc;
   text-align: center; }
 
 .video-icon-inner .fa-video-camera {
@@ -345,7 +344,7 @@ continue span {
 
 .language-service-inner {
   background-color: #d41010;
-  color: #fff;
+  color: #fcfcfc;
   font-size: .8em;
   padding: .25em .8em .25em .5em; }
 
@@ -430,10 +429,10 @@ body.single {
   margin-bottom: .8em; }
 
 ::-moz-selection {
-  background-color: #7FDBFF; }
+  background-color: #7fdbff; }
 
 ::selection {
-  background-color: #7FDBFF; }
+  background-color: #7fdbff; }
 
 /* ======================================================================== */
 /* sidebar on single articles */
@@ -473,7 +472,7 @@ div.sidebar-widget li {
   font-size: 0.9em; }
 
 div.sidebar-widget a {
-  color: black;
+  color: #333;
   text-decoration: none; }
 
 div.sidebar-widget a:hover {
@@ -511,7 +510,7 @@ leading img {
 
 .article-title-text {
   background: rgba(0, 0, 0, 0.4);
-  color: #fff;
+  color: #fcfcfc;
   display: block;
   font-size: 3em;
   font-weight: 700;
@@ -598,7 +597,7 @@ leading img {
 
 .article-share-inner ul li a {
   background-color: #666;
-  color: #fff;
+  color: #fcfcfc;
   display: block;
   padding: .5em 0;
   text-align: center;
@@ -644,7 +643,7 @@ leading img {
 .single content .article-categories header,
 .single content .article-tags header {
   background-color: #1330bf;
-  color: #fff;
+  color: #fcfcfc;
   display: block;
   font-size: .8em;
   padding: .8em;
@@ -666,7 +665,7 @@ leading img {
   height: auto !important;
   max-width: 100% !important;
   min-width: 100% !important;
-  width: 100% important; }
+  width: 100% !important; }
 
 .single content .article-body .wp-caption.alignright {
   float: right;
@@ -765,7 +764,7 @@ leading img {
   margin-bottom: 4em; }
 
 #comment-shortcut > a {
-  background-color: #fff;
+  background-color: #fcfcfc;
   border: 2px solid #1330bf;
   color: #1330bf;
   display: block;
@@ -778,7 +777,7 @@ leading img {
 
 #comment-shortcut > a > span.comment-icon {
   background-color: #1330bf;
-  color: #fff;
+  color: #fcfcfc;
   padding: 1em;
   transition: background-color 1s; }
 
@@ -807,7 +806,7 @@ leading img {
 /* article comment section ***************************************************/
 .comments > header {
   background: #333 none repeat scroll 0 0;
-  color: #fff;
+  color: #fcfcfc;
   font-size: 0.8em;
   margin-bottom: 1em;
   padding: 1em;
@@ -903,7 +902,6 @@ leading img {
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   color: #1330bf;
   display: inline-block;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: .8em;
   letter-spacing: .025em;
   line-height: 100%;
@@ -915,11 +913,11 @@ leading img {
 .lazy-load-button:hover .lazy-load-button-text {
   background: #ccc;
   box-shadow: none;
-  color: #fff;
+  color: #fcfcfc;
   cursor: pointer; }
 
 @media (max-width: 1200px) {
-  logo {
+  .voa-logo {
     margin-left: 1em; } }
 @media (max-width: 1000px) {
   .article-title-text {
@@ -1063,7 +1061,7 @@ leading img {
     display: none;
     visibility: hidden; } }
 @media (max-width: 450px) {
-  logo {
+  .voa-logo {
     margin-left: .5em; }
 
   h1 {
@@ -1075,7 +1073,7 @@ leading img {
   row.rows_3 excerpt, row.rows_2 excerpt, row.rows_1 excerpt {
     display: none !important; }
 
-  body > header menu a {
+  .voa-masthead menu a {
     padding: 1.25em .8em; }
 
   continue {
@@ -1092,7 +1090,7 @@ leading img {
   h1 {
     font-size: 1.5em; }
 
-  body > header menu a {
+  .voa-masthead menu a {
     font-weight: 400;
     padding: 1.25em .5em; } }
 

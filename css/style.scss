@@ -11,24 +11,30 @@ Version:      1.0
 
 @import 'colors';
 
-/*
-need reset
-*/
+// need reset
 * { margin:0; padding: 0; }
+
 body, html { overflow-x: hidden; width:100%; height:100%; }
-body { background-color: #eee; }
-article { overflow: hidden }
-/*
-body {
-	background-image:url(http://localhost/top-content/2016-08_mockup-expanded_r2_deskgrid-default.jpg);
-	background-repeat:no-repeat;
+
+body { 
+	background-color: $bodybg; 
+	font-family: 'Lato', sans-serif; 
+	font-weight: 400; 
 }
 
-rows { opacity: 0.8; padding-top: 186px;}
-*/
+article { overflow: hidden; }
+
+// body { background: url(http://localhost/top-content/2016-08_mockup-expanded_r2_deskgrid-default.jpg) no-repeat; }
+// rows { opacity: 0.8; padding-top: 186px;}
+
+img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+	width: 100%;
+}
 
 header, rows, footer {
-	font-family: 'Lato', sans-serif;
 	font-size: 18px;
 }
 
@@ -38,12 +44,12 @@ rows {
 	max-width: 1200px;
 }
 
-body > header {
-	background-color: #1330bf;
-	color: white;
+.voa-masthead {
+	background-color: $voablue;
+	color: $offwhite;
 }
 
-body > header inner {
+.voa-masthead inner {
 	margin:auto;
 	display: flex;
 	max-width: 1200px;
@@ -51,17 +57,23 @@ body > header inner {
 	align-items: center;
 }
 
-body > header a {
-	color: white;
+.voa-masthead a {
+	display: block;
+	color: $offwhite;
 	text-decoration: none;
 }
 
-body > header menu {
+.voa-logo {
+	height: 30px;
+	width: 71px;
+}
+
+.voa-masthead menu {
 	display: flex;
 	flex-direction: row;
 }
 
-body > header menu a {
+.voa-masthead menu a {
 	font-size: .8em;
 	font-weight: 700;
 	letter-spacing: .025em;
@@ -70,16 +82,16 @@ body > header menu a {
 	transition: background-color 200ms linear;
 }
 
-body > header menu a:hover {
-	background-color: #eee;
-	color: #1330bf;
+.voa-masthead menu a:hover {
+	background-color: $bodybg;
+	color: $voablue;
 }
 
 /* ======================================================================== */
 
 footer {
-	background-color: #333;
-	color: #f8f8f8;
+	background-color: $offblack;
+	color: $offwhite;
 }
 
 footer inner {
@@ -91,7 +103,7 @@ footer inner {
 }
 
 footer item a {
-	color: #f8f8f8;
+	color: $offwhite;
 	display: inline-block;
 	font-size: .8em;
 	font-weight: bold;
@@ -103,15 +115,14 @@ footer item a {
 /* ======================================================================== */
 
 h1 {
-	color: #333;
+	color: $offblack;
 	text-align: center;
 	margin: auto;
-	font-family: 'Lato Light', sans-serif;
 	font-weight: 300;
 	font-size: 3.5em;
 }
 
-h1 a, h1 a:hover { color: #333; text-decoration: none; }
+h1 a, h1 a:hover { color: $offblack; text-decoration: none; }
 
 h1.site-title { line-height: 100%; margin: .75em auto; padding: 0; }
 
@@ -211,8 +222,8 @@ part.two byline {
 	margin-top: .5em;
 }
 
-part a { color: #333 !important }
-part a:hover { color: #1330bf !important; }
+part a { color: $offblack !important }
+part a:hover { color: $voablue !important; }
 
 article {
 	display:flex;
@@ -225,8 +236,7 @@ row.rows_3 inner, row.rows_1 inner {
 }
 
 headline {
-	font-family: 'Lato', sans-serif;
-	font-weight: bold;
+	font-weight: 700;
 	font-size:1.5em;
 	line-height:1.3em;
 }
@@ -250,7 +260,7 @@ row.rows_2 article.hovering img {
 }
 
 row.rows_2 article.hovering headline a {
-	color: white !important;
+	color: $offwhite !important;
 }
 
 row.rows_2 article.hovering inner {
@@ -261,7 +271,7 @@ row.rows_2 article.hovering inner {
 
 row.rows_1 byline, row.rows_3 byline {
 	background: rgba(255, 255, 255, .8);
-	color: #000;
+	color: $offblack;
 	margin: .5em auto 1em 0;
 	padding: .25em 10px;
 }
@@ -269,18 +279,18 @@ row.rows_3 excerpt { padding-left: 10px; }
 
 
 /* bw */
-row.rows_3 article.hovering inner, row.rows_1 article.hovering inner { background-color: black }
+row.rows_3 article.hovering inner, row.rows_1 article.hovering inner { background-color: $offblack; }
 row.rows_3 article.hovering img, row.rows_1 article.hovering img { opacity:0.5 }
 
 /* end hover cluster */
 
 row.rows_3 anchor, row.rows_1 anchor { position: absolute; display: flex; flex-direction: column; z-index: 100; width: calc(100% - 60px); }
-headline a, continue a { text-decoration: none; color: white; }
+headline a, continue a { text-decoration: none; color: $offwhite; }
 row.rows_3 headline {  }
 row.rows_3 excerpt {  }
 
 row.rows_3 excerpt, row.rows_1 excerpt {
-	color: white;
+	color: $offwhite;
 }
 excerpt { margin-top: 0.5em; }
 
@@ -293,7 +303,7 @@ row.rows_1 .column_1 headline, row.rows_1 .column_1 excerpt {
 }
 
 continue { margin-top: 1em; }
-continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white }
+continue span { padding:10px; background-color: rgba(19,49,191, 1); color: $offwhite }
 
 
 .video-icon {
@@ -305,10 +315,10 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white
 }
 
 .video-icon-inner {
-	background-color: #1330bf;
-	border-left: 4px solid #fff;
-	border-bottom: 4px solid #fff;
-	color: #fff;
+	background-color: $voablue;
+	border-left: 4px solid $bodybg;
+	border-bottom: 4px solid $bodybg;
+	color: $offwhite;
 	text-align: center;
 }
 
@@ -325,8 +335,8 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white
 .lang-voa-english { display: none; visibility: hidden; }
 
 .language-service-inner {
-	background-color: #d41010;
-	color: #fff;
+	background-color: $voared;
+	color: $offwhite;
 	font-size: .8em;
 	padding: .25em .8em .25em .5em;
 }
@@ -350,7 +360,7 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: white
 /* single article */
 /* ======================================================================== */
 body.single {
-	background-color: #eee;
+	background-color: $bodybg;
 }
 
 .single .rows_1,
@@ -358,7 +368,7 @@ body.single {
 .archive .rows_1 { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
 
 .single content .content-part {
-	background-color: #fcfcfc;
+	background-color: $offwhite;
 }
 
 /* breaks section into block */
@@ -426,11 +436,11 @@ body.single {
 
 
 ::-moz-selection {
-	background-color: #7FDBFF;
+	background-color: $highlight;
 }
 
 ::selection {
-	background-color: #7FDBFF;
+	background-color: $highlight;
 }
 
 /* ======================================================================== */
@@ -449,16 +459,16 @@ sidebar-inner {
 }
 
 sidebar h2 {
-	border-bottom: 4px solid #1330bf;
+	border-bottom: 4px solid $voablue;
 	font-size:0.8em;
-	color: #1330bf;
+	color: $voablue;
 	padding-bottom: .25em;
 	padding-left: 1em;
 	text-transform: uppercase;
 }
 sidebar h2 a,
 sidebar h2 a:hover {
-	color: #1330bf !important;
+	color: $voablue !important;
 	text-decoration: none !important;
 }
 
@@ -478,7 +488,7 @@ div.sidebar-widget li {
 }
 
 div.sidebar-widget a {
-	color: black;
+	color: $offblack;
 	text-decoration: none;
 }
 
@@ -520,7 +530,7 @@ antirows img { }
 
 .article-title-text {
 	background: rgba(0, 0, 0, .4);
-	color: #fff;
+	color: $offwhite;
 	display: block;
 	font-size: 3em;
 	font-weight: 700;
@@ -562,7 +572,7 @@ antirows img { }
 .author-social { flex-grow: 2; text-align: right; }
 
 .author-pubdate .author {
-	color: #333;
+	color: $offblack;
 	font-size: 1em;
 	font-style: normal;
 	font-weight: 700;
@@ -615,7 +625,7 @@ antirows img { }
 
 .article-share-inner ul li a {
 	background-color: #666;
-	color: #fff;
+	color: $offwhite;
 	display: block;
 	padding: .5em 0;
 	text-align: center;
@@ -641,8 +651,8 @@ antirows img { }
 
 .single content .article-categories header,
 .single content .article-tags header {
-	background-color: #1330bf;
-	color: #fff;
+	background-color: $voablue;
+	color: $offwhite;
 	display: block;
 	font-size: .8em;
 	padding: .8em;
@@ -653,14 +663,14 @@ antirows img { }
 .single content .header-text { padding-left: .8em; }
 
 .single content .article-categories a, .single content .article-tags a { color: #666; text-decoration: none; }
-.single content .article-categories a:hover, .single content .article-tags a:hover { color: #1330bf; text-decoration: underline; }
+.single content .article-categories a:hover, .single content .article-tags a:hover { color: $voablue; text-decoration: underline; }
 
 
 .single content .article-body .wp-caption img {
 	height: auto !important;
 	max-width: 100% !important;
 	min-width: 100% !important;
-	width: 100% important;
+	width: 100% !important;
 }
 
 .single content .article-body .wp-caption.alignright {
@@ -739,16 +749,16 @@ antirows img { }
 .no-next-post p { margin-left: 1em; text-align: center; }
 
 .single content .adjacent-post-inner p > a { color: #999; text-decoration: none; }
-.single content .adjacent-post-inner p > a:hover { color: #1330bf; text-decoration: none; }
+.single content .adjacent-post-inner p > a:hover { color: $voablue; text-decoration: none; }
 
 .single content .adjacent-post-inner h4 {
-	color: #333;
+	color: $offblack;
 	font-size: .8em;
 	font-weight: 700;
 }
 
-.single content .adjacent-post-inner h4 > a { color: #333; text-decoration: none; }
-.single content .adjacent-post-inner h4 > a:hover { color: #1330bf; text-decoration: none; }
+.single content .adjacent-post-inner h4 > a { color: $offblack; text-decoration: none; }
+.single content .adjacent-post-inner h4 > a:hover { color: $voablue; text-decoration: none; }
 
 
 /* article sidebar shortcut teaser *******************************************/
@@ -758,9 +768,9 @@ antirows img { }
 }
 
 #comment-shortcut > a {
-	background-color: #fff;
-	border: 2px solid #1330bf;
-	color: #1330bf;
+	background-color: $offwhite;
+	border: 2px solid $voablue;
+	color: $voablue;
 	display: block;
 	font-size: 1em;
 	text-decoration: none;
@@ -772,8 +782,8 @@ antirows img { }
 }
 
 #comment-shortcut > a > span.comment-icon {
-	background-color: #1330bf;
-	color: #fff;
+	background-color: $voablue;
+	color: $offwhite;
 	padding: 1em;
 	transition: background-color 1s;
 }
@@ -795,13 +805,13 @@ antirows img { }
 }
 
 #comment-shortcut > a:hover {
-	border-color: #d41010;
-	color: #d41010;
+	border-color: $voared;
+	color: $voared;
 	transition: border-color 0.25s, color 0.25s;
 }
 
 #comment-shortcut > a:hover > span.comment-icon {
-	background-color: #d41010;
+	background-color: $voared;
 	transition: background-color 0.25s;
 }
 
@@ -809,8 +819,8 @@ antirows img { }
 /* article comment section ***************************************************/
 
 .comments > header {
-	background: #333 none repeat scroll 0 0;
-	color: #fff;
+	background: $offblack none repeat scroll 0 0;
+	color: $offwhite;
 	font-size: 0.8em;
 	margin-bottom: 1em;
 	padding: 1em;
@@ -828,7 +838,7 @@ antirows img { }
 
 .page .rows_1 > article > content,
 .archive .rows_1 > article > content {
-	background-color: #fcfcfc;
+	background-color: $offwhite;
 }
 
 .page .article-title,
@@ -842,7 +852,7 @@ antirows img { }
 .page .article-title-text,
 .archive .article-title-text {
 	background: #ddd;
-	color: #d41010;
+	color: $voared;
 	line-height: 100%;
 	max-width: 100%;
 	padding: .25em 1.5% .1em 1.5%;
@@ -859,7 +869,7 @@ antirows img { }
 
 .page .archive-date > breakup,
 .archive .archive-date > breakup {
-	background-color: #eee;
+	background-color: $bodybg;
 	padding: 2em 0;
 }
 
@@ -907,11 +917,11 @@ antirows img { }
 }
 
 .archive-teasers article a {
-	color: #1330bf;
+	color: $voablue;
 	text-decoration: none;
 }
 
-.archive-teasers article a:hover { color: #d41010; }
+.archive-teasers article a:hover { color: $voared; }
 
 
 
@@ -928,9 +938,8 @@ antirows img { }
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	box-shadow: 0 1px 1px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.1);
-	color: #1330bf;
+	color: $voablue;
 	display: inline-block;
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: .8em;
 	letter-spacing: .025em;
 	line-height: 100%;
@@ -945,7 +954,7 @@ antirows img { }
 .lazy-load-button:hover .lazy-load-button-text {
 	background: #ccc;
 	box-shadow: none;
-	color: #fff;
+	color: $offwhite;
 	cursor: pointer;
 }
 
@@ -955,7 +964,7 @@ antirows img { }
 
 @media (max-width: 1200px) {
 
-	logo { margin-left: 1em; }
+	.voa-logo { margin-left: 1em; }
 
 }
 
@@ -1094,7 +1103,7 @@ antirows img { }
 
 @media (max-width: 450px) {
 
-	logo { margin-left: .5em; }
+	.voa-logo { margin-left: .5em; }
 
 	h1 { font-size: 2em; }
 
@@ -1102,7 +1111,7 @@ antirows img { }
 
 	row.rows_3 excerpt, row.rows_2 excerpt, row.rows_1 excerpt { display: none !important; }
 
-	body > header menu a { padding: 1.25em .8em; }
+	.voa-masthead menu a { padding: 1.25em .8em; }
 
 	continue { display: none !important; opacity: 0 !important; visibility: hidden !important; }
 
@@ -1118,7 +1127,7 @@ antirows img { }
 
 	h1 { font-size: 1.5em; }
 
-	body > header menu a {
+	.voa-masthead menu a {
 		font-weight: 400;
 		padding: 1.25em .5em;
 	}
