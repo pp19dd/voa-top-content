@@ -95,25 +95,23 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 
 <?php get_template_part( "partials/metrics" ); ?>
 
-	<header id="voa-header">
-		<div class="container">
-			<div class="voa-logo"><a href="http://www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a></div>
-			<nav>
+	<header>
+		<inner>
+			<logo><a href="http://www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a></logo>
+			<menu>
 				<?php /* <a href="<?php echo home_url( '' ); ?>/about/">About</a> */ ?>
 				<a class="menu-archives-link" href="<?php echo home_url( '' ); ?>/archives/">Archives</a>
 				<a class="menu-subscribe-link" href="http://www.voanews.com/subscribe.html?src=voa-editor-picks" target="_blank">Subscribe<span class="no-mobile"> to the Newsletter</span></a>
-			</nav>
-		</div>
+			</menu>
+		</inner>
 	</header>
-	
-	<header class="blog-head">
-		<div class="container">
-	
-			<?php if( isset( $_GET['preview_layout']) ) { ?>
-				<h1 class="site-title" style="color:crimson">(Layout Preview)</h1>
-			<?php } else { ?>
-				<h1 class="site-title"><a href="<?php echo home_url( '/' ); ?>"><?php bloginfo("name"); ?></a></h1>
-			<?php } ?>
-			
-		</div>
-	</header>
+
+	<rows>
+		<row class="rows_1" style="margin-top: 0; padding-bottom: 0;">
+<?php if( isset( $_GET['preview_layout']) ) { ?>
+			<h1 class="site-title" style="color:crimson">(Layout Preview)</h1>
+<?php } else { ?>
+			<h1 class="site-title"><a href="<?php echo home_url( '/' ); ?>"><?php bloginfo("name"); ?></a></h1>
+<?php } ?>
+		</row>
+	</rows>

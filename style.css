@@ -4,293 +4,64 @@ Theme URI:    https://github.com/pp19dd/voa-top-content
 Description:  Custom theme for VOA Blogs
 Author:       Stephen Mekosh and Dino Beslagic
 Author URI:   https://www.voanews.com/
-Version:      2.0
+Version:      1.0
 */
+/* colors for VOA blogs */
 /*
-	HTML5 Reset :: style.css
-	https://github.com/murtaugh/HTML5-Reset
-	----------------------------------------------------------
-	We have learned much from/been inspired by/taken code where offered from:
-
-	Eric Meyer					:: http://meyerweb.com
-	HTML5 Doctor				:: http://html5doctor.com
-	and the HTML5 Boilerplate	:: http://html5boilerplate.com
-
--------------------------------------------------------------------------------*/
-/* Let's default this puppy out
--------------------------------------------------------------------------------*/
-html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+need reset
+*/
+* {
   margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font-weight: normal;
-  vertical-align: baseline;
-  background: transparent; }
-
-article, aside, figure, footer, header, nav, section, details, summary {
-  display: block; }
-
-/* Handle box-sizing while better addressing child elements:
-   http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-html {
-  box-sizing: border-box; }
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit; }
-
-/* consider resetting the default cursor: https://gist.github.com/murtaugh/5247154 */
-/* Responsive images and other embedded objects
-   Note: keeping IMG here will cause problems if you're using foreground images as sprites.
-   If this default setting for images is causing issues, you might want to replace it with a .responsive class instead. */
-img,
-object,
-embed {
-  max-width: 100%; }
-
-/* force a vertical scrollbar to prevent a jumpy page */
-html {
-  overflow-y: scroll; }
-
-/* we use a lot of ULs that aren't bulleted.
-	don't forget to restore the bullets within content. */
-ul {
-  list-style: none; }
-
-blockquote, q {
-  quotes: none; }
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none; }
-
-a {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent; }
-
-del {
-  text-decoration: line-through; }
-
-abbr[title], dfn[title] {
-  border-bottom: 1px dotted #000;
-  cursor: help; }
-
-/* tables still need cellspacing="0" in the markup */
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
-
-th {
-  font-weight: bold;
-  vertical-align: bottom; }
-
-td {
-  font-weight: normal;
-  vertical-align: top; }
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
   padding: 0; }
 
-input, select {
-  vertical-align: middle; }
-
-pre {
-  white-space: pre;
-  /* CSS2 */
-  white-space: pre-wrap;
-  /* CSS 2.1 */
-  white-space: pre-line;
-  /* CSS 3 (and 2.1 as well, actually) */
-  word-wrap: break-word;
-  /* IE */ }
-
-input[type="radio"] {
-  vertical-align: text-bottom; }
-
-input[type="checkbox"] {
-  vertical-align: bottom; }
-
-.ie7 input[type="checkbox"] {
-  vertical-align: baseline; }
-
-.ie6 input {
-  vertical-align: text-bottom; }
-
-select, input, textarea {
-  font: 99% sans-serif; }
-
-table {
-  font-size: inherit;
-  font: 100%; }
-
-small {
-  font-size: 85%; }
-
-strong {
-  font-weight: bold; }
-
-td, td img {
-  vertical-align: top; }
-
-/* Make sure sup and sub don't mess with your line-heights http://gist.github.com/413930 */
-sub, sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative; }
-
-sup {
-  top: -0.5em; }
-
-sub {
-  bottom: -0.25em; }
-
-/* standardize any monospaced elements */
-pre, code, kbd, samp {
-  font-family: monospace, sans-serif; }
-
-/* hand cursor on clickable elements */
-.clickable,
-label,
-input[type=button],
-input[type=submit],
-input[type=file],
-button {
-  cursor: pointer; }
-
-/* Webkit browsers add a 2px margin outside the chrome of form elements */
-button, input, select, textarea {
-  margin: 0; }
-
-/* make buttons play nice in IE */
-button,
-input[type=button] {
-  width: auto;
-  overflow: visible; }
-
-/* scale images in IE7 more attractively */
-.ie7 img {
-  -ms-interpolation-mode: bicubic; }
-
-/* prevent BG image flicker upon hover
-   (commented out as usage is rare, and the filter syntax messes with some pre-processors)
-.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
-*/
-/* let's clear some floats */
-.clearfix:before, .clearfix:after {
-  content: "\0020";
-  display: block;
-  height: 0;
-  overflow: hidden; }
-
-.clearfix:after {
-  clear: both; }
-
-.clearfix {
-  zoom: 1; }
-
-/* colors for VOA blogs */
-html {
-  font-size: 1.125rem;
-  /* ~18px */ }
-
-body, select, input, textarea {
-  color: #333; }
+body, html {
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%; }
 
 body {
-  background-color: #eee;
-  font-family: 'Lato', sans-serif; }
+  background-color: #eee; }
 
-a {
-  color: #1330bf; }
+article {
+  overflow: hidden; }
 
-a:hover {
-  color: #d41010;
-  cursor: pointer; }
+/*
+body {
+	background-image:url(http://localhost/top-content/2016-08_mockup-expanded_r2_deskgrid-default.jpg);
+	background-repeat:no-repeat;
+}
 
-/* Custom text-selection colors (remove any text shadows: http://twitter.com/miketaylr/status/12228805301) */
-::-moz-selection {
-  background: #7fdbff;
-  color: #fcfcfc;
-  text-shadow: none; }
+rows { opacity: 0.8; padding-top: 186px;}
+*/
+header, rows, footer {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px; }
 
-::selection {
-  background: #7fdbff;
-  color: #fcfcfc;
-  text-shadow: none; }
-
-/*	j.mp/webkit-tap-highlight-color */
-a:link {
-  -webkit-tap-highlight-color: #7fdbff; }
-
-ins {
-  background-color: #7fdbff;
-  color: #333;
-  text-decoration: none; }
-
-mark {
-  background-color: #7fdbff;
-  color: #333;
-  font-style: italic;
-  font-weight: bold; }
-
-/* Mozilla dosen't style placeholders by default */
-input:-moz-placeholder {
-  color: #919191; }
-
-textarea:-moz-placeholder {
-  color: #919191; }
-
-/* let's give blockquotes *some* default styling, because unstyled blockquotes are dangerous */
-blockquote {
-  padding: 1em;
-  background: #eee; }
-
-img {
-  display: block;
-  height: auto;
-  width: 100%; }
-
-/* helper classes ************************************************************/
-.container {
+rows {
   display: flex;
-  align-items: center;
-  margin: 0 auto;
-  max-width: 1200px;
-  width: 100%; }
+  margin: auto;
+  max-width: 1200px; }
 
-#voa-header {
+body > header {
   background-color: #1330bf;
-  color: #fcfcfc; }
+  color: white; }
 
-#voa-header > .container {
-  justify-content: space-between; }
+body > header inner {
+  margin: auto;
+  display: flex;
+  max-width: 1200px;
+  justify-content: space-between;
+  align-items: center; }
 
-.voa-logo {
-  height: 30px;
-  width: 71px; }
-
-#voa-header a {
-  color: #fcfcfc;
+body > header a {
+  color: white;
   text-decoration: none; }
 
-#voa-header nav {
+body > header menu {
   display: flex;
   flex-direction: row; }
 
-#voa-header nav a {
+body > header menu a {
   font-size: .8em;
   font-weight: 700;
   letter-spacing: .025em;
@@ -298,35 +69,14 @@ img {
   text-transform: uppercase;
   transition: background-color 200ms linear; }
 
-#voa-header nav a:hover {
+body > header menu a:hover {
   background-color: #eee;
   color: #1330bf; }
-
-.blog-head {
-  border-bottom: 1px solid #ddd; }
-
-.content > *:not(.wp-caption) {
-  margin: 0 .5rem 1em .5rem; }
-
-.wp-caption {
-  max-width: 100%;
-  margin-bottom: 1em;
-  width: 100% !important; }
-
-.wp-caption-text {
-  font-size: .8rem;
-  margin: .25em .5rem; }
-
-main > .article {
-  background: #fcfcfc; }
-
-h1.page-title {
-  font-size: 1.5rem; }
 
 /* ======================================================================== */
 footer {
   background-color: #333;
-  color: #fcfcfc; }
+  color: #f8f8f8; }
 
 footer inner {
   display: flex;
@@ -336,7 +86,7 @@ footer inner {
   max-width: 1200px; }
 
 footer item a {
-  color: #fcfcfc;
+  color: #f8f8f8;
   display: inline-block;
   font-size: .8em;
   font-weight: bold;
@@ -349,6 +99,7 @@ h1 {
   color: #333;
   text-align: center;
   margin: auto;
+  font-family: 'Lato Light', sans-serif;
   font-weight: 300;
   font-size: 3.5em; }
 
@@ -385,8 +136,6 @@ breakup h2 {
 /* ======================================================================== */
 rows {
   display: flex;
-  margin: auto;
-  max-width: 1200px;
   flex-direction: column; }
 
 rows row.rows_1, rows row.rows_2, rows row.rows_3 {
@@ -480,7 +229,7 @@ part a {
 part a:hover {
   color: #1330bf !important; }
 
-rows article {
+article {
   display: flex;
   flex-direction: column; }
 
@@ -489,6 +238,7 @@ row.rows_3 inner, row.rows_1 inner {
   position: relative; }
 
 headline {
+  font-family: 'Lato', sans-serif;
   font-weight: bold;
   font-size: 1.5em;
   line-height: 1.3em; }
@@ -573,9 +323,9 @@ continue span {
 
 .video-icon-inner {
   background-color: #1330bf;
-  border-left: 4px solid #eee;
-  border-bottom: 4px solid #eee;
-  color: #fcfcfc;
+  border-left: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+  color: #fff;
   text-align: center; }
 
 .video-icon-inner .fa-video-camera {
@@ -600,8 +350,19 @@ continue span {
   padding: .25em .8em .25em .5em; }
 
 /* ======================================================================== */
+@media all and (max-width: 1200px) {
+  .single article content img,
+  .page article content img,
+  .archive article content img,
+  article inner img {
+    height: auto;
+    width: 100%; } }
+/* ======================================================================== */
 /* single article */
 /* ======================================================================== */
+body.single {
+  background-color: #eee; }
+
 .single .rows_1,
 .page .rows_1,
 .archive .rows_1 {
@@ -667,6 +428,12 @@ continue span {
 .single content .article-tags header {
   margin-left: calc(-1.6em - 16px);
   margin-bottom: .8em; }
+
+::-moz-selection {
+  background-color: #7FDBFF; }
+
+::selection {
+  background-color: #7FDBFF; }
 
 /* ======================================================================== */
 /* sidebar on single articles */
@@ -1136,6 +903,7 @@ leading img {
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
   color: #1330bf;
   display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: .8em;
   letter-spacing: .025em;
   line-height: 100%;
@@ -1151,7 +919,7 @@ leading img {
   cursor: pointer; }
 
 @media (max-width: 1200px) {
-  .voa-logo {
+  logo {
     margin-left: 1em; } }
 @media (max-width: 1000px) {
   .article-title-text {
@@ -1295,7 +1063,7 @@ leading img {
     display: none;
     visibility: hidden; } }
 @media (max-width: 450px) {
-  .voa-logo {
+  logo {
     margin-left: .5em; }
 
   h1 {
@@ -1307,7 +1075,7 @@ leading img {
   row.rows_3 excerpt, row.rows_2 excerpt, row.rows_1 excerpt {
     display: none !important; }
 
-  #voa-header nav a {
+  body > header menu a {
     padding: 1.25em .8em; }
 
   continue {
@@ -1324,7 +1092,7 @@ leading img {
   h1 {
     font-size: 1.5em; }
 
-  #voa-header nav a {
+  body > header menu a {
     font-weight: 400;
     padding: 1.25em .5em; } }
 
