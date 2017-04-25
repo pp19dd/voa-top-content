@@ -371,13 +371,15 @@ body.single {
   padding-bottom: 0; }
 
 .single content .content-part {
-  background-color: #fcfcfc; }
+  background-color: #fcfcfc;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd; }
 
 /* breaks section into block */
 .single content .article-tags,
 .single content .adjacent-post,
 .single content .comments {
-  margin-bottom: 2em; }
+  margin-bottom: 1em; }
 
 .single content .article-author,
 .single content .article-share,
@@ -385,6 +387,10 @@ body.single {
 .single content .article-categories,
 .single content .article-tags {
   padding-bottom: 2em; }
+
+.single content .article-tags,
+.single content .adjacent-post {
+  border-bottom: 1px solid #ddd; }
 
 .single content .article-body p {
   margin-bottom: 1em;
@@ -498,12 +504,22 @@ leading img {
   background: #fcfcfc;
   border-color: #ddd;
   border-style: solid;
-  border-width: 1px 1px 0 1px; }
+  border-width: 1px 1px 0 1px;
+  padding-top: 2rem; }
 
 .single-basic-intro h1 {
   font-size: 2em;
   font-weight: 700;
-  padding: 2rem 4rem;
+  margin-bottom: 1rem;
+  padding: 0 4rem;
+  text-align: left; }
+
+.single-basic-intro h2 {
+  color: #666;
+  font-size: 1.2em;
+  font-style: italic;
+  font-weight: 300;
+  padding: 0 4rem 2rem 4rem;
   text-align: left; }
 
 .single-basic-intro img {
@@ -1014,8 +1030,17 @@ leading img {
   .single content .article-body > p,
   .single content .article-categories,
   .single content .article-tags {
-    padding-left: 1em;
-    padding-right: 1em; }
+    padding-left: 1rem;
+    padding-right: 1rem; }
+
+  .single-basic-intro h1 {
+    font-size: 1.5em;
+    font-weight: 700;
+    padding: 0 1rem; }
+
+  .single-basic-intro h2 {
+    font-size: 1em;
+    padding: 0 1rem 2rem 1rem; }
 
   .single content .article-categories header, .single content .article-tags header {
     margin-left: 0;

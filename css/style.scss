@@ -148,7 +148,7 @@ breakup h2 {
 	margin: auto;
 	text-align: center;
 	text-transform: uppercase;
-	color: #999;
+	color: $ltgray;
 }
 
 /* ======================================================================== */
@@ -217,7 +217,7 @@ part.one .part-one-img { position: relative; }
 
 part.two { }
 part.two byline {
-	color: #666;
+	color: $midgray;
 	font-size: .8em;
 	margin-top: .5em;
 }
@@ -369,13 +369,15 @@ body.single {
 
 .single content .content-part {
 	background-color: $offwhite;
+	border-left: 1px solid $vltgray;
+	border-right: 1px solid $vltgray;
 }
 
 /* breaks section into block */
 .single content .article-tags,
 .single content .adjacent-post,
 .single content .comments {
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 }
 
 
@@ -387,13 +389,18 @@ body.single {
 	padding-bottom: 2em;
 }
 
+.single content .article-tags,
+.single content .adjacent-post {
+	border-bottom: 1px solid $vltgray;
+}
+
 .single content .article-body p {
 	margin-bottom: 1em;
 	line-height: 1.66;
 }
 
 .single content p.wp-caption-text {
-	color: #666;
+	color: $midgray;
 	font-size: .8em;
 	line-height: 150%;
 	margin: 0;
@@ -442,13 +449,8 @@ body.single {
 
 
 
-::-moz-selection {
-	background-color: $highlight;
-}
-
-::selection {
-	background-color: $highlight;
-}
+::-moz-selection { background-color: $highlight; }
+::selection      { background-color: $highlight; }
 
 /* ======================================================================== */
 /* sidebar on single articles */
@@ -519,12 +521,23 @@ antirows img { }
 	border-color: $vltgray;
 	border-style: solid;
 	border-width: 1px 1px 0 1px;
+	padding-top: 2rem;
 }
 
 .single-basic-intro h1 {
 	font-size: 2em;
 	font-weight: 700;
-	padding: 2rem 4rem;
+	margin-bottom: 1rem;
+	padding: 0 4rem;
+	text-align: left;
+}
+
+.single-basic-intro h2 {
+	color: $midgray;
+	font-size: 1.2em;
+	font-style: italic;
+	font-weight: 300;
+	padding: 0 4rem 2rem 4rem;
 	text-align: left;
 }
 
@@ -605,7 +618,7 @@ antirows img { }
 }
 
 .author-pubdate .pubdate {
-	color: #999;
+	color: $ltgray;
 	font-size: .8em;
 	font-weight: 400;
 	text-transform: uppercase;
@@ -621,7 +634,7 @@ antirows img { }
 .article-share-inner header {
 	align-self: stretch;
 	background-color: $vltgray;
-	color: #999;
+	color: $ltgray;
 	display: flex;
 	flex-direction: row;
 	flex-grow: 1;
@@ -650,7 +663,7 @@ antirows img { }
 }
 
 .article-share-inner ul li a {
-	background-color: #666;
+	background-color: $midgray;
 	color: $offwhite;
 	display: block;
 	padding: .5em 0;
@@ -688,7 +701,7 @@ antirows img { }
 
 .single content .header-text { padding-left: .8em; }
 
-.single content .article-categories a, .single content .article-tags a { color: #666; text-decoration: none; }
+.single content .article-categories a, .single content .article-tags a { color: $midgray; text-decoration: none; }
 .single content .article-categories a:hover, .single content .article-tags a:hover { color: $voablue; text-decoration: underline; }
 
 .wp-caption {
@@ -771,7 +784,7 @@ antirows img { }
 .single content .next-post .adjacent-post-inner .adjacent-post-text { text-align: right; }
 
 .single content .adjacent-post-inner p {
-	color: #999;
+	color: $ltgray;
 	font-size: .8em;
 	text-transform: uppercase;
 	padding-bottom: .8em;
@@ -780,7 +793,7 @@ antirows img { }
 .no-previous-post p { margin-right: 1em; text-align: center; }
 .no-next-post p { margin-left: 1em; text-align: center; }
 
-.single content .adjacent-post-inner p > a { color: #999; text-decoration: none; }
+.single content .adjacent-post-inner p > a { color: $ltgray; text-decoration: none; }
 .single content .adjacent-post-inner p > a:hover { color: $voablue; text-decoration: none; }
 
 .single content .adjacent-post-inner h4 {
@@ -831,7 +844,7 @@ antirows img { }
 }
 
 #comment-shortcut > a > .comment-text > span.comment-cta {
-	color: #999;
+	color: $ltgray;
 	font-size: .8em;
 	text-transform: uppercase;
 }
@@ -928,7 +941,7 @@ antirows img { }
 .archive-teasers article .teaser-img-container .teaser-img {
 	background-position: center;
 	background-size: cover;
-	border: 1px solid #999;
+	border: 1px solid $ltgray;
 	display: block;
 	height: 100%;
 	line-height: 100%;
@@ -1083,8 +1096,19 @@ antirows img { }
 	.single content .article-body > p,
 	.single content .article-categories,
 	.single content .article-tags {
-		padding-left:  1em;
-		padding-right: 1em;
+		padding-left:  1rem;
+		padding-right: 1rem;
+	}
+
+	.single-basic-intro h1 {
+		font-size: 1.5em;
+		font-weight: 700;
+		padding: 0 1rem;
+	}
+
+	.single-basic-intro h2 {
+		font-size: 1em;
+		padding: 0 1rem 2rem 1rem;
 	}
 
 	.single content .article-categories header, .single content .article-tags header { margin-left: 0; width: 50%; }
