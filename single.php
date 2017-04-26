@@ -63,11 +63,15 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 					<?php $voa_byline = get_post_meta( get_the_ID(), '_voa_byline', true ); ?>
 
 					<?php if ( !$voa_byline ) { ?>
-					<div class="author-avatar"><?php echo get_avatar( get_the_author_meta( 'ID' ), 67 ); ?></div>
+					<div class="author-avatar"><a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>"><?php echo get_avatar( get_the_author_meta( 'ID' ), 67 ); ?></a></div>
 					<?php } ?>
 
 					<div class="author-pubdate">
-						<address class="author"><?php if ( $voa_byline ) { echo $voa_byline; } else { the_author(); } ?></address>
+						<address class="author">
+							<?php if ( $voa_byline ) { echo $voa_byline; } else { ?>
+							<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>"><?php the_author(); ?></a>
+							<?php } ?>
+						</address>
 						<time class="pubdate"><?php the_date(); ?></time>
 					</div>
 

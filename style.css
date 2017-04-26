@@ -18,6 +18,7 @@ body, html {
 
 body {
   background-color: #eee;
+  color: #333;
   font-family: 'Lato', sans-serif;
   font-weight: 400; }
 
@@ -418,7 +419,8 @@ body.single {
 .single article,
 .page .rows_1 > article,
 .archive .rows_1 > article {
-  flex-direction: row; }
+  flex-direction: row;
+  width: 100%; }
 
 .single content .article-body > *:not(.wp-caption),
 .single content .article-author,
@@ -615,24 +617,23 @@ body.single {
 .article-share-inner ul li.share-twitter a {
   background-color: #55acee; }
 
-/* hover colors exactly 10% darker than official brand colors */
 .article-share-inner ul li.share-facebook a:hover {
-  background-color: #324a80; }
+  background-color: #2d4373; }
 
 .article-share-inner ul li.share-googleplus a:hover {
-  background-color: #c23d30; }
+  background-color: #bd2e22; }
 
 .article-share-inner ul li.share-linkedin a:hover {
-  background-color: #00659c; }
+  background-color: #005582; }
 
 .article-share-inner ul li.share-pinterest a:hover {
-  background-color: #a30719; }
+  background-color: #8c0615; }
 
 .article-share-inner ul li.share-reddit a:hover {
-  background-color: #e53d00; }
+  background-color: #cc3700; }
 
 .article-share-inner ul li.share-twitter a:hover {
-  background-color: #4c99d4; }
+  background-color: #2795e9; }
 
 .single content .article-categories header,
 .single content .article-tags header {
@@ -1039,9 +1040,9 @@ leading img {
   h1 {
     font-size: 2.5em; }
 
+  .single content .article-body > *:not(.wp-caption),
   .single content .article-author,
   .single content .article-share,
-  .single content .article-body > p,
   .single content .article-categories,
   .single content .article-tags {
     padding-left: 1rem;

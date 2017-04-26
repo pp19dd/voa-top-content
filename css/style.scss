@@ -18,6 +18,7 @@ body, html { overflow-x: hidden; width:100%; height:100%; }
 
 body { 
 	background-color: $bodybg; 
+	color: $offblack;
 	font-family: 'Lato', sans-serif; 
 	font-weight: 400; 
 }
@@ -418,6 +419,7 @@ body.single {
 .page .rows_1 > article,
 .archive .rows_1 > article {
 	flex-direction: row;
+	width: 100%;
 }
 
 .single content .article-body > *:not(.wp-caption),
@@ -618,20 +620,20 @@ body.single {
 	width: 100%;
 }
 
-.article-share-inner ul li.share-facebook   a { background-color: #3b5998; }
-.article-share-inner ul li.share-googleplus a { background-color: #db4437; }
-.article-share-inner ul li.share-linkedin   a { background-color: #0077b5; }
-.article-share-inner ul li.share-pinterest  a { background-color: #bd081c; }
-.article-share-inner ul li.share-reddit     a { background-color: #ff4500; }
-.article-share-inner ul li.share-twitter    a { background-color: #55acee; }
+.article-share-inner ul li.share-facebook   a { background-color: $facebook_color; }
+.article-share-inner ul li.share-googleplus a { background-color: $googleplus_color; }
+.article-share-inner ul li.share-linkedin   a { background-color: $linkedin_color; }
+.article-share-inner ul li.share-pinterest  a { background-color: $pinterest_color; }
+.article-share-inner ul li.share-reddit     a { background-color: $reddit_color; }
+.article-share-inner ul li.share-twitter    a { background-color: $twitter_color; }
 
-/* hover colors exactly 10% darker than official brand colors */
-.article-share-inner ul li.share-facebook   a:hover { background-color: #324a80; }
-.article-share-inner ul li.share-googleplus a:hover { background-color: #c23d30; }
-.article-share-inner ul li.share-linkedin   a:hover { background-color: #00659c; }
-.article-share-inner ul li.share-pinterest  a:hover { background-color: #a30719; }
-.article-share-inner ul li.share-reddit     a:hover { background-color: #e53d00; }
-.article-share-inner ul li.share-twitter    a:hover { background-color: #4c99d4; }
+// hover colors exactly 10% darker than official brand colors
+.article-share-inner ul li.share-facebook   a:hover { background-color: darken($facebook_color, 10%); }
+.article-share-inner ul li.share-googleplus a:hover { background-color: darken($googleplus_color, 10%); }
+.article-share-inner ul li.share-linkedin   a:hover { background-color: darken($linkedin_color, 10%); }
+.article-share-inner ul li.share-pinterest  a:hover { background-color: darken($pinterest_color, 10%); }
+.article-share-inner ul li.share-reddit     a:hover { background-color: darken($reddit_color, 10%); }
+.article-share-inner ul li.share-twitter    a:hover { background-color: darken($twitter_color, 10%); }
 
 
 
@@ -1102,9 +1104,9 @@ antirows img { }
 
 	h1 { font-size: 2.5em; }
 
+	.single content .article-body > *:not(.wp-caption),
 	.single content .article-author,
 	.single content .article-share,
-	.single content .article-body > p,
 	.single content .article-categories,
 	.single content .article-tags {
 		padding-left:  1rem;
