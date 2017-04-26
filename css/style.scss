@@ -22,17 +22,17 @@ body {
 	font-weight: 400; 
 }
 
-article { overflow: hidden; }
-
-// body { background: url(http://localhost/top-content/2016-08_mockup-expanded_r2_deskgrid-default.jpg) no-repeat; }
-// rows { opacity: 0.8; padding-top: 186px;}
-
 img {
 	display: block;
 	height: auto;
 	max-width: 100%;
 	width: 100%;
 }
+
+::-moz-selection { background-color: $highlight; }
+::selection      { background-color: $highlight; }
+
+article { overflow: hidden; }
 
 header, rows, footer {
 	font-size: 18px;
@@ -399,6 +399,7 @@ body.single {
 	line-height: 1.66;
 }
 
+.single content .featured-img > p,
 .single content p.wp-caption-text {
 	color: $midgray;
 	font-size: .8em;
@@ -419,13 +420,13 @@ body.single {
 	flex-direction: row;
 }
 
+.single content .article-body > *:not(.wp-caption),
 .single content .article-author,
 .single content .article-share,
-.single content .article-body > p,
 .single content .article-categories,
 .single content .article-tags {
-	padding-left: 4rem;  //padding-left:  13.583333%; /* roughly 8.583333% of full page -- FIX THIS so it's exact */
-	padding-right: 4rem; //padding-right: 13.583333%; /* roughly 8.583333% of full page -- FIX THIS so it's exact */
+	padding-left: 4rem;
+	padding-right: 4rem;
 }
 
 .article-body > p > img {
@@ -446,75 +447,6 @@ body.single {
 	margin-left: calc(-1.6em - 16px);
 	margin-bottom: .8em;
 }
-
-
-
-::-moz-selection { background-color: $highlight; }
-::selection      { background-color: $highlight; }
-
-/* ======================================================================== */
-/* sidebar on single articles */
-/* ======================================================================== */
-
-sidebar {
-	padding-top: 2.25em;
-	padding-left: 3%;
-	width:31.333333%;
-}
-
-sidebar-inner {
-	padding-left:1.75;
-	padding-right:1.50%;
-}
-
-sidebar h2 {
-	border-bottom: 4px solid $voablue;
-	font-size:0.8em;
-	color: $voablue;
-	padding-bottom: .25em;
-	padding-left: 1em;
-	text-transform: uppercase;
-}
-sidebar h2 a,
-sidebar h2 a:hover {
-	color: $voablue !important;
-	text-decoration: none !important;
-}
-
-div.sidebar-widget {
-	margin-bottom:2em;
-}
-
-div.sidebar-widget ul {
-	margin-top:1em;
-}
-
-div.sidebar-widget li {
-	list-style: none;
-	margin-bottom:1em;
-	padding-left: 1.67%;
-	font-size:0.9em;
-}
-
-div.sidebar-widget a {
-	color: $offblack;
-	text-decoration: none;
-}
-
-div.sidebar-widget a:hover {
-	text-decoration: underline;
-}
-
-/* no thanks, wordpress */
-a.rsswidget img { display: none }
-
-leading { display: flex; flex-direction: column; }
-leading img { width: 100%; max-width: 100%;  }
-
-antirows img { }
-
-
-
 
 .single-basic-intro {
 	background: $offwhite;
@@ -547,9 +479,7 @@ antirows img { }
 }
 
 .article-intro {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+	display: block;
 	position: relative;
 }
 
@@ -590,6 +520,23 @@ antirows img { }
 	height: auto;
 	max-width: 100%;
 	width: 100%;
+}
+
+.undermedia-caption {
+	bottom: 0;
+	position: absolute;
+	width: 100%;
+	z-index: 100;
+}
+
+.undermedia-caption > p {
+	background: rgba(0, 0, 0, .4);
+	border-top: 1px solid $midgray;
+	color: $vltgray;
+	margin: .5em auto 2em auto;
+	max-width: calc(1200px - 1em);
+	padding: .5em;
+	width: calc(80% - 1em);
 }
 
 
@@ -804,6 +751,70 @@ antirows img { }
 
 .single content .adjacent-post-inner h4 > a { color: $offblack; text-decoration: none; }
 .single content .adjacent-post-inner h4 > a:hover { color: $voablue; text-decoration: none; }
+
+
+
+/* ======================================================================== */
+/* sidebar on single articles */
+/* ======================================================================== */
+
+sidebar {
+	padding-top: 2.25em;
+	padding-left: 3%;
+	width:31.333333%;
+}
+
+sidebar-inner {
+	padding-left:1.75;
+	padding-right:1.50%;
+}
+
+sidebar h2 {
+	border-bottom: 4px solid $voablue;
+	font-size:0.8em;
+	color: $voablue;
+	padding-bottom: .25em;
+	padding-left: 1em;
+	text-transform: uppercase;
+}
+sidebar h2 a,
+sidebar h2 a:hover {
+	color: $voablue !important;
+	text-decoration: none !important;
+}
+
+div.sidebar-widget {
+	margin-bottom:2em;
+}
+
+div.sidebar-widget ul {
+	margin-top:1em;
+}
+
+div.sidebar-widget li {
+	list-style: none;
+	margin-bottom:1em;
+	padding-left: 1.67%;
+	font-size:0.9em;
+}
+
+div.sidebar-widget a {
+	color: $offblack;
+	text-decoration: none;
+}
+
+div.sidebar-widget a:hover {
+	text-decoration: underline;
+}
+
+/* no thanks, wordpress */
+a.rsswidget img { display: none }
+
+leading { display: flex; flex-direction: column; }
+leading img { width: 100%; max-width: 100%;  }
+
+antirows img { }
+
 
 
 /* article sidebar shortcut teaser *******************************************/

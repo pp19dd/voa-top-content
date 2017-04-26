@@ -56,9 +56,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 	<row class="rows_1">
 		<article>
 			<content>
-				<?php if (!$hero) {
-					get_template_part( 'partials/single-basic-intro' );
-				} ?>
+				<?php if (!$hero) { get_template_part( 'partials/single-basic-intro' ); } ?>
 								
 				<section class="content-part article-author">
 

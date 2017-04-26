@@ -21,14 +21,20 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 400; }
 
-article {
-  overflow: hidden; }
-
 img {
   display: block;
   height: auto;
   max-width: 100%;
   width: 100%; }
+
+::-moz-selection {
+  background-color: #7fdbff; }
+
+::selection {
+  background-color: #7fdbff; }
+
+article {
+  overflow: hidden; }
 
 header, rows, footer {
   font-size: 18px; }
@@ -396,6 +402,7 @@ body.single {
   margin-bottom: 1em;
   line-height: 1.66; }
 
+.single content .featured-img > p,
 .single content p.wp-caption-text {
   color: #666;
   font-size: .8em;
@@ -413,9 +420,9 @@ body.single {
 .archive .rows_1 > article {
   flex-direction: row; }
 
+.single content .article-body > *:not(.wp-caption),
 .single content .article-author,
 .single content .article-share,
-.single content .article-body > p,
 .single content .article-categories,
 .single content .article-tags {
   padding-left: 4rem;
@@ -437,68 +444,6 @@ body.single {
 .single content .article-tags header {
   margin-left: calc(-1.6em - 16px);
   margin-bottom: .8em; }
-
-::-moz-selection {
-  background-color: #7fdbff; }
-
-::selection {
-  background-color: #7fdbff; }
-
-/* ======================================================================== */
-/* sidebar on single articles */
-/* ======================================================================== */
-sidebar {
-  padding-top: 2.25em;
-  padding-left: 3%;
-  width: 31.333333%; }
-
-sidebar-inner {
-  padding-left: 1.75;
-  padding-right: 1.50%; }
-
-sidebar h2 {
-  border-bottom: 4px solid #1330bf;
-  font-size: 0.8em;
-  color: #1330bf;
-  padding-bottom: .25em;
-  padding-left: 1em;
-  text-transform: uppercase; }
-
-sidebar h2 a,
-sidebar h2 a:hover {
-  color: #1330bf !important;
-  text-decoration: none !important; }
-
-div.sidebar-widget {
-  margin-bottom: 2em; }
-
-div.sidebar-widget ul {
-  margin-top: 1em; }
-
-div.sidebar-widget li {
-  list-style: none;
-  margin-bottom: 1em;
-  padding-left: 1.67%;
-  font-size: 0.9em; }
-
-div.sidebar-widget a {
-  color: #333;
-  text-decoration: none; }
-
-div.sidebar-widget a:hover {
-  text-decoration: underline; }
-
-/* no thanks, wordpress */
-a.rsswidget img {
-  display: none; }
-
-leading {
-  display: flex;
-  flex-direction: column; }
-
-leading img {
-  width: 100%;
-  max-width: 100%; }
 
 .single-basic-intro {
   background: #fcfcfc;
@@ -527,9 +472,7 @@ leading img {
   border-bottom: 1px solid #ddd; }
 
 .article-intro {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  display: block;
   position: relative; }
 
 .article-title {
@@ -566,6 +509,21 @@ leading img {
   height: auto;
   max-width: 100%;
   width: 100%; }
+
+.undermedia-caption {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 100; }
+
+.undermedia-caption > p {
+  background: rgba(0, 0, 0, 0.4);
+  border-top: 1px solid #666;
+  color: #ddd;
+  margin: .5em auto 2em auto;
+  max-width: calc(1200px - 1em);
+  padding: .5em;
+  width: calc(80% - 1em); }
 
 .article-author {
   display: flex;
@@ -793,6 +751,62 @@ leading img {
 .single content .adjacent-post-inner h4 > a:hover {
   color: #1330bf;
   text-decoration: none; }
+
+/* ======================================================================== */
+/* sidebar on single articles */
+/* ======================================================================== */
+sidebar {
+  padding-top: 2.25em;
+  padding-left: 3%;
+  width: 31.333333%; }
+
+sidebar-inner {
+  padding-left: 1.75;
+  padding-right: 1.50%; }
+
+sidebar h2 {
+  border-bottom: 4px solid #1330bf;
+  font-size: 0.8em;
+  color: #1330bf;
+  padding-bottom: .25em;
+  padding-left: 1em;
+  text-transform: uppercase; }
+
+sidebar h2 a,
+sidebar h2 a:hover {
+  color: #1330bf !important;
+  text-decoration: none !important; }
+
+div.sidebar-widget {
+  margin-bottom: 2em; }
+
+div.sidebar-widget ul {
+  margin-top: 1em; }
+
+div.sidebar-widget li {
+  list-style: none;
+  margin-bottom: 1em;
+  padding-left: 1.67%;
+  font-size: 0.9em; }
+
+div.sidebar-widget a {
+  color: #333;
+  text-decoration: none; }
+
+div.sidebar-widget a:hover {
+  text-decoration: underline; }
+
+/* no thanks, wordpress */
+a.rsswidget img {
+  display: none; }
+
+leading {
+  display: flex;
+  flex-direction: column; }
+
+leading img {
+  width: 100%;
+  max-width: 100%; }
 
 /* article sidebar shortcut teaser *******************************************/
 #comment-shortcut {
