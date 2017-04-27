@@ -35,28 +35,38 @@ $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('a
 				</section>
 
 				<section class="content-part">
-					
-    <h2>Posts by <?php echo $curauth->nickname; ?>:</h2>
-
-    <ul>
-<!-- The Loop -->
-
-    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <li>
-            <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link: <?php the_title(); ?>">
-            <?php the_title(); ?></a>,
-            <?php the_time('d M Y'); ?> in <?php the_category('&');?>
-        </li>
-
-    <?php endwhile; else: ?>
-        <p><?php _e('No posts by this author.'); ?></p>
-
-    <?php endif; ?>
-
-<!-- End Loop -->
-
-    </ul>
+					<h2>Posts by <?php echo $curauth->nickname; ?>:</h2>
 				</section>
+				
+				<?php if ( have_posts() ) : ?>
+				<section class="archive-teasers">
+
+					<?php while ( have_posts() ) : the_post(); ?>
+						
+						<article class="archive-teaser">
+							<?php 
+							$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'quarter-width-small' );
+							$image = $image[0];
+							?>
+							<div class="teaser-img-container"><a class="teaser-img" href="<?php the_permalink(); ?>" 
+								style="background-image: url(<?php echo $image; ?>);"><?php //the_time('F j, Y'); ?></a></div>
+							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+						</article>
+						
+					<?php endwhile; // end of The Loop ?>
+					
+				</section>
+				
+				<section class="content-part">
+					<div class="nav-previous alignleft"><?php next_posts_link( 'Older posts' ); ?></div>
+					<div class="nav-next alignright"><?php previous_posts_link( 'Newer posts' ); ?></div>
+				</section>
+				
+				<?php else: ?>
+				<section class="content-part no-results">
+					<p><?php _e('No posts by this author.'); ?></p>
+				</section>
+				<?php endif; ?>
 				
 			</content>
 			
@@ -73,4 +83,4 @@ $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('a
 	</row>
 </rows>
 
-<?php get_footer(); ?>
+<?php get_footer();

@@ -943,6 +943,8 @@ article > content .comments .comments-inner {
 }
 
 .archive-teasers {
+	border-left: 1px solid $vltgray;
+	border-right: 1px solid $vltgray;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
