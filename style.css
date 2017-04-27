@@ -357,9 +357,7 @@ continue span {
 
 /* ======================================================================== */
 @media all and (max-width: 1200px) {
-  .single article content img,
-  .page article content img,
-  .archive article content img,
+  article > content img,
   article inner img {
     height: auto;
     width: 100%; } }
@@ -377,58 +375,50 @@ body.single {
   padding-top: 0;
   padding-bottom: 0; }
 
-.single content .content-part {
-  background-color: #fcfcfc;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd; }
-
-/* breaks section into block */
-.single content .article-tags,
-.single content .adjacent-post,
-.single content .comments {
-  margin-bottom: 1em; }
-
-.single content .article-author,
-.single content .article-share,
-.single content .article-body,
-.single content .article-categories,
-.single content .article-tags {
-  padding-bottom: 2em; }
-
-.single content .article-tags,
-.single content .adjacent-post {
-  border-bottom: 1px solid #ddd; }
-
-.single content .article-body p {
-  margin-bottom: 1em;
-  line-height: 1.66; }
-
-.single content .featured-img > p,
-.single content p.wp-caption-text {
-  color: #666;
-  font-size: .8em;
-  line-height: 150%;
-  margin: 0;
-  padding: 0 .4em 1.6em .4em; }
-
-.single content,
-.page content,
-.archive content {
-  width: 65.666666%; }
-
 .single article,
 .page .rows_1 > article,
 .archive .rows_1 > article {
   flex-direction: row;
   width: 100%; }
 
-.single content .article-body > *:not(.wp-caption),
-.single content .article-author,
-.single content .article-share,
-.single content .article-categories,
-.single content .article-tags {
+article > content {
+  width: 65.666666%; }
+
+article > content .content-part {
+  background-color: #fcfcfc;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
   padding-left: 4rem;
   padding-right: 4rem; }
+
+/* breaks section into block */
+article > content .article-tags,
+article > content .adjacent-post,
+article > content .comments {
+  margin-bottom: 1em; }
+
+article > content .article-author,
+article > content .article-share,
+article > content .article-body,
+article > content .article-categories,
+article > content .article-tags {
+  padding-bottom: 2em; }
+
+article > content .article-tags,
+article > content .adjacent-post {
+  border-bottom: 1px solid #ddd; }
+
+article > content .article-body p {
+  margin-bottom: 1em;
+  line-height: 1.66; }
+
+article > content .featured-img > p,
+article > content p.wp-caption-text {
+  color: #666;
+  font-size: .8em;
+  line-height: 150%;
+  margin: 0;
+  padding: 0 .4em 1.6em .4em; }
 
 .article-body > p > img {
   margin-left: -4rem;
@@ -436,16 +426,20 @@ body.single {
   max-width: calc(100% + 8rem);
   width: calc(100% + 8rem); }
 
-.single content .voa-dateline {
+article > content .voa-dateline {
   text-transform: uppercase; }
 
-.single content .article-categories {
+article > content .article-categories {
   padding-top: 3em; }
 
-.single content .article-categories header,
-.single content .article-tags header {
+article > content .article-categories,
+article > content .article-tags {
+  padding-left: calc(4rem + 1.6em + 16px); }
+
+article > content .article-categories header,
+article > content .article-tags header {
   margin-left: calc(-1.6em - 16px);
-  margin-bottom: .8em; }
+  margin-bottom: .5rem; }
 
 .single-basic-intro {
   background: #fcfcfc;
@@ -635,8 +629,8 @@ body.single {
 .article-share-inner ul li.share-twitter a:hover {
   background-color: #2795e9; }
 
-.single content .article-categories header,
-.single content .article-tags header {
+article > content .article-categories header,
+article > content .article-tags header {
   background-color: #1330bf;
   color: #fcfcfc;
   display: block;
@@ -645,14 +639,16 @@ body.single {
   text-transform: uppercase;
   width: 25%; }
 
-.single content .header-text {
+article > content .header-text {
   padding-left: .8em; }
 
-.single content .article-categories a, .single content .article-tags a {
+article > content .article-categories a,
+article > content .article-tags a {
   color: #666;
   text-decoration: none; }
 
-.single content .article-categories a:hover, .single content .article-tags a:hover {
+article > content .article-categories a:hover,
+article > content .article-tags a:hover {
   color: #1330bf;
   text-decoration: underline; }
 
@@ -672,53 +668,55 @@ body.single {
   width: 50% !important; }
 
 @media (max-width: 600px) {
-  .single content .article-body .wp-caption.alignright,
-  .single content .article-body .wp-caption.alignleft {
+  article > content .article-body .wp-caption.alignright,
+  article > content .article-body .wp-caption.alignleft {
     float: none;
     margin: 2em 1em 0 1em;
     padding-left: 0;
     padding-right: 0;
     width: calc(100% - 2em) !important; } }
-.single content .prevnext {
+article > content .prevnext {
   display: flex;
   flex-direction: row;
   align-items: stretch; }
 
-.single content .adjacent-post {
-  width: 48.5%; }
+article > content .adjacent-post {
+  border: 1px solid #ddd;
+  padding: 0;
+  width: 48.75%; }
 
-.single content .previous-post {
+article > content .previous-post {
   margin-right: auto; }
 
-.single content .next-post {
+article > content .next-post {
   /*align-self: flex-end;*/ }
 
-.single content .adjacent-post-inner {
+article > content .adjacent-post-inner {
   padding: 1em 0;
   display: flex;
   flex-direction: row; }
 
-.single content .adjacent-post-inner > div {
+article > content .adjacent-post-inner > div {
   flex: 1; }
 
-.single content .adjacent-post-inner img {
+article > content .adjacent-post-inner img {
   height: auto;
   width: 100%; }
 
-.single content .adjacent-post-inner .adjacent-post-image a {
+article > content .adjacent-post-inner .adjacent-post-image a {
   display: block;
   padding: 0 1em; }
 
-.single content .previous-post .adjacent-post-inner {
+article > content .previous-post .adjacent-post-inner {
   padding-right: 1em; }
 
-.single content .next-post .adjacent-post-inner {
+article > content .next-post .adjacent-post-inner {
   padding-left: 1em; }
 
-.single content .next-post .adjacent-post-inner .adjacent-post-text {
+article > content .next-post .adjacent-post-inner .adjacent-post-text {
   text-align: right; }
 
-.single content .adjacent-post-inner p {
+article > content .adjacent-post-inner p {
   color: #999;
   font-size: .8em;
   text-transform: uppercase;
@@ -732,24 +730,24 @@ body.single {
   margin-left: 1em;
   text-align: center; }
 
-.single content .adjacent-post-inner p > a {
+article > content .adjacent-post-inner p > a {
   color: #999;
   text-decoration: none; }
 
-.single content .adjacent-post-inner p > a:hover {
+article > content .adjacent-post-inner p > a:hover {
   color: #1330bf;
   text-decoration: none; }
 
-.single content .adjacent-post-inner h4 {
+article > content .adjacent-post-inner h4 {
   color: #333;
   font-size: .8em;
   font-weight: 700; }
 
-.single content .adjacent-post-inner h4 > a {
+article > content .adjacent-post-inner h4 > a {
   color: #333;
   text-decoration: none; }
 
-.single content .adjacent-post-inner h4 > a:hover {
+article > content .adjacent-post-inner h4 > a:hover {
   color: #1330bf;
   text-decoration: none; }
 
@@ -854,7 +852,10 @@ leading img {
   transition: background-color 0.25s; }
 
 /* article comment section ***************************************************/
-.comments > header {
+article > content .comments {
+  padding: 0; }
+
+article > content .comments > header {
   background: #333 none repeat scroll 0 0;
   color: #fcfcfc;
   font-size: 0.8em;
@@ -862,7 +863,7 @@ leading img {
   padding: 1em;
   text-transform: uppercase; }
 
-.single content .comments .comments-inner {
+article > content .comments .comments-inner {
   margin-left: calc(1em - 8px);
   margin-right: calc(1em - 8px); }
 
@@ -973,7 +974,7 @@ leading img {
   .article-title-text {
     font-size: 2.5em; }
 
-  .single content .article-categories header, .single content .article-tags header {
+  article > content .article-categories header, article > content .article-tags header {
     width: 33.3333%; } }
 @media (max-width: 900px) {
   rows row.rows_2, rows row.rows_3 {
@@ -1010,10 +1011,20 @@ leading img {
   .archive .rows_1 > article {
     flex-direction: column; }
 
-  .single content,
+  article > content,
   .page .rows_1 > article > content,
   .archive .rows_1 > article > content {
     width: auto; }
+
+  article > content .content-part {
+    border-left: none;
+    border-right: none; }
+
+  article > content .previous-post {
+    border-right: 1px solid #ddd; }
+
+  article > content .next-post {
+    border-left: 1px solid #ddd; }
 
   .article-title-text {
     font-size: 2em; }
@@ -1040,13 +1051,13 @@ leading img {
   h1 {
     font-size: 2.5em; }
 
-  .single content .article-body > *:not(.wp-caption),
-  .single content .article-author,
-  .single content .article-share,
-  .single content .article-categories,
-  .single content .article-tags {
+  article > content .content-part {
     padding-left: 1rem;
     padding-right: 1rem; }
+
+  article > content > .comments {
+    padding-left: 0;
+    padding-right: 0; }
 
   .single-basic-intro h1 {
     font-size: 1.5em;
@@ -1057,22 +1068,24 @@ leading img {
     font-size: 1em;
     padding: 0 1rem 2rem 1rem; }
 
-  .single content .article-categories header, .single content .article-tags header {
+  article > content .article-categories header, article > content .article-tags header {
     margin-left: 0;
     width: 50%; }
 
-  .single content .adjacent-post {
-    align-self: stretch; }
+  article > content .adjacent-post {
+    align-self: stretch;
+    padding: 0;
+    width: calc(50% - .5rem); }
 
-  .single content .previous-post .adjacent-post-inner {
+  article > content .previous-post .adjacent-post-inner {
     flex-direction: column;
     padding-right: 0; }
 
-  .single content .next-post .adjacent-post-inner {
+  article > content .next-post .adjacent-post-inner {
     flex-direction: column-reverse;
     padding-left: 0; }
 
-  .single content .adjacent-post-text {
+  article > content .adjacent-post-text {
     margin: .5em 1em 0 1em; }
 
   .article-title-text {

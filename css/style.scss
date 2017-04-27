@@ -348,9 +348,7 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: $offw
 
 @media all and (max-width:1200px){
 
-	.single article content img,
-	.page article content img,
-	.archive article content img,
+	article > content img,
 	article inner img {
 		height: auto;
 		width: 100%;
@@ -368,53 +366,6 @@ body.single {
 .page .rows_1,
 .archive .rows_1 { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
 
-.single content .content-part {
-	background-color: $offwhite;
-	border-left: 1px solid $vltgray;
-	border-right: 1px solid $vltgray;
-}
-
-/* breaks section into block */
-.single content .article-tags,
-.single content .adjacent-post,
-.single content .comments {
-	margin-bottom: 1em;
-}
-
-
-.single content .article-author,
-.single content .article-share,
-.single content .article-body,
-.single content .article-categories,
-.single content .article-tags {
-	padding-bottom: 2em;
-}
-
-.single content .article-tags,
-.single content .adjacent-post {
-	border-bottom: 1px solid $vltgray;
-}
-
-.single content .article-body p {
-	margin-bottom: 1em;
-	line-height: 1.66;
-}
-
-.single content .featured-img > p,
-.single content p.wp-caption-text {
-	color: $midgray;
-	font-size: .8em;
-	line-height: 150%;
-	margin: 0;
-	padding: 0 .4em 1.6em .4em;
-}
-
-.single content,
-.page content,
-.archive content {
-	width: 65.666666%;
-}
-
 .single article,
 .page .rows_1 > article,
 .archive .rows_1 > article {
@@ -422,14 +373,58 @@ body.single {
 	width: 100%;
 }
 
-.single content .article-body > *:not(.wp-caption),
-.single content .article-author,
-.single content .article-share,
-.single content .article-categories,
-.single content .article-tags {
+article > content {
+	width: 65.666666%;
+}
+
+article > content .content-part {
+	background-color: $offwhite;
+	border-left: 1px solid $vltgray;
+	border-right: 1px solid $vltgray;
 	padding-left: 4rem;
 	padding-right: 4rem;
 }
+
+/* breaks section into block */
+article > content .article-tags,
+article > content .adjacent-post,
+article > content .comments {
+	margin-bottom: 1em;
+}
+
+
+article > content .article-author,
+article > content .article-share,
+article > content .article-body,
+article > content .article-categories,
+article > content .article-tags {
+	padding-bottom: 2em;
+}
+
+article > content .article-tags,
+article > content .adjacent-post {
+	border-bottom: 1px solid $vltgray;
+}
+
+article > content .article-body p {
+	margin-bottom: 1em;
+	line-height: 1.66;
+}
+
+article > content .featured-img > p,
+article > content p.wp-caption-text {
+	color: $midgray;
+	font-size: .8em;
+	line-height: 150%;
+	margin: 0;
+	padding: 0 .4em 1.6em .4em;
+}
+
+// article > content .article-body > *:not(.wp-caption),
+// article > content .article-author,
+// article > content .article-share,
+// article > content .article-categories,
+// article > content .article-tags 
 
 .article-body > p > img {
 	margin-left: -4rem;
@@ -438,16 +433,21 @@ body.single {
 	width: calc(100% + 8rem);
 }
 
-.single content .voa-dateline { text-transform: uppercase; }
+article > content .voa-dateline { text-transform: uppercase; }
 
-.single content .article-categories {
+article > content .article-categories {
 	padding-top: 3em;
 }
 
-.single content .article-categories header,
-.single content .article-tags header {
+article > content .article-categories,
+article > content .article-tags {
+	padding-left: calc(4rem + 1.6em + 16px);
+}
+
+article > content .article-categories header,
+article > content .article-tags header {
 	margin-left: calc(-1.6em - 16px);
-	margin-bottom: .8em;
+	margin-bottom: .5rem;
 }
 
 .single-basic-intro {
@@ -637,8 +637,8 @@ body.single {
 
 
 
-.single content .article-categories header,
-.single content .article-tags header {
+article > content .article-categories header,
+article > content .article-tags header {
 	background-color: $voablue;
 	color: $offwhite;
 	display: block;
@@ -648,10 +648,13 @@ body.single {
 	width: 25%;
 }
 
-.single content .header-text { padding-left: .8em; }
+article > content .header-text { padding-left: .8em; }
 
-.single content .article-categories a, .single content .article-tags a { color: $midgray; text-decoration: none; }
-.single content .article-categories a:hover, .single content .article-tags a:hover { color: $voablue; text-decoration: underline; }
+article > content .article-categories a, 
+article > content .article-tags a { color: $midgray; text-decoration: none; }
+
+article > content .article-categories a:hover, 
+article > content .article-tags a:hover { color: $voablue; text-decoration: underline; }
 
 .wp-caption {
 	height: auto;
@@ -680,59 +683,62 @@ body.single {
 }
 
 @media (max-width: 600px) {
-	.single content .article-body .wp-caption.alignright,
-	.single content .article-body .wp-caption.alignleft {
+	
+	article > content .article-body .wp-caption.alignright,
+	article > content .article-body .wp-caption.alignleft {
 		float: none;
 		margin: 2em 1em 0 1em;
 		padding-left:  0;
 		padding-right: 0;
 		width: calc(100% - 2em) !important;
 	}
+	
 }
 
-
-.single content .prevnext {
+article > content .prevnext {
 	display: flex;
 	flex-direction: row;
 	align-items: stretch;
 }
 
-.single content .adjacent-post {
-	width: 48.5%;
+article > content .adjacent-post {
+	border: 1px solid $vltgray;
+	padding: 0;
+	width: 48.75%;
 }
 
-.single content .previous-post {
+article > content .previous-post {
 	margin-right: auto;
 }
 
-.single content .next-post {
+article > content .next-post {
 	/*align-self: flex-end;*/
 }
 
-.single content .adjacent-post-inner {
+article > content .adjacent-post-inner {
 	padding: 1em 0;
 	display: flex;
 	flex-direction: row;
 }
 
-.single content .adjacent-post-inner > div { flex: 1; }
+article > content .adjacent-post-inner > div { flex: 1; }
 
-.single content .adjacent-post-inner img {
+article > content .adjacent-post-inner img {
 	height: auto;
 	width: 100%;
 }
 
-.single content .adjacent-post-inner .adjacent-post-image a {
+article > content .adjacent-post-inner .adjacent-post-image a {
 	display: block;
 	padding: 0 1em;
 }
 
-.single content .previous-post .adjacent-post-inner { padding-right: 1em; }
-.single content .next-post .adjacent-post-inner { padding-left: 1em; }
+article > content .previous-post .adjacent-post-inner { padding-right: 1em; }
+article > content .next-post .adjacent-post-inner { padding-left: 1em; }
 
-.single content .next-post .adjacent-post-inner .adjacent-post-text { text-align: right; }
+article > content .next-post .adjacent-post-inner .adjacent-post-text { text-align: right; }
 
-.single content .adjacent-post-inner p {
+article > content .adjacent-post-inner p {
 	color: $ltgray;
 	font-size: .8em;
 	text-transform: uppercase;
@@ -742,17 +748,17 @@ body.single {
 .no-previous-post p { margin-right: 1em; text-align: center; }
 .no-next-post p { margin-left: 1em; text-align: center; }
 
-.single content .adjacent-post-inner p > a { color: $ltgray; text-decoration: none; }
-.single content .adjacent-post-inner p > a:hover { color: $voablue; text-decoration: none; }
+article > content .adjacent-post-inner p > a { color: $ltgray; text-decoration: none; }
+article > content .adjacent-post-inner p > a:hover { color: $voablue; text-decoration: none; }
 
-.single content .adjacent-post-inner h4 {
+article > content .adjacent-post-inner h4 {
 	color: $offblack;
 	font-size: .8em;
 	font-weight: 700;
 }
 
-.single content .adjacent-post-inner h4 > a { color: $offblack; text-decoration: none; }
-.single content .adjacent-post-inner h4 > a:hover { color: $voablue; text-decoration: none; }
+article > content .adjacent-post-inner h4 > a { color: $offblack; text-decoration: none; }
+article > content .adjacent-post-inner h4 > a:hover { color: $voablue; text-decoration: none; }
 
 
 
@@ -876,7 +882,11 @@ antirows img { }
 
 /* article comment section ***************************************************/
 
-.comments > header {
+article > content .comments {
+	padding: 0;
+}
+
+article > content .comments > header {
 	background: $offblack none repeat scroll 0 0;
 	color: $offwhite;
 	font-size: 0.8em;
@@ -885,7 +895,7 @@ antirows img { }
 	text-transform: uppercase;
 }
 
-.single content .comments .comments-inner {
+article > content .comments .comments-inner {
 	// Facebook adds 8px padding
 	margin-left: calc(1em - 8px);
 	margin-right: calc(1em - 8px);
@@ -1033,7 +1043,7 @@ antirows img { }
 
 	.article-title-text { font-size: 2.5em; }
 
-	.single content .article-categories header, .single content .article-tags header { width: 33.3333%;}
+	article > content .article-categories header, article > content .article-tags header { width: 33.3333%;}
 
 }
 
@@ -1068,11 +1078,19 @@ antirows img { }
 		flex-direction: column;
 	}
 
-	.single content,
+	article > content,
 	.page .rows_1 > article > content,
 	.archive .rows_1 > article > content {
 		width: auto;
 	}
+	
+	article > content .content-part {
+		border-left: none;
+		border-right: none;
+	}
+	
+	article > content .previous-post { border-right: 1px solid $vltgray; }
+	article > content .next-post { border-left: 1px solid $vltgray; }
 
 	.article-title-text { font-size: 2em; }
 
@@ -1104,13 +1122,19 @@ antirows img { }
 
 	h1 { font-size: 2.5em; }
 
-	.single content .article-body > *:not(.wp-caption),
-	.single content .article-author,
-	.single content .article-share,
-	.single content .article-categories,
-	.single content .article-tags {
+	// article > content .article-body > *:not(.wp-caption),
+	// article > content .article-author,
+	// article > content .article-share,
+	// article > content .article-categories,
+	// article > content .article-tags 
+	article > content .content-part {
 		padding-left:  1rem;
 		padding-right: 1rem;
+	}
+	
+	article > content > .comments {
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	.single-basic-intro h1 {
@@ -1124,14 +1148,18 @@ antirows img { }
 		padding: 0 1rem 2rem 1rem;
 	}
 
-	.single content .article-categories header, .single content .article-tags header { margin-left: 0; width: 50%; }
+	article > content .article-categories header, article > content .article-tags header { margin-left: 0; width: 50%; }
 
-	.single content .adjacent-post { align-self: stretch; }
+	article > content .adjacent-post {
+		align-self: stretch;
+		padding: 0; 
+		width: calc(50% - .5rem); 
+	}
+	
+	article > content .previous-post .adjacent-post-inner { flex-direction: column; padding-right: 0; }
+	article > content .next-post .adjacent-post-inner { flex-direction: column-reverse; padding-left: 0; }
 
-	.single content .previous-post .adjacent-post-inner { flex-direction: column; padding-right: 0; }
-	.single content .next-post .adjacent-post-inner { flex-direction: column-reverse; padding-left: 0; }
-
-	.single content .adjacent-post-text { margin: .5em 1em 0 1em; }
+	article > content .adjacent-post-text { margin: .5em 1em 0 1em; }
 
 	.article-title-text { font-size: 1.5em; }
 
