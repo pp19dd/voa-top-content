@@ -12,5 +12,5 @@ $caption = trim(get_post(get_post_thumbnail_id())->post_content);
 		<p><?php echo $caption; ?></p>
 		<?php } ?>
 	</div>
-	<?php } ?> 
+	<?php } ?>
 </header>

@@ -1031,6 +1031,12 @@ article > content .comments .comments-inner {
 
 
 
+/* very generic modular widget styles ************************************************************/
+
+.widget { margin-bottom: 4rem; }
+
+
+
 
 
 @media (max-width: 1200px) {
@@ -1233,3 +1239,9 @@ article > content .comments .comments-inner {
 	}
 
 }
+
+
+
+/* import styles for widgets *********************************************************************/
+
+@import 'recent-posts-widget';

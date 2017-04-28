@@ -3,6 +3,7 @@
 add_action( 'widgets_init', function(){
 	register_widget( 'VOA_Newsletter_Teaser' );
 	register_widget( 'VOA_Top_Tags' );
+	register_widget( 'VOA_Recent_Posts' );
 });
 
 class VOA_Newsletter_Teaser extends WP_Widget {
@@ -213,6 +214,104 @@ class VOA_Top_Tags extends WP_Widget {
 		</div>
 		
 		<?php
+	}
+
+	/**
+	 * Outputs the options form on admin
+	 *
+	 * @param array $instance The widget options
+	 */
+	public function form( $instance ) {
+		// outputs the options form on admin
+	}
+
+	/**
+	 * Processing widget options on save
+	 *
+	 * @param array $new_instance The new options
+	 * @param array $old_instance The previous options
+	 */
+	public function update( $new_instance, $old_instance ) {
+		// processes widget options to be saved
+	}
+}
+
+
+
+class VOA_Recent_Posts extends WP_Widget {
+
+	/**
+	 * Sets up the widgets name etc
+	 */
+	public function __construct() {
+		$widget_ops = array( 
+			'classname' => 'voa-recent-posts-widget',
+			'description' => 'Displays styled list of recent posts.',
+		);
+		parent::__construct( 'voa_recent_posts', 'VOA Recent Posts', $widget_ops );
+	}
+
+	/**
+	 * Outputs the content of the widget
+	 *
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+		// outputs the content of the widget
+		
+		global $post;
+		$page_post_id = $post->ID;
+		
+		$RPW_args = array(
+			'orderby'        => 'date',
+			'order'          => 'DESC',
+			'nopaging'       => true,
+			'posts_per_page' => 20
+		);
+		
+		if ( $page_post_id != '' ) {
+			$RPW_args['post__not_in'] = array( $page_post_id );
+		}
+		
+		$RPW_query = new WP_Query( $RPW_args );
+		
+		if ( $RPW_query->have_posts() ) {
+		?>
+		
+		<div class="voa-recent-posts-widget widget">
+			<!-- <h2 class="sidebar-title">Recent Posts</h2> -->
+			<div class="recent-posts">
+				<?php
+				while ( $RPW_query->have_posts() ) {
+					$RPW_query->the_post();
+				?>
+				
+				<article class="widget-card">
+					<a href="">
+						<div class="widget-card-text">
+							<h3><?php echo get_the_title(); ?></h3>
+							<time datetime="<?php the_time( 'c' ); ?>"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php the_time( 'F j, Y' ); ?></time>
+						</div>
+						
+						<?php if ( has_post_thumbnail() ) { ?>
+						<div class="widget-card-img"><?php the_post_thumbnail( 'quarter-width-small' ); ?></div>
+						<?php } ?>
+					</a>
+				</article>
+				
+				<?php } ?>
+			</div>
+		</div>
+		
+		<?php
+		} else {
+			// no posts found
+		}
+		
+		// restore original Post Data
+		wp_reset_postdata();
+		
 	}
 
 	/**

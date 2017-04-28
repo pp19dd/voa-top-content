@@ -1,0 +1,52 @@
+// voa-recent-posts-widget styles
+
+.widget-card {
+	display: block;
+	margin-bottom: .5rem;
+	width: 100%;
+}
+
+.widget-card > a {
+	display: flex;
+	flex-direction: row-reverse;
+	background-color: $offwhite;
+	border: 1px solid $vltgray;
+	color: $voablue;
+	padding: .5rem;
+	text-decoration: none;
+}
+
+.widget-card > a:hover {
+	background-color: $vltgray;
+	border: 1px solid $offwhite;
+}
+
+.widget-card-img {
+	width: 35%;
+}
+
+.widget-card-text {
+	justify-content: space-between;
+	display: flex;
+	flex-direction: column;
+	margin-left: .5rem;
+	width: calc(65% - .5rem);
+}
+
+.widget-card-text > h3 {
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.widget-card > a:hover h3 {
+	color: $offblack;
+}
+
+.widget-card-text > time {
+	color: $ltgray;
+	display: block;
+	font-size: .8rem;
+	margin: 0;
+	padding-top: .25rem;
+	text-transform: uppercase;
+}
