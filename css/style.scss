@@ -1242,6 +1242,31 @@ article > content .comments .comments-inner {
 
 
 
+
+// eventually moving everything to mobile-first
+@media (min-width: 600px) {
+	
+	.article-body > .alignleft {
+		margin-left: -4rem;
+		width: calc(50% + 4rem) !important;
+	}
+	
+	.article-body > .alignright {
+		margin-right: -4rem;
+		width: calc(50% + 4rem) !important;
+	}
+	
+	.article-body > .alignnone {
+		margin-left: -4rem;
+		margin-right: -4rem;
+		max-width: calc(100% + 8rem); 
+		width: calc(100% + 8rem) !important;
+	}
+	
+}
+
+
+
 /* import styles for widgets *********************************************************************/
 
 @import 'recent-posts-widget';

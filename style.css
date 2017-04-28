@@ -1171,6 +1171,20 @@ article > content .comments .comments-inner {
   .voa-masthead menu a {
     font-weight: 400;
     padding: 1.25em .5em; } }
+@media (min-width: 600px) {
+  .article-body > .alignleft {
+    margin-left: -4rem;
+    width: calc(50% + 4rem) !important; }
+
+  .article-body > .alignright {
+    margin-right: -4rem;
+    width: calc(50% + 4rem) !important; }
+
+  .article-body > .alignnone {
+    margin-left: -4rem;
+    margin-right: -4rem;
+    max-width: calc(100% + 8rem);
+    width: calc(100% + 8rem) !important; } }
 /* import styles for widgets *********************************************************************/
 .widget-card {
   display: block;
