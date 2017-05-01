@@ -9,17 +9,7 @@ get_header();
 the_post();
 
 ?>
-<antirows>
-	<row class="rows_1">
-		<section class="article-intro">
-			<header class="article-title">
-				<div class="article-title-wrap">
-					<h1 class="article-title-text"><?php the_archive_title(); ?></h1>
-				</div>
-			</header>
-		</section>
-	</row>
-</antirows>
+
 <rows>
 	<row class="rows_1">
 		
@@ -27,9 +17,9 @@ the_post();
 		
 			<content>
 				
-				<?php if ( is_page() && get_the_content() != ''  ) { ?>
-				<div class="page-content"><?php the_content(); ?></div>
-				<?php } ?>
+				<section class="content-part">
+					<h1><?php the_archive_title(); ?></h1>
+				</section>
 				
 				<?php 
 				$posts = new WP_Query(array('posts_per_page' => -1));

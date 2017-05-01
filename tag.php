@@ -1,23 +1,15 @@
 <?php get_header(); ?>
 
-<antirows>
-	<row class="rows_1">
-		<section class="article-intro">
-			<header class="article-title">
-				<div class="article-title-wrap">
-					<h1 class="article-title-text"><?php the_archive_title(); ?></h1>
-				</div>
-			</header>
-		</section>
-	</row>
-</antirows>
-
 <rows>
 	<row class="rows_1">
 		
 		<article>
 		
 			<content>
+				
+				<section class="content-part">
+					<h1><?php the_archive_title(); ?></h1>
+				</section>
 				
 				<section class="archive-teasers">
 

@@ -12,17 +12,7 @@ the_post();
 $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
 
 ?>
-<antirows>
-	<row class="rows_1">
-		<section class="article-intro">
-			<header class="article-title">
-				<div class="article-title-wrap">
-					<h1 class="article-title-text"><?php the_archive_title(); ?></h1>
-				</div>
-			</header>
-		</section>
-	</row>
-</antirows>
+
 <rows>
 	<row class="rows_1">
 		
@@ -31,13 +21,9 @@ $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('a
 			<content>
 				
 				<section class="content-part">
-					<h1><?php the_archive_title; ?></h1>
+					<h1>Posts by <?php echo $curauth->nickname; ?></h1>
 				</section>
 
-				<section class="content-part">
-					<h2>Posts by <?php echo $curauth->nickname; ?>:</h2>
-				</section>
-				
 				<?php if ( have_posts() ) : ?>
 				<section class="archive-teasers">
 

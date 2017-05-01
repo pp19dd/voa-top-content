@@ -9,17 +9,7 @@ get_header();
 the_post();
 
 ?>
-<antirows>
-	<row class="rows_1">
-		<section class="article-intro">
-			<header class="article-title">
-				<div class="article-title-wrap">
-					<h1 class="article-title-text"><?php the_title(); ?></h1>
-				</div>
-			</header>
-		</section>
-	</row>
-</antirows>
+
 <rows>
 	<row class="rows_1">
 		
@@ -27,7 +17,11 @@ the_post();
 		
 			<content>
 				
-				<div class="page-content"><?php the_content(); ?></div>
+				<?php if (!$hero) { get_template_part( 'partials/single-basic-intro' ); } ?>
+				
+				<section class="page-content">
+					<?php the_content(); ?>
+				</section>
 				
 			</content>
 			
