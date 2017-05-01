@@ -33,6 +33,13 @@ function voa_top_content_get_meta_fields() {
             "default" => "no"
         ),
         array(
+            "caption" => "Subhed",
+            "type" => "textarea",
+            "style" => "min-height:100px",
+            "field_name" => "voa-post-subhed",
+            "meta_key" => "_voa_post_subhed"
+        ),
+        array(
             "caption" => "Use Hero Image Intro?",
             "field_name" => "voa-use-hero-image-intro",
             "meta_key" => "_voa_use_hero_image_intro",
@@ -42,6 +49,19 @@ function voa_top_content_get_meta_fields() {
                 "no" => "No"
             ),
             "default" => "no"
+        ),
+        array(
+            "caption" => "Choose hero text style:",
+            "field_name" => "voa-hero-text-style",
+            "meta_key" => "_voa_hero_text_style",
+            "type" => "radio",
+            "options" => array(
+                "hero-light-on-dark" => "<span style='color: #fff; background-color: #333;'>White Text, Black Background</span><br />",
+                "hero-light-no-bg"   => "White Text, No Background<br />",
+                "hero-dark-on-light" => "Black Text, White Background<br />",
+                "hero-dark-no-bg"    => "Black Text, No Background<br />"
+            ),
+            "default" => "hero-light-on-dark"
         )
     ));
 }

@@ -467,60 +467,6 @@ article > content .article-tags header {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd; }
 
-.article-intro {
-  display: block;
-  position: relative; }
-
-.article-title {
-  position: absolute;
-  top: 35%;
-  width: 100%;
-  z-index: 100; }
-
-.article-title-wrap {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  width: 1200px; }
-
-.article-title-text {
-  background: rgba(0, 0, 0, 0.4);
-  color: #fcfcfc;
-  display: block;
-  font-size: 3em;
-  font-weight: 700;
-  max-width: 80%;
-  text-align: left;
-  padding: .5em; }
-
-.undermedia {
-  max-height: 900px;
-  overflow: hidden;
-  width: 100%;
-  z-index: 50; }
-
-.undermedia > img {
-  display: block;
-  /* needed to remove blank space below img */
-  height: auto;
-  max-width: 100%;
-  width: 100%; }
-
-.undermedia-caption {
-  bottom: 0;
-  position: absolute;
-  width: 100%;
-  z-index: 100; }
-
-.undermedia-caption > p {
-  background: rgba(0, 0, 0, 0.4);
-  border-top: 1px solid #666;
-  color: #ddd;
-  margin: .5em auto 2em auto;
-  max-width: calc(1200px - 1em);
-  padding: .5em;
-  width: calc(80% - 1em); }
-
 .article-author {
   display: flex;
   flex-direction: row;
@@ -1171,6 +1117,86 @@ article > content .comments .comments-inner {
   .voa-masthead menu a {
     font-weight: 400;
     padding: 1.25em .5em; } }
+.hero-row {
+  display: block; }
+
+.hero-intro {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 70vh;
+  position: relative;
+  z-index: 25; }
+
+.hero-title-container {
+  position: absolute;
+  top: 5%;
+  width: 100%;
+  z-index: 50; }
+
+.hero-title {
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  padding: 0; }
+
+.hero-title > h1 {
+  font-size: 1.25em;
+  font-weight: 700;
+  line-height: 1.35;
+  padding: 0 1rem;
+  text-align: left; }
+
+.hero-title > h2 {
+  font-size: .9em;
+  font-weight: 300;
+  line-height: 1.35;
+  overflow: hidden;
+  padding: 1rem; }
+
+.hero-undermedia-caption {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 50; }
+
+.hero-undermedia-caption > p {
+  border-top-style: solid;
+  border-top-width: 1px;
+  font-size: .8rem;
+  margin: 0;
+  padding: .5em 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-top-color: #666;
+  color: #ddd; }
+
+.hero-light-on-dark .hero-intro, .hero-light-no-bg .hero-intro {
+  background-color: #666; }
+
+.hero-dark-on-light .hero-intro, .hero-dark-no-bg .hero-intro {
+  background-color: #ddd; }
+
+.hero-light-on-dark .hero-title > h1,
+.hero-dark-on-light .hero-title > h1 {
+  margin-bottom: 1.5rem; }
+
+.hero-light-on-dark .hero-title > * {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fcfcfc; }
+
+.hero-light-no-bg .hero-title > * {
+  background: transparent;
+  color: #fcfcfc; }
+
+.hero-dark-on-light .hero-title > * {
+  background: rgba(255, 255, 255, 0.6);
+  color: #333; }
+
+.hero-dark-no-bg .hero-title > * {
+  background: transparent;
+  color: #333; }
+
 @media (min-width: 600px) {
   .article-body > .alignleft {
     margin-left: -4rem;
@@ -1184,7 +1210,40 @@ article > content .comments .comments-inner {
     margin-left: -4rem;
     margin-right: -4rem;
     max-width: calc(100% + 8rem);
-    width: calc(100% + 8rem) !important; } }
+    width: calc(100% + 8rem) !important; }
+
+  .hero-title,
+  .hero-undermedia-caption > p {
+    margin: 0 4rem; } }
+@media (min-width: 750px), (min-height: 750px) {
+  .hero-title > h1 {
+    font-size: 2em; }
+
+  .hero-title > h2 {
+    font-size: 1.2em; } }
+@media (min-width: 1200px) {
+  .hero-title-container {
+    top: 15%; }
+
+  .hero-title {
+    margin: 0 auto;
+    max-width: 1200px; }
+
+  .hero-title > h1,
+  .hero-title > h2 {
+    margin: 0;
+    width: calc(65.666666% - 2rem); }
+
+  .hero-title > h1 {
+    font-size: 2.5em; }
+
+  .hero-title > h2 {
+    font-size: 1.25em; }
+
+  .hero-undermedia-caption > p {
+    margin: 0 auto 1rem auto;
+    max-width: calc(1200px - 2rem);
+    padding: 1rem; } }
 /* import styles for widgets *********************************************************************/
 .widget-card {
   display: block;
