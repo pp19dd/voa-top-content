@@ -28,6 +28,14 @@ img {
   max-width: 100%;
   width: 100%; }
 
+a, a:visited {
+  color: #1330bf;
+  text-decoration: underline; }
+
+a:hover, a:active {
+  color: #d41010;
+  text-decoration: underline; }
+
 ::-moz-selection {
   background-color: #7fdbff; }
 
@@ -44,42 +52,6 @@ rows {
   display: flex;
   margin: auto;
   max-width: 1200px; }
-
-.voa-masthead {
-  background-color: #1330bf;
-  color: #fcfcfc; }
-
-.voa-masthead inner {
-  margin: auto;
-  display: flex;
-  max-width: 1200px;
-  justify-content: space-between;
-  align-items: center; }
-
-.voa-masthead a {
-  display: block;
-  color: #fcfcfc;
-  text-decoration: none; }
-
-.voa-logo {
-  height: 30px;
-  width: 71px; }
-
-.voa-masthead menu {
-  display: flex;
-  flex-direction: row; }
-
-.voa-masthead menu a {
-  font-size: .8em;
-  font-weight: 700;
-  letter-spacing: .025em;
-  padding: 1.25em;
-  text-transform: uppercase;
-  transition: background-color 200ms linear; }
-
-.voa-masthead menu a:hover {
-  background-color: #eee;
-  color: #1330bf; }
 
 /* ======================================================================== */
 footer {
@@ -108,16 +80,11 @@ h1 {
   text-align: center;
   margin: auto;
   font-weight: 300;
-  font-size: 3.5em; }
+  font-size: 3.5rem; }
 
 h1 a, h1 a:hover {
   color: #333;
   text-decoration: none; }
-
-h1.site-title {
-  line-height: 100%;
-  margin: .75em auto;
-  padding: 0; }
 
 /* ======================================================================== */
 breakup {
@@ -799,6 +766,7 @@ leading img {
 
 /* article comment section ***************************************************/
 article > content .comments {
+  border-bottom: 1px solid #ddd;
   padding: 0; }
 
 article > content .comments > header {
@@ -919,9 +887,6 @@ article > content .comments .comments-inner {
 .widget {
   margin-bottom: 4rem; }
 
-@media (max-width: 1200px) {
-  .voa-logo {
-    margin-left: 1em; } }
 @media (max-width: 1000px) {
   .article-title-text {
     font-size: 2.5em; }
@@ -1085,9 +1050,6 @@ article > content .comments .comments-inner {
     display: none;
     visibility: hidden; } }
 @media (max-width: 450px) {
-  .voa-logo {
-    margin-left: .5em; }
-
   h1 {
     font-size: 2em; }
 
@@ -1096,9 +1058,6 @@ article > content .comments .comments-inner {
 
   row.rows_3 excerpt, row.rows_2 excerpt, row.rows_1 excerpt {
     display: none !important; }
-
-  .voa-masthead menu a {
-    padding: 1.25em .8em; }
 
   continue {
     display: none !important;
@@ -1112,11 +1071,67 @@ article > content .comments .comments-inner {
     margin-left: 0; } }
 @media (max-width: 340px) {
   h1 {
-    font-size: 1.5em; }
+    font-size: 1.5em; } }
+/* mobile-first styles ***************************************************************************/
+h1.site-title {
+  line-height: 1;
+  margin: 1rem auto;
+  padding: 0; }
 
-  .voa-masthead menu a {
-    font-weight: 400;
-    padding: 1.25em .5em; } }
+.voa-masthead {
+  background: #1330bf;
+  color: #fcfcfc;
+  display: block;
+  position: relative;
+  top: 0;
+  width: 100%;
+  z-index: 1000; }
+
+.voa-masthead-inner {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: calc(1200px - 2rem);
+  padding: 0 1rem; }
+
+.voa-masthead a {
+  color: #fcfcfc;
+  text-decoration: none; }
+
+.voa-logo {
+  flex-grow: 1;
+  padding: .5rem 0; }
+
+.voa-logo > img {
+  display: block;
+  height: 30px;
+  width: 71px; }
+
+.site-nav {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end; }
+
+.site-nav > * {
+  margin-left: 1rem; }
+
+.search-form-container {
+  background-color: #ddd;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem; }
+
+.search-form {
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: calc(1200px - 2rem); }
+
+.search-form input {
+  font-size: 1rem; }
+
 .hero-row {
   display: block; }
 
@@ -1198,6 +1213,12 @@ article > content .comments .comments-inner {
   color: #333; }
 
 @media (min-width: 600px) {
+  h1.site-title {
+    margin: 2rem auto; }
+
+  header.search-form-container .search-form {
+    justify-content: flex-end; }
+
   .article-body > .alignleft {
     margin-left: -4rem;
     width: calc(50% + 4rem) !important; }
@@ -1221,7 +1242,13 @@ article > content .comments .comments-inner {
 
   .hero-title > h2 {
     font-size: 1.2em; } }
+@media (min-width: 960px) {
+  h1.site-title {
+    margin: 3rem auto; } }
 @media (min-width: 1200px) {
+  h1.site-title {
+    margin: 4rem auto; }
+
   .hero-title-container {
     top: 15%; }
 

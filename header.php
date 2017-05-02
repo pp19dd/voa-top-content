@@ -96,13 +96,22 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 <?php get_template_part( "partials/metrics" ); ?>
 
 	<header class="voa-masthead">
-		<inner>
-			<logo class="voa-logo"><a href="//www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a></logo>
-			<menu>
-				<a class="menu-archives-link" href="<?php echo home_url( '' ); ?>/archives/">Archives</a>
-				<a class="menu-subscribe-link" href="//www.voanews.com/subscribe.html?src=voa-editor-picks" target="_blank">Subscribe<span class="no-mobile"> to the Newsletter</span></a>
-			</menu>
-		</inner>
+		<div class="voa-masthead-inner">
+			<a class="voa-logo" href="//www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a>
+			
+			<nav class="site-nav">
+				<div class="search-nav">
+					<a class="search-trigger" href="#"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></a>
+				</div>
+				<div class="blog-nav">
+					<a class="blog-nav-trigger" href="#"><i class="fa fa-lg fa-bars" aria-hidden="true"></i><span class="sr-only">Menu</span></a>
+				</div>
+			</nav>
+		</div>
+	</header>
+	
+	<header class="search-form-container">
+		<?php get_search_form('true'); ?>
 	</header>
 
 	<rows>

@@ -18,10 +18,11 @@ add_image_size( 'quarter-width-small', 273, 218, array("left", "top") );
 
 add_filter( 'image_size_names_choose', 'top_content_custom_sizes' );
 
-function theme_slug_setup() {
+function voa_theme_setup_options() {
     add_theme_support( 'title-tag' );
+    add_theme_support( 'html5', array( 'search-form' ) );
 }
-add_action( 'after_setup_theme', 'theme_slug_setup' );
+add_action( 'after_setup_theme', 'voa_theme_setup_options' );
 
 /*
 voa_top_content_admin_menu function is located in functions-layout.php
@@ -49,6 +50,19 @@ function top_content_custom_sizes( $sizes ) {
         )
     );
 }
+
+
+
+add_action( 'init', 'voa_register_blog_menus' );
+
+function voa_register_blog_menus() {
+    register_nav_menus( array(
+        'blog_header_menu' => 'Header Navigation Menu',
+        'blog_footer_menu' => 'Footer List Menu'
+    ) );
+}
+
+
 
 /*
 currently unused, but in case we need to force-trim excerpts

@@ -30,6 +30,9 @@ img {
 	width: 100%;
 }
 
+a, a:visited { color: $voablue; text-decoration: underline; }
+a:hover, a:active { color: $voared; text-decoration: underline; }
+
 ::-moz-selection { background-color: $highlight; }
 ::selection      { background-color: $highlight; }
 
@@ -45,48 +48,48 @@ rows {
 	max-width: 1200px;
 }
 
-.voa-masthead {
-	background-color: $voablue;
-	color: $offwhite;
-}
+// .voa-masthead {
+// 	background-color: $voablue;
+// 	color: $offwhite;
+// }
 
-.voa-masthead inner {
-	margin:auto;
-	display: flex;
-	max-width: 1200px;
-	justify-content: space-between;
-	align-items: center;
-}
+// .voa-masthead inner {
+// 	margin:auto;
+// 	display: flex;
+// 	max-width: 1200px;
+// 	justify-content: space-between;
+// 	align-items: center;
+// }
 
-.voa-masthead a {
-	display: block;
-	color: $offwhite;
-	text-decoration: none;
-}
+// .voa-masthead a {
+// 	display: block;
+// 	color: $offwhite;
+// 	text-decoration: none;
+// }
 
-.voa-logo {
-	height: 30px;
-	width: 71px;
-}
+// .voa-logo {
+// 	height: 30px;
+// 	width: 71px;
+// }
 
-.voa-masthead menu {
-	display: flex;
-	flex-direction: row;
-}
+// .voa-masthead menu {
+// 	display: flex;
+// 	flex-direction: row;
+// }
 
-.voa-masthead menu a {
-	font-size: .8em;
-	font-weight: 700;
-	letter-spacing: .025em;
-	padding: 1.25em;
-	text-transform: uppercase;
-	transition: background-color 200ms linear;
-}
+// .voa-masthead menu a {
+// 	font-size: .8em;
+// 	font-weight: 700;
+// 	letter-spacing: .025em;
+// 	padding: 1.25em;
+// 	text-transform: uppercase;
+// 	transition: background-color 200ms linear;
+// }
 
-.voa-masthead menu a:hover {
-	background-color: $bodybg;
-	color: $voablue;
-}
+// .voa-masthead menu a:hover {
+// 	background-color: $bodybg;
+// 	color: $voablue;
+// }
 
 /* ======================================================================== */
 
@@ -120,12 +123,10 @@ h1 {
 	text-align: center;
 	margin: auto;
 	font-weight: 300;
-	font-size: 3.5em;
+	font-size: 3.5rem;
 }
 
 h1 a, h1 a:hover { color: $offblack; text-decoration: none; }
-
-h1.site-title { line-height: 100%; margin: .75em auto; padding: 0; }
 
 /* ======================================================================== */
 
@@ -883,6 +884,7 @@ antirows img { }
 /* article comment section ***************************************************/
 
 article > content .comments {
+	border-bottom: 1px solid $vltgray;
 	padding: 0;
 }
 
@@ -1041,7 +1043,7 @@ article > content .comments .comments-inner {
 
 @media (max-width: 1200px) {
 
-	.voa-logo { margin-left: 1em; }
+	// .voa-logo { margin-left: 1em; }
 
 }
 
@@ -1209,7 +1211,7 @@ article > content .comments .comments-inner {
 
 @media (max-width: 450px) {
 
-	.voa-logo { margin-left: .5em; }
+	// .voa-logo { margin-left: .5em; }
 
 	h1 { font-size: 2em; }
 
@@ -1217,7 +1219,7 @@ article > content .comments .comments-inner {
 
 	row.rows_3 excerpt, row.rows_2 excerpt, row.rows_1 excerpt { display: none !important; }
 
-	.voa-masthead menu a { padding: 1.25em .8em; }
+	// .voa-masthead menu a { padding: 1.25em .8em; }
 
 	continue { display: none !important; opacity: 0 !important; visibility: hidden !important; }
 
@@ -1233,10 +1235,10 @@ article > content .comments .comments-inner {
 
 	h1 { font-size: 1.5em; }
 
-	.voa-masthead menu a {
-		font-weight: 400;
-		padding: 1.25em .5em;
-	}
+	// .voa-masthead menu a {
+	// 	font-weight: 400;
+	// 	padding: 1.25em .5em;
+	// }
 
 }
 
@@ -1244,8 +1246,84 @@ article > content .comments .comments-inner {
 
 
 
-// hero single post, mobile-first styles
+/* mobile-first styles ***************************************************************************/
 
+h1.site-title {
+	line-height: 1;
+	margin: 1rem auto;
+	padding: 0;
+}
+
+.voa-masthead {
+	background: $voablue;
+	color: $offwhite;
+	display: block;
+	position: relative;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+}
+
+.voa-masthead-inner {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0 auto;
+	max-width: calc(1200px - 2rem);
+	padding: 0 1rem;
+}
+
+.voa-masthead a {
+	color: $offwhite;
+	text-decoration: none;
+}
+
+.voa-logo {
+	flex-grow: 1;
+	padding: .5rem 0;
+}
+
+.voa-logo > img {
+	display: block;
+	height: 30px;
+	width: 71px;
+}
+
+.site-nav {
+	display: flex;
+	flex-grow: 1;
+	justify-content: flex-end;
+}
+
+.site-nav > * {
+	margin-left: 1rem;
+}
+
+.search-form-container {
+	background-color: $vltgray;
+	border-bottom: 1px solid $mltgray;
+	//display: none;
+	padding: 1rem;
+}
+
+.search-form {
+	align-content: center;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	max-width: calc(1200px - 2rem);
+}
+
+.search-form input {
+	font-size: 1rem;
+}
+
+
+
+
+
+// hero single post
 .hero-row {
 	display: block;
 }
@@ -1345,6 +1423,10 @@ article > content .comments .comments-inner {
 // eventually moving everything to mobile-first
 @media (min-width: 600px) {
 	
+	h1.site-title { margin: 2rem auto; }
+	
+	header.search-form-container .search-form { justify-content: flex-end; }
+	
 	.article-body > .alignleft {
 		margin-left: -4rem;
 		width: calc(50% + 4rem) !important;
@@ -1380,7 +1462,17 @@ article > content .comments .comments-inner {
 
 
 
+@media (min-width: 960px) {
+	
+	h1.site-title { margin: 3rem auto; }
+	
+}
+
+
+
 @media (min-width: 1200px) {
+	
+	h1.site-title { margin: 4rem auto; }
 	
 	.hero-title-container {
 		top: 15%;
