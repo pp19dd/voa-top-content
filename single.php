@@ -152,8 +152,6 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 
 						<div class="fb-comments" data-href="<?php the_permalink(); ?>" data-width="100%" data-numposts="5"></div>
 
-						<?php /*
-
 						<div id="fb-root"></div>
 						<script>(function(d, s, id) {
 						  var js, fjs = d.getElementsByTagName(s)[0];
@@ -163,8 +161,6 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 						  fjs.parentNode.insertBefore(js, fjs);
 						}(document, 'script', 'facebook-jssdk'));</script>
 
-						*/ ?>
-
 					</div>
 
 
@@ -173,7 +169,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 			<sidebar>
 				<sidebar-inner>
 
-					<?php /*<div id="comment-shortcut"><a href="#comment-section"><span class="comment-icon"><i class="fa fa-comment fa-2x" aria-hidden="true"></i></span><span class="comment-text"><span class="comment-count"><?php echo $comment_count . ' Comment' . ($comment_count != 1 ? 's' : ''); ?></span> <span class="comment-cta">Join the Discussion</span></span></a></div>*/ ?>
+					<div id="comment-shortcut"><a href="#comment-section"><span class="comment-icon"><i class="fa fa-comment fa-2x" aria-hidden="true"></i></span><span class="comment-text"><span class="comment-count"><?php echo $comment_count . ' Comment' . ($comment_count != 1 ? 's' : ''); ?></span> <span class="comment-cta">Join the Discussion</span></span></a></div>
 
 					<?php dynamic_sidebar( 'sidebar_article_right' ); ?>
 
