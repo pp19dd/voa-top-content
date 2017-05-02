@@ -8,7 +8,7 @@ $vmeta = array();
 
 $vmeta['title_suffix'] = "Voice of America";
 $vmeta['template_directory_uri'] = get_template_directory_uri();
-$vmeta['image'] = 'http://www.voanews.com/Content/responsive/VOA/img/top_logo_news.png';
+$vmeta['image'] = '//www.voanews.com/Content/responsive/VOA/img/top_logo_news.png';
 $vmeta['date_modified'] = ''; // $post->post_modified
 
 if ( is_front_page() ) {
@@ -85,7 +85,7 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 	<meta name="msapplication-TileImage" content="<?php echo $vmeta['template_directory_uri']; ?>/img/ico-144x144.png" />
 
 	<link rel="stylesheet" type="text/css" href="<?php echo $vmeta['template_directory_uri']; ?>/style.css?rand=<?php echo time(); ?>" />
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" />
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,400,700" />
 	<link rel="stylesheet" href="<?php echo $vmeta['template_directory_uri']; ?>/css/font-awesome.min.css" />
 
 	<?php wp_head(); ?>
@@ -97,11 +97,10 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 
 	<header class="voa-masthead">
 		<inner>
-			<logo class="voa-logo"><a href="http://www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a></logo>
+			<logo class="voa-logo"><a href="//www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a></logo>
 			<menu>
-				<?php /* <a href="<?php echo home_url( '' ); ?>/about/">About</a> */ ?>
 				<a class="menu-archives-link" href="<?php echo home_url( '' ); ?>/archives/">Archives</a>
-				<a class="menu-subscribe-link" href="http://www.voanews.com/subscribe.html?src=voa-editor-picks" target="_blank">Subscribe<span class="no-mobile"> to the Newsletter</span></a>
+				<a class="menu-subscribe-link" href="//www.voanews.com/subscribe.html?src=voa-editor-picks" target="_blank">Subscribe<span class="no-mobile"> to the Newsletter</span></a>
 			</menu>
 		</inner>
 	</header>

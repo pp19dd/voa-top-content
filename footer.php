@@ -1,10 +1,10 @@
 
 <footer>
     <inner>
-        <logo class="voa-logo"><a href="http://www.voanews.com/"><img src="<?php echo get_template_directory_uri() ?>/img/voa-logo_142x60_2x_f8f8f8.png" height="20" alt="VOA" /></a></logo>
-        <item><a href="http://www.insidevoa.com/">About VOA</a></item>
-        <item><a href="http://www.voanews.com/p/5339.html">Contact VOA</a></item>
-        <item><a href="http://www.insidevoa.com/">Media Relations</a></item>
+        <logo class="voa-logo"><a href="//www.voanews.com/"><img src="<?php echo get_template_directory_uri() ?>/img/voa-logo_142x60_2x_f8f8f8.png" height="20" alt="VOA" /></a></logo>
+        <item><a href="//www.insidevoa.com/">About VOA</a></item>
+        <item><a href="//www.voanews.com/p/5339.html">Contact VOA</a></item>
+        <item><a href="//www.insidevoa.com/">Media Relations</a></item>
     </inner>
 </footer>
 

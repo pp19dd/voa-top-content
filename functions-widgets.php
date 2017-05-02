@@ -70,8 +70,8 @@ class VOA_Newsletter_Teaser extends WP_Widget {
 		</style>
 		
 		<div class="voa-newsletter-teaser">
-			<a class="voa-newsletter-teaser-img" href="http://www.voanews.com/subscribe.html?source=editors-picks-img-tile"><img src="<?php echo get_template_directory_uri(); ?>/img/2016-12_today-at-voa_promo-tile.png" alt="today at VOA: Informing, engaging, and connecting the people of the world." /></a>
-			<a class="voa-newsletter-teaser-button" href="http://www.voanews.com/subscribe.html?source=editors-picks-signup-button">Subscribe Today!</a>
+			<a class="voa-newsletter-teaser-img" href="//www.voanews.com/subscribe.html?source=editors-picks-img-tile"><img src="<?php echo get_template_directory_uri(); ?>/img/2016-12_today-at-voa_promo-tile.png" alt="today at VOA: Informing, engaging, and connecting the people of the world." /></a>
+			<a class="voa-newsletter-teaser-button" href="//www.voanews.com/subscribe.html?source=editors-picks-signup-button">Subscribe Today!</a>
 		</div>
 		
 		<?php
