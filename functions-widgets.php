@@ -264,9 +264,11 @@ class VOA_Recent_Posts extends WP_Widget {
 		$page_post_id = $post->ID;
 		
 		$RPW_args = array(
+			'post_type'      => 'post',
+			'post_status'    => 'publish',
 			'orderby'        => 'date',
 			'order'          => 'DESC',
-			'nopaging'       => true,
+			'nopaging'       => false,
 			'posts_per_page' => 20
 		);
 		
