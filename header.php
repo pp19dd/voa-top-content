@@ -101,10 +101,13 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 			
 			<nav class="site-nav">
 				<div class="search-nav">
-					<a class="search-trigger" href="#"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></a>
+					<a class="nav-trigger search-trigger" href="#"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></a>
 				</div>
 				<div class="blog-nav">
-					<a class="blog-nav-trigger" href="#"><i class="fa fa-lg fa-bars" aria-hidden="true"></i><span class="sr-only">Menu</span></a>
+					<a class="nav-trigger blog-nav-trigger" href="#"><i class="fa fa-lg fa-bars" aria-hidden="true"></i><span class="sr-only">Menu</span></a>
+				</div>
+				<div class="lang-nav">
+					<a class="nav-trigger lang-nav-trigger" href="#"><i class="fa fa-lg fa-language" aria-hidden="true"></i><span class="sr-only">Languages</span></a>
 				</div>
 			</nav>
 		</div>

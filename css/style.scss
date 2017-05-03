@@ -359,9 +359,6 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: $offw
 /* ======================================================================== */
 /* single article */
 /* ======================================================================== */
-body.single {
-	background-color: $bodybg;
-}
 
 .single .rows_1,
 .page .rows_1,
@@ -375,7 +372,14 @@ body.single {
 }
 
 article > content {
+	border-color: $vltgray;
+	border-style: solid;
+	border-width: 1px 1px 0 1px;
 	width: 65.666666%;
+}
+
+.single article > content {
+	border: none;
 }
 
 article > content .content-part {
@@ -1297,13 +1301,13 @@ h1.site-title {
 }
 
 .site-nav > * {
-	margin-left: 1rem;
+	margin-left: 1.5rem;
 }
 
 .search-form-container {
 	background-color: $vltgray;
 	border-bottom: 1px solid $mltgray;
-	//display: none;
+	display: none;
 	padding: 1rem;
 }
 
