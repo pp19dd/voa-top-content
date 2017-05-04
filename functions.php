@@ -154,7 +154,7 @@ function voa_language_service_tag( $post_id, $display = true ) {
 
         } else {
             
-            return $cat[0]->slug;
+            return $cat[0]->name;
         }
 
     }
