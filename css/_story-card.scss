@@ -1,0 +1,138 @@
+
+.card-row {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	margin: 0;
+	padding: 0;
+}
+
+.story-card {
+	flex-grow: 1;
+	height: 100%;
+	min-height: 360px;
+	max-height: 80vh;
+	margin: 0 0 1.5rem 0;
+	padding: 0;
+	position: relative;
+	width: 100%;
+}
+
+.story-card > a {
+	// background-image in story-card.php
+	background-color: #999;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	xxxxborder: 1px solid #ddd;
+	display: block;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	width: 100%;
+}
+
+.story-card > a:hover {
+	// hover background-image in story-card.php
+}
+
+.story-card > a > .text {
+	margin-left: .5rem;
+	text-align: left;
+	width: 80%;
+}
+
+.story-card > a h2 {
+	background-color: #333;
+	box-decoration-break: clone;
+	box-shadow: .5rem 0 0 #333, -.5rem 0 0 #333;
+	color: #fff;
+	display: inline;
+	font-family: sans-serif;
+	font-size: 1.5rem;
+	font-weight: 300;
+	line-height: 1.35em;
+	padding: .25rem 0;
+	text-decoration: none;
+	
+	-webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.story-card > a:hover h2 {
+	background-color: #1330bf;
+	box-shadow: .5rem 0 0 #1330bf, -.5rem 0 0 #1330bf;
+}
+
+.story-card > a p,
+.story-card > a .continue {
+	background-color: transparent;
+	box-decoration-break: clone;
+	box-shadow: .5rem 0 0 transparent, -.5rem 0 0 transparent;
+	color: transparent;
+	display: inline;
+	font-family: sans-serif;
+	font-size: 1rem;
+	font-weight: 300;
+	line-height: 1.25rem;
+	padding: .15rem 0;
+	text-decoration: none;
+	
+	-webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.story-card > a:hover p {
+	background-color: #333;
+	box-shadow: .5rem 0 0 #333, -.5rem 0 0 #333;
+	color: #fff;
+}
+
+.story-card > a:hover .continue {
+	background-color: #1330bf;
+	box-shadow: .5rem 0 0 #1330bf, -.5rem 0 0 #1330bf;
+	color: #fff;
+}
+
+.video-icon {
+	background: #1330bf;
+	border-color: #eee;
+	border-style: solid;
+	border-width: 0 0 1px 1px;
+	color: #fff;
+	line-height: 1;
+	padding: 1rem;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 10;
+}
+
+.category {
+	position: absolute;
+	bottom: .75rem;
+	right: 0;
+	background: #d41010;
+	border-color: #eee;
+	border-style: solid;
+	border-width: 1px 0 1px 1px;
+	color: #fff;
+	font-family: sans-serif;
+	font-size: .8rem;
+	line-height: 1;
+	margin: 0;
+	padding: .5rem 1rem .5rem .75rem;
+}
+
+.clearfix:after {
+	content: "";
+	display: table;
+	clear: both;
+	height: .5rem;
+}

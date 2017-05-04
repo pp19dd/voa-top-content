@@ -18,13 +18,15 @@ $posts_html = get_voa_top_posts();
             </breakup>
         </row>
 <?php foreach( $posts_html["posts"] as $posts ) { ?>
-        <row class="rows_<?php echo count($posts) ?>">
+        <row class="card-row card-row-<?php echo count($posts) ?>">
+        <!-- <row class="rows_<?php echo count($posts) ?>"> -->
 <?php
         foreach( $posts as $k => $post ) {
             $image = voa_top_content_get_image_url($post["thumbnail_id"], $k, count($posts) );
             set_query_var( "k", $k );
             set_query_var( "image", $image );
-            get_template_part("partials/article", count($posts) );
+            //get_template_part("partials/article", count($posts) );
+            get_template_part("partials/story-card");
         }
      ?>
         </row>
@@ -40,6 +42,7 @@ if( !isset( $_GET['vday'])) {
 ?>
 
 <script>
+/*
 function voa_apply_events_cluster(selector) {
 
     jQuery("article", selector).mouseover(function() {
@@ -79,6 +82,7 @@ function voa_apply_events_cluster(selector) {
 }
 
 voa_apply_events_cluster(jQuery("rows"));
+*/
 
 function voa_load_page(vday, that) {
     jQuery.get("?vday=" + vday, function(rh) {
@@ -87,7 +91,7 @@ function voa_load_page(vday, that) {
         jQuery(that).hide();
 
         var new_node = jQuery(that).next();
-        voa_apply_events_cluster( new_node );
+        //voa_apply_events_cluster( new_node );
 
         new_node.hide().slideToggle();
     });

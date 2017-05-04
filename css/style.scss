@@ -136,6 +136,7 @@ breakup {
 	width: 100%;
 	flex-direction: row;
 	align-items: center;
+	margin: 0 0 2rem 0;
 }
 
 blank-space {
@@ -158,11 +159,12 @@ breakup h2 {
 rows {
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 1rem;
 }
 
 rows row.rows_1, rows row.rows_2, rows row.rows_3 {
-	padding-bottom:1em;
-	margin-top:1em;
+	//padding-bottom:1em;
+	//margin-top:1em;
 	display: flex;
 	flex-direction: row;
 }
@@ -346,22 +348,11 @@ continue span { padding:10px; background-color: rgba(19,49,191, 1); color: $offw
 
 
 /* ======================================================================== */
-
-@media all and (max-width:1200px){
-
-	article > content img,
-	article inner img {
-		height: auto;
-		width: 100%;
-	}
-}
-
-/* ======================================================================== */
 /* single article */
 /* ======================================================================== */
 
-.single .rows_1,
-.page .rows_1,
+.single  .rows_1,
+.page    .rows_1,
 .archive .rows_1 { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
 
 .single article,
@@ -484,68 +475,6 @@ article > content .article-tags header {
 	border-top: 1px solid $vltgray;
 	border-bottom: 1px solid $vltgray;
 }
-
-// .article-intro {
-// 	display: block;
-// 	position: relative;
-// }
-
-// .article-title {
-// 	position: absolute;
-// 	top: 35%;
-// 	width: 100%;
-// 	z-index: 100;
-// }
-
-// .article-title-wrap {
-// 	display: block;
-// 	margin: 0 auto;
-// 	max-width: 100%;
-// 	width: 1200px;
-// }
-
-// .article-title-text {
-// 	background: rgba(0, 0, 0, .4);
-// 	color: $offwhite;
-// 	display: block;
-// 	font-size: 3em;
-// 	font-weight: 700;
-// 	max-width: 80%;
-// 	text-align: left;
-// 	padding: .5em;
-// }
-
-// .undermedia {
-// 	max-height: 900px;
-// 	overflow: hidden;
-// 	width: 100%;
-// 	z-index: 50;
-// }
-
-// .undermedia > img {
-// 	display: block; /* needed to remove blank space below img */
-// 	height: auto;
-// 	max-width: 100%;
-// 	width: 100%;
-// }
-
-// .undermedia-caption {
-// 	bottom: 0;
-// 	position: absolute;
-// 	width: 100%;
-// 	z-index: 100;
-// }
-
-// .undermedia-caption > p {
-// 	background: rgba(0, 0, 0, .4);
-// 	border-top: 1px solid $midgray;
-// 	color: $vltgray;
-// 	margin: .5em auto 2em auto;
-// 	max-width: calc(1200px - 1em);
-// 	padding: .5em;
-// 	width: calc(80% - 1em);
-// }
-
 
 
 
@@ -1327,6 +1256,14 @@ h1.site-title {
 
 
 
+/* homepage story-card layout ********************************************************************/
+
+@import 'story-card';
+
+
+
+
+
 // hero single post
 .hero-row {
 	display: block;
@@ -1469,6 +1406,29 @@ h1.site-title {
 @media (min-width: 960px) {
 	
 	h1.site-title { margin: 3rem auto; }
+	
+	.card-row {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	
+	.card-row-1 > .story-card,
+	.card-row-3 > .story-card {
+		height: 675px;
+	}
+	
+	.story-card {
+		flex-basis: 0;
+	}
+	
+	.card-row-3 > .card-1 {
+		flex-grow: 2;
+	}
+	
+	.card-row-3 > .card-2 > a,
+	.card-row-3 > .card-3 > a {
+		margin-left: 1.5rem;
+	}
 	
 }
 
