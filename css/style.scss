@@ -10,6 +10,7 @@ Version:      1.0
 
 
 @import 'colors';
+@import 'social-media';
 
 // need reset
 * { margin:0; padding: 0; }
@@ -369,7 +370,10 @@ article > content {
 	width: 65.666666%;
 }
 
-.single article > content {
+.archive article > content { padding-top: 2rem; }
+
+.single article > content,
+.archive article > content .content-part {
 	border: none;
 }
 
@@ -486,8 +490,8 @@ article > content .article-tags header {
 	padding-top: 2em;
 }
 
-.author-avatar { height: 67px; width: 67px; margin-right: .5em; }
-.author-avatar img { border-radius: 36px; margin-right: 1em; }
+.single .author-avatar { height: 67px; width: 67px; margin-right: .5rem; }
+.single .author-avatar img { border-radius: 36px; margin-right: 1rem; }
 
 
 /*.author-pubdate */
@@ -553,21 +557,6 @@ article > content .article-tags header {
 	text-align: center;
 	width: 100%;
 }
-
-.article-share-inner ul li.share-facebook   a { background-color: $facebook_color; }
-.article-share-inner ul li.share-googleplus a { background-color: $googleplus_color; }
-.article-share-inner ul li.share-linkedin   a { background-color: $linkedin_color; }
-.article-share-inner ul li.share-pinterest  a { background-color: $pinterest_color; }
-.article-share-inner ul li.share-reddit     a { background-color: $reddit_color; }
-.article-share-inner ul li.share-twitter    a { background-color: $twitter_color; }
-
-// hover colors exactly 10% darker than official brand colors
-.article-share-inner ul li.share-facebook   a:hover { background-color: darken($facebook_color, 10%); }
-.article-share-inner ul li.share-googleplus a:hover { background-color: darken($googleplus_color, 10%); }
-.article-share-inner ul li.share-linkedin   a:hover { background-color: darken($linkedin_color, 10%); }
-.article-share-inner ul li.share-pinterest  a:hover { background-color: darken($pinterest_color, 10%); }
-.article-share-inner ul li.share-reddit     a:hover { background-color: darken($reddit_color, 10%); }
-.article-share-inner ul li.share-twitter    a:hover { background-color: darken($twitter_color, 10%); }
 
 
 
@@ -874,12 +863,10 @@ article > content .comments .comments-inner {
 .page .archive-date > breakup,
 .archive .archive-date > breakup {
 	background-color: $bodybg;
-	padding: 2em 0;
+	padding: 2rem 0;
 }
 
 .archive-teasers {
-	border-left: 1px solid $vltgray;
-	border-right: 1px solid $vltgray;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -887,7 +874,7 @@ article > content .comments .comments-inner {
 }
 
 .archive-teasers article {
-	padding: 1em 1.5%;
+	padding: 1rem 1.5%;
 	width: 30.333333%;
 }
 
@@ -1359,6 +1346,52 @@ h1.site-title {
 
 
 
+.author-bio-box {
+	// display: flex;
+	// flex-direction: row;
+	// flex-wrap: nowrap;
+	padding-bottom: 2rem;
+}
+
+.author-bio-box .author-avatar {
+	// flex-basis: 80px;
+	// flex-grow: 1;
+	float: left;
+	margin: 0 1rem .5rem 0;
+	height: 80px;
+	width: 80px;
+}
+
+.author-bio-box .author-avatar img { border-radius: 10px; }
+
+.author-bio-box .author-bio {
+	// flex-basis: 0;
+	// flex-grow: 3;
+}
+
+.author-bio-box h1 {
+	margin-bottom: .5rem;
+	text-align: left;
+}
+
+.author-bio-box p {
+	line-height: 1.35;
+	margin-bottom: .5rem;
+}
+
+.author-bio-box .author-social {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+
+
 
 
 // eventually moving everything to mobile-first
@@ -1388,6 +1421,12 @@ h1.site-title {
 	.hero-title,
 	.hero-undermedia-caption > p {
 		margin: 0 4rem;
+	}
+	
+	.author-bio-box .author-avatar { 
+		height: 120px;
+		margin-right: 2rem;
+		width: 120px;
 	}
 	
 }
@@ -1470,6 +1509,8 @@ h1.site-title {
 		margin-left: 18px;
 		width: calc(100% - 18px);
 	}
+	
+	.author .author-avatar { height: 160px; width: 160px; }
 	
 }
 

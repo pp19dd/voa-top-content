@@ -201,3 +201,24 @@ function my_image_class_filter($classes) {
     return $classes . ' another-image-class';
 }
 add_filter('get_image_tag_class', 'my_image_class_filter');
+
+
+
+
+// adds social media links to user profile page
+// added by smekosh on 2014-08-26
+function voa_social_media_links($profile_fields) {
+
+    // Add new fields
+    $profile_fields['facebook']   = 'Facebook URL';
+    $profile_fields['googleplus'] = 'Google+ URL';
+    $profile_fields['instagram']  = 'Instagram URL';
+    $profile_fields['pinterest']  = 'Pinterest URL';
+    $profile_fields['soundcloud'] = 'SoundCloud URL';
+    $profile_fields['twitter']    = 'Twitter URL';
+    $profile_fields['youtube']    = 'YouTube URL';
+
+    return $profile_fields;
+}
+
+add_filter('user_contactmethods', 'voa_social_media_links');

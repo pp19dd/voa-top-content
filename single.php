@@ -56,7 +56,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 		<article>
 			<content>
 				<?php if (!$hero) { get_template_part( 'partials/single-basic-intro' ); } ?>
-								
+				
 				<section class="content-part article-author">
 
 					<?php $voa_byline = get_post_meta( get_the_ID(), '_voa_byline', true ); ?>
@@ -83,7 +83,6 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 
 
 				<section class="content-part article-body"><?php the_content(); ?></section>
-
 
 				<?php get_template_part( "partials/share-buttons" ); ?>
 

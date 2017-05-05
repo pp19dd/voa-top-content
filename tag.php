@@ -11,7 +11,7 @@
 					<h1><?php the_archive_title(); ?></h1>
 				</section>
 				
-				<section class="archive-teasers">
+				<section class="archive-teasers content-part">
 
 					<?php while ( have_posts() ) : the_post(); ?>
 						

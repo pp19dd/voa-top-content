@@ -21,11 +21,11 @@ $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('a
 			<content>
 				
 				<section class="content-part">
-					<h1>Posts by <?php echo $curauth->nickname; ?></h1>
+					<?php get_template_part( 'partials/author-bio' ); ?>
 				</section>
 
 				<?php if ( have_posts() ) : ?>
-				<section class="archive-teasers">
+				<section class="archive-teasers content-part ">
 
 					<?php while ( have_posts() ) : the_post(); ?>
 						

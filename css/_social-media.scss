@@ -1,0 +1,39 @@
+// social media CSS
+
+.author-facebook   a .fa-square { color: $facebook_color; }
+.author-googleplus a .fa-square { color: $googleplus_color; }
+.author-instagram  a .fa-square { color: $instagram_color; }
+.author-linkedin   a .fa-square { color: $linkedin_color; }
+.author-pinterest  a .fa-square { color: $pinterest_color; }
+.author-reddit     a .fa-square { color: $reddit_color; }
+.author-soundcloud a .fa-square { color: $soundcloud_color; }
+.author-twitter    a .fa-square { color: $twitter_color; }
+.author-youtube    a .fa-square { color: $youtube_color; }
+
+// hover colors exactly 10% darker than official brand colors
+.author-facebook   a:hover .fa-square { color: darken($facebook_color, 10%); }
+.author-googleplus a:hover .fa-square { color: darken($googleplus_color, 10%); }
+.author-instagram  a:hover .fa-square { color: darken($instagram_color, 10%); }
+.author-linkedin   a:hover .fa-square { color: darken($linkedin_color, 10%); }
+.author-pinterest  a:hover .fa-square { color: darken($pinterest_color, 10%); }
+.author-reddit     a:hover .fa-square { color: darken($reddit_color, 10%); }
+.author-soundcloud a:hover .fa-square { color: darken($soundcloud_color, 10%); }
+.author-twitter    a:hover .fa-square { color: darken($twitter_color, 10%); }
+.author-youtube    a:hover .fa-square { color: darken($youtube_color, 10%); }
+
+
+
+.article-share-inner ul li.share-facebook   a { background-color: $facebook_color; }
+.article-share-inner ul li.share-googleplus a { background-color: $googleplus_color; }
+.article-share-inner ul li.share-linkedin   a { background-color: $linkedin_color; }
+.article-share-inner ul li.share-pinterest  a { background-color: $pinterest_color; }
+.article-share-inner ul li.share-reddit     a { background-color: $reddit_color; }
+.article-share-inner ul li.share-twitter    a { background-color: $twitter_color; }
+
+// hover colors exactly 10% darker than official brand colors
+.article-share-inner ul li.share-facebook   a:hover { background-color: darken($facebook_color, 10%); }
+.article-share-inner ul li.share-googleplus a:hover { background-color: darken($googleplus_color, 10%); }
+.article-share-inner ul li.share-linkedin   a:hover { background-color: darken($linkedin_color, 10%); }
+.article-share-inner ul li.share-pinterest  a:hover { background-color: darken($pinterest_color, 10%); }
+.article-share-inner ul li.share-reddit     a:hover { background-color: darken($reddit_color, 10%); }
+.article-share-inner ul li.share-twitter    a:hover { background-color: darken($twitter_color, 10%); }

@@ -7,6 +7,96 @@ Author URI:   https://www.voanews.com/
 Version:      1.0
 */
 /* colors for VOA blogs */
+.author-facebook a .fa-square {
+  color: #3b5998; }
+
+.author-googleplus a .fa-square {
+  color: #db4437; }
+
+.author-instagram a .fa-square {
+  color: #000000; }
+
+.author-linkedin a .fa-square {
+  color: #0077b5; }
+
+.author-pinterest a .fa-square {
+  color: #bd081c; }
+
+.author-reddit a .fa-square {
+  color: #ff4500; }
+
+.author-soundcloud a .fa-square {
+  color: #f84f0f; }
+
+.author-twitter a .fa-square {
+  color: #55acee; }
+
+.author-youtube a .fa-square {
+  color: #cd201f; }
+
+.author-facebook a:hover .fa-square {
+  color: #2d4373; }
+
+.author-googleplus a:hover .fa-square {
+  color: #bd2e22; }
+
+.author-instagram a:hover .fa-square {
+  color: black; }
+
+.author-linkedin a:hover .fa-square {
+  color: #005582; }
+
+.author-pinterest a:hover .fa-square {
+  color: #8c0615; }
+
+.author-reddit a:hover .fa-square {
+  color: #cc3700; }
+
+.author-soundcloud a:hover .fa-square {
+  color: #ce3d06; }
+
+.author-twitter a:hover .fa-square {
+  color: #2795e9; }
+
+.author-youtube a:hover .fa-square {
+  color: #a11918; }
+
+.article-share-inner ul li.share-facebook a {
+  background-color: #3b5998; }
+
+.article-share-inner ul li.share-googleplus a {
+  background-color: #db4437; }
+
+.article-share-inner ul li.share-linkedin a {
+  background-color: #0077b5; }
+
+.article-share-inner ul li.share-pinterest a {
+  background-color: #bd081c; }
+
+.article-share-inner ul li.share-reddit a {
+  background-color: #ff4500; }
+
+.article-share-inner ul li.share-twitter a {
+  background-color: #55acee; }
+
+.article-share-inner ul li.share-facebook a:hover {
+  background-color: #2d4373; }
+
+.article-share-inner ul li.share-googleplus a:hover {
+  background-color: #bd2e22; }
+
+.article-share-inner ul li.share-linkedin a:hover {
+  background-color: #005582; }
+
+.article-share-inner ul li.share-pinterest a:hover {
+  background-color: #8c0615; }
+
+.article-share-inner ul li.share-reddit a:hover {
+  background-color: #cc3700; }
+
+.article-share-inner ul li.share-twitter a:hover {
+  background-color: #2795e9; }
+
 * {
   margin: 0;
   padding: 0; }
@@ -345,7 +435,11 @@ article > content {
   border-width: 1px 1px 0 1px;
   width: 65.666666%; }
 
-.single article > content {
+.archive article > content {
+  padding-top: 2rem; }
+
+.single article > content,
+.archive article > content .content-part {
   border: none; }
 
 article > content .content-part {
@@ -438,14 +532,14 @@ article > content .article-tags header {
   justify-content: space-between;
   padding-top: 2em; }
 
-.author-avatar {
+.single .author-avatar {
   height: 67px;
   width: 67px;
-  margin-right: .5em; }
+  margin-right: .5rem; }
 
-.author-avatar img {
+.single .author-avatar img {
   border-radius: 36px;
-  margin-right: 1em; }
+  margin-right: 1rem; }
 
 /*.author-pubdate */
 .author-social {
@@ -502,42 +596,6 @@ article > content .article-tags header {
   padding: .5em 0;
   text-align: center;
   width: 100%; }
-
-.article-share-inner ul li.share-facebook a {
-  background-color: #3b5998; }
-
-.article-share-inner ul li.share-googleplus a {
-  background-color: #db4437; }
-
-.article-share-inner ul li.share-linkedin a {
-  background-color: #0077b5; }
-
-.article-share-inner ul li.share-pinterest a {
-  background-color: #bd081c; }
-
-.article-share-inner ul li.share-reddit a {
-  background-color: #ff4500; }
-
-.article-share-inner ul li.share-twitter a {
-  background-color: #55acee; }
-
-.article-share-inner ul li.share-facebook a:hover {
-  background-color: #2d4373; }
-
-.article-share-inner ul li.share-googleplus a:hover {
-  background-color: #bd2e22; }
-
-.article-share-inner ul li.share-linkedin a:hover {
-  background-color: #005582; }
-
-.article-share-inner ul li.share-pinterest a:hover {
-  background-color: #8c0615; }
-
-.article-share-inner ul li.share-reddit a:hover {
-  background-color: #cc3700; }
-
-.article-share-inner ul li.share-twitter a:hover {
-  background-color: #2795e9; }
 
 article > content .article-categories header,
 article > content .article-tags header {
@@ -806,18 +864,16 @@ article > content .comments .comments-inner {
 .page .archive-date > breakup,
 .archive .archive-date > breakup {
   background-color: #eee;
-  padding: 2em 0; }
+  padding: 2rem 0; }
 
 .archive-teasers {
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start; }
 
 .archive-teasers article {
-  padding: 1em 1.5%;
+  padding: 1rem 1.5%;
   width: 30.333333%; }
 
 .archive-teasers article .teaser-img-container {
@@ -1331,6 +1387,34 @@ h1.site-title {
   background: transparent;
   color: #333; }
 
+.author-bio-box {
+  padding-bottom: 2rem; }
+
+.author-bio-box .author-avatar {
+  float: left;
+  margin: 0 1rem .5rem 0;
+  height: 80px;
+  width: 80px; }
+
+.author-bio-box .author-avatar img {
+  border-radius: 10px; }
+
+.author-bio-box h1 {
+  margin-bottom: .5rem;
+  text-align: left; }
+
+.author-bio-box p {
+  line-height: 1.35;
+  margin-bottom: .5rem; }
+
+.author-bio-box .author-social {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
 @media (min-width: 600px) {
   h1.site-title {
     margin: 2rem auto; }
@@ -1354,7 +1438,12 @@ h1.site-title {
 
   .hero-title,
   .hero-undermedia-caption > p {
-    margin: 0 4rem; } }
+    margin: 0 4rem; }
+
+  .author-bio-box .author-avatar {
+    height: 120px;
+    margin-right: 2rem;
+    width: 120px; } }
 @media (min-width: 750px) {
   .hero-title > h1 {
     font-size: 2em; }
@@ -1428,7 +1517,11 @@ h1.site-title {
 
   .card-row-3 > .card-3 > a {
     margin-left: 18px;
-    width: calc(100% - 18px); } }
+    width: calc(100% - 18px); }
+
+  .author .author-avatar {
+    height: 160px;
+    width: 160px; } }
 @media (min-width: 1200px) {
   h1.site-title {
     margin: 4rem auto; }
