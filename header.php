@@ -87,6 +87,9 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 	<link rel="stylesheet" type="text/css" href="<?php echo $vmeta['template_directory_uri']; ?>/style.css?rand=<?php echo time(); ?>" />
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,400,700" />
 	<link rel="stylesheet" href="<?php echo $vmeta['template_directory_uri']; ?>/css/font-awesome.min.css" />
+	
+	<?php // Polyfill.io reads the User-Agent header of each request and returns polyfills that are suitable for the requesting browser. Documentation: https://polyfill.io/v2/docs/ ?>
+	<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 
 	<?php wp_head(); ?>
 </head>
