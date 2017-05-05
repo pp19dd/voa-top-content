@@ -1144,7 +1144,7 @@ h1.site-title {
   height: 100%;
   min-height: 360px;
   max-height: 80vh;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 24px 0;
   padding: 0;
   position: relative;
   width: 100%; }
@@ -1159,6 +1159,7 @@ h1.site-title {
   height: 100%;
   margin: 0;
   padding: 0;
+  position: relative;
   text-decoration: none;
   width: 100%; }
 
@@ -1354,12 +1355,41 @@ h1.site-title {
   .hero-title,
   .hero-undermedia-caption > p {
     margin: 0 4rem; } }
-@media (min-width: 750px), (min-height: 750px) {
+@media (min-width: 750px) {
   .hero-title > h1 {
     font-size: 2em; }
 
   .hero-title > h2 {
-    font-size: 1.2em; } }
+    font-size: 1.2em; }
+
+  .card-row {
+    flex-direction: row;
+    justify-content: space-between; }
+
+  .story-card {
+    flex-basis: 0;
+    height: 450px; }
+
+  .card-row-3 {
+    flex-wrap: wrap; }
+
+  .card-row-3 > .card-1 {
+    flex-basis: 100%;
+    flex-grow: 1; }
+
+  .card-row-2 > .card-1,
+  .card-row-2 > .card-2,
+  .card-row-3 > .card-2,
+  .card-row-3 > .card-3 {
+    flex-basis: calc(50% - 12px); }
+
+  .card-row-2 > .card-1,
+  .card-row-3 > .card-2 {
+    margin-right: 12px; }
+
+  .card-row-2 > .card-2,
+  .card-row-3 > .card-3 {
+    margin-left: 12px; } }
 @media (min-width: 960px) {
   h1.site-title {
     margin: 3rem auto; }
@@ -1368,19 +1398,37 @@ h1.site-title {
     flex-direction: row;
     justify-content: space-between; }
 
-  .card-row-1 > .story-card,
-  .card-row-3 > .story-card {
-    height: 675px; }
+  .card-row-3 {
+    flex-wrap: nowrap; }
 
   .story-card {
-    flex-basis: 0; }
+    flex-basis: 0;
+    height: 675px; }
 
   .card-row-3 > .card-1 {
+    flex-basis: 50%;
     flex-grow: 2; }
 
-  .card-row-3 > .card-2 > a,
+  .card-row-3 > .card-2 {
+    flex-basis: 25%;
+    margin-right: 0; }
+
+  .card-row-3 > .card-3 {
+    flex-basis: 25%;
+    margin-left: 0; }
+
+  .card-row-3 > .card-1 > a {
+    margin-right: 12px;
+    width: calc(100% - 12px); }
+
+  .card-row-3 > .card-2 > a {
+    margin-left: 12px;
+    margin-right: 6px;
+    width: calc(100% - 18px); }
+
   .card-row-3 > .card-3 > a {
-    margin-left: 1.5rem; } }
+    margin-left: 18px;
+    width: calc(100% - 18px); } }
 @media (min-width: 1200px) {
   h1.site-title {
     margin: 4rem auto; }
