@@ -18,12 +18,11 @@ get_header();
 
 the_post();
 
-// use the hero intro or show standard post intro
-if ( get_post_meta( $post->ID, "_voa_use_hero_image_intro", true ) == 'yes' ) {
-	$hero = (bool) true;
-} else {
-	$hero = (bool) false;
-}
+// get the post style; determine if it's a basic or hero layout (default to basic)
+$intro_style = get_post_meta( $post->ID, "_voa_post_intro_style", true );
+$hero = ( substr( $intro_style, 0, 4 ) == 'hero' ? (bool) true : (bool) false );
+
+
 
 // direct FB API call; TODO needs caching and better error checking
 //$comment_count = voa_fb_comment_count( get_the_permalink() );
