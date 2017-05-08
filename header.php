@@ -108,6 +108,7 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 				</div>
 				<div class="blog-nav">
 					<a class="nav-trigger blog-nav-trigger" href="#"><i class="fa fa-lg fa-bars" aria-hidden="true"></i><span class="sr-only">Menu</span></a>
+					<?php wp_nav_menu( array( 'theme_location' => 'Header Navigation Menu' ) ); ?>
 				</div>
 				<div class="lang-nav">
 					<a class="nav-trigger lang-nav-trigger" href="#"><i class="fa fa-lg fa-language" aria-hidden="true"></i><span class="sr-only">Languages</span></a>
