@@ -11,6 +11,7 @@ Version:      1.0
 
 @import 'colors';
 @import 'social-media';
+@import 'prefixed-mixins';
 
 // need reset
 * { margin:0; padding: 0; }
@@ -49,73 +50,28 @@ rows {
 	max-width: 1200px;
 }
 
-// .voa-masthead {
-// 	background-color: $voablue;
+// footer {
+// 	background-color: $offblack;
 // 	color: $offwhite;
 // }
 
-// .voa-masthead inner {
-// 	margin:auto;
+// footer inner {
 // 	display: flex;
-// 	max-width: 1200px;
-// 	justify-content: space-between;
 // 	align-items: center;
+// 	justify-content: space-between;
+// 	margin: auto;
+// 	max-width: 1200px;
 // }
 
-// .voa-masthead a {
-// 	display: block;
+// footer item a {
 // 	color: $offwhite;
-// 	text-decoration: none;
-// }
-
-// .voa-logo {
-// 	height: 30px;
-// 	width: 71px;
-// }
-
-// .voa-masthead menu {
-// 	display: flex;
-// 	flex-direction: row;
-// }
-
-// .voa-masthead menu a {
+// 	display: inline-block;
 // 	font-size: .8em;
-// 	font-weight: 700;
-// 	letter-spacing: .025em;
-// 	padding: 1.25em;
+// 	font-weight: bold;
+// 	padding: 1em;
+// 	text-decoration: none;
 // 	text-transform: uppercase;
-// 	transition: background-color 200ms linear;
 // }
-
-// .voa-masthead menu a:hover {
-// 	background-color: $bodybg;
-// 	color: $voablue;
-// }
-
-/* ======================================================================== */
-
-footer {
-	background-color: $offblack;
-	color: $offwhite;
-}
-
-footer inner {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin: auto;
-	max-width: 1200px;
-}
-
-footer item a {
-	color: $offwhite;
-	display: inline-block;
-	font-size: .8em;
-	font-weight: bold;
-	padding: 1em;
-	text-decoration: none;
-	text-transform: uppercase;
-}
 
 /* ======================================================================== */
 
@@ -938,7 +894,7 @@ article > content .comments .comments-inner {
 	background: $offwhite;
 	border: 1px solid #ccc;
 	border-radius: 5px;
-	box-shadow: 0 1px 1px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.1);
+	@include box-shadow( 0 1px 1px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.1) );
 	color: $voablue;
 	display: inline-block;
 	font-size: .8em;
@@ -954,7 +910,7 @@ article > content .comments .comments-inner {
 
 .lazy-load-button:hover .lazy-load-button-text {
 	background: #ccc;
-	box-shadow: none;
+	@include box-shadow( none );
 	color: $offwhite;
 	cursor: pointer;
 }
@@ -1083,7 +1039,7 @@ article > content .comments .comments-inner {
 
 	.single-basic-intro h2 {
 		font-size: 1em;
-		padding: 0 1rem 2rem 1rem;
+		padding: 0 1rem;
 	}
 
 	article > content .article-categories header, article > content .article-tags header { margin-left: 0; width: 50%; }
@@ -1174,6 +1130,11 @@ article > content .comments .comments-inner {
 
 
 
+
+
+
+
+
 /* mobile-first styles ***************************************************************************/
 
 h1.site-title {
@@ -1231,20 +1192,17 @@ h1.site-title {
 }
 
 .site-nav > * > .menu {
-	//border-top: 1px solid $bodybg;
+	display: none;
+
 	position: absolute;
 	right: -1rem;
 	top: 2.25rem;
 	width: 150px;
 
-	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
--moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+	@include box-shadow( 2px 2px 8px -1px rgba( 0, 0, 0, .2 ), -2px 2px 8px -1px rgba( 0, 0, 0, .2 ) );
 }
 
 .site-nav > * > .menu > ul {
-	//background: $offwhite;
-	//border-top: 1px solid $bodybg;
 	border-color: $mltgray;
 	border-style: solid;
 	border-width: 0 1px 1px 1px;
@@ -1261,19 +1219,21 @@ box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
 	text-align: left;
 }
 
-.site-nav > * > .menu > ul:first-child > li { border-top: 0; }
+.site-nav > * > .menu > ul > li:first-child { border-top: 0; }
 
 .site-nav > * > .menu > ul > li > a {
 	background: $offwhite;
+	border-left: 4px solid transparent;
 	color: $voablue;
 	display: block;
 	padding: .75rem;
-	//text-transform: uppercase;
 }
 
 .site-nav > * > .menu > ul > li > a:hover {
-	background: $vltgray;
-	color: $voared;
+	background: $bodybg;
+	border-left: 4px solid $voablue;
+	color: $voablue;
+	font-weight: 600;
 }
 
 
@@ -1299,13 +1259,8 @@ box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
 
 
 
-
-
-/* homepage story-card layout ********************************************************************/
-
+// homepage story-card mobile layouts
 @import 'story-card';
-
-
 
 
 
@@ -1466,6 +1421,40 @@ box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
 }
 
 
+.blog-footer {
+	background: $offblack;
+	font-size: .9rem;
+	width: 100%;
+}
+
+.blog-footer-inner {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	max-width: 1200px;
+	width: calc(100% - 2rem);
+}
+
+.footer-nav-menu ul {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.footer-nav-menu a {
+	color: $offwhite;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.footer-nav-menu a:hover {
+	color: $vltgray;
+	text-decoration: underline;
+}
+
+
 
 
 
@@ -1505,6 +1494,39 @@ box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
 		margin-right: 2rem;
 		width: 120px;
 	}
+
+	.blog-footer { }
+
+	.blog-footer-inner {
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		margin: 0 auto;
+		padding: 1rem;
+	}
+
+	.blog-footer-inner > .voa-logo {
+		flex-basis: 0;
+		flex-grow: 1;
+	}
+
+	.footer-nav-menu {
+		flex-basis: 0;
+		flex-grow: 3;
+	}
+
+	.footer-nav-menu ul {
+		align-items: flex-start;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.footer-nav-menu ul li {
+		min-width: 150px;
+	}
+
 	
 }
 
