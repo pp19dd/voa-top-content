@@ -385,6 +385,7 @@ if( !isset( $_GET['day']) ) {
                     <button onclick="voa_setColumns(jQuery(this).parent().parent(), 1)">1</button>
                     <button onclick="voa_setColumns(jQuery(this).parent().parent(), 2)">2</button>
                     <button onclick="voa_setColumns(jQuery(this).parent().parent(), 3)">3</button>
+                    <button onclick="voa_setColumns(jQuery(this).parent().parent(), 4)">4</button>
                 </voa-control>
                 <voa-indicator>
                     <placeholder>
@@ -429,18 +430,55 @@ function move_stories_out(row) {
 
 function voa_setColumns(row, columns) {
 
+    // if no change, just forget this action
+    var num_cols_there = jQuery(".vtcmbdd", row).length;
+
+    // set new columns
+    var placeholder = jQuery("placeholder", row);
+    placeholder.attr("columns", columns);
+
     // move any stories potentially affected by this row reconfiguration
     move_stories_out(row);
 
+    // rudimentary layout template
     var ht = [
         "<table class='vtcmb'><tr><td style='width:100%'>@</td></tr></table>",
         "<table class='vtcmb'><tr><td style='width:50%'>@</td><td>@</td></tr></table>",
-        "<table class='vtcmb'><tr><td style='width:50%'>@</td><td style='width:25%'>@</td><td>@</td></tr></table>"
+        "<table class='vtcmb'><tr><td style='width:50%'>@</td><td style='width:25%'>@</td><td>@</td></tr></table>",
+        "<table class='vtcmb'><tr><td style='width:25%'>@</td><td style='width:25%'>@</td><td style='width:25%'>@</td><td style='width:25%'>@</td></tr></table>",
+
+        // flipped 3 is the 5th column
+        "<table class='vtcmb'><tr><td style='width:25%'>@</td><td>@</td><td style='width:50%'>@</td></tr></table>"
     ];
+
     // bugfix: 0 columns situation
-    if( typeof ht[columns-1] != "undefined" ) {
-        jQuery("placeholder", row).html( ht[columns-1].split("@").join("<div class='vtcmbdd'></div>") );
+    if( typeof ht[columns-1] == "undefined" ) {
+        reset_draggable();
+        return;
     }
+
+    // as measured by td count
+    var existing_column = parseInt(placeholder.attr("columns"));
+    console.info( "num_cols_there count = " + num_cols_there );
+    console.info( "td count = " + existing_column );
+
+    // flip direction of variant #3
+    if( num_cols_there === 3 ) {
+        if( existing_column === 3 ) {
+            columns = 5;
+            console.info( "FLIPPP to right" );
+            placeholder.attr("columns", columns);
+        } else {
+            columns = 3;
+            console.info( "FLIPPP BACK to left" );
+            placeholder.attr("columns", columns);
+        }
+    }
+
+    // reconstruct row from above template
+    var row_html = ht[columns-1].split("@").join("<div class='vtcmbdd'></div>");
+    placeholder.html( row_html );
+
     reset_draggable();
 }
 
