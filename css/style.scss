@@ -1544,38 +1544,6 @@ h1.site-title {
 	.hero-title > h1 { font-size: 2em; }
 	.hero-title > h2 { font-size: 1.2em; }
 	
-	.card-row {
-		flex-direction: row;
-		justify-content: space-between;
-	}
-	
-	.story-card {
-		flex-basis: 0;
-		height: 450px;
-	}
-	
-	.card-row-3 {
-		flex-wrap: wrap;
-	}
-	
-	.card-row-3 > .card-1 {
-		flex-basis: 100%;
-		flex-grow: 1;
-	}
-	
-	.card-row-2 > .card-1,
-	.card-row-2 > .card-2,
-	.card-row-3 > .card-2,
-	.card-row-3 > .card-3 {
-		flex-basis: calc(50% - 12px);
-	}
-	
-	.card-row-2 > .card-1,
-	.card-row-3 > .card-2 { margin-right: 12px; }
-	
-	.card-row-2 > .card-2,
-	.card-row-3 > .card-3 { margin-left: 12px; }
-	
 }
 
 
@@ -1583,38 +1551,6 @@ h1.site-title {
 @media (min-width: 960px) {
 	
 	h1.site-title { margin: 3rem auto; }
-	
-	.card-row {
-		flex-direction: row;
-		justify-content: space-between;
-	}
-	
-	.card-row-3 { flex-wrap: nowrap; }
-	
-	.story-card {
-		flex-basis: 0;
-		height: 675px;
-	}
-	
-	.card-row-3 > .card-1 { flex-basis: 50%; flex-grow: 2; }
-	.card-row-3 > .card-2 { flex-basis: 25%; margin-right: 0; }
-	.card-row-3 > .card-3 { flex-basis: 25%; margin-left: 0; }
-	
-	.card-row-3 > .card-1 > a {
-		margin-right: 12px;
-		width: calc(100% - 12px);
-	}
-	
-	.card-row-3 > .card-2 > a {
-		margin-left: 12px;
-		margin-right: 6px;
-		width: calc(100% - 18px);
-	}
-	
-	.card-row-3 > .card-3 > a {
-		margin-left: 18px;
-		width: calc(100% - 18px);
-	}
 	
 	.author .author-avatar { height: 160px; width: 160px; }
 	
