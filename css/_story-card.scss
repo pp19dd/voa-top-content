@@ -13,7 +13,7 @@
 	height: 100%;
 	min-height: 360px;
 	max-height: 80vh;
-	margin: 0 0 24px 0;
+	margin: 0 0 16px 0;
 	padding: 0;
 	position: relative;
 	width: 100%;
@@ -47,7 +47,7 @@
 .story-card > a h2 {
 	background-color: $offblack;
 	box-decoration-break: clone;
-	box-shadow: .5rem 0 0 $offblack, -.5rem 0 0 $offblack;
+	@include box-shadow( .5rem 0 0 $offblack, -.5rem 0 0 $offblack );
 	color: $offwhite;
 	display: inline;
 	font-size: 1.5rem;
@@ -72,7 +72,7 @@
 	color: transparent;
 	display: inline;
 	font-size: 1rem;
-	font-weight: 300;
+	font-weight: 400;
 	line-height: 1.25rem;
 	padding: .15rem 0;
 	text-decoration: none;
@@ -130,6 +130,72 @@
 
 
 
+// text-y story-card styles
+
+.story-card.card-txt > a {
+	background: $vltgray;
+}
+
+.story-card.card-txt > a:hover {
+	background: $mltgray;
+}
+
+.story-card.card-txt > a h2 {
+	background-color: transparent;
+	box-decoration-break: clone;
+	@include box-shadow( .5rem 0 0 transparent, -.5rem 0 0 transparent );
+	color: $offblack;
+	display: inline;
+	font-size: 1.5rem;
+	font-weight: 300;
+	line-height: 1.35em;
+	padding: .25rem 0;
+	text-decoration: none;
+
+	@include transition( all .5s ease );
+}
+
+.story-card.card-txt > a:hover h2 {
+	background-color: $voablue;
+	color: $offwhite;
+	@include box-shadow( .5rem 0 0 $voablue, -.5rem 0 0 $voablue );
+}
+
+.story-card.card-txt > a p,
+.story-card.card-txt > a .continue {
+	background-color: none;
+	box-decoration-break: clone;
+	@include box-shadow( none );
+	color: $midgray;
+	display: inline;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.25rem;
+	padding: .15rem 0;
+	text-decoration: none;
+	
+	@include transition( all .5s ease );
+}
+
+.story-card.card-txt > a .continue {
+	@include box-shadow( .5rem 0 0 transparent, -.5rem 0 0 transparent );
+	color: $voablue;
+}
+
+.story-card.card-txt > a:hover p {
+	background-color: transparent;
+	@include box-shadow( none );
+	color: $offblack;
+}
+
+.story-card.card-txt > a:hover .continue {
+	background-color: $voablue;
+	@include box-shadow( .5rem 0 0 $voablue, -.5rem 0 0 $voablue );
+	color: $offwhite;
+}
+
+
+
 
 
 @media (min-width: 450px) {
@@ -162,9 +228,9 @@
 	}
 
 	.story-card > a {
-		margin-left: 12px;
-		margin-right: 12px;
-		width: calc(100% - 24px);
+		margin-left: 8px;
+		margin-right: 8px;
+		width: calc(100% - 16px);
 	}
 
 }
@@ -209,6 +275,13 @@
 	.story-card {
 		flex-basis: 0;
 		height: 675px;
+		margin-bottom: 24px;
+	}
+
+	.story-card > a {
+		margin-left: 12px;
+		margin-right: 12px;
+		width: calc(100% - 24px);
 	}
 
 }

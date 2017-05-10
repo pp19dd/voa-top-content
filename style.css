@@ -1193,7 +1193,7 @@ h1.site-title {
   height: 100%;
   min-height: 360px;
   max-height: 80vh;
-  margin: 0 0 24px 0;
+  margin: 0 0 16px 0;
   padding: 0;
   position: relative;
   width: 100%; }
@@ -1219,6 +1219,10 @@ h1.site-title {
 .story-card > a h2 {
   background-color: #333;
   box-decoration-break: clone;
+  -webkit-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  -mox-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  -ms-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  -o-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
   box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
   color: #fcfcfc;
   display: inline;
@@ -1253,7 +1257,7 @@ h1.site-title {
   color: transparent;
   display: inline;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.25rem;
   padding: .15rem 0;
   text-decoration: none;
@@ -1314,6 +1318,90 @@ h1.site-title {
   clear: both;
   height: .5rem; }
 
+.story-card.card-txt > a {
+  background: #ddd; }
+
+.story-card.card-txt > a:hover {
+  background: #ccc; }
+
+.story-card.card-txt > a h2 {
+  background-color: transparent;
+  box-decoration-break: clone;
+  -webkit-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  -mox-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  -ms-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  -o-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  color: #333;
+  display: inline;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.35em;
+  padding: .25rem 0;
+  text-decoration: none;
+  -webkit-transition: all 0.5s ease;
+  -mox-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+
+.story-card.card-txt > a:hover h2 {
+  background-color: #1330bf;
+  color: #fcfcfc;
+  -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf; }
+
+.story-card.card-txt > a p,
+.story-card.card-txt > a .continue {
+  background-color: none;
+  box-decoration-break: clone;
+  -webkit-box-shadow: none;
+  -mox-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  color: #666;
+  display: inline;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  padding: .15rem 0;
+  text-decoration: none;
+  -webkit-transition: all 0.5s ease;
+  -mox-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+
+.story-card.card-txt > a .continue {
+  -webkit-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  -mox-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  -ms-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  -o-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  color: #1330bf; }
+
+.story-card.card-txt > a:hover p {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -mox-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  color: #333; }
+
+.story-card.card-txt > a:hover .continue {
+  background-color: #1330bf;
+  -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  color: #fcfcfc; }
+
 @media (min-width: 450px) {
   .card-row {
     flex-direction: row;
@@ -1337,9 +1425,9 @@ h1.site-title {
     flex-basis: 100%; }
 
   .story-card > a {
-    margin-left: 12px;
-    margin-right: 12px;
-    width: calc(100% - 24px); } }
+    margin-left: 8px;
+    margin-right: 8px;
+    width: calc(100% - 16px); } }
 @media (min-width: 750px) {
   .story-card {
     height: 450px; }
@@ -1356,7 +1444,13 @@ h1.site-title {
 
   .story-card {
     flex-basis: 0;
-    height: 675px; } }
+    height: 675px;
+    margin-bottom: 24px; }
+
+  .story-card > a {
+    margin-left: 12px;
+    margin-right: 12px;
+    width: calc(100% - 24px); } }
 .hero-row {
   display: block; }
 
