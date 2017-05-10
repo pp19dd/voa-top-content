@@ -1199,11 +1199,10 @@ h1.site-title {
   width: 100%; }
 
 .story-card > a {
-  background-color: #999;
+  background-color: #ddd;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  xxxxborder: 1px solid #ddd;
   display: block;
   height: 100%;
   margin: 0;
@@ -1220,58 +1219,74 @@ h1.site-title {
 .story-card > a h2 {
   background-color: #333;
   box-decoration-break: clone;
-  box-shadow: .5rem 0 0 #333, -.5rem 0 0 #333;
-  color: #fff;
+  box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  color: #fcfcfc;
   display: inline;
-  font-family: sans-serif;
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 1.35em;
   padding: .25rem 0;
   text-decoration: none;
-  -webkit-transition: all .5s ease;
-  -moz-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease; }
+  -webkit-transition: all 0.5s ease;
+  -mox-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
 
 .story-card > a:hover h2 {
   background-color: #1330bf;
-  box-shadow: .5rem 0 0 #1330bf, -.5rem 0 0 #1330bf; }
+  -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf; }
 
 .story-card > a p,
 .story-card > a .continue {
   background-color: transparent;
   box-decoration-break: clone;
-  box-shadow: .5rem 0 0 transparent, -.5rem 0 0 transparent;
+  -webkit-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  -mox-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  -ms-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  -o-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
   color: transparent;
   display: inline;
-  font-family: sans-serif;
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.25rem;
   padding: .15rem 0;
   text-decoration: none;
-  -webkit-transition: all .5s ease;
-  -moz-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease; }
+  -webkit-transition: all 0.5s ease;
+  -mox-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
 
 .story-card > a:hover p {
   background-color: #333;
-  box-shadow: .5rem 0 0 #333, -.5rem 0 0 #333;
-  color: #fff; }
+  -webkit-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  -mox-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  -ms-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  -o-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  color: #fcfcfc; }
 
 .story-card > a:hover .continue {
   background-color: #1330bf;
-  box-shadow: .5rem 0 0 #1330bf, -.5rem 0 0 #1330bf;
-  color: #fff; }
+  -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  color: #fcfcfc; }
 
 .video-icon {
   background: #1330bf;
   border-color: #eee;
   border-style: solid;
-  border-width: 0 0 1px 1px;
-  color: #fff;
+  border-width: 0 0 2px 2px;
+  color: #fcfcfc;
   line-height: 1;
   padding: 1rem;
   position: absolute;
@@ -1286,9 +1301,8 @@ h1.site-title {
   background: #d41010;
   border-color: #eee;
   border-style: solid;
-  border-width: 1px 0 1px 1px;
-  color: #fff;
-  font-family: sans-serif;
+  border-width: 2px 0 2px 2px;
+  color: #fcfcfc;
   font-size: .8rem;
   line-height: 1;
   margin: 0;
@@ -1300,71 +1314,49 @@ h1.site-title {
   clear: both;
   height: .5rem; }
 
-@media (min-width: 750px) {
+@media (min-width: 450px) {
   .card-row {
     flex-direction: row;
     justify-content: space-between; }
 
-  .story-card {
-    flex-basis: 0;
-    height: 450px; }
-
-  .card-row-3 {
+  .card-row-3,
+  .card-row-4 {
     flex-wrap: wrap; }
 
-  .card-row-3 > .card-1 {
-    flex-basis: 100%;
-    flex-grow: 1; }
+  .story-card {
+    flex-basis: 0;
+    height: 360px; }
 
-  .card-row-2 > .card-1,
-  .card-row-2 > .card-2,
-  .card-row-3 > .card-2,
-  .card-row-3 > .card-3 {
-    flex-basis: calc(50% - 12px); }
+  .story-card.card-half {
+    flex-basis: 50%; }
 
-  .card-row-2 > .card-1,
-  .card-row-3 > .card-2 {
-    margin-right: 12px; }
+  .story-card.card-quarter {
+    flex-basis: 50%; }
 
-  .card-row-2 > .card-2,
-  .card-row-3 > .card-3 {
-    margin-left: 12px; } }
+  .card-row-3 > .story-card.card-half {
+    flex-basis: 100%; }
+
+  .story-card > a {
+    margin-left: 12px;
+    margin-right: 12px;
+    width: calc(100% - 24px); } }
+@media (min-width: 750px) {
+  .story-card {
+    height: 450px; }
+
+  .card-row-3 > .story-card.card-half {
+    flex-basis: 50%; }
+
+  .story-card.card-quarter {
+    flex-basis: 25%; } }
 @media (min-width: 960px) {
   .card-row {
     flex-direction: row;
     justify-content: space-between; }
 
-  .card-row-3 {
-    flex-wrap: nowrap; }
-
   .story-card {
     flex-basis: 0;
-    height: 675px; }
-
-  .card-row-3 > .card-1 {
-    flex-basis: 50%;
-    flex-grow: 2; }
-
-  .card-row-3 > .card-2 {
-    flex-basis: 25%;
-    margin-right: 0; }
-
-  .card-row-3 > .card-3 {
-    flex-basis: 25%;
-    margin-left: 0; }
-
-  .card-row-3 > .card-1 > a {
-    margin-right: 12px;
-    width: calc(100% - 12px); }
-
-  .card-row-3 > .card-2 > a {
-    margin-left: 12px;
-    margin-right: 6px;
-    width: calc(100% - 18px); }
-
-  .card-row-3 > .card-3 > a {
-    margin-left: 18px;
-    width: calc(100% - 18px); } }
+    height: 675px; } }
 .hero-row {
   display: block; }
 

@@ -21,11 +21,10 @@
 
 .story-card > a {
 	// background-image in story-card.php
-	background-color: #999;
+	background-color: $vltgray;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	background-size: cover;
-	xxxxborder: 1px solid #ddd;
 	display: block;
 	height: 100%;
 	margin: 0;
@@ -46,67 +45,59 @@
 }
 
 .story-card > a h2 {
-	background-color: #333;
+	background-color: $offblack;
 	box-decoration-break: clone;
-	box-shadow: .5rem 0 0 #333, -.5rem 0 0 #333;
-	color: #fff;
+	box-shadow: .5rem 0 0 $offblack, -.5rem 0 0 $offblack;
+	color: $offwhite;
 	display: inline;
-	font-family: sans-serif;
 	font-size: 1.5rem;
 	font-weight: 300;
 	line-height: 1.35em;
 	padding: .25rem 0;
 	text-decoration: none;
-	
-	-webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    -o-transition: all .5s ease;
-    transition: all .5s ease;
+
+	@include transition( all .5s ease );
 }
 
 .story-card > a:hover h2 {
-	background-color: #1330bf;
-	box-shadow: .5rem 0 0 #1330bf, -.5rem 0 0 #1330bf;
+	background-color: $voablue;
+	@include box-shadow( .5rem 0 0 $voablue, -.5rem 0 0 $voablue );
 }
 
 .story-card > a p,
 .story-card > a .continue {
 	background-color: transparent;
 	box-decoration-break: clone;
-	box-shadow: .5rem 0 0 transparent, -.5rem 0 0 transparent;
+	@include box-shadow( .5rem 0 0 transparent, -.5rem 0 0 transparent );
 	color: transparent;
 	display: inline;
-	font-family: sans-serif;
 	font-size: 1rem;
 	font-weight: 300;
 	line-height: 1.25rem;
 	padding: .15rem 0;
 	text-decoration: none;
 	
-	-webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    -o-transition: all .5s ease;
-    transition: all .5s ease;
+	@include transition( all .5s ease );
 }
 
 .story-card > a:hover p {
-	background-color: #333;
-	box-shadow: .5rem 0 0 #333, -.5rem 0 0 #333;
-	color: #fff;
+	background-color: $offblack;
+	@include box-shadow( .5rem 0 0 $offblack, -.5rem 0 0 $offblack );
+	color: $offwhite;
 }
 
 .story-card > a:hover .continue {
-	background-color: #1330bf;
-	box-shadow: .5rem 0 0 #1330bf, -.5rem 0 0 #1330bf;
-	color: #fff;
+	background-color: $voablue;
+	@include box-shadow( .5rem 0 0 $voablue, -.5rem 0 0 $voablue );
+	color: $offwhite;
 }
 
 .video-icon {
-	background: #1330bf;
-	border-color: #eee;
+	background: $voablue;
+	border-color: $bodybg;
 	border-style: solid;
-	border-width: 0 0 1px 1px;
-	color: #fff;
+	border-width: 0 0 2px 2px;
+	color: $offwhite;
 	line-height: 1;
 	padding: 1rem;
 	position: absolute;
@@ -119,12 +110,11 @@
 	position: absolute;
 	bottom: .75rem;
 	right: 0;
-	background: #d41010;
-	border-color: #eee;
+	background: $voared;
+	border-color: $bodybg;
 	border-style: solid;
-	border-width: 1px 0 1px 1px;
-	color: #fff;
-	font-family: sans-serif;
+	border-width: 2px 0 2px 2px;
+	color: $offwhite;
 	font-size: .8rem;
 	line-height: 1;
 	margin: 0;
@@ -142,6 +132,47 @@
 
 
 
+@media (min-width: 450px) {
+
+	.card-row {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.card-row-3,
+	.card-row-4 {
+		flex-wrap: wrap;
+	}
+	
+	.story-card {
+		flex-basis: 0;
+		height: 360px;
+	}
+
+	.story-card.card-half {
+		flex-basis: 50%;
+	}
+
+	.story-card.card-quarter {
+		flex-basis: 50%;
+	}
+
+	.card-row-3 > .story-card.card-half {
+		flex-basis: 100%;
+	}
+
+	.story-card > a {
+		margin-left: 12px;
+		margin-right: 12px;
+		width: calc(100% - 24px);
+	}
+
+}
+
+
+
+
+
 @media (min-width: 600px) { }
 
 
@@ -150,37 +181,17 @@
 
 @media (min-width: 750px) {
 	
-	.card-row {
-		flex-direction: row;
-		justify-content: space-between;
-	}
-	
 	.story-card {
-		flex-basis: 0;
 		height: 450px;
 	}
-	
-	.card-row-3 {
-		flex-wrap: wrap;
+
+	.card-row-3 > .story-card.card-half {
+		flex-basis: 50%;
 	}
-	
-	.card-row-3 > .card-1 {
-		flex-basis: 100%;
-		flex-grow: 1;
+
+	.story-card.card-quarter {
+		flex-basis: 25%;
 	}
-	
-	.card-row-2 > .card-1,
-	.card-row-2 > .card-2,
-	.card-row-3 > .card-2,
-	.card-row-3 > .card-3 {
-		flex-basis: calc(50% - 12px);
-	}
-	
-	.card-row-2 > .card-1,
-	.card-row-3 > .card-2 { margin-right: 12px; }
-	
-	.card-row-2 > .card-2,
-	.card-row-3 > .card-3 { margin-left: 12px; }
 
 }
 
@@ -195,31 +206,9 @@
 		justify-content: space-between;
 	}
 	
-	.card-row-3 { flex-wrap: nowrap; }
-	
 	.story-card {
 		flex-basis: 0;
 		height: 675px;
-	}
-	
-	.card-row-3 > .card-1 { flex-basis: 50%; flex-grow: 2; }
-	.card-row-3 > .card-2 { flex-basis: 25%; margin-right: 0; }
-	.card-row-3 > .card-3 { flex-basis: 25%; margin-left: 0; }
-	
-	.card-row-3 > .card-1 > a {
-		margin-right: 12px;
-		width: calc(100% - 12px);
-	}
-	
-	.card-row-3 > .card-2 > a {
-		margin-left: 12px;
-		margin-right: 6px;
-		width: calc(100% - 18px);
-	}
-	
-	.card-row-3 > .card-3 > a {
-		margin-left: 18px;
-		width: calc(100% - 18px);
 	}
 
 }
