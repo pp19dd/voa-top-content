@@ -32,6 +32,10 @@ voa-control button {
     cursor: pointer;
 }
 
+voa-control button.more-options {
+    border:1px dashed black;
+}
+
 voa-control button:hover {
     background-color: #7FDBFF;
 }
@@ -81,6 +85,32 @@ available-stories {
     width: 100%;
     word-break: break-all;
 }
+
+.voa-layout-story {
+    background-image: url(<?php echo get_template_directory_uri() . "/img/hint-image.png" ?>);
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: 0px 6px;
+    text-indent: 18px;
+
+    color: #0074D9 !important;
+}
+.voa-layout-story.text-heavy {
+    color: #000000 !important;
+    background-image: url(<?php echo get_template_directory_uri() . "/img/hint-text.png" ?>);
+    box-shadow: 0 0 0px;
+}
+
+.vtcmb td {
+    background-color: silver;
+    box-shadow: 0 0 10px #0074D9;
+}
+
+.text-heavy-td {
+    background-color: white !important;
+    box-shadow: 0 0 0px !important;
+}
+
 
 .gu-transit { background-color: #FF851B }
 

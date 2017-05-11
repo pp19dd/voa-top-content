@@ -26,32 +26,25 @@ function get_voa_top_posts() {
     } else {
         if( is_user_logged_in() ) {
 
-            // reconstruct row-layout based on pulled queries
-            $preview_layout = array(
-                "day" => "",
-                "row_count" => 0,
-                "rows" => array(),
-                "stories" => array()
-            );
-            $rows = explode("|", $_GET['stories']);
-            $row_layout = array();
-            foreach( $rows as $row ) {
-                $temp_row = array();
-                $ids = explode(",", $row);
-                foreach( $ids as $id ) {
-                    $preview_layout[] = intval($id);
-                    $temp_row[] = intval($id);
-                }
-                $preview_layout["stories"][] = $temp_row;
-                $preview_layout["rows"][] = count($temp_row);
-            }
-            $preview_layout["row_count"] = count($preview_layout["stories"]);
+            $preview_layout = $_GET;
+            $preview_layout["day"] = $preview_layout["preview_day"];
 
-            $posts_html = voa_top_content_get_day_posts($voa_day, $preview_layout);
+            // ensure these post IDs are sanitized integers
+            $preview_ids = array();
+            foreach( $preview_layout["stories"] as $k => $v ) {
+                foreach( $v as $k2 => $v2 ) {
+                    $preview_ids[] = intval($v2);
+                    #$preview_layout["stories"][$k][$k2] = intval($v2);
+                }
+            }
+
+
+
+            $posts_html = voa_top_content_get_day_posts($voa_day, $preview_ids);
 
             // extract date from first post
-            $first = array_values($posts_html)[0];
-            $preview_layout["day"] = date("Y-m-d", strtotime($first["pubdate"]));
+            #$first = array_values($posts_html)[0];
+            #$preview_layout["day"] = date("Y-m-d", strtotime($first["pubdate"]));
 
             $row_layout = $preview_layout;
         }
@@ -279,7 +272,8 @@ function wpa_4471252017_callback() {
                 $_POST['layout']['publish_drafts'] == "yes"
             ) {
                 foreach( $_POST["layout"]["stories"] as $row => $ids ) {
-                    foreach( $ids as $story_id ) {
+                    foreach( $ids as $story ) {
+                        $story_id = $story["id"];
                         $wp_story_id = intval($story_id);
                         $status = get_post_status( $wp_story_id );
                         if( $status === "draft" ) {
@@ -384,7 +378,7 @@ if( !isset( $_GET['day']) ) {
                 <voa-control>
                     <button onclick="voa_setColumns(jQuery(this).parent().parent(), 1)">1</button>
                     <button onclick="voa_setColumns(jQuery(this).parent().parent(), 2)">2</button>
-                    <button onclick="voa_setColumns(jQuery(this).parent().parent(), 3)">3</button>
+                    <button class="more-options" onclick="voa_setColumns(jQuery(this).parent().parent(), 3)">3</button>
                     <button onclick="voa_setColumns(jQuery(this).parent().parent(), 4)">4</button>
                 </voa-control>
                 <voa-indicator>
@@ -409,6 +403,9 @@ foreach( $stories as $story ) {
         </available-stories>
     </voa-today>
 
+    <p>Note: there are two versions of the 3-column option. Click on it a couple of times to switch between left and right versions.</p>
+    <p>Note 2: click on a draggable headline to toggle between image-heavy and text-heavy versions.</p>
+
     <save-things>
         <button id="save-layout">Save Layout and Story Order</button>
         <button class="verify-action" id="delete-layout">Delete Layout for This Day</button>
@@ -430,12 +427,10 @@ function move_stories_out(row) {
 
 function voa_setColumns(row, columns) {
 
-    // if no change, just forget this action
-    var num_cols_there = jQuery(".vtcmbdd", row).length;
-
     // set new columns
     var placeholder = jQuery("placeholder", row);
-    placeholder.attr("columns", columns);
+    var num_virtual_cols_there = parseInt(placeholder.attr("columns"));
+    var num_actual_cols_there = jQuery(".vtcmbdd", row).length;
 
     // move any stories potentially affected by this row reconfiguration
     move_stories_out(row);
@@ -457,22 +452,17 @@ function voa_setColumns(row, columns) {
         return;
     }
 
-    // as measured by td count
-    var existing_column = parseInt(placeholder.attr("columns"));
-    console.info( "num_cols_there count = " + num_cols_there );
-    console.info( "td count = " + existing_column );
-
     // flip direction of variant #3
-    if( num_cols_there === 3 ) {
-        if( existing_column === 3 ) {
+    if( columns === 3 && num_actual_cols_there === 3 ) {
+        if( num_virtual_cols_there === 3 ) {
             columns = 5;
-            console.info( "FLIPPP to right" );
             placeholder.attr("columns", columns);
         } else {
             columns = 3;
-            console.info( "FLIPPP BACK to left" );
             placeholder.attr("columns", columns);
         }
+    } else {
+        placeholder.attr("columns", columns)
     }
 
     // reconstruct row from above template
@@ -528,7 +518,15 @@ if( layout === false ) {
     voa_setRows(layout.row_count - 1);
     jQuery("#voa-change-rows").val(layout.row_count);
     for( var i = 0; i < layout.row_count; i++ ) {
-        voa_setColumns( jQuery("voa-row:eq(" + i + ")"), layout.rows[i] );
+        var temp_columns = layout.rows[i];
+
+        if(
+            typeof layout.virtual_columns != "undefined" &&
+            typeof layout.virtual_columns[i] != "undefined"
+        ) {
+            temp_columns = parseInt(layout.virtual_columns[i]);
+        }
+        voa_setColumns( jQuery("voa-row:eq(" + i + ")"), temp_columns );
     }
 
     // move stories into their places
@@ -538,6 +536,20 @@ if( layout === false ) {
         for( var j = 0; j < ids.length; j++ )(function(id, num) {
             var node_story = jQuery(".voa-layout-story[data-id='" + id + "']");
             var node_destination = jQuery("voa-row:eq(" + row + ") .vtcmbdd:eq(" + num + ")");
+
+            // check whether there is i or t information
+            if(
+                typeof layout.stories_cls != "undefined" &&
+                typeof layout.stories_cls[i] != "undefined" &&
+                typeof layout.stories_cls[i][j] != "undefined"
+            ) {
+                if( layout.stories_cls[i][j] == "t") {
+                    node_story.addClass("text-heavy");
+                    jQuery(node_destination).closest("td").addClass("text-heavy-td");
+                //} else {
+                    //jQuery(node_destination).closest("td").addClass("image-heavy-td");
+                }
+            }
 
             jQuery(node_story).appendTo( node_destination );
             // console.info( node_story, node_destination );
@@ -608,23 +620,35 @@ function voa_admin_last_url() {
 
 function get_layout_payload() {
     var ret = {
+        day: "<?php echo date("Y-m-d", strtotime($_GET['day'])) ?>",
         rows: [],
-        stories: []
+        stories: [],
+        stories_cls: [],
+        virtual_columns: []
     }
 
     jQuery("voa-row").each(function(i, e) {
-
+        var virtual_columns = jQuery("placeholder", this).attr("columns");
         var cells = jQuery(".vtcmbdd", this);
         ret.rows.push( cells.length );
+        ret.virtual_columns.push( parseInt(virtual_columns) );
         var new_a = [];
+        var new_b = [];
         cells.each(function(i2, e2) {
             var story = jQuery(".voa-layout-story", this);
             var story_id = jQuery(story).attr("data-id");
+
+            var story_class = "i";
+            if( story.hasClass("text-heavy") ) story_class = "t";
+
             if( typeof story_id === "undefined" ) story_id = "";
 
-            new_a.push( story_id );
+            // clumsy, but preserves old layout format
+            new_a.push(story_id);
+            new_b.push(story_class);
         });
         ret.stories.push( new_a );
+        ret.stories_cls.push( new_b );
     });
 
     return( ret );
@@ -643,6 +667,8 @@ function save_layout() {
     var temp = get_layout_payload();
     new_layout.rows = temp.rows;
     new_layout.stories = temp.stories;
+    new_layout.stories_cls = temp.stories_cls;
+    new_layout.virtual_columns = temp.virtual_columns;
 
     jQuery.post( ajaxurl, {
         action: "wpa_4471252017",
@@ -655,14 +681,29 @@ function save_layout() {
     });
 }
 
+jQuery(".voa-layout-story").click(function() {
+    jQuery(this).toggleClass("text-heavy");
+
+    // css hint
+    jQuery(this).closest("td").toggleClass("text-heavy-td");
+});
+
 jQuery("#id-preview").click(function(e) {
     var temp = get_layout_payload();
-    var preview_url = home_url + "?preview_layout&rand1=" + Math.random() + "&rand2=" + Math.random() + "&stories=";
-    var p = [];
-    for( var i = 0; i < temp.stories.length; i++ ) {
-        p.push( temp.stories[i].join(",") );
-    }
-    preview_url += p.join("|");
+    temp.preview_day = temp.day;
+    delete( temp.day );
+
+    var preview_url =
+        home_url +
+        "?preview_layout" +
+        "&rand1=" + Math.random() +
+        "&rand2=" + Math.random() +
+        "&" + jQuery.param(temp);
+    // var p = [];
+    // for( var i = 0; i < temp.stories.length; i++ ) {
+    //     p.push( temp.stories[i].join(",") );
+    // }
+    //preview_url += p.join("|");
 
     window.open( preview_url );
     // console.info( temp.stories );
@@ -731,13 +772,62 @@ input: [2, 3], [4, 6, 5], [1]
 output: [2, 3, 4, 6, 5, 1]
 */
 
+function voa_top_content_layout_size($column_total, $column_index, $virtual_columns ) {
+    if( $column_total === 4 ) return( "card-quarter");
+    if( $column_total === 2 ) return( "card-half");
+    if( $column_total === 1 ) return( "card-full");
+
+    if( $virtual_columns === 3 ) {
+        switch( $column_index ) {
+            case 0: return("card-half"); break;
+            default: return("card-quarter"); break;
+        }
+    }
+
+    if( $virtual_columns === 5 ) {
+        switch( $column_index ) {
+            case 2: return("card-half"); break;
+            default: return("card-quarter"); break;
+        }
+    }
+}
+
 function voa_top_content_layout_order_by_id( $row_layout ) {
     $o = array();
+
     if( !isset( $row_layout["stories"]) ) return( $o );
-    foreach( $row_layout["stories"] as $row ) {
-        foreach( $row as $story_id ) {
+    foreach( $row_layout["stories"] as $row_k => $row ) {
+        foreach( $row as $story_k => $story_id ) {
             $id = intval($story_id);
-            if( $id != 0 ) $o[] = $story_id;
+            if( $id != 0 ) {
+
+                // defaults
+                $story_cls = "card-img";
+                $story_siz = "card-full";
+
+                // preference may not exist for older entries
+                if( isset( $row_layout["stories_cls"][$row_k][$story_k] ) ) {
+                    $preference = $row_layout["stories_cls"][$row_k][$story_k];
+                    $story_cls = ($preference === "i") ? "card-img" : "card-txt";
+                }
+
+                // slip in card size hint (f, h, q)
+                if(
+                    !isset($row_layout["virtual_columns"]) ||
+                    !isset($row_layout["virtual_columns"][$row_k])
+                ) {
+                    $virtual_columns = 3;
+                } else {
+                    $virtual_columns = intval($row_layout["virtual_columns"][$row_k]);
+                }
+                $story_siz = voa_top_content_layout_size(count($row), $story_k, $virtual_columns);
+
+                $o[] = array(
+                    "story_id" => $story_id,
+                    "story_cls" => $story_cls,
+                    "story_siz" => $story_siz
+                );
+            }
         }
     }
     return( $o );
@@ -756,11 +846,19 @@ function voa_top_content_breakup_posts( $row_layout, $unordered_posts_html ) {
 
     // sort $posts_html by preferred layout ID
     $order = voa_top_content_layout_order_by_id($row_layout);
+
     $posts_html = array();
-    foreach( $order as $id ) {
+    foreach( $order as $order_item ) {
+
+        $id = $order_item["story_id"];
 
         // could be a draft?
         if( isset($unordered_posts_html[$id]) ) {
+
+            // slip in card type and size hint (i, t  -- f, h, q)
+            $unordered_posts_html[$id]["cls"] = $order_item["story_cls"];
+            $unordered_posts_html[$id]["siz"] = $order_item["story_siz"];
+
             $posts_html[] = $unordered_posts_html[$id];
             unset( $unordered_posts_html[$id] );
         }
