@@ -84,6 +84,7 @@ available-stories {
     padding: 3px;
     width: 100%;
     word-break: break-all;
+    cursor: pointer;
 }
 
 .voa-layout-story {
