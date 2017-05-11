@@ -1,8 +1,13 @@
+<?php if ($image != '') { ?>
 
 <style type="text/css">
 .sc-<?php echo $post['id']; ?> > a       { background-image: url(<?php echo $image; ?>); }
 .sc-<?php echo $post['id']; ?> > a:hover { background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?php echo $image; ?>); }
 </style>
+
+<?php } else {
+	$post['cls'] = 'card-noimg';
+} ?>
 
 <article class="story-card card-<?php echo $k + 1 ?> sc-<?php echo $post['id']; ?> <?php echo $post['cls'] ?> <?php echo $post['siz'] ?>">
 

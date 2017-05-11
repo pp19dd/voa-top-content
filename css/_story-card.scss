@@ -132,15 +132,15 @@
 
 // text-y story-card styles
 
-.story-card.card-txt > a {
+.story-card.card-noimg > a {
 	background: $vltgray;
 }
 
-.story-card.card-txt > a:hover {
+.story-card.card-noimg > a:hover {
 	background: $mltgray;
 }
 
-.story-card.card-txt > a h2 {
+.story-card.card-noimg > a h2 {
 	background-color: transparent;
 	box-decoration-break: clone;
 	@include box-shadow( .5rem 0 0 transparent, -.5rem 0 0 transparent );
@@ -155,14 +155,14 @@
 	@include transition( all .5s ease );
 }
 
-.story-card.card-txt > a:hover h2 {
+.story-card.card-noimg > a:hover h2 {
 	background-color: $voablue;
 	color: $offwhite;
 	@include box-shadow( .5rem 0 0 $voablue, -.5rem 0 0 $voablue );
 }
 
-.story-card.card-txt > a p,
-.story-card.card-txt > a .continue {
+.story-card.card-noimg > a p,
+.story-card.card-noimg > a .continue {
 	background-color: none;
 	box-decoration-break: clone;
 	@include box-shadow( none );
@@ -177,21 +177,33 @@
 	@include transition( all .5s ease );
 }
 
-.story-card.card-txt > a .continue {
+.story-card.card-noimg > a .continue {
 	@include box-shadow( .5rem 0 0 transparent, -.5rem 0 0 transparent );
 	color: $voablue;
 }
 
-.story-card.card-txt > a:hover p {
+.story-card.card-noimg > a:hover p {
 	background-color: transparent;
 	@include box-shadow( none );
 	color: $offblack;
 }
 
-.story-card.card-txt > a:hover .continue {
+.story-card.card-noimg > a:hover .continue {
 	background-color: $voablue;
 	@include box-shadow( .5rem 0 0 $voablue, -.5rem 0 0 $voablue );
 	color: $offwhite;
+}
+
+
+
+.story-card.card-txt > a {
+	background-position: 50% 0;
+	background-size: auto 35%;
+}
+
+.story-card.card-txt > a > .text {
+	position: absolute;
+	top: calc(35% + 1rem);
 }
 
 
