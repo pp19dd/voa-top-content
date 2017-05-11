@@ -18,7 +18,7 @@ $posts_html = get_voa_top_posts();
             </breakup>
         </row>
 <?php foreach( $posts_html["posts"] as $posts ) { ?>
-        <row class="card-row card-row-<?php echo count($posts) ?>">
+        <row class="card-row card-row-<?php echo count($posts) ?> <?php if( get_voa_is_row_tall($posts) ) { echo 'card-row-tall'; } ?>">
         <!-- <row class="rows_<?php echo count($posts) ?>"> -->
 <?php
         foreach( $posts as $k => $post ) {

@@ -2,6 +2,18 @@
 require_once( "class.calendar.php" );
 require_once( "functions-admin.php" );
 
+function get_voa_is_row_tall($posts) {
+
+    foreach( $posts as $post ) {
+        $pos = stripos($post["siz"], "card-tall");
+
+        if( $pos !== false ) {
+            return( true );
+        }
+    }
+    return(false);
+}
+
 // used on main page (index), figures out needed query logic and returns posts
 function get_voa_top_posts() {
 
@@ -406,7 +418,7 @@ foreach( $stories as $story ) {
     </voa-today>
 
     <p>Note: there are two versions of the 3-column option. Click on it a couple of times to switch between left and right versions.</p>
-    <p>Note 2: click on a draggable headline to toggle between image-heavy and text-heavy versions.</p>
+    <p>Note 2: there are two versions of the 2-column option. Click on it a couple of times to switch between short and tall versions.</p>
     <p>Note 3: click on a draggable headline to toggle between image-heavy and text-heavy versions.</p>
 
     <save-things>
@@ -456,7 +468,7 @@ output: [2, 3, 4, 6, 5, 1]
 
 function voa_top_content_layout_size($column_total, $column_index, $virtual_columns ) {
 
-    if( $virtual_columns === 6 ) return("card-half card-short"); 
+    if( $virtual_columns === 6 ) return("card-half card-tall");
     if( $column_total === 4 ) return( "card-quarter");
     if( $column_total === 2 ) return( "card-half");
     if( $column_total === 1 ) return( "card-full");
