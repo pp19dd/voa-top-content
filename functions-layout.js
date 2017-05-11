@@ -25,7 +25,10 @@ function voa_setColumns(row, columns) {
         "<table class='vtcmb'><tr><td style='width:25%'>@</td><td style='width:25%'>@</td><td style='width:25%'>@</td><td style='width:25%'>@</td></tr></table>",
 
         // flipped 3 is the 5th column
-        "<table class='vtcmb'><tr><td style='width:25%'>@</td><td>@</td><td style='width:50%'>@</td></tr></table>"
+        "<table class='vtcmb'><tr><td style='width:25%'>@</td><td>@</td><td style='width:50%'>@</td></tr></table>",
+
+        // tall 2
+        "<table class='vtcmb'><tr><td style='width:50%;padding-top:30px;padding-bottom:30px'>@</td><td style='padding-top:30px;padding-bottom:30px'>@</td></tr></table>"
     ];
 
     // bugfix: 0 columns situation
@@ -41,6 +44,19 @@ function voa_setColumns(row, columns) {
             placeholder.attr("columns", columns);
         } else {
             columns = 3;
+            placeholder.attr("columns", columns);
+        }
+    } else {
+        placeholder.attr("columns", columns)
+    }
+
+    // flip direction of variant #2
+    if( columns === 2 && num_actual_cols_there === 2 ) {
+        if( num_virtual_cols_there === 2 ) {
+            columns = 6;
+            placeholder.attr("columns", columns);
+        } else {
+            columns = 2;
             placeholder.attr("columns", columns);
         }
     } else {
@@ -131,7 +147,6 @@ if( layout === false ) {
             }
 
             jQuery(node_story).appendTo( node_destination );
-            // console.info( node_story, node_destination );
         })(ids[j], j);
     })(i, layout.stories[i])
 
@@ -145,7 +160,6 @@ function reset_draggable() {
     jQuery(document).ready(function() {
 
         try {
-            //console.info( "destroy" );
             manager.destroy();
             manager.containers = [ ];
         } catch( e ) {
@@ -176,7 +190,6 @@ function reset_draggable() {
         });
 
         jQuery(".vtcmbdd").each(function(e) {
-            //console.info( "peck ", this );
             manager.containers.push(this);
         });
     });
@@ -222,6 +235,11 @@ function get_layout_payload() {
     return( ret );
 }
 
+function get_warnings() {
+    var empty_cells = jQuery("div.vtcmbdd:empty");
+    return( empty_cells.length );
+}
+
 function save_layout() {
     jQuery("#save-layout").attr('disabled', true);
     var new_layout = {
@@ -259,49 +277,54 @@ function repaint_tds() {
     });
 }
 
-jQuery(".voa-layout-story").click(function() {
-    jQuery(this).toggleClass("text-heavy");
+function voa_layout_startup() {
 
-    // css hint
-    //jQuery(this).closest("td").toggleClass("text-heavy-td");
-    repaint_tds();
-});
+    jQuery(".voa-layout-story").click(function() {
+        jQuery(this).toggleClass("text-heavy");
 
-jQuery("#id-preview").click(function(e) {
-    var temp = get_layout_payload();
-    temp.preview_day = temp.day;
-    delete( temp.day );
-
-    var preview_url =
-        home_url +
-        "?preview_layout" +
-        "&rand1=" + Math.random() +
-        "&rand2=" + Math.random() +
-        "&" + jQuery.param(temp);
-    // var p = [];
-    // for( var i = 0; i < temp.stories.length; i++ ) {
-    //     p.push( temp.stories[i].join(",") );
-    // }
-    //preview_url += p.join("|");
-
-    window.open( preview_url );
-    // console.info( temp.stories );
-    // console.info( preview_url );
-    return(false);
-});
-
-jQuery("#save-layout").click(function() {
-    save_layout();
-});
-
-jQuery("#delete-layout").verifyClick(function() {
-    jQuery.post( ajaxurl, {
-        action: "wpa_4471252017",
-        mode: "delete_layout",
-        day: payload_day
-    }).error(function() {
-        alert( "error deleting layout" );
-    }).success( function(e) {
-        window.location = voa_admin_last_url();
+        // css hint
+        //jQuery(this).closest("td").toggleClass("text-heavy-td");
+        repaint_tds();
     });
+
+    jQuery("#id-preview").click(function(e) {
+        var temp = get_layout_payload();
+        temp.preview_day = temp.day;
+        delete( temp.day );
+
+        var preview_url =
+            home_url +
+            "?preview_layout" +
+            "&rand1=" + Math.random() +
+            "&rand2=" + Math.random() +
+            "&" + jQuery.param(temp);
+
+        window.open( preview_url );
+        return(false);
+    });
+
+    jQuery("#save-layout").click(function() {
+        // jQuery("#save-layout").save-layout();
+        // if( get_warnings() > 0 ) {
+        //     alert( "Warning: empty spots");
+        //     return( false );
+        // }
+        save_layout();
+    });
+
+    jQuery("#delete-layout").verifyClick(function() {
+        jQuery.post( ajaxurl, {
+            action: "wpa_4471252017",
+            mode: "delete_layout",
+            day: payload_day
+        }).error(function() {
+            alert( "error deleting layout" );
+        }).success( function(e) {
+            window.location = voa_admin_last_url();
+        });
+    });
+}
+
+jQuery(document).ready(function() {
+    voa_layout_startup();
 });

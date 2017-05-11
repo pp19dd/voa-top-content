@@ -337,6 +337,8 @@ function voa_top_content_admin_menu() {
     $current_ts = strtotime("{$current_year}-{$current_month}-01");
 
     $month = voa_top_content_get_calendar($current_year, $current_month);
+
+    add_thickbox();
 ?>
 <div class="wrap">
 
@@ -377,7 +379,7 @@ if( !isset( $_GET['day']) ) {
             <voa-row>
                 <voa-control>
                     <button onclick="voa_setColumns(jQuery(this).parent().parent(), 1)">1</button>
-                    <button onclick="voa_setColumns(jQuery(this).parent().parent(), 2)">2</button>
+                    <button class="more-options" onclick="voa_setColumns(jQuery(this).parent().parent(), 2)">2</button>
                     <button class="more-options" onclick="voa_setColumns(jQuery(this).parent().parent(), 3)">3</button>
                     <button onclick="voa_setColumns(jQuery(this).parent().parent(), 4)">4</button>
                 </voa-control>
@@ -405,6 +407,7 @@ foreach( $stories as $story ) {
 
     <p>Note: there are two versions of the 3-column option. Click on it a couple of times to switch between left and right versions.</p>
     <p>Note 2: click on a draggable headline to toggle between image-heavy and text-heavy versions.</p>
+    <p>Note 3: click on a draggable headline to toggle between image-heavy and text-heavy versions.</p>
 
     <save-things>
         <button id="save-layout">Save Layout and Story Order</button>
@@ -413,7 +416,9 @@ foreach( $stories as $story ) {
     <p>
         <input type="checkbox" id="publish_drafts"/><label for="publish_drafts"> Also Publish drafts</label>
     </p>
-
+    <div id="modal-window-id" style="display:none;">
+        <p>Lorem Ipsum sit dolla amet.</p>
+    </div>
 </div>
 
 <?php
@@ -436,7 +441,7 @@ var payload_day = "<?php echo date('Y-m-d', strtotime($_GET['day'])) ?>";
 
 </script>
 
-<script src="<?php echo get_template_directory_uri() ?>/functions-verifyclick.js"></script>
+<script src="<?php echo get_template_directory_uri() ?>/functions-verifyclick.js?rand=<?php echo time() ?>"></script>
 <script src="<?php echo get_template_directory_uri() ?>/functions-layout.js?rand=<?php echo time() ?>"></script>
 
 <?php } # if isset day ?>
@@ -450,6 +455,8 @@ output: [2, 3, 4, 6, 5, 1]
 */
 
 function voa_top_content_layout_size($column_total, $column_index, $virtual_columns ) {
+
+    if( $virtual_columns === 6 ) return("card-half card-short"); 
     if( $column_total === 4 ) return( "card-quarter");
     if( $column_total === 2 ) return( "card-half");
     if( $column_total === 1 ) return( "card-full");
