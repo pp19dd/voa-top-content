@@ -16,6 +16,30 @@ add_image_size( 'half-width', 582, 582, array("center", "center") );
 add_image_size( 'quarter-width', 273, 582, array("center", "center") );
 add_image_size( 'quarter-width-small', 273, 218, array("left", "top") );
 
+/******* TODO
+image sizes     w  x  h
+
+cards
+
+full-img    = 1200 x 576
+half-img    =  576 x 576
+quarter-img =  276 x 576
+
+full-txt    =  576 x 576 (same as half-img)
+half-txt    =  576 x 275
+quarter-txt =  276 x 207 (card-row-2 card-row-short card-txt will use this size too)
+
+card row 2, short: 
+half-img    =  576 x 207 (576x275 is too big, i think?)
+half-txt    =  276 x 207
+
+articles
+
+hero-intro  = 2400 x 1152
+full width  =  800 x  500
+half width  =  400 x  250
+*******/
+
 add_filter( 'image_size_names_choose', 'top_content_custom_sizes' );
 
 function voa_theme_setup_options() {
