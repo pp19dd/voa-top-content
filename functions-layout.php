@@ -18,7 +18,7 @@ function get_voa_is_row_tall($posts) {
 function get_voa_top_posts() {
 
     $range = get_option("voa-layout-range", "daily");
-    var_dump($range);
+    #var_dump($range);
 
     // load layout config
     if( isset( $_GET['vday']) ) {
