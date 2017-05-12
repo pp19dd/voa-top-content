@@ -1,6 +1,6 @@
 <?php
 $thumbnail_id = get_post_thumbnail_id( $post->ID );
-$image        = voa_top_content_get_image_url($thumbnail_id, "full-width");
+$image        = voa_top_content_get_image_url($thumbnail_id, "hero-intro");
 $subhed       = trim( get_post_meta( $post->ID, "_voa_post_subhed", true ));
 $caption      = trim(get_post($thumbnail_id)->post_content);
 $hero_style   = trim( get_post_meta( $post->ID, "_voa_hero_text_style", true ));
