@@ -17,7 +17,7 @@ function get_voa_is_row_tall($posts) {
 // used on main page (index), figures out needed query logic and returns posts
 function get_voa_top_posts() {
 
-    // $range = get_option("voa-layout-range", "daily");
+    $range = get_option("voa-layout-range", "daily");
     // var_dump($range);
 
     // load layout config
@@ -36,8 +36,8 @@ function get_voa_top_posts() {
 
     // load data
     if( !isset( $_GET['preview_layout']) ) {
-        $posts_html = voa_top_content_get_day_posts($voa_day);
-        $row_layout = voa_top_content_get_row_layout($voa_day);
+        $posts_html = voa_top_content_get_day_posts($voa_day, false, $range);
+        $row_layout = voa_top_content_get_row_layout($voa_day, $range);
     } else {
         if( is_user_logged_in() ) {
 
@@ -101,7 +101,7 @@ function voa_top_content_get_posts_for_month($year, $month) {
     return( $ret );
 }
 
-function voa_top_content_get_day_posts( $date = false, $preview_ids_array = false ) {
+function voa_top_content_get_day_posts( $date = false, $preview_ids_array = false, $range = "daily" ) {
 
     $posts_html = array();
 
@@ -114,15 +114,23 @@ function voa_top_content_get_day_posts( $date = false, $preview_ids_array = fals
     $voa_top_content_day_ts = strtotime($voa_top_content_day);
 
     // get posts
+    $date_query = array(
+        "year" => date("Y", $voa_top_content_day_ts),
+        "month" => date("m", $voa_top_content_day_ts),
+        "day" => date("d", $voa_top_content_day_ts)
+    );
+
+    switch( $range ) {
+        case "daily": break;
+        case "weekly": break;
+        case "monthly": unset($date_query["day"]); break;
+    }
+
     $args = array(
         "post_type" => "post",
         "post_status" => "publish",
         "posts_per_page" => 100,
-        "date_query" => array(
-            "year" => date("Y", $voa_top_content_day_ts),
-            "month" => date("m", $voa_top_content_day_ts),
-            "day" =>date("d", $voa_top_content_day_ts)
-        )
+        "date_query" => $date_query
     );
 
     // editing layout needs preview
@@ -150,9 +158,9 @@ function voa_top_content_get_day_posts( $date = false, $preview_ids_array = fals
             "content" => get_the_content()
         );
     }
-#pre( $args );
-#pre($voa_top_content_query->request);
-#var_dump($posts_html); die;
+    #pre( $args );
+    #pre($voa_top_content_query->request);
+    #var_dump($posts_html); die;
     return( $posts_html );
 }
 
@@ -211,7 +219,7 @@ function voa_top_content_get_most_recently_published_day() {
 // a = full wide            1 post
 // b = 1/2 + 1/4 + 1/4      3 posts
 // c = 1/8 + 1/8            2 posts
-function voa_top_content_get_row_layout($day = false) {
+function voa_top_content_get_row_layout($day = false, $range = "daily") {
 
     // find most recently published day
     if( $day == false ) {
@@ -389,6 +397,7 @@ function voa_top_content_admin_config_menu() {
 
 function voa_top_content_admin_menu() {
 
+    $range = get_option("voa-layout-range", "daily" );
     $base = get_theme_root_uri() . '/' . get_template();
 
     $hardcoded_default = array(
@@ -432,7 +441,14 @@ function voa_top_content_admin_menu() {
 <?php } else { ?>
     <h1>Page Layout</h1>
 
+<?php if( $range === "daily" ) { ?>
     <p>Choose a day to edit layout for.</p>
+<?php } elseif( $range === "weekly" ) { ?>
+    <p>Choose a week to edit layout for.</p>
+<?php } elseif( $range === "monthly" ) { ?>
+    <p>Choose a month to edit layout for.</p>
+<?php } ?>
+
 <?php } ?>
 <div class="voa-top-content-layout-nav-container">
 
@@ -441,7 +457,7 @@ if( !isset( $_GET['day']) ) {
 
     $posts = voa_top_content_get_posts_for_month($current_year, $current_month);
 
-    voa_top_content_display_calendar( $month, $current_ts, $posts );
+    voa_top_content_display_calendar( $month, $current_ts, $posts, $range );
 }
 ?>
 

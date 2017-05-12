@@ -1,6 +1,6 @@
 <?php
 
-function voa_top_content_display_calendar($month, $current_ts, $posts) {
+function voa_top_content_display_calendar($month, $current_ts, $posts, $range = "daily") {
 
     $next_ts = strtotime("+1 month", $current_ts);
     $prev_ts = strtotime("-1 month", $current_ts);
@@ -49,20 +49,62 @@ function voa_top_content_display_calendar($month, $current_ts, $posts) {
         if( $has_layout !== false ) $classes[] = "laid-out";
         if( $day === "" ) $classes[] = "not-a-day";
 
+        $month_str = $month = "ym" . date("Y-m", $current_ts);
+        $week_str = "yw" . date("Y-W", strtotime($day));
+
+        if( $day !== "" ) {
+            $classes[] = "week-{$week_str}";
+            $classes[] = "month-{$month_str}";
+        }
+
         if( isset($posts[$day]) ) $classes[] = "has-posts";
     ?>
-                <td <?php if(isset($posts[$day])) { ?>title="Posts: <?php echo $posts[$day] ?>"<?php } ?> class="<?php echo implode(" ", $classes); ?>">
+                <td data-month="<?php echo $month_str ?>" data-week="<?php echo $week_str ?>" <?php if(isset($posts[$day])) { ?>title="Posts: <?php echo $posts[$day] ?>"<?php } ?> class="<?php echo implode(" ", $classes); ?>">
     <?php if( $day === "") { ?>
                     &nbsp;
     <?php } else { ?>
+
+    <?php if( $range == "daily" ) { ?>
                     <a href="?page=voa-homepage-layout&amp;day=<?php echo $day . $extra ?>"><?php echo date("d", strtotime($day) ) ?></a>
-    <?php } ?>
+    <?php } # daily ?>
+
+    <?php if( $range == "weekly" ) { ?>
+                    <a href="?page=voa-homepage-layout&amp;day=<?php echo $week_str . $extra ?>"><?php echo date("d", strtotime($day) ) ?></a>
+    <?php } # daily ?>
+
+    <?php if( $range == "monthly" ) { ?>
+                    <a href="?page=voa-homepage-layout&amp;day=<?php echo $month_str . $extra ?>"><?php echo date("d", strtotime($day) ) ?></a>
+    <?php } # daily ?>
+
+    <?php } # day not blank ?>
                 </td>
     <?php } ?>
             </tr>
     <?php } ?>
         </tbody>
     </table>
+
+    <?php if( $range === "weekly" ) { ?>
+    <script>
+    jQuery("table.voa-top-content-layout-nav td").mouseover(function() {
+        var current_week = jQuery(this).attr("data-week");
+        jQuery("table.voa-top-content-layout-nav td.week-" + current_week).addClass("calendar-range-hovering");
+    }).mouseout(function() {
+        jQuery("table.voa-top-content-layout-nav td").removeClass("calendar-range-hovering");
+    });
+    </script>
+    <?php } ?>
+
+    <?php if( $range === "monthly" ) { ?>
+    <script>
+    jQuery("table.voa-top-content-layout-nav td").mouseover(function() {
+        var current_month = jQuery(this).attr("data-month");
+        jQuery("table.voa-top-content-layout-nav td.month-" + current_month).addClass("calendar-range-hovering");
+    }).mouseout(function() {
+        jQuery("table.voa-top-content-layout-nav td").removeClass("calendar-range-hovering");
+    });
+    </script>
+    <?php } ?>
 
     <div class="voa-top-layout-legend">
         <h3>Legend:</h3>
