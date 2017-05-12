@@ -146,7 +146,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 					<?php comments_template(); ?>
 				</section><!-- end .comments -->
 
-				
+
 			</content>
 			<sidebar>
 				<sidebar-inner>

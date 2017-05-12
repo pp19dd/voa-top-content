@@ -1608,6 +1608,11 @@ h1.site-title {
   color: #ddd;
   text-decoration: underline; }
 
+/* comments **************************************************************************************/
+img.avatar-67 {
+  height: 67px;
+  width: 67px; }
+
 @media (min-width: 600px) {
   h1.site-title {
     margin: 2rem auto; }

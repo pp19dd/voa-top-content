@@ -30,36 +30,27 @@ if(
 ) { ?>
 
 
+	
+<?php if ( have_comments() ) { ?>
+	
+	<?php $comments_number = get_comments_number(); ?>
 
+	<header><?php 
+		echo $comments_number;
+		echo ($comments_number === 1 ? ' Comment' : ' Comments' );
+	?></header>
+
+<?php } else { // Check for have_comments(). ?>
+	
 	<header>Comments</header>
 
-	<div class="comments-inner">
-	<div id="comments" class="comments-area">
-		
-		<?php if ( have_comments() ) : ?>
-			<h2 class="comments-title">
-				<?php
-					$comments_number = get_comments_number();
-					if ( 1 === $comments_number ) {
-						/* translators: %s: post title */
-						printf( _x( 'One thought on &ldquo;%s&rdquo;', 'comments title', 'twentysixteen' ), get_the_title() );
-					} else {
-						printf(
-							/* translators: 1: number of comments, 2: post title */
-							_nx(
-								'%1$s thought on &ldquo;%2$s&rdquo;',
-								'%1$s thoughts on &ldquo;%2$s&rdquo;',
-								$comments_number,
-								'comments title',
-								'twentysixteen'
-							),
-							number_format_i18n( $comments_number ),
-							get_the_title()
-						);
-					}
-				?>
-			</h2>
+<?php } // Check for have_comments() ?>
 
+
+	<div class="comments-inner">
+	
+		<?php if ( have_comments() ) : ?>
+			
 			<?php the_comments_navigation(); ?>
 
 			<ol class="comment-list">
@@ -67,7 +58,7 @@ if(
 					wp_list_comments( array(
 						'style'       => 'ol',
 						'short_ping'  => true,
-						'avatar_size' => 42,
+						'avatar_size' => 67
 					) );
 				?>
 			</ol><!-- .comment-list -->
@@ -90,8 +81,7 @@ if(
 			) );
 		?>
 
-	</div><!-- .comments-area -->
-
+	</div><!-- .comments-inner -->
 
 
 <?php } ?>
@@ -99,20 +89,18 @@ if(
 <?php if( isset( $o['voa_commenting'] ) && $o['voa_commenting'] == 'facebook' ) { ?>
 
 
+	<header>Comments</header>
+	<div class="comments-inner">
+		<div class="fb-comments" data-href="<?php the_permalink(); ?>" data-width="100%" data-numposts="5"></div>
 
-	<div class="fb-comments" data-href="<?php the_permalink(); ?>" data-width="100%" data-numposts="5"></div>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=<?php echo FB_APP_ID; ?>";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+	</div><!-- .comments-inner -->
 
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=<?php echo FB_APP_ID; ?>";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-
-	<?php } ?>
-
-
-
-	</div><!-- end .comments-inner -->
+<?php }
