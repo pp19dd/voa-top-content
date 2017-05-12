@@ -11,12 +11,15 @@ wp_enqueue_script( "jquery" );
 
 // crop: x can be left, center, right
 //       y can be top, center, bottom
-add_image_size( 'full-width', 1200, 675, array("center", "center") );
-add_image_size( 'half-width', 582, 582, array("center", "center") );
-add_image_size( 'quarter-width', 273, 582, array("center", "center") );
-add_image_size( 'quarter-width-small', 273, 218, array("left", "top") );
+add_image_size( 'hero-intro',          2400, 1152, array("center", "center") );
+add_image_size( 'full-width',          1200,  576, array("center", "center") );
+add_image_size( 'half-width-square',    576,  576, array("center", "center") );
+add_image_size( 'half-width-landscape', 576,  207, array("center", "top") );
+add_image_size( 'quarter-width-short',  276,  207, array("center", "center") );
 
-/******* TODO
+//add_image_size( 'quarter-width-small', 273, 218, array("left", "top") );
+
+/******* DONE --- but saving for reference; numbers slightly different above
 image sizes     w  x  h
 
 cards
@@ -53,7 +56,7 @@ voa_top_content_admin_menu function is located in functions-layout.php
 */
 function voa_top_content_admin_menu_loader() {
     add_filter("admin_head", "voa_top_content_admin_menu_css" );
-    add_menu_page("Homepage Layout", "Homepage Layout", "edit_posts", "voa-homepage-layout", "voa_top_content_admin_menu");
+    add_menu_page("Homepage Layout", "Homepage Layout", "edit_posts", "voa-homepage-layout", "voa_top_content_admin_menu", "dashicons-schedule" );
     add_submenu_page("voa-homepage-layout", "Configure", "Configure", "edit_posts", "voa-homepage-config", "voa_top_content_admin_config_menu");
 }
 add_action('admin_menu', 'voa_top_content_admin_menu_loader');
