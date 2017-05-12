@@ -22,11 +22,14 @@ function get_voa_top_posts() {
 
     // load layout config
     if( isset( $_GET['vday']) ) {
-        $voa_day = date("Y-m-d", strtotime($_GET['vday']) );
+        #$voa_day = date("Y-m-d", strtotime($_GET['vday']) );
+        $voa_day = $_GET['vday'];
     } else {
         $voa_day = voa_top_content_get_most_recently_published_day($range);
     }
-    $voa_day_previous = voa_top_content_get_next_day($voa_day);
+
+    // expects 2017-02-07 format for daily
+    $voa_day_previous = voa_top_content_get_next_day($voa_day, $range);
 
     $ret = array(
         "voa_day" => $voa_day,
@@ -169,15 +172,19 @@ function voa_top_content_get_day_posts( $date = false, $preview_ids_array = fals
     return( $posts_html );
 }
 
-function voa_top_content_get_next_day($date = false ) {
+// input:                   output should be in same range format
+// daily: YYYY-mm-dd
+// weekly: ywYYYY-w
+// monthly: ymYYYY-mm
+function voa_top_content_get_next_day($date = false, $range = "daily") {
     global $wpdb;
 
     if( $date === false ) {
         $date = voa_top_content_get_most_recently_published_day();
     }
 
-    // sanitize and normalize
-    $date = date("Y-m-d", strtotime($date));
+    $query_range = voa_layout_day_to_actual_date_range($date);
+    $date = date("Y-m-d", $query_range["start"]);
 
     $recently_recent = $wpdb->get_row(
         "select " .
@@ -195,8 +202,18 @@ function voa_top_content_get_next_day($date = false ) {
             "1"
     );
 
+    // hrmmmm
     if( is_null($recently_recent) ) return(false);
-    return( $recently_recent->latest );
+
+    $ts = strtotime($recently_recent->latest);
+
+    // in monthly, daily range, figure out what's this month
+    switch( $range ) {
+        case "daily": return( $recently_recent->latest ); break;
+        case "weekly": return( "yw" . date("Y-W", $ts) ); break;
+        case "monthly": return( "ym" . date("Y-m", $ts ) ); break;
+    }
+
 }
 
 // returns date in following formats:
