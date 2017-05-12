@@ -24,7 +24,7 @@ function get_voa_top_posts() {
     if( isset( $_GET['vday']) ) {
         $voa_day = date("Y-m-d", strtotime($_GET['vday']) );
     } else {
-        $voa_day = voa_top_content_get_most_recently_published_day();
+        $voa_day = voa_top_content_get_most_recently_published_day($range);
     }
     $voa_day_previous = voa_top_content_get_next_day($voa_day);
 
@@ -107,30 +107,35 @@ function voa_top_content_get_day_posts( $date = false, $preview_ids_array = fals
 
     // sanitize day
     if( $date === false ) {
-        $voa_top_content_day = voa_top_content_get_most_recently_published_day();
+        $voa_top_content_day = voa_top_content_get_most_recently_published_day($range);
     } else {
-        $voa_top_content_day = date("Y-m-d", strtotime($date) );
+        $voa_top_content_day = $date;//date("Y-m-d", strtotime($date) );
     }
-    $voa_top_content_day_ts = strtotime($voa_top_content_day);
 
-    // get posts
-    $date_query = array(
-        "year" => date("Y", $voa_top_content_day_ts),
-        "month" => date("m", $voa_top_content_day_ts),
-        "day" => date("d", $voa_top_content_day_ts)
-    );
+    $query_range = voa_layout_day_to_actual_date_range($voa_top_content_day);
+    // $voa_top_content_day_ts = strtotime($voa_top_content_day);
 
-    switch( $range ) {
-        case "daily": break;
-        case "weekly": break;
-        case "monthly": unset($date_query["day"]); break;
-    }
+    // // get posts
+    // $date_query = array(
+    //     "year" => date("Y", $voa_top_content_day_ts),
+    //     "month" => date("m", $voa_top_content_day_ts),
+    //     "day" => date("d", $voa_top_content_day_ts)
+    // );
+
+    // switch( $range ) {
+    //     case "daily": break;
+    //     case "weekly": break;
+    //     case "monthly": unset($date_query["day"]); break;
+    // }
 
     $args = array(
         "post_type" => "post",
         "post_status" => "publish",
         "posts_per_page" => 100,
-        "date_query" => $date_query
+        "date_query" => array(
+            "after" => date("Y-m-d", $query_range["start_padded"]),
+            "before" => date("Y-m-d", $query_range["end_padded"])
+        )
     );
 
     // editing layout needs preview
@@ -194,8 +199,11 @@ function voa_top_content_get_next_day($date = false ) {
     return( $recently_recent->latest );
 }
 
-// returns date in Y-m-d format
-function voa_top_content_get_most_recently_published_day() {
+// returns date in following formats:
+// YYYY-mm-dd format (daily)
+// ywYYYY-w (weekly)
+// ymYYYY-mm (monthly)
+function voa_top_content_get_most_recently_published_day($range = "daily") {
     global $wpdb;
 
     $recent = $wpdb->get_row(
@@ -213,7 +221,17 @@ function voa_top_content_get_most_recently_published_day() {
             "1"
     );
 
-    return( $recent->latest );
+    switch( $range ) {
+        case "daily": return( $recent->latest ); break;
+        case "weekly":
+            $year_week = date("Y-W", strtotime($recent->latest));
+            return( "yw{$year_week}" );
+        break;
+        case "monthly":
+            $year_month = date("Y-m", strtotime($recent->latest));
+            return( "ym{$year_month}" );
+        break;
+    }
 }
 
 // a = full wide            1 post
@@ -223,7 +241,7 @@ function voa_top_content_get_row_layout($day = false, $range = "daily") {
 
     // find most recently published day
     if( $day == false ) {
-        $day = voa_top_content_get_most_recently_published_day();
+        $day = voa_top_content_get_most_recently_published_day($range);
     }
 
     // retrieve layout
@@ -277,8 +295,11 @@ function voa_layout_day_to_actual_date_range($day) {
         $end_week = $start_week + 1;
         $ret["start"] = strtotime("+{$start_week} week +1 day", strtotime("{$start_year}-01-01"));
         $ret["end"] = strtotime("+{$end_week} week", strtotime("{$start_year}-01-01"));
-
     }
+
+    // for wordpress between queries
+    $ret["start_padded"] = strtotime("-1 day", $ret["start"]);
+    $ret["end_padded"] = strtotime("+1 day", $ret["end"]);
 
     return( $ret );
 }
