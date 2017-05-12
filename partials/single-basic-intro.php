@@ -13,7 +13,7 @@ $subhed  = trim( get_post_meta( $post->ID, "_voa_post_subhed", true ));
 	
 	<?php if ( has_post_thumbnail() ) { ?>
 	<div class="featured-img">
-		<?php the_post_thumbnail(); ?>
+		<?php the_post_thumbnail('full-width'); ?>
 		<?php if ($caption != '') { ?>
 		<p><?php echo $caption; ?></p>
 		<?php } ?>
