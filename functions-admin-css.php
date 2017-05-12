@@ -160,6 +160,8 @@ voa-row:last-child td { border-bottom: 0; }
 }
 .voa-top-layout-legend p { line-height: 1.5em }
 .calendar-range-hovering { background-color: #FFDC00 !important; }
+.calendar-signifier { color: #39CCCC; text-decoration: underline; text-decoration-style: dashed; }
+
 
 /* dragula */
 

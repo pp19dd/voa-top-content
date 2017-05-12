@@ -231,6 +231,7 @@ function voa_top_content_get_row_layout($day = false, $range = "daily") {
         "row_count" => 4,
         "rows" => array(3, 2, 1, 2)
     );
+
     $default_layout = get_option( "voa-layout-default", $hardcoded_default );
     $retrieved_layout = get_option( "voa-layout-{$day}", false );
 
@@ -248,8 +249,51 @@ function pre($a) {
     echo "</PRE>";
 }
 
-function voa_top_content_stories_on_day($date) {
+function voa_layout_day_to_actual_date_range($day) {
+
+    $ret = array(
+        "range" => "daily",
+        "start" => 0,
+        "end" => 0
+    );
+
+    // daily is a default
+    $ret["start"] = strtotime($day);
+    $ret["end"] = $ret["start"];
+
+    // monthly
+    if( substr($day, 0, 2) === "ym" ) {
+        $ret["range"] = "monthly";
+        $ret["start"] = strtotime(substr($day,2) . "-01");
+        $ret["end"] = strtotime("+1 month -1 day", $ret["start"]);
+    }
+
+    // weekly
+    if( substr($day, 0, 2) === "yw" ) {
+        $ret["range"] = "weekly";
+
+        $start_year = intval(substr($day, 2, 4));
+        $start_week = intval(substr($day, 7)) - 1;
+        $end_week = $start_week + 1;
+        $ret["start"] = strtotime("+{$start_week} week +1 day", strtotime("{$start_year}-01-01"));
+        $ret["end"] = strtotime("+{$end_week} week", strtotime("{$start_year}-01-01"));
+
+    }
+
+    return( $ret );
+}
+
+// date can be in one of three formats:
+//     YYYY-mm-dd   (daily)
+//     ymYYYY-mm    (monthly)
+//     ywYYYY-w     (weekly)
+
+function voa_top_content_stories_on_day($date, $range) {
     global $wpdb;
+
+    $ts = voa_layout_day_to_actual_date_range($date);
+    $range_start = date("Y-m-d 00:00:00", $ts["start"]);
+    $range_end = date("Y-m-d 23:59:59", $ts["end"]);
 
     $statement = $wpdb->prepare(
         "select " .
@@ -257,11 +301,12 @@ function voa_top_content_stories_on_day($date) {
         "from " .
             "`{$wpdb->posts}` " .
         "where " .
-            "date(post_date)=%s and " .
+            "post_date between %s and %s and " .
             "post_type='post' and " .
             "post_status in ('publish', 'draft')" .
             "order by post_date desc",
-        $date
+        $range_start,
+        $range_end
     );
 
     $res = $wpdb->get_results($statement);
@@ -305,8 +350,9 @@ function wpa_4471252017_callback() {
 
     switch( $_POST['mode'] ) {
         case "save_layout":
-            $day = date("Y-m-d", strtotime($_POST['layout']['day']));
-            if( $day != $_POST['layout']['day'] ) return;
+            #$day = date("Y-m-d", strtotime($_POST['layout']['day']));
+            $day = $_POST['layout']['day'];
+            #if( $day != $_POST['layout']['day'] ) return;
 
             $key = "voa-layout-{$day}";
             delete_option( $key );
@@ -336,7 +382,8 @@ function wpa_4471252017_callback() {
         break;
 
         case "delete_layout":
-            $day = date("Y-m-d", strtotime($_POST['day']));
+            #$day = date("Y-m-d", strtotime($_POST['day']));
+            $day = $_POST['day'];
             $key = "voa-layout-{$day}";
             delete_option( $key );
             echo "OK {$key} deleted";
@@ -433,21 +480,41 @@ function voa_top_content_admin_menu() {
     $current_ts = strtotime("{$current_year}-{$current_month}-01");
 
     $month = voa_top_content_get_calendar($current_year, $current_month);
-?>
+    ?>
 <div class="wrap">
 
-<?php if( isset( $_GET['day'])) { ?>
-    <h1>Page Layout for <?php echo $_GET['day'] ?> (<?php echo date("D", strtotime($_GET['day'])) ?>)</h1>
+    <?php if( isset( $_GET['day'])) { ?>
+    <h1>Page Layout for <?php
+
+    if( $range === "daily") {
+        // format YYYY-mm-dd
+        echo "<span class='calendar-signifier'>" . $_GET['day'] . "</span> (" . date("F m, Y - l", strtotime($_GET['day']))  . ")";
+    } elseif( $range === "weekly" ) {
+        // format ywYYYY-W
+        $start_year = intval(substr($_GET['day'], 2, 4));
+        $start_week = intval(substr($_GET['day'], 7)) - 1;
+        $end_week = $start_week + 1;
+
+        $start_ts = strtotime("+{$start_week} week +1 day", strtotime("{$start_year}-01-01"));
+        $end_ts = strtotime("+{$end_week} week", strtotime("{$start_year}-01-01"));
+
+        echo "<span class='calendar-signifier'>" . $_GET['day'] . "</span> (" . date("F d, Y", $start_ts) . " - " . date("F d", $end_ts) . ")";
+    } elseif( $range === "monthly" ) {
+        // format ymYYYY-MM
+        echo "<span class='calendar-signifier'>" . $_GET['day'] . "</span> (" . date("F Y", strtotime(substr($_GET['day'],2)))  . ")";
+    }
+
+?></h1>
 <?php } else { ?>
     <h1>Page Layout</h1>
 
-<?php if( $range === "daily" ) { ?>
+    <?php if( $range === "daily" ) { ?>
     <p>Choose a day to edit layout for.</p>
-<?php } elseif( $range === "weekly" ) { ?>
+    <?php } elseif( $range === "weekly" ) { ?>
     <p>Choose a week to edit layout for.</p>
-<?php } elseif( $range === "monthly" ) { ?>
+    <?php } elseif( $range === "monthly" ) { ?>
     <p>Choose a month to edit layout for.</p>
-<?php } ?>
+    <?php } ?>
 
 <?php } ?>
 <div class="voa-top-content-layout-nav-container">
@@ -493,7 +560,7 @@ if( !isset( $_GET['day']) ) {
         </voa-layout>
         <available-stories>
 <?php
-$stories = voa_top_content_stories_on_day($_GET['day']);
+$stories = voa_top_content_stories_on_day($_GET['day'], $range);
 foreach( $stories as $story ) {
 ?>
     <div class='voa-layout-story' data-id="<?php echo $story->ID ?>">
@@ -538,7 +605,9 @@ if( isset( $_GET['calendar-nav-m']) ) {
 var layout = <?php echo json_encode($retrieved_layout) ?>;
 var home_url = "<?php echo home_url() ?>/";
 var extra = "<?php echo $extra; ?>";
-var payload_day = "<?php echo date('Y-m-d', strtotime($_GET['day'])) ?>";
+
+//  var payload_day = "<?php echo date('Y-m-d', strtotime($_GET['day'])) ?>";
+var payload_day = <?php echo json_encode($_GET['day']) ?>;
 
 </script>
 
