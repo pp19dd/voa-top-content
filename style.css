@@ -101,6 +101,9 @@ Version:      1.0
   margin: 0;
   padding: 0; }
 
+html {
+  font-size: 16px; }
+
 body, html {
   overflow-x: hidden;
   width: 100%;
@@ -155,6 +158,13 @@ h1 a, h1 a:hover {
   color: #333;
   text-decoration: none; }
 
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+  padding: 0 0 1rem 0; }
+
 /* ======================================================================== */
 breakup {
   display: flex;
@@ -170,9 +180,10 @@ blank-space {
 
 breakup h2 {
   flex-grow: 1;
-  font-size: 0.9em;
+  font-size: 1rem;
   font-weight: normal;
-  margin: auto;
+  margin: 0;
+  padding: 0;
   text-align: center;
   text-transform: uppercase;
   color: #999; }
@@ -405,30 +416,30 @@ article > content .content-part {
 article > content .article-tags,
 article > content .adjacent-post,
 article > content .comments {
-  margin-bottom: 1em; }
+  margin-bottom: 1rem; }
 
 article > content .article-author,
 article > content .article-share,
 article > content .article-body,
 article > content .article-categories,
 article > content .article-tags {
-  padding-bottom: 2em; }
+  padding-bottom: 2rem; }
 
 article > content .article-tags,
 article > content .adjacent-post {
   border-bottom: 1px solid #ddd; }
 
 article > content .article-body p {
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
   line-height: 1.66; }
 
 article > content .featured-img > p,
 article > content p.wp-caption-text {
   color: #666;
-  font-size: .8em;
+  font-size: .8rem;
   line-height: 150%;
   margin: 0;
-  padding: 0 .4em 1.6em .4em; }
+  padding: 0 .5rem 1.6rem .5rem; }
 
 .article-body > p > img {
   margin-left: -4rem;
@@ -440,7 +451,7 @@ article > content .voa-dateline {
   text-transform: uppercase; }
 
 article > content .article-categories {
-  padding-top: 3em; }
+  padding-top: 3rem; }
 
 article > content .article-categories,
 article > content .article-tags {
@@ -459,7 +470,7 @@ article > content .article-tags header {
   padding-top: 2rem; }
 
 .single-basic-intro h1 {
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0;
   padding: 0 4rem;
@@ -467,7 +478,7 @@ article > content .article-tags header {
 
 .single-basic-intro h2 {
   color: #666;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   font-style: italic;
   font-weight: 300;
   margin-top: 1rem;
@@ -486,7 +497,7 @@ article > content .article-tags header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-top: 2em; }
+  padding-top: 2rem; }
 
 .single .author-avatar {
   height: 67px;
@@ -504,7 +515,7 @@ article > content .article-tags header {
 
 .author-pubdate .author {
   color: #333;
-  font-size: 1em;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 700; }
 
@@ -516,7 +527,7 @@ article > content .article-tags header {
 
 .author-pubdate .pubdate {
   color: #999;
-  font-size: .8em;
+  font-size: .8rem;
   font-weight: 400;
   text-transform: uppercase; }
 
@@ -531,7 +542,7 @@ article > content .article-tags header {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  font-size: .8em;
+  font-size: .8rem;
   text-align: center;
   text-transform: uppercase; }
 
@@ -548,14 +559,14 @@ article > content .article-tags header {
 .article-share-inner ul li {
   flex-grow: 1;
   list-style: none;
-  margin-left: .25em;
+  margin-left: .25rem;
   width: 100%; }
 
 .article-share-inner ul li a {
   background-color: #666;
   color: #fcfcfc;
   display: block;
-  padding: .5em 0;
+  padding: .5rem 0;
   text-align: center;
   width: 100%; }
 
@@ -570,7 +581,7 @@ article > content .article-tags header {
   width: 25%; }
 
 article > content .header-text {
-  padding-left: .8em; }
+  padding-left: .8rem; }
 
 article > content .article-categories a,
 article > content .article-tags a {
@@ -589,22 +600,22 @@ article > content .article-tags a:hover {
 
 .wp-caption.alignright {
   float: right;
-  padding-left: 1em;
+  padding-left: 1rem;
   width: 50% !important; }
 
 .wp-caption.alignleft {
   float: left;
-  padding-right: 1em;
+  padding-right: 1rem;
   width: 50% !important; }
 
 @media (max-width: 600px) {
   article > content .article-body .wp-caption.alignright,
   article > content .article-body .wp-caption.alignleft {
     float: none;
-    margin: 2em 1em 0 1em;
+    margin: 2rem 1rem 0 1rem;
     padding-left: 0;
     padding-right: 0;
-    width: calc(100% - 2em) !important; } }
+    width: calc(100% - 2rem) !important; } }
 article > content .prevnext {
   display: flex;
   flex-direction: row;
@@ -1484,14 +1495,14 @@ h1.site-title {
   padding: 0; }
 
 .hero-title > h1 {
-  font-size: 1.25em;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.35;
   padding: 0 1rem;
   text-align: left; }
 
 .hero-title > h2 {
-  font-size: .9em;
+  font-size: .9rem;
   font-weight: 300;
   line-height: 1.35;
   overflow: hidden;
@@ -1508,7 +1519,7 @@ h1.site-title {
   border-top-width: 1px;
   font-size: .8rem;
   margin: 0;
-  padding: .5em 1rem;
+  padding: .5rem 1rem;
   background: rgba(0, 0, 0, 0.4);
   border-top-color: #666;
   color: #ddd; }
@@ -1609,10 +1620,106 @@ h1.site-title {
   text-decoration: underline; }
 
 /* comments **************************************************************************************/
+ol.comment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.comment-list > li {
+  background: #eee;
+  border-top: 2px solid #666;
+  border-bottom: 1px solid #ddd;
+  margin: 0 0 1rem 0;
+  padding: 0 0 1rem 0; }
+
+.comment-author {
+  background: #ddd;
+  display: flex;
+  flex-direction: row;
+  padding: .5rem; }
+
+.comment-author cite {
+  font-style: normal;
+  font-weight: 700;
+  padding-left: 1rem; }
+
+.comment-author .says {
+  display: none;
+  visibility: hidden; }
+
 img.avatar-67 {
+  border: 1px solid #999;
   height: 67px;
   width: 67px; }
 
+.comment-body > .comment-meta,
+.comment-body > .comment-awaiting-moderation,
+.comment-body > p,
+.comment-body > .reply {
+  margin-left: .5rem;
+  margin-right: .5rem;
+  margin-top: 1rem;
+  max-width: 100%; }
+
+.comment-awaiting-moderation {
+  background: #FFEB3B;
+  border: 2px solid #FBC02D;
+  color: #333;
+  display: block;
+  font-size: .8rem;
+  font-style: normal;
+  font-weight: 700;
+  padding: .5rem; }
+
+.comment-form p {
+  font-size: 1rem;
+  margin: 0;
+  padding: 0 0 1rem 0; }
+
+.comment-respond textarea#comment {
+  border: 1px solid #ddd;
+  margin: 0;
+  max-width: calc(100% - 1px);
+  width: 100%; }
+
+p.comment-form-author,
+p.comment-form-email,
+p.comment-form-url {
+  display: flex;
+  flex-direction: column; }
+
+.comment-form input.submit {
+  background: #4caf50;
+  border: 1px solid #388E3C;
+  color: #fcfcfc;
+  font-family: "Lato", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: .015em;
+  margin: 0;
+  padding: 1rem; }
+
+.comment-form input.submit:hover {
+  background: #388E3C;
+  cursor: pointer; }
+
+@media (min-width: 450px) {
+  p.comment-form-author,
+  p.comment-form-email,
+  p.comment-form-url {
+    flex-direction: row; }
+
+  p.comment-form-author label,
+  p.comment-form-email label,
+  p.comment-form-url label {
+    flex-basis: 100px; } }
+@media (min-width: 600px) {
+  .comment-body > .comment-meta,
+  .comment-body > .comment-awaiting-moderation,
+  .comment-body > p,
+  .comment-body > .reply {
+    margin-left: calc(.5rem + 69px + 1rem);
+    margin-right: 1rem; } }
 @media (min-width: 600px) {
   h1.site-title {
     margin: 2rem auto; }
@@ -1669,10 +1776,10 @@ img.avatar-67 {
     min-width: 150px; } }
 @media (min-width: 750px) {
   .hero-title > h1 {
-    font-size: 2em; }
+    font-size: 2rem; }
 
   .hero-title > h2 {
-    font-size: 1.2em; } }
+    font-size: 1.2rem; } }
 @media (min-width: 960px) {
   h1.site-title {
     margin: 3rem auto; }
@@ -1697,10 +1804,10 @@ img.avatar-67 {
     width: calc(65.666666% - 2rem); }
 
   .hero-title > h1 {
-    font-size: 2.5em; }
+    font-size: 2.5rem; }
 
   .hero-title > h2 {
-    font-size: 1.25em; }
+    font-size: 1.25rem; }
 
   .hero-undermedia-caption > p {
     margin: 0 auto 1rem auto;

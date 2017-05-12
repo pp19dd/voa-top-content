@@ -16,6 +16,8 @@ Version:      1.0
 // need reset
 * { margin:0; padding: 0; }
 
+html { font-size: 16px; }
+
 body, html { overflow-x: hidden; width:100%; height:100%; }
 
 body { 
@@ -85,6 +87,14 @@ h1 {
 
 h1 a, h1 a:hover { color: $offblack; text-decoration: none; }
 
+h2 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1.35;
+	margin: 0;
+	padding: 0 0 1rem 0;
+}
+
 /* ======================================================================== */
 
 breakup {
@@ -103,9 +113,10 @@ blank-space {
 
 breakup h2 {
 	flex-grow: 1;
-	font-size: 0.9em;
+	font-size: 1rem;
 	font-weight: normal;
-	margin: auto;
+	margin: 0;
+	padding: 0;
 	text-align: center;
 	text-transform: uppercase;
 	color: $ltgray;
@@ -349,7 +360,7 @@ article > content .content-part {
 article > content .article-tags,
 article > content .adjacent-post,
 article > content .comments {
-	margin-bottom: 1em;
+	margin-bottom: 1rem;
 }
 
 
@@ -358,7 +369,7 @@ article > content .article-share,
 article > content .article-body,
 article > content .article-categories,
 article > content .article-tags {
-	padding-bottom: 2em;
+	padding-bottom: 2rem;
 }
 
 article > content .article-tags,
@@ -367,17 +378,17 @@ article > content .adjacent-post {
 }
 
 article > content .article-body p {
-	margin-bottom: 1em;
+	margin-bottom: 1rem;
 	line-height: 1.66;
 }
 
 article > content .featured-img > p,
 article > content p.wp-caption-text {
 	color: $midgray;
-	font-size: .8em;
+	font-size: .8rem;
 	line-height: 150%;
 	margin: 0;
-	padding: 0 .4em 1.6em .4em;
+	padding: 0 .5rem 1.6rem .5rem;
 }
 
 // article > content .article-body > *:not(.wp-caption),
@@ -396,7 +407,7 @@ article > content p.wp-caption-text {
 article > content .voa-dateline { text-transform: uppercase; }
 
 article > content .article-categories {
-	padding-top: 3em;
+	padding-top: 3rem;
 }
 
 article > content .article-categories,
@@ -419,7 +430,7 @@ article > content .article-tags header {
 }
 
 .single-basic-intro h1 {
-	font-size: 2em;
+	font-size: 2rem;
 	font-weight: 700;
 	margin-bottom: 0;
 	padding: 0 4rem;
@@ -428,7 +439,7 @@ article > content .article-tags header {
 
 .single-basic-intro h2 {
 	color: $midgray;
-	font-size: 1.2em;
+	font-size: 1.2rem;
 	font-style: italic;
 	font-weight: 300;
 	margin-top: 1rem;
@@ -452,7 +463,7 @@ article > content .article-tags header {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	padding-top: 2em;
+	padding-top: 2rem;
 }
 
 .single .author-avatar { height: 67px; width: 67px; margin-right: .5rem; }
@@ -464,7 +475,7 @@ article > content .article-tags header {
 
 .author-pubdate .author {
 	color: $offblack;
-	font-size: 1em;
+	font-size: 1rem;
 	font-style: normal;
 	font-weight: 700;
 }
@@ -474,7 +485,7 @@ article > content .article-tags header {
 
 .author-pubdate .pubdate {
 	color: $ltgray;
-	font-size: .8em;
+	font-size: .8rem;
 	font-weight: 400;
 	text-transform: uppercase;
 }
@@ -493,7 +504,7 @@ article > content .article-tags header {
 	display: flex;
 	flex-direction: row;
 	flex-grow: 1;
-	font-size: .8em;
+	font-size: .8rem;
 	text-align: center;
 	text-transform: uppercase;
 }
@@ -513,7 +524,7 @@ article > content .article-tags header {
 .article-share-inner ul li {
 	flex-grow: 1;
 	list-style: none;
-	margin-left: .25em;
+	margin-left: .25rem;
 	width: 100%;
 }
 
@@ -521,7 +532,7 @@ article > content .article-tags header {
 	background-color: $midgray;
 	color: $offwhite;
 	display: block;
-	padding: .5em 0;
+	padding: .5rem 0;
 	text-align: center;
 	width: 100%;
 }
@@ -539,7 +550,7 @@ article > content .article-tags header {
 	width: 25%;
 }
 
-article > content .header-text { padding-left: .8em; }
+article > content .header-text { padding-left: .8rem; }
 
 article > content .article-categories a, 
 article > content .article-tags a { color: $midgray; text-decoration: none; }
@@ -563,13 +574,13 @@ article > content .article-tags a:hover { color: $voablue; text-decoration: unde
 
 .wp-caption.alignright {
 	float: right;
-	padding-left: 1em;
+	padding-left: 1rem;
 	width: 50% !important;
 }
 
 .wp-caption.alignleft {
 	float: left;
-	padding-right: 1em;
+	padding-right: 1rem;
 	width: 50% !important;
 }
 
@@ -578,10 +589,10 @@ article > content .article-tags a:hover { color: $voablue; text-decoration: unde
 	article > content .article-body .wp-caption.alignright,
 	article > content .article-body .wp-caption.alignleft {
 		float: none;
-		margin: 2em 1em 0 1em;
+		margin: 2rem 1rem 0 1rem;
 		padding-left:  0;
 		padding-right: 0;
-		width: calc(100% - 2em) !important;
+		width: calc(100% - 2rem) !important;
 	}
 	
 }
@@ -1301,7 +1312,7 @@ h1.site-title {
 }
 
 .hero-title > h1 {
-	font-size: 1.25em;
+	font-size: 1.25rem;
 	font-weight: 700;
 	line-height: 1.35;
 	padding: 0 1rem;
@@ -1309,7 +1320,7 @@ h1.site-title {
 }
 
 .hero-title > h2 {
-	font-size: .9em;
+	font-size: .9rem;
 	font-weight: 300;
 	line-height: 1.35;
 	overflow: hidden;
@@ -1328,7 +1339,7 @@ h1.site-title {
 	border-top-width: 1px;
 	font-size: .8rem;
 	margin: 0;
-	padding: .5em 1rem;
+	padding: .5rem 1rem;
 	
 	background: rgba(0, 0, 0, .4);
 	border-top-color: $midgray;
@@ -1546,8 +1557,8 @@ h1.site-title {
 
 @media (min-width: 750px) {
 	
-	.hero-title > h1 { font-size: 2em; }
-	.hero-title > h2 { font-size: 1.2em; }
+	.hero-title > h1 { font-size: 2rem; }
+	.hero-title > h2 { font-size: 1.2rem; }
 	
 }
 
@@ -1582,8 +1593,8 @@ h1.site-title {
 		width: calc(65.666666% - 2rem);
 	}
 	
-	.hero-title > h1 { font-size: 2.5em; }
-	.hero-title > h2 { font-size: 1.25em; }
+	.hero-title > h1 { font-size: 2.5rem; }
+	.hero-title > h2 { font-size: 1.25rem; }
 	
 	.hero-undermedia-caption > p {
 		margin: 0 auto 1rem auto;

@@ -1,6 +1,145 @@
 // _comments.scss
 
+ol.comment-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.comment-list > li {
+	background: $bodybg;
+	border-top: 2px solid $midgray;
+	border-bottom: 1px solid $vltgray;
+	margin: 0 0 1rem 0;
+	padding: 0 0 1rem 0;
+}
+
+// .comment-list > li:first-child {
+// 	//margin-top: 0;
+// 	padding-top: 0;
+// }
+
+.comment-body {
+	//padding-left: calc(69px + 2rem);
+}
+
+.comment-author {
+	background: $vltgray;
+	display: flex;
+	flex-direction: row;
+	//margin: 0 0 1rem calc(-69px - 2rem);
+	padding: .5rem;
+}
+
+.comment-author cite {
+	font-style: normal;
+	font-weight: 700;
+	padding-left: 1rem;
+}
+
+.comment-author .says {
+	display: none;
+	visibility: hidden;
+}
+
 img.avatar-67 {
+	border: 1px solid $ltgray;
 	height: 67px;
+	//margin-right: 1rem;
 	width: 67px;
+}
+
+.comment-body > .comment-meta,
+.comment-body > .comment-awaiting-moderation,
+.comment-body > p,
+.comment-body > .reply {
+	margin-left: .5rem;
+	margin-right: .5rem;
+	margin-top: 1rem;
+	max-width: 100%;
+}
+
+.comment-awaiting-moderation {
+	background: #FFEB3B;
+	border: 2px solid #FBC02D;
+	color: $offblack;
+	display: block;
+	font-size: .8rem;
+	font-style: normal;
+	font-weight: 700;
+	padding: .5rem;
+}
+
+.comment-form p {
+	font-size: 1rem;
+	margin: 0;
+	padding: 0 0 1rem 0;
+}
+
+.comment-respond textarea#comment {
+	border: 1px solid $vltgray;
+	margin: 0;
+	max-width: calc(100% - 1px);
+	width: 100%;
+}
+
+p.comment-form-author,
+p.comment-form-email,
+p.comment-form-url {
+	display: flex;
+	flex-direction: column;
+}
+
+.comment-form input.submit {
+	background: #4caf50;
+	border: 1px solid #388E3C;
+	color: $offwhite;
+	font-family: "Lato", sans-serif;
+	font-size: 1rem;
+	font-weight: 400;
+	letter-spacing: .015em;
+	margin: 0;
+	padding: 1rem;
+}
+
+.comment-form input.submit:hover {
+	background: #388E3C;
+	cursor: pointer;
+}
+
+
+
+
+
+
+@media (min-width: 450px) {
+	
+	p.comment-form-author,
+	p.comment-form-email,
+	p.comment-form-url {
+		flex-direction: row;
+	}
+
+	p.comment-form-author label,
+	p.comment-form-email label,
+	p.comment-form-url label {
+		flex-basis: 100px;
+	}
+
+}
+
+
+
+
+
+@media (min-width: 600px) {
+
+	.comment-body > .comment-meta,
+	.comment-body > .comment-awaiting-moderation,
+	.comment-body > p,
+	.comment-body > .reply {
+		margin-left: calc(.5rem + 69px + 1rem);
+		margin-right: 1rem;
+	}
+
 }
