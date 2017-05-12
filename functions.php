@@ -29,7 +29,7 @@ full-txt    =  576 x 576 (same as half-img)
 half-txt    =  576 x 275
 quarter-txt =  276 x 207 (card-row-2 card-row-short card-txt will use this size too)
 
-card row 2, short: 
+card row 2, short:
 half-img    =  576 x 207 (576x275 is too big, i think?)
 half-txt    =  276 x 207
 
@@ -54,12 +54,16 @@ voa_top_content_admin_menu function is located in functions-layout.php
 function voa_top_content_admin_menu_loader() {
     add_filter("admin_head", "voa_top_content_admin_menu_css" );
     add_menu_page("Homepage Layout", "Homepage Layout", "edit_posts", "voa-homepage-layout", "voa_top_content_admin_menu");
+    add_submenu_page("voa-homepage-layout", "Configure", "Configure", "edit_posts", "voa-homepage-config", "voa_top_content_admin_config_menu");
 }
 add_action('admin_menu', 'voa_top_content_admin_menu_loader');
 
 // ajax save options (layout)
 add_action( 'wp_ajax_wpa_4471252017', 'wpa_4471252017_callback' );
-add_action( 'wp_ajax_nopriv_wpa_4471252017', 'wpa_4471252017_callback' );
+#add_action( 'wp_ajax_nopriv_wpa_4471252017', 'wpa_4471252017_callback' );
+
+add_action( 'wp_ajax_wpa_4475122017', 'wpa_4475122017_callback' );
+#add_action( 'wp_ajax_nopriv_wpa_4475122017', 'wpa_4475122017_callback' );
 
 function top_content_custom_sizes( $sizes ) {
     return(
@@ -167,17 +171,17 @@ function voa_has_redirect_url( $post_id ) {
 
 
 function voa_language_service_tag( $post_id, $display = true ) {
-    
+
     $cat = get_the_category( $post_id );
-    
+
     if ( $cat[0]->slug && $cat[0]->slug != 'uncategorized' ) {
 
         if ( $display == true ) {
-            
+
             echo '<div class="language-service lang-'.$cat[0]->slug.'"><div class="language-service-inner">'.$cat[0]->name.'</div></div>';
 
         } else {
-            
+
             return $cat[0]->name;
         }
 

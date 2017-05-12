@@ -17,6 +17,9 @@ function get_voa_is_row_tall($posts) {
 // used on main page (index), figures out needed query logic and returns posts
 function get_voa_top_posts() {
 
+    // $range = get_option("voa-layout-range", "daily");
+    // var_dump($range);
+
     // load layout config
     if( isset( $_GET['vday']) ) {
         $voa_day = date("Y-m-d", strtotime($_GET['vday']) );
@@ -268,6 +271,28 @@ function voa_top_content_get_calendar($year, $month) {
     return( $cal->getMonth() );
 }
 
+function wpa_4475122017_callback() {
+    $allowed_ranges = array(
+        "daily" => "daily",
+        "weekly" => "weekly",
+        "monthly" => "monthly"
+    );
+
+    $requested_range = $_POST['layout']['range'];
+    if( !isset($allowed_ranges[$requested_range]) ) {
+        echo "ERROR: range not allowed?";
+        wp_die();
+    } else {
+        $requested_range = $allowed_ranges[$requested_range];
+    }
+
+    delete_option( "voa-layout-range" );
+    update_option( "voa-layout-range", $requested_range );
+
+    echo "Changed range to {$requested_range}";
+    wp_die();
+}
+
 function wpa_4471252017_callback() {
 
     switch( $_POST['mode'] ) {
@@ -310,6 +335,56 @@ function wpa_4471252017_callback() {
         break;
     }
 
+    wp_die();
+}
+
+function voa_top_content_admin_config_menu() {
+
+    $range = get_option("voa-layout-range", "daily" );
+
+    ?>
+
+    <div class="wrap">
+        <h1>Homepage Layout Configuration</h1>
+
+        <div class="card voa-layout-config">
+            <h3>Navigation</h3>
+            <p>How do you want to group posts on the homepage?</p>
+
+            <p><label><input type="radio" <?php if( $range === "daily" ) { echo "checked='checked'"; } ?> name="voa-layout-range" value="daily" /><strong> Daily </strong> (Recommended if you post several times per day.)</label></p>
+            <p><label><input type="radio" <?php if( $range === "weekly" ) { echo "checked='checked'"; } ?> name="voa-layout-range" value="weekly" /><strong> Weekly </strong> (Recommended if you post few times per week.)</label></p>
+            <p><label><input type="radio" <?php if( $range === "monthly" ) { echo "checked='checked'"; } ?> name="voa-layout-range" value="monthly" /><strong> Monthly </strong> (Recommended if you post few times per month.)</label></p>
+
+            <p>Warning: don't change this setting frequently, as it may break paginated links.</p>
+
+        </div>
+
+        <p class="submit"><input type="submit" value="Save Changes" class="button button-primary" id="layout_config_submit" name="submit"></p>
+        <div class="notice notice-success" id="status" style="display:none"></div>
+
+        <script>
+        jQuery("#layout_config_submit").click(function() {
+
+            var new_layout_config = {
+                range: jQuery("input[name=voa-layout-range]:checked").val()
+            };
+
+            jQuery.post( ajaxurl, {
+                action: "wpa_4475122017",
+                mode: "save_layout_config",
+                layout: new_layout_config,
+            }).error(function() {
+                jQuery("#status").show().html( "<p style='color:crimson'>Error Saving.</p>" );
+            }).success( function(e) {
+                jQuery("#status").show().html( "<p>Saved: "  + e + "</p>");
+            });
+        });
+
+        </script>
+
+    </div>
+
+    <?php
 }
 
 function voa_top_content_admin_menu() {
@@ -349,8 +424,6 @@ function voa_top_content_admin_menu() {
     $current_ts = strtotime("{$current_year}-{$current_month}-01");
 
     $month = voa_top_content_get_calendar($current_year, $current_month);
-
-    add_thickbox();
 ?>
 <div class="wrap">
 
@@ -386,7 +459,7 @@ if( !isset( $_GET['day']) ) {
     <p><a id="id-preview" href="#">Preview Layout</a> (Opens in new window)</p>
     </show-items>
 
-    <voa-today>
+    <voa-today class="disable-select">
         <voa-layout>
             <voa-row>
                 <voa-control>

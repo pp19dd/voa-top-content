@@ -1,4 +1,6 @@
 <style>
+
+.voa-layout-config label strong { font-weight: bold }
 /* meta box */
 #voa-top-content-meta-01 p { margin-bottom: 0; }
 .voa-bad-field { color: red }
@@ -20,8 +22,12 @@ voa-indicator { padding-top: 1em; width: 400px; }
 voa-control {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
-    padding-bottom:11px;
+    align-items: flex-start;
+    padding-top:21px;
+}
+
+voa-control td {
+    transition: 0.5s all ease;
 }
 
 voa-control button {
@@ -155,27 +161,36 @@ voa-row:last-child td { border-bottom: 0; }
 .voa-top-layout-legend p { line-height: 1.5em }
 
 /* dragula */
+
+/* d&d interface doesn't need highlighting */
+.disable-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .gu-mirror {
-  position: fixed !important;
-  margin: 0 !important;
-  z-index: 9999 !important;
-  opacity: 0.8;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-  filter: alpha(opacity=80);
+    position: fixed !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
 }
 .gu-hide {
-  display: none !important;
+    display: none !important;
 }
 .gu-unselectable {
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
 }
 .gu-transit {
-  opacity: 0.2;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
-  filter: alpha(opacity=20);
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: alpha(opacity=20);
 }
 
 /* action verification buttons */
