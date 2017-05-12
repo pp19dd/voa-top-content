@@ -18,7 +18,7 @@ function get_voa_is_row_tall($posts) {
 function get_voa_top_posts() {
 
     $range = get_option("voa-layout-range", "daily");
-    // var_dump($range);
+    var_dump($range);
 
     // load layout config
     if( isset( $_GET['vday']) ) {
@@ -480,32 +480,31 @@ function voa_top_content_admin_menu() {
     $current_ts = strtotime("{$current_year}-{$current_month}-01");
 
     $month = voa_top_content_get_calendar($current_year, $current_month);
+
+    $query_range = voa_layout_day_to_actual_date_range($_GET['day']);
+
+    switch( $range ) {
+        case "daily":
+            $detailed_range = date("F m, Y - l", $query_range["start"]);
+        break;
+
+        case "weekly":
+            $detailed_range = date("F d, Y", $query_range["start"]) . " - " . date("F d", $query_range["end"]);
+        break;
+
+        case "monthly":
+            $detailed_range = date("F Y", $query_range["start"]);
+        break;
+    }
     ?>
 <div class="wrap">
 
     <?php if( isset( $_GET['day'])) { ?>
-    <h1>Page Layout for <?php
 
-    if( $range === "daily") {
-        // format YYYY-mm-dd
-        echo "<span class='calendar-signifier'>" . $_GET['day'] . "</span> (" . date("F m, Y - l", strtotime($_GET['day']))  . ")";
-    } elseif( $range === "weekly" ) {
-        // format ywYYYY-W
-        $start_year = intval(substr($_GET['day'], 2, 4));
-        $start_week = intval(substr($_GET['day'], 7)) - 1;
-        $end_week = $start_week + 1;
+    <h1>Page Layout for <span class="calendar-signifier"><?php echo $_GET['day'] ?></span> (<?php echo $detailed_range ?>)</h1>
 
-        $start_ts = strtotime("+{$start_week} week +1 day", strtotime("{$start_year}-01-01"));
-        $end_ts = strtotime("+{$end_week} week", strtotime("{$start_year}-01-01"));
+    <?php } else { ?>
 
-        echo "<span class='calendar-signifier'>" . $_GET['day'] . "</span> (" . date("F d, Y", $start_ts) . " - " . date("F d", $end_ts) . ")";
-    } elseif( $range === "monthly" ) {
-        // format ymYYYY-MM
-        echo "<span class='calendar-signifier'>" . $_GET['day'] . "</span> (" . date("F Y", strtotime(substr($_GET['day'],2)))  . ")";
-    }
-
-?></h1>
-<?php } else { ?>
     <h1>Page Layout</h1>
 
     <?php if( $range === "daily" ) { ?>
