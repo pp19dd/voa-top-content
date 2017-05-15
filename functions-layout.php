@@ -816,6 +816,36 @@ function voa_top_content_get_image_url($thumbnail_id, $col, $cols = 1) {
     return( $image );
 }
 
+function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img', $short = false ) {
+    
+    switch( $siz ) {
+        case 'hero-intro':
+            $imgsize = 'hero-intro';
+            break;
+            
+        case 'card-full':
+            $imgsize = ( $cls == 'card-img' ? 'full-width' : 'half-width-square' );
+            break;
+        
+        case 'card-half':
+            $imgsize = ( $cls == 'card-img' ? 'half-width-square' : 'half-width-landscape' );
+            break;
+        
+        case 'card-quarter':
+            $imgsize = ( $cls == 'card-img' ? 'quarter-width-tall' : 'quarter-width-short' );
+            break;
+        
+        default:
+            $imgsize = 'quarter-width-short';
+            break;
+    }
+    
+    $image = wp_get_attachment_image_src( $thumbnail_id, $imgsize );
+    $image = $image[0];
+    
+    return( $image );
+}
+
 
 // used to show previous/next posts with thumbnail images
 // $direction can be 'previous' or 'next'
