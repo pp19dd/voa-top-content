@@ -14,7 +14,8 @@ wp_enqueue_script( "jquery" );
 add_image_size( 'hero-intro',          2400, 1152, array("center", "center") );
 add_image_size( 'full-width',          1200,  576, array("center", "center") );
 add_image_size( 'half-width-square',    576,  576, array("center", "center") );
-add_image_size( 'half-width-landscape', 576,  207, array("center", "top") );
+add_image_size( 'half-width-landscape', 576,  207, array("center", "top"   ) );
+add_image_size( 'quarter-width-tall',   276,  576, array("center", "top"   ) );
 add_image_size( 'quarter-width-short',  276,  207, array("center", "center") );
 
 //add_image_size( 'quarter-width-small', 273, 218, array("left", "top") );
@@ -43,7 +44,25 @@ full width  =  800 x  500
 half width  =  400 x  250
 *******/
 
+function top_content_custom_sizes( $sizes ) {
+    return(
+        array_merge(
+            $sizes,
+            array(
+                'hero-intro'           => __( 'hero-intro' ),
+                'full-width'           => __( 'full-width' ),
+                'half-width-square'    => __( 'half-width-square' ),
+                'half-width-landscape' => __( 'half-width-landscape' ),
+                'quarter-width-tall'   => __( 'quarter-width-tall' ),
+                'quarter-width-short'  => __( 'quarter-width-short' )
+            )
+        )
+    );
+}
+
 add_filter( 'image_size_names_choose', 'top_content_custom_sizes' );
+
+
 
 function voa_theme_setup_options() {
     add_theme_support( 'title-tag' );
@@ -67,20 +86,6 @@ add_action( 'wp_ajax_wpa_4471252017', 'wpa_4471252017_callback' );
 
 add_action( 'wp_ajax_wpa_4475122017', 'wpa_4475122017_callback' );
 #add_action( 'wp_ajax_nopriv_wpa_4475122017', 'wpa_4475122017_callback' );
-
-function top_content_custom_sizes( $sizes ) {
-    return(
-        array_merge(
-            $sizes,
-            array(
-                'full-width' => __( 'full-width' ),
-                'half-width' => __( 'half-width' ),
-                'quarter-width' => __( 'quarter-width' ),
-                'quarter-width-small' => __( 'quarter-width-small' ),
-            )
-        )
-    );
-}
 
 
 
