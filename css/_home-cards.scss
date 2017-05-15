@@ -1,0 +1,306 @@
+// _home-cards.scss
+
+.card-row {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	margin: 0;
+	padding: 0;
+}
+
+.story-card {
+	flex-grow: 1;
+	height: 100%;
+	min-height: 360px;
+	max-height: 80vh;
+	margin: 0 0 16px 0;
+	padding: 0;
+	position: relative;
+	width: 100%;
+}
+
+.story-card > a {
+	background-color: #e6e6e6;
+	background-repeat: no-repeat;
+	color: $offblack;
+	display: block;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	text-decoration: none;
+	@include transition( all .5s ease );
+	width: 100%;
+}
+
+.story-card > a:hover {
+	background-color: #f6f6f6;
+}
+
+.story-card > a > .text {
+	text-align: left;
+	max-width: calc(100% - 28px - 2rem); // leave room for video icon
+}
+
+.story-card > a h2 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1.35em;
+	margin: 0 0 1rem 0;
+	padding: 0;
+	text-decoration: none;
+	@include transition( all .5s ease );
+}
+
+.story-card > a:hover h2 { }
+
+.story-card > a p {
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.25rem;
+	margin: 0 0 1rem 0;
+	padding: 0;
+}
+
+.story-card > a:hover p { }
+
+.story-card > a p.continue {
+	@include transition( all .5s ease );
+}
+
+.video-icon {
+	background: $voablue;
+	border-color: $bodybg;
+	border-style: solid;
+	border-width: 0 0 2px 2px;
+	color: $offwhite;
+	font-size: 1rem;
+	line-height: 1;
+	padding: 12px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 10;
+}
+
+.category {
+	position: absolute;
+	bottom: .75rem;
+	right: 0;
+	background: $voared;
+	border-color: $bodybg;
+	border-style: solid;
+	border-width: 2px 0 2px 2px;
+	color: $offwhite;
+	font-size: .8rem;
+	line-height: 1;
+	margin: 0;
+	padding: .5rem 1rem .5rem .75rem;
+}
+
+.clearfix:after {
+	content: "";
+	display: table;
+	clear: both;
+	//height: .5rem;
+}
+
+
+
+.card-noimg {
+	a {
+		background-image: none !important;
+		
+		.text { margin: .5rem; }
+		
+		h2 { 
+			color: $offblack;
+		}
+		
+		p.continue {
+			background-color: $mltgray;
+			border-radius: .25em;
+			color: $midgray;
+			display: inline-block;
+			font-size: .9rem;
+			letter-spacing: .015em;
+			padding: .5em;
+		}
+	}
+	
+	a:hover {
+		h2 { color: $voablue; }
+		
+		p.continue {
+			background-color: $voablue;
+			color: $offwhite;
+		}
+	}
+}
+
+
+
+.card-txt {
+	a {
+		
+	}
+	
+	a:hover {
+		
+	}
+}
+
+
+
+.card-img {
+	a {
+		background-position: 50% 50%;
+		background-size: cover;
+	}
+	
+	a:hover {
+		
+	}
+}
+
+
+
+// text-y story-card styles
+/*
+.card-noimg > a { }
+
+.card-noimg > a:hover { }
+
+.card-noimg > a h2 {
+	font-size: 1.5rem;
+	font-weight: 300;
+	line-height: 1.35em;
+}
+
+.card-noimg > a:hover h2 {}
+
+.card-noimg > a p,
+.card-noimg > a .continue {
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.25rem;
+}
+
+.card-noimg > a .continue { }
+
+.card-noimg > a:hover p {
+}
+
+.card-noimg > a:hover .continue { }
+
+
+
+.card-txt > a {
+	background-position: 50% 0;
+	background-size: auto 35%;
+}
+
+.card-txt > a > .text {}
+
+.card-txt.card-full > a {
+	
+}
+*/
+
+
+
+
+@media (min-width: 450px) {
+
+	.card-row {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.card-row-3,
+	.card-row-4 {
+		flex-wrap: wrap;
+	}
+	
+	.story-card {
+		flex-basis: 0;
+		height: 360px;
+	}
+
+	.story-card.card-half {
+		flex-basis: 50%;
+	}
+
+	.story-card.card-quarter {
+		flex-basis: 50%;
+	}
+
+	.card-row-3 > .story-card.card-half {
+		flex-basis: 100%;
+	}
+
+	.story-card > a {
+		margin-left: 8px;
+		margin-right: 8px;
+		width: calc(100% - 16px);
+	}
+
+}
+
+
+
+
+
+@media (min-width: 600px) { }
+
+
+
+
+
+@media (min-width: 750px) {
+	
+	.story-card {
+		height: 450px;
+	}
+
+	.card-row-3 > .story-card.card-half {
+		flex-basis: 50%;
+	}
+
+	.story-card.card-quarter {
+		flex-basis: 25%;
+	}
+
+}
+
+
+
+
+
+@media (min-width: 960px) {
+
+	.card-row {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	
+	.story-card {
+		flex-basis: 0;
+		height: 576px;
+		margin-bottom: 24px;
+	}
+
+	.story-card > a {
+		margin-left: 12px;
+		margin-right: 12px;
+		width: calc(100% - 24px);
+	}
+
+}
+
+
+
+
+
+@media (min-width: 1200px) { }

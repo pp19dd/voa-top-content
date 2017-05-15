@@ -1210,37 +1210,35 @@ h1.site-title {
   width: 100%; }
 
 .story-card > a {
-  background-color: #ddd;
-  background-position: 50% 50%;
+  background-color: #e6e6e6;
   background-repeat: no-repeat;
-  background-size: cover;
+  color: #333;
   display: block;
   height: 100%;
   margin: 0;
   padding: 0;
   position: relative;
   text-decoration: none;
+  -webkit-transition: all 0.5s ease;
+  -mox-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   width: 100%; }
 
+.story-card > a:hover {
+  background-color: #f6f6f6; }
+
 .story-card > a > .text {
-  margin-left: .5rem;
   text-align: left;
-  width: 80%; }
+  max-width: calc(100% - 28px - 2rem); }
 
 .story-card > a h2 {
-  background-color: #333;
-  box-decoration-break: clone;
-  -webkit-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-  -mox-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-  -ms-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-  -o-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-  box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-  color: #fcfcfc;
-  display: inline;
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 1.35em;
-  padding: .25rem 0;
+  margin: 0 0 1rem 0;
+  padding: 0;
   text-decoration: none;
   -webkit-transition: all 0.5s ease;
   -mox-transition: all 0.5s ease;
@@ -1248,53 +1246,19 @@ h1.site-title {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease; }
 
-.story-card > a:hover h2 {
-  background-color: #1330bf;
-  -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf; }
-
-.story-card > a p,
-.story-card > a .continue {
-  background-color: transparent;
-  box-decoration-break: clone;
-  -webkit-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  -mox-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  -ms-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  -o-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  color: transparent;
-  display: inline;
+.story-card > a p {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.25rem;
-  padding: .15rem 0;
-  text-decoration: none;
+  margin: 0 0 1rem 0;
+  padding: 0; }
+
+.story-card > a p.continue {
   -webkit-transition: all 0.5s ease;
   -mox-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease; }
-
-.story-card > a:hover p {
-  background-color: #333;
-  -webkit-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-  -mox-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-  -ms-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-  -o-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-  box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-  color: #fcfcfc; }
-
-.story-card > a:hover .continue {
-  background-color: #1330bf;
-  -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  color: #fcfcfc; }
 
 .video-icon {
   background: #1330bf;
@@ -1302,8 +1266,9 @@ h1.site-title {
   border-style: solid;
   border-width: 0 0 2px 2px;
   color: #fcfcfc;
+  font-size: 1rem;
   line-height: 1;
-  padding: 1rem;
+  padding: 12px;
   position: absolute;
   top: 0;
   right: 0;
@@ -1326,101 +1291,72 @@ h1.site-title {
 .clearfix:after {
   content: "";
   display: table;
-  clear: both;
-  height: .5rem; }
+  clear: both; }
 
-.story-card.card-noimg > a {
-  background: #ddd; }
-
-.story-card.card-noimg > a:hover {
-  background: #ccc; }
-
-.story-card.card-noimg > a h2 {
-  background-color: transparent;
-  box-decoration-break: clone;
-  -webkit-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  -mox-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  -ms-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  -o-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  color: #333;
-  display: inline;
-  font-size: 1.5rem;
-  font-weight: 300;
-  line-height: 1.35em;
-  padding: .25rem 0;
-  text-decoration: none;
-  -webkit-transition: all 0.5s ease;
-  -mox-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease; }
-
-.story-card.card-noimg > a:hover h2 {
-  background-color: #1330bf;
-  color: #fcfcfc;
-  -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf; }
-
-.story-card.card-noimg > a p,
-.story-card.card-noimg > a .continue {
-  background-color: none;
-  box-decoration-break: clone;
-  -webkit-box-shadow: none;
-  -mox-box-shadow: none;
-  -ms-box-shadow: none;
-  -o-box-shadow: none;
-  box-shadow: none;
-  color: #666;
-  display: inline;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  padding: .15rem 0;
-  text-decoration: none;
-  -webkit-transition: all 0.5s ease;
-  -mox-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease; }
-
-.story-card.card-noimg > a .continue {
-  -webkit-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  -mox-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  -ms-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  -o-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-  box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+.card-noimg a {
+  background-image: none !important; }
+  .card-noimg a .text {
+    margin: .5rem; }
+  .card-noimg a h2 {
+    color: #333; }
+  .card-noimg a p.continue {
+    background-color: #ccc;
+    border-radius: .25em;
+    color: #666;
+    display: inline-block;
+    font-size: .9rem;
+    letter-spacing: .015em;
+    padding: .5em; }
+.card-noimg a:hover h2 {
   color: #1330bf; }
-
-.story-card.card-noimg > a:hover p {
-  background-color: transparent;
-  -webkit-box-shadow: none;
-  -mox-box-shadow: none;
-  -ms-box-shadow: none;
-  -o-box-shadow: none;
-  box-shadow: none;
-  color: #333; }
-
-.story-card.card-noimg > a:hover .continue {
+.card-noimg a:hover p.continue {
   background-color: #1330bf;
-  -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
   color: #fcfcfc; }
 
-.story-card.card-txt > a {
-  background-position: 50% 0;
-  background-size: auto 35%; }
+.card-img a {
+  background-position: 50% 50%;
+  background-size: cover; }
 
-.story-card.card-txt > a > .text {
-  position: absolute;
-  top: calc(35% + 1rem); }
+/*
+.card-noimg > a { }
 
+.card-noimg > a:hover { }
+
+.card-noimg > a h2 {
+	font-size: 1.5rem;
+	font-weight: 300;
+	line-height: 1.35em;
+}
+
+.card-noimg > a:hover h2 {}
+
+.card-noimg > a p,
+.card-noimg > a .continue {
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.25rem;
+}
+
+.card-noimg > a .continue { }
+
+.card-noimg > a:hover p {
+}
+
+.card-noimg > a:hover .continue { }
+
+
+
+.card-txt > a {
+	background-position: 50% 0;
+	background-size: auto 35%;
+}
+
+.card-txt > a > .text {}
+
+.card-txt.card-full > a {
+	
+}
+*/
 @media (min-width: 450px) {
   .card-row {
     flex-direction: row;

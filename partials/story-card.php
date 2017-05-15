@@ -8,14 +8,14 @@
 <?php } else {
 	$post['cls'] = 'card-noimg';
 } ?>
-
+<?php if ($_GET['postclsoverride']) { $post['cls'] = trim(stripcslashes(strip_tags($_GET['postclsoverride']))); } ?>
 <article class="story-card card-<?php echo $k + 1 ?> sc-<?php echo $post['id']; ?> <?php echo $post['cls'] ?> <?php echo $post['siz'] ?>">
-
+	<!-- <?php //print_r($post); ?> -->
 	<a href="<?php echo $post["permalink"] ?>">
 		<section class="text">
 			<h2 class="clearfix"><?php echo $post["title"] ?></h2>
 			<p class="teaser clearfix"><?php echo $post["excerpt"] ?></p>
-			<div class="continue">Continue reading</div>
+			<p class="continue">Continue reading</p>
 		</section>
 
 		<?php

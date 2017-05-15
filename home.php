@@ -9,6 +9,7 @@ if( !isset( $_GET['vday'])) get_header();
 $posts_html = get_voa_top_posts();
 
 ?>
+    
     <rows>
         <row class="rows_1">
             <breakup>
@@ -19,13 +20,11 @@ $posts_html = get_voa_top_posts();
         </row>
 <?php foreach( $posts_html["posts"] as $posts ) { ?>
         <row class="card-row card-row-<?php echo count($posts) ?> <?php echo (get_voa_is_row_tall($posts) ? 'card-row-tall' : 'card-row-short'); ?>">
-        <!-- <row class="rows_<?php echo count($posts) ?>"> -->
 <?php
         foreach( $posts as $k => $post ) {
-            $image = voa_top_content_get_image_url($post["thumbnail_id"], $k, count($posts) );
+            $image = voa_top_content_get_image_url_2($post["thumbnail_id"], $post['siz'], $post['cls'], get_voa_is_row_tall($posts) );
             set_query_var( "k", $k );
             set_query_var( "image", $image );
-            //get_template_part("partials/article", count($posts) );
             get_template_part("partials/story-card");
         }
      ?>
