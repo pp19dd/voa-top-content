@@ -14,20 +14,12 @@ ol.comment-list {
 	padding: 0 0 1rem 0;
 }
 
-// .comment-list > li:first-child {
-// 	//margin-top: 0;
-// 	padding-top: 0;
-// }
-
-.comment-body {
-	//padding-left: calc(69px + 2rem);
-}
+.comment-body { }
 
 .comment-author {
 	background: $vltgray;
 	display: flex;
 	flex-direction: row;
-	//margin: 0 0 1rem calc(-69px - 2rem);
 	padding: .5rem;
 }
 
@@ -45,7 +37,6 @@ ol.comment-list {
 img.avatar-67 {
 	border: 1px solid $ltgray;
 	height: 67px;
-	//margin-right: 1rem;
 	width: 67px;
 }
 
