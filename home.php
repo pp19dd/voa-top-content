@@ -22,9 +22,7 @@ $posts_html = get_voa_top_posts();
         <row class="card-row card-row-<?php echo count($posts) ?> <?php echo (get_voa_is_row_tall($posts) ? 'card-row-tall' : 'card-row-short'); ?>">
 <?php
         foreach( $posts as $k => $post ) {
-            $image = voa_top_content_get_image_url_2($post["thumbnail_id"], $post['siz'], $post['cls'], get_voa_is_row_tall($posts) );
             set_query_var( "k", $k );
-            set_query_var( "image", $image );
             get_template_part("partials/story-card");
         }
      ?>

@@ -1,4 +1,8 @@
-<?php if ($image != '') { ?>
+<?php
+if ( $post['thumbnail_id'] != '' ) {
+	$image = voa_top_content_get_image_url_2($post["thumbnail_id"], $post['siz'], $post['cls'], get_voa_is_row_tall($posts) );
+	set_query_var( "image", $image );
+?>
 
 <style type="text/css">
 .sc-<?php echo $post['id']; ?> > a       { background-image: url(<?php echo $image; ?>); }
@@ -10,7 +14,7 @@
 } ?>
 <?php if ($_GET['postclsoverride']) { $post['cls'] = trim(stripcslashes(strip_tags($_GET['postclsoverride']))); } ?>
 <article class="story-card card-<?php echo $k + 1 ?> sc-<?php echo $post['id']; ?> <?php echo $post['cls'] ?> <?php echo $post['siz'] ?>">
-	<!-- <?php //print_r($post); ?> -->
+	<!-- <?php //var_dump($post); ?> -->
 	<a href="<?php echo $post["permalink"] ?>">
 		<section class="text">
 			<h2 class="clearfix"><?php echo $post["title"] ?></h2>
