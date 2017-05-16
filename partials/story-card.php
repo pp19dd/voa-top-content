@@ -5,8 +5,8 @@ if ( $post['thumbnail_id'] != '' ) {
 ?>
 
 <style type="text/css">
-.sc-<?php echo $post['id']; ?> > a       { background-image: url(<?php echo $image; ?>); }
-.sc-<?php echo $post['id']; ?> > a:hover { background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?php echo $image; ?>); }
+.sc-<?php echo $post['id']; ?> > a       > .bg-container { background-image: url(<?php echo $image; ?>); }
+.sc-<?php echo $post['id']; ?> > a:hover > .bg-container { background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?php echo $image; ?>); }
 </style>
 
 <?php } else {
@@ -18,8 +18,8 @@ if ( $post['thumbnail_id'] != '' ) {
 	<a href="<?php echo $post["permalink"] ?>">
 		<section class="text">
 			<h2 class="clearfix"><?php echo $post["title"] ?></h2>
-			<p class="teaser clearfix"><?php echo $post["excerpt"] ?></p>
-			<p class="continue">Continue reading</p>
+			<p class="clearfix teaser"><?php echo $post["excerpt"] ?></p>
+			<p class="clearfix continue">Continue reading</p>
 		</section>
 
 		<?php
@@ -32,5 +32,7 @@ if ( $post['thumbnail_id'] != '' ) {
 		<?php if ( get_post_meta( $post['id'], "_voa_show_video_icon", true ) === "yes") { ?>
 		<div class="video-icon"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
 		<?php } ?>
+		
+		<div class="bg-container"></div>
 	</a>
 </article>

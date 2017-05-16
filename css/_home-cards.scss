@@ -13,7 +13,7 @@
 	flex-grow: 1;
 	height: 100%;
 	min-height: 360px;
-	max-height: 80vh;
+	//max-height: 80vh;
 	margin: 0 0 16px 0;
 	padding: 0;
 	position: relative;
@@ -21,7 +21,7 @@
 }
 
 .story-card > a {
-	background-color: #e6e6e6;
+	background-color: $ultgray;
 	background-repeat: no-repeat;
 	color: $offblack;
 	display: block;
@@ -35,8 +35,20 @@
 }
 
 .story-card > a:hover {
-	background-color: #f6f6f6;
+	background-color: $dkwhite;
 }
+
+/*
+.story-card > a > .bg-container {
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+}
+*/
 
 .story-card > a > .text {
 	text-align: left;
@@ -46,7 +58,7 @@
 .story-card > a h2 {
 	font-size: 1.5rem;
 	font-weight: 700;
-	line-height: 1.35em;
+	line-height: 1.35;
 	margin: 0 0 1rem 0;
 	padding: 0;
 	text-decoration: none;
@@ -58,7 +70,7 @@
 .story-card > a p {
 	font-size: 1rem;
 	font-weight: 400;
-	line-height: 1.25rem;
+	line-height: 1.35;
 	margin: 0 0 1rem 0;
 	padding: 0;
 }
@@ -143,11 +155,23 @@
 
 .card-txt {
 	a {
+		background-position: center top;
+		background-size: 100% auto;
 		
+		.text {
+			background-color: $ultgray;
+			max-width: 100%;
+			padding: .5rem;
+			position: relative;
+			top: 40%;
+			@include transition( all .5s ease );
+		}
 	}
 	
 	a:hover {
-		
+		.text {
+			background-color: $dkwhite;
+		}
 	}
 }
 
@@ -157,56 +181,55 @@
 	a {
 		background-position: 50% 50%;
 		background-size: cover;
+		
+		.text {
+			margin-left: .5rem;
+		}
+		
+		h2 {
+			background-color: $offblack;
+			box-decoration-break: clone;
+			@include box-shadow( .5rem 0 0 $offblack, -.5rem 0 0 $offblack );
+			color: $offwhite;
+			display: inline;
+			padding: .25rem 0;
+		}
+		
+		.clearfix:after {
+			height: 1rem;
+		}
+		
+		p.teaser {
+			display: none;
+			@include transition( all .5s ease );
+		}
+		
+		p.continue {
+			background-color: $bodybg;
+			box-decoration-break: clone;
+			@include box-shadow( .5rem 0 0 $bodybg, -.5rem 0 0 $bodybg );
+			color: $midgray;
+			display: inline;
+			font-size: 1rem;
+			font-weight: 400;
+			line-height: 1.2;
+			padding: .25em 0;
+			text-decoration: none;
+		}
 	}
 	
 	a:hover {
+		h2 {
+			background-color: $voablue;
+			@include box-shadow( .5rem 0 0 $voablue, -.5rem 0 0 $voablue );
+		}
 		
+		p.continue {
+			color: $voablue;
+		}
 	}
 }
 
-
-
-// text-y story-card styles
-/*
-.card-noimg > a { }
-
-.card-noimg > a:hover { }
-
-.card-noimg > a h2 {
-	font-size: 1.5rem;
-	font-weight: 300;
-	line-height: 1.35em;
-}
-
-.card-noimg > a:hover h2 {}
-
-.card-noimg > a p,
-.card-noimg > a .continue {
-	font-size: 1rem;
-	font-weight: 400;
-	line-height: 1.25rem;
-}
-
-.card-noimg > a .continue { }
-
-.card-noimg > a:hover p {
-}
-
-.card-noimg > a:hover .continue { }
-
-
-
-.card-txt > a {
-	background-position: 50% 0;
-	background-size: auto 35%;
-}
-
-.card-txt > a > .text {}
-
-.card-txt.card-full > a {
-	
-}
-*/
 
 
 
@@ -244,6 +267,24 @@
 		margin-left: 8px;
 		margin-right: 8px;
 		width: calc(100% - 16px);
+	}
+	
+	.card-img.card-full a p.teaser,
+	.card-img.card-half a p.teaser {
+		background-color: transparent;
+		box-decoration-break: clone;
+		@include box-shadow( .5rem 0 0 transparent, -.5rem 0 0 transparent );
+		color: transparent;
+		display: inline;
+		line-height: 1.2;
+		padding: .2rem 0;
+	}
+	
+	.card-img.card-full a:hover p.teaser,
+	.card-img.card-half a:hover p.teaser {
+		background-color: $offblack;
+		@include box-shadow( .5rem 0 0 $offblack, -.5rem 0 0 $offblack );
+		color: $offwhite;
 	}
 
 }
@@ -295,6 +336,22 @@
 		margin-left: 12px;
 		margin-right: 12px;
 		width: calc(100% - 24px);
+	}
+	
+	.card-img.card-quarter a p.teaser {
+		background-color: transparent;
+		box-decoration-break: clone;
+		@include box-shadow( .5rem 0 0 transparent, -.5rem 0 0 transparent );
+		color: transparent;
+		display: inline;
+		line-height: 1.2;
+		padding: .2rem 0;
+	}
+	
+	.card-img.card-quarter a:hover p.teaser {
+		background-color: $offblack;
+		@include box-shadow( .5rem 0 0 $offblack, -.5rem 0 0 $offblack );
+		color: $offwhite;
 	}
 
 }

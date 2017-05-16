@@ -1203,7 +1203,6 @@ h1.site-title {
   flex-grow: 1;
   height: 100%;
   min-height: 360px;
-  max-height: 80vh;
   margin: 0 0 16px 0;
   padding: 0;
   position: relative;
@@ -1229,6 +1228,17 @@ h1.site-title {
 .story-card > a:hover {
   background-color: #f6f6f6; }
 
+/*
+.story-card > a > .bg-container {
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+}
+*/
 .story-card > a > .text {
   text-align: left;
   max-width: calc(100% - 28px - 2rem); }
@@ -1236,7 +1246,7 @@ h1.site-title {
 .story-card > a h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  line-height: 1.35em;
+  line-height: 1.35;
   margin: 0 0 1rem 0;
   padding: 0;
   text-decoration: none;
@@ -1249,7 +1259,7 @@ h1.site-title {
 .story-card > a p {
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.25rem;
+  line-height: 1.35;
   margin: 0 0 1rem 0;
   padding: 0; }
 
@@ -1313,50 +1323,73 @@ h1.site-title {
   background-color: #1330bf;
   color: #fcfcfc; }
 
+.card-txt a {
+  background-position: center top;
+  background-size: 100% auto; }
+  .card-txt a .text {
+    background-color: #e6e6e6;
+    max-width: 100%;
+    padding: .5rem;
+    position: relative;
+    top: 40%;
+    -webkit-transition: all 0.5s ease;
+    -mox-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease; }
+.card-txt a:hover .text {
+  background-color: #f6f6f6; }
+
 .card-img a {
   background-position: 50% 50%;
   background-size: cover; }
+  .card-img a .text {
+    margin-left: .5rem; }
+  .card-img a h2 {
+    background-color: #333;
+    box-decoration-break: clone;
+    -webkit-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    -mox-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    -ms-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    -o-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    color: #fcfcfc;
+    display: inline;
+    padding: .25rem 0; }
+  .card-img a .clearfix:after {
+    height: 1rem; }
+  .card-img a p.teaser {
+    display: none;
+    -webkit-transition: all 0.5s ease;
+    -mox-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease; }
+  .card-img a p.continue {
+    background-color: #eee;
+    box-decoration-break: clone;
+    -webkit-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+    -mox-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+    -ms-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+    -o-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+    box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+    color: #666;
+    display: inline;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.2;
+    padding: .25em 0;
+    text-decoration: none; }
+.card-img a:hover h2 {
+  background-color: #1330bf;
+  -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf; }
+.card-img a:hover p.continue {
+  color: #1330bf; }
 
-/*
-.card-noimg > a { }
-
-.card-noimg > a:hover { }
-
-.card-noimg > a h2 {
-	font-size: 1.5rem;
-	font-weight: 300;
-	line-height: 1.35em;
-}
-
-.card-noimg > a:hover h2 {}
-
-.card-noimg > a p,
-.card-noimg > a .continue {
-	font-size: 1rem;
-	font-weight: 400;
-	line-height: 1.25rem;
-}
-
-.card-noimg > a .continue { }
-
-.card-noimg > a:hover p {
-}
-
-.card-noimg > a:hover .continue { }
-
-
-
-.card-txt > a {
-	background-position: 50% 0;
-	background-size: auto 35%;
-}
-
-.card-txt > a > .text {}
-
-.card-txt.card-full > a {
-	
-}
-*/
 @media (min-width: 450px) {
   .card-row {
     flex-direction: row;
@@ -1382,7 +1415,31 @@ h1.site-title {
   .story-card > a {
     margin-left: 8px;
     margin-right: 8px;
-    width: calc(100% - 16px); } }
+    width: calc(100% - 16px); }
+
+  .card-img.card-full a p.teaser,
+  .card-img.card-half a p.teaser {
+    background-color: transparent;
+    box-decoration-break: clone;
+    -webkit-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+    -mox-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+    -ms-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+    -o-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+    box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+    color: transparent;
+    display: inline;
+    line-height: 1.2;
+    padding: .2rem 0; }
+
+  .card-img.card-full a:hover p.teaser,
+  .card-img.card-half a:hover p.teaser {
+    background-color: #333;
+    -webkit-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    -mox-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    -ms-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    -o-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    color: #fcfcfc; } }
 @media (min-width: 750px) {
   .story-card {
     height: 450px; }
@@ -1405,7 +1462,29 @@ h1.site-title {
   .story-card > a {
     margin-left: 12px;
     margin-right: 12px;
-    width: calc(100% - 24px); } }
+    width: calc(100% - 24px); }
+
+  .card-img.card-quarter a p.teaser {
+    background-color: transparent;
+    box-decoration-break: clone;
+    -webkit-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+    -mox-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+    -ms-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+    -o-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+    box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+    color: transparent;
+    display: inline;
+    line-height: 1.2;
+    padding: .2rem 0; }
+
+  .card-img.card-quarter a:hover p.teaser {
+    background-color: #333;
+    -webkit-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    -mox-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    -ms-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    -o-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+    color: #fcfcfc; } }
 .hero-row {
   display: block; }
 
