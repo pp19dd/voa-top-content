@@ -10,10 +10,10 @@
 }
 
 .story-card {
+	display: block;
 	flex-grow: 1;
 	height: 100%;
-	min-height: 360px;
-	//max-height: 80vh;
+	//min-height: 360px;
 	margin: 0 0 16px 0;
 	padding: 0;
 	position: relative;
@@ -22,7 +22,6 @@
 
 .story-card > a {
 	background-color: $ultgray;
-	background-repeat: no-repeat;
 	color: $offblack;
 	display: block;
 	height: 100%;
@@ -38,21 +37,24 @@
 	background-color: $dkwhite;
 }
 
-/*
 .story-card > a > .bg-container {
 	background-size: cover;
+	background-repeat: no-repeat;
 	position: absolute;
 	top: 0;
+	right: 0;
+	bottom: 0;
 	left: 0;
 	height: 100%;
 	width: 100%;
 	z-index: 1;
 }
-*/
 
 .story-card > a > .text {
-	text-align: left;
 	max-width: calc(100% - 28px - 2rem); // leave room for video icon
+	position: relative;
+	text-align: left;
+	z-index: 5;
 }
 
 .story-card > a h2 {
@@ -109,6 +111,7 @@
 	line-height: 1;
 	margin: 0;
 	padding: .5rem 1rem .5rem .75rem;
+	z-index: 10;
 }
 
 .clearfix:after {
@@ -122,8 +125,6 @@
 
 .card-noimg {
 	a {
-		background-image: none !important;
-		
 		.text { margin: .5rem; }
 		
 		h2 { 
@@ -138,6 +139,10 @@
 			font-size: .9rem;
 			letter-spacing: .015em;
 			padding: .5em;
+		}
+		
+		.bg-container {
+			background-image: none !important;
 		}
 	}
 	
@@ -155,22 +160,75 @@
 
 .card-txt {
 	a {
-		background-position: center top;
-		background-size: 100% auto;
+		//padding-top: 40%;
 		
 		.text {
 			background-color: $ultgray;
 			max-width: 100%;
+			//margin-top: 40%;
 			padding: .5rem;
-			position: relative;
-			top: 40%;
+			//top: 40%;
 			@include transition( all .5s ease );
 		}
+		
+		h2 { 
+			color: $offblack;
+		}
+		
+		p.continue {
+			background-color: $mltgray;
+			border-radius: .25em;
+			color: $midgray;
+			display: inline-block;
+			font-size: .9rem;
+			letter-spacing: .015em;
+			padding: .5em;
+		}
+		
+		.category {
+			//position: absolute;
+			top: calc(150px - 2.5rem - 4px);
+			bottom: auto;
+			right: 0;
+			//background: $voared;
+			//border-color: $bodybg;
+			//border-style: solid;
+			border-width: 2px 0 2px 2px;
+			//color: $offwhite;
+			//font-size: .8rem;
+			//line-height: 1;
+			//margin: 0;
+			padding: .5rem 1rem .5rem .75rem;
+			//z-index: 10;
+		}
+		
+		.bg-container {
+			background-position: center top;
+			//max-height: 150px;
+			//height: 100%;
+			
+			position: relative;
+			display: block;
+			top: 0;
+			right: 0;
+			bottom: auto;
+			left: 0;
+			height: 150px;
+		}
+		
+		// .category, .video-icon { display: none !important; }
 	}
 	
 	a:hover {
 		.text {
 			background-color: $dkwhite;
+		}
+		
+		h2 { color: $voablue; }
+		
+		p.continue {
+			background-color: $voablue;
+			color: $offwhite;
 		}
 	}
 }
@@ -179,8 +237,7 @@
 
 .card-img {
 	a {
-		background-position: 50% 50%;
-		background-size: cover;
+		min-height: 360px;
 		
 		.text {
 			margin-left: .5rem;
@@ -205,16 +262,15 @@
 		}
 		
 		p.continue {
-			background-color: $bodybg;
+			background-color: transparent;
 			box-decoration-break: clone;
-			@include box-shadow( .5rem 0 0 $bodybg, -.5rem 0 0 $bodybg );
-			color: $midgray;
+			@include box-shadow( .5rem 0 0 transparent, -.5rem 0 0 transparent );
+			color: transparent;
 			display: inline;
 			font-size: 1rem;
 			font-weight: 400;
 			line-height: 1.2;
 			padding: .25em 0;
-			text-decoration: none;
 		}
 	}
 	
@@ -225,6 +281,8 @@
 		}
 		
 		p.continue {
+			background-color: $bodybg;
+			@include box-shadow( .5rem 0 0 $bodybg, -.5rem 0 0 $bodybg );
 			color: $voablue;
 		}
 	}
@@ -248,7 +306,8 @@
 	
 	.story-card {
 		flex-basis: 0;
-		height: 360px;
+		height: 450px;
+		overflow: hidden;
 	}
 
 	.story-card.card-half {
@@ -264,6 +323,7 @@
 	}
 
 	.story-card > a {
+		height: 100%;
 		margin-left: 8px;
 		margin-right: 8px;
 		width: calc(100% - 16px);
@@ -293,7 +353,23 @@
 
 
 
-@media (min-width: 600px) { }
+@media (min-width: 600px) {
+	.card-full.card-txt {
+		a {
+			.text {
+				left: 50%;
+				max-width: calc(50% - 8px);
+				top: 0%;
+			}
+			
+			.bg-container {
+				background-position: left top;
+				max-height: 100%;
+				max-width: calc(50% - 8px);
+			}
+		}
+	}
+}
 
 
 
@@ -302,7 +378,7 @@
 @media (min-width: 750px) {
 	
 	.story-card {
-		height: 450px;
+	// 	height: 450px;
 	}
 
 	.card-row-3 > .story-card.card-half {
@@ -352,6 +428,30 @@
 		background-color: $offblack;
 		@include box-shadow( .5rem 0 0 $offblack, -.5rem 0 0 $offblack );
 		color: $offwhite;
+	}
+	
+	.card-txt {
+		a {
+			.category {
+				top: calc(207px - 2.5rem - 4px);
+			}
+			
+			.bg-container {
+				height: 207px;
+			}
+		}
+	}
+	
+	.card-full.card-txt {
+		a {
+			.text {
+				max-width: calc(50% - 12px);
+			}
+			
+			.bg-container {
+				max-width: calc(50% - 12px);
+			}
+		}
 	}
 
 }

@@ -9,13 +9,19 @@ if ( $post['thumbnail_id'] != '' ) {
 .sc-<?php echo $post['id']; ?> > a:hover > .bg-container { background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?php echo $image; ?>); }
 </style>
 
-<?php } else {
+<?php 
+} else {
 	$post['cls'] = 'card-noimg';
-} ?>
+}
+
+if ( $post['cls'] == '' ) { $post['cls'] = 'card-txt'; }
+
+?>
 <?php if ($_GET['postclsoverride']) { $post['cls'] = trim(stripcslashes(strip_tags($_GET['postclsoverride']))); } ?>
 <article class="story-card card-<?php echo $k + 1 ?> sc-<?php echo $post['id']; ?> <?php echo $post['cls'] ?> <?php echo $post['siz'] ?>">
 	<!-- <?php //var_dump($post); ?> -->
 	<a href="<?php echo $post["permalink"] ?>">
+		<div class="bg-container"></div>
 		<section class="text">
 			<h2 class="clearfix"><?php echo $post["title"] ?></h2>
 			<p class="clearfix teaser"><?php echo $post["excerpt"] ?></p>
@@ -33,6 +39,6 @@ if ( $post['thumbnail_id'] != '' ) {
 		<div class="video-icon"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
 		<?php } ?>
 		
-		<div class="bg-container"></div>
+		
 	</a>
 </article>
