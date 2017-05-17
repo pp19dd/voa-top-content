@@ -1368,7 +1368,8 @@ h1.site-title {
 .card-img a {
   min-height: 360px; }
   .card-img a .text {
-    margin-left: .5rem; }
+    margin-left: .5rem;
+    padding-top: .2rem; }
   .card-img a h2 {
     background-color: #333;
     box-decoration-break: clone;
@@ -1475,6 +1476,7 @@ h1.site-title {
   .card-full.card-txt a .text {
     left: 50%;
     max-width: calc(50% - 8px);
+    padding-top: 0;
     top: 0%; }
   .card-full.card-txt a .bg-container {
     background-position: left top;
