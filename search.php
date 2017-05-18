@@ -8,13 +8,22 @@
 			<content>
 				
 				<section class="content-part">
+					
+					<h1>Search Results</h1>
+					
 					<?php
-					if ( have_posts() ) :
+					if ( have_posts() ) {	
 						while ( have_posts() ) : the_post();
-							get_template_part( 'partials/content', get_post_format() );
+							get_template_part( 'partials/excerpt', get_post_format() );
 						endwhile; // end of The Loop
-					endif;
+						
+					} else {
 					?>
+					
+					<p>No results found for your search. Search again?</p>
+					<div class="search-form-container"><?php get_search_form('true'); ?></div>
+						
+					<?php } ?>
 				</section>
 				
 			</content>

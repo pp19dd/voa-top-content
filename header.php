@@ -104,7 +104,8 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 			
 			<nav class="site-nav">
 				<div class="search-nav">
-					<a class="nav-trigger search-trigger" href="#"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></a>
+					<a class="nav-trigger search-nav-trigger" href="#"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></a>
+					<div class="search-form-container"><?php get_search_form('true'); ?></div>
 				</div>
 				<div class="blog-nav">
 					<a class="nav-trigger blog-nav-trigger" href="#"><i class="fa fa-lg fa-bars" aria-hidden="true"></i><span class="sr-only">Menu</span></a>
@@ -117,10 +118,6 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 		</div>
 	</header>
 	
-	<header class="search-form-container">
-		<?php get_search_form('true'); ?>
-	</header>
-
 	<rows>
 		<row class="rows_1" style="margin-top: 0; padding-bottom: 0;">
 <?php if( isset( $_GET['preview_layout']) ) { ?>

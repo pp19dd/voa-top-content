@@ -18,7 +18,19 @@
 		
 		(function() {
 			$j('.blog-nav-trigger').on('click', function() {
-				$j('.blog-nav > .menu').slideToggle( 400 );
+				$j('.blog-nav > .menu').slideToggle( 200 );
+				
+				// hide other dropdown menus
+				$j( '.search-nav > .search-form-container').hide();
+				$j( '.voa-masthead' ).removeClass( 'masthead-search-expanded' );
+			});
+			
+			$j('.search-nav-trigger').on('click', function() {
+				$j( '.search-nav > .search-form-container').slideToggle( 200 );
+				$j( '.voa-masthead' ).toggleClass( 'masthead-search-expanded' );
+				
+				// hide other dropdown menus
+				$j('.blog-nav > .menu').hide();
 			});
     	})();
 
