@@ -40,6 +40,7 @@
 }
 
 .story-card > a > .bg-container {
+	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;
 	position: absolute;
@@ -222,6 +223,11 @@
 	}
 	
 	a:hover {
+		.bg-container {
+			// default if image fails to load
+			background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
+		}
+		
 		.text {
 			background-color: $dkwhite;
 		}
@@ -278,6 +284,11 @@
 	}
 	
 	a:hover {
+		.bg-container {
+			// default if image fails to load
+			background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
+		}
+		
 		h2 {
 			background-color: $voablue;
 			@include box-shadow( .5rem 0 0 $voablue, -.5rem 0 0 $voablue );

@@ -1,27 +1,40 @@
 <?php
-if ( $post['thumbnail_id'] != '' ) {
-	$image = voa_top_content_get_image_url_2($post["thumbnail_id"], $post['siz'], $post['cls'], get_voa_is_row_tall($posts) );
-	set_query_var( "image", $image );
-?>
-
-<style type="text/css">
-.sc-<?php echo $post['id']; ?> > a       > .bg-container { background-image: url(<?php echo $image; ?>); }
-.sc-<?php echo $post['id']; ?> > a:hover > .bg-container { background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?php echo $image; ?>); }
-</style>
-
-<?php 
-} else {
+if ( $post['thumbnail_id'] == '' ) {
 	$post['cls'] = 'card-noimg';
+	
+} elseif ( $post['cls'] == '' ) {
+	$post['cls'] = 'card-txt';
+	
+} elseif ( in_array($_GET['postclsoverride'], array('card-noimg', 'card-txt', 'card-img')) ) {
+	$post['cls'] = $_GET['postclsoverride'];
+	
 }
-
-if ( $post['cls'] == '' ) { $post['cls'] = 'card-txt'; }
-
-?>
-<?php if ($_GET['postclsoverride']) { $post['cls'] = trim(stripcslashes(strip_tags($_GET['postclsoverride']))); } ?>
-<article class="story-card card-<?php echo $k + 1 ?> sc-<?php echo $post['id']; ?> <?php echo $post['cls'] ?> <?php echo $post['siz'] ?>">
-	<!-- <?php //var_dump($post); ?> -->
+?><article class="story-card card-<?php echo $k + 1 ?> sc-<?php echo $post['id']; ?> <?php echo $post['cls'] ?> <?php echo $post['siz'] ?>">
+	
+	<?php
+	if ( $post['thumbnail_id'] != '' ) { 
+		
+		// used for all .card-img and .card-txt hovers
+		$bg_hover_gradient = 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) )';
+		
+		$breakpoint_img_mobile = wp_get_attachment_image_src( $post['thumbnail_id'], ($post['cls'] == 'card-img' ? 'half-width-square' : 'quarter-width-short'))[0];
+		$breakpoint_img_larger = voa_top_content_get_image_url_2( $post['thumbnail_id'], $post['siz'], $post['cls'], get_voa_is_row_tall($posts) );
+	}
+	?>
+	<style type="text/css">
+		/* default to mobile layout */
+			.sc-<?php echo $post['id']; ?> > a       > .bg-container { background-image: url(<?php echo $breakpoint_img_mobile; ?>); }
+	    	.sc-<?php echo $post['id']; ?> > a:hover > .bg-container { background-image: <?php echo $bg_hover_gradient; ?>, url(<?php echo $breakpoint_img_mobile; ?>); }
+	    
+	    @media (min-width: 450px) {
+	    	.sc-<?php echo $post['id']; ?> > a       > .bg-container { background-image: url(<?php echo $breakpoint_img_larger; ?>); }
+	    	.sc-<?php echo $post['id']; ?> > a:hover > .bg-container { background-image: <?php echo $bg_hover_gradient; ?>, url(<?php echo $breakpoint_img_larger; ?>); }
+	    }
+	</style>
+	
 	<a href="<?php echo $post["permalink"] ?>">
 		<div class="bg-container"></div>
+		
 		<section class="text">
 			<h2 class="clearfix"><?php echo $post["title"] ?></h2>
 			<p class="clearfix teaser"><?php echo $post["excerpt"] ?></p>
@@ -38,7 +51,5 @@ if ( $post['cls'] == '' ) { $post['cls'] = 'card-txt'; }
 		<?php if ( get_post_meta( $post['id'], "_voa_show_video_icon", true ) === "yes") { ?>
 		<div class="video-icon"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
 		<?php } ?>
-		
-		
 	</a>
 </article>

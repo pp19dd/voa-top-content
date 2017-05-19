@@ -1068,6 +1068,7 @@ h1.site-title {
   background-color: #f6f6f6; }
 
 .story-card > a > .bg-container {
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
@@ -1200,6 +1201,8 @@ h1.site-title {
   bottom: auto;
   left: 0;
   height: 150px; }
+.card-txt a:hover .bg-container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); }
 .card-txt a:hover .text {
   background-color: #f6f6f6; }
 .card-txt a:hover h2 {
@@ -1247,6 +1250,8 @@ h1.site-title {
     font-weight: 400;
     line-height: 1.2;
     padding: .25em 0; }
+.card-img a:hover .bg-container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); }
 .card-img a:hover h2 {
   background-color: #1330bf;
   -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;

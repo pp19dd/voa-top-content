@@ -816,7 +816,11 @@ function voa_top_content_get_image_url($thumbnail_id, $col, $cols = 1) {
     return( $image );
 }
 
-function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img', $short = false ) {
+function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img', $short = false, $debug = false ) {
+    
+    //echo "<h1>siz: $siz <br />cls: $cls <br />short: $short </h1>";
+    //var_dump($siz);
+    //var_dump($cls);
     
     switch( $siz ) {
         case 'hero-intro':
@@ -828,6 +832,11 @@ function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img'
             break;
         
         case 'card-half':
+            $imgsize = ( $cls == 'card-img' ? 'half-width-landscape' : 'quarter-width-short' );
+            //echo "i am a card-half short";
+            break;
+        
+        case 'card-half card-tall':
             $imgsize = ( $cls == 'card-img' ? 'half-width-square' : 'half-width-landscape' );
             break;
         
