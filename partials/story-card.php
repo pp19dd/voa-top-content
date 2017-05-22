@@ -18,7 +18,7 @@ if ( $post['thumbnail_id'] == '' ) {
 		$bg_hover_gradient = 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) )';
 		
 		$breakpoint_img_mobile = wp_get_attachment_image_src( $post['thumbnail_id'], ($post['cls'] == 'card-img' ? 'half-width-square' : 'quarter-width-short'))[0];
-		$breakpoint_img_larger = voa_top_content_get_image_url_2( $post['thumbnail_id'], $post['siz'], $post['cls'], get_voa_is_row_tall($posts) );
+		$breakpoint_img_larger = voa_top_content_get_image_url_2( $post['thumbnail_id'], $post['siz'], $post['cls'], ( $_GET['debugimages'] == 'yes' ? true : false ) );
 	}
 	?>
 	<style type="text/css">

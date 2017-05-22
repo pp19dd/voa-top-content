@@ -360,6 +360,14 @@
 		@include box-shadow( .5rem 0 0 $offblack, -.5rem 0 0 $offblack );
 		color: $offwhite;
 	}
+	
+	.card-txt.card-half,
+	.card-txt.card-quarter {
+		a {
+			h2 { font-size: 1rem; margin-bottom: .5rem; }
+			p.teaser { font-size: .9rem; }
+		}
+	}
 
 }
 
@@ -417,6 +425,11 @@
 		justify-content: space-between;
 	}
 	
+	.card-row-2.card-row-short .story-card {
+		height: 207px;
+		overflow: hidden;
+	}
+	
 	.story-card {
 		flex-basis: 0;
 		height: 576px;
@@ -453,6 +466,27 @@
 			
 			.bg-container {
 				height: 207px;
+			}
+		}
+	}
+	
+	.card-row-short > .card-half.card-txt {
+		a {
+			.text {
+				margin-left: 50%;
+				max-width: 50%;
+				padding-left: 12px;
+				position: absolute;
+				top: 0;
+			}
+			
+			.category,
+			.video-icon {
+				right: calc(50% + 12px);
+			}
+			
+			.bg-container {
+				width: calc(50% - 12px);
 			}
 		}
 	}
