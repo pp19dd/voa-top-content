@@ -816,11 +816,7 @@ function voa_top_content_get_image_url($thumbnail_id, $col, $cols = 1) {
     return( $image );
 }
 
-function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img', $short = false, $debug = false ) {
-    
-    //echo "<h1>siz: $siz <br />cls: $cls <br />short: $short </h1>";
-    //var_dump($siz);
-    //var_dump($cls);
+function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img', $debug = false ) {
     
     switch( $siz ) {
         case 'hero-intro':
@@ -850,8 +846,29 @@ function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img'
     }
     
     $image = wp_get_attachment_image_src( $thumbnail_id, $imgsize );
-    $image = $image[0];
     
+    if ($debug) {
+        echo "<br><span style='font-size:13px;'>";
+        
+        echo "<br><strong>thumbnail_id: </strong>";
+        var_dump($thumbnail_id);
+        
+        echo "<br><strong>siz: </strong>";
+        var_dump($siz);
+        
+        echo "<br><strong>cls: </strong>";
+        var_dump($cls);
+        
+        echo "<br><strong>imgsize: </strong>";
+        var_dump($imgsize);
+        
+        echo "<br><strong>image: </strong>";
+        var_dump($image);
+        
+        echo "</span><br>";
+    }
+    
+    $image = $image[0];
     return( $image );
 }
 
