@@ -1107,6 +1107,7 @@ h1.site-title {
   padding: 0; }
 
 .story-card > a p.continue {
+  margin-bottom: 0;
   -webkit-transition: all 0.5s ease;
   -mox-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
@@ -1618,6 +1619,19 @@ img.avatar-67 {
   font-size: 1rem;
   margin: 0;
   padding: 0 0 1rem 0; }
+
+.comment-form p.logged-in-as,
+.comment-form p.logged-in-as a {
+  color: #999;
+  font-weight: 400;
+  text-decoration: none; }
+
+.comment-form p.logged-in-as a:first-child {
+  color: #1330bf;
+  font-weight: 400; }
+
+.comment-form p.logged-in-as a:hover {
+  text-decoration: underline; }
 
 .comment-respond textarea#comment {
   border: 1px solid #ddd;

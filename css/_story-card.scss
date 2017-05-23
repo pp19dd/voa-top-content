@@ -83,6 +83,7 @@
 .story-card > a:hover p { }
 
 .story-card > a p.continue {
+	margin-bottom: 0;
 	@include transition( all .5s ease );
 }
 

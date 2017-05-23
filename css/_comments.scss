@@ -67,6 +67,26 @@ img.avatar-67 {
 	padding: 0 0 1rem 0;
 }
 
+.comment-form p.logged-in-as,
+.comment-form p.logged-in-as a {
+	color: $ltgray;
+	font-weight: 400;
+	text-decoration: none;
+}
+
+.comment-form p.logged-in-as a:first-child {
+	color: $voablue;
+	font-weight: 400;
+}
+
+.comment-form p.logged-in-as a:last-child {
+	//margin-left: 1em;
+}
+
+.comment-form p.logged-in-as a:hover {
+	text-decoration: underline;
+}
+
 .comment-respond textarea#comment {
 	border: 1px solid $vltgray;
 	margin: 0;
