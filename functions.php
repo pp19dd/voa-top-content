@@ -9,7 +9,7 @@ remove_action( "wp_print_styles", "print_emoji_styles" );
 wp_enqueue_script( "jquery" );
 
 function voa_theme_setup_options() {
-    add_theme_support( 'custom-header' );
+    add_theme_support( 'custom-header', array( 'width' => 974, 'height' => 190, 'header-text'=> false, 'default-image' => '' ) );
     add_theme_support( 'html5', array( 'search-form' ) );
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'title-tag' );
