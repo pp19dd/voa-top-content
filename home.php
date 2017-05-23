@@ -7,14 +7,28 @@ Template Name: Top Content Homepage
 if( !isset( $_GET['vday'])) get_header();
 
 $posts_html = get_voa_top_posts();
-
+$query_range = voa_layout_day_to_actual_date_range($posts_html["voa_day"]);
+    
+switch ( $query_range['range'] ) {
+    case 'monthly':
+        $post_breakup_heading = date( 'F Y', $query_range['start'] ); # January 2017
+        break;
+        
+    case 'weekly':
+        $post_breakup_heading = date( 'F j', $query_range['start'] ). " &ndash; ".date( 'F j', $query_range['end'] ); # January 9 - January 16
+        break;
+        
+    default:
+        // daily, like Editor's Picks
+        $post_breakup_heading = date( 'l, F j', $query_range['start'] ); # Monday, January 9
+}
 ?>
     
     <rows>
         <row class="rows_1">
             <breakup>
                 <blank-space></blank-space>
-                <h2><?php echo date("l, F j", strtotime($posts_html["voa_day"])); # Monday, January 9 ?></h2>
+                <h2><?php echo $post_breakup_heading; ?></h2>
                 <blank-space></blank-space>
             </breakup>
         </row>
