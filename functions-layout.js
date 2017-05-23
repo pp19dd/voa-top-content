@@ -139,10 +139,10 @@ if( layout === false ) {
             ) {
                 if( layout.stories_cls[i][j] == "t") {
                     node_story.addClass("text-heavy");
-                    //jQuery(node_destination).closest("td").addClass("text-heavy-td");
+                }
 
-                //} else {
-                    //jQuery(node_destination).closest("td").addClass("image-heavy-td");
+                if( layout.stories_cls[i][j] == "to") {
+                    node_story.addClass("text-only");
                 }
             }
 
@@ -221,6 +221,7 @@ function get_layout_payload() {
 
             var story_class = "i";
             if( story.hasClass("text-heavy") ) story_class = "t";
+            if( story.hasClass("text-only") ) story_class = "to";
 
             if( typeof story_id === "undefined" ) story_id = "";
 
@@ -269,10 +270,15 @@ function save_layout() {
 
 function repaint_tds() {
     jQuery(".vtcmb td").each(function() {
-        jQuery(this).removeClass("text-heavy-td");
+        jQuery(this).removeClass("text-heavy-td text-only-td");
         var f = jQuery(this).find("div.text-heavy");
         if( f.length > 0 ) {
             jQuery(this).addClass("text-heavy-td");
+        }
+
+        var f = jQuery(this).find("div.text-only");
+        if( f.length > 0 ) {
+            jQuery(this).addClass("text-only-td");
         }
     });
 }
@@ -280,7 +286,21 @@ function repaint_tds() {
 function voa_layout_startup() {
 
     jQuery(".voa-layout-story").click(function() {
-        jQuery(this).toggleClass("text-heavy");
+
+        if(
+            !jQuery(this).hasClass("text-heavy") &&
+            !jQuery(this).hasClass("text-only")
+        ) {
+            jQuery(this).addClass("text-heavy");
+        } else {
+            if( jQuery(this).hasClass("text-heavy") ) {
+                jQuery(this).removeClass("text-heavy");
+                jQuery(this).addClass("text-only");
+            } else {
+                jQuery(this).removeClass("text-only");
+            }
+        }
+//        jQuery(this).toggleClass("text-heavy");
 
         // css hint
         //jQuery(this).closest("td").toggleClass("text-heavy-td");

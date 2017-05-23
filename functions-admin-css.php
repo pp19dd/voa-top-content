@@ -108,12 +108,22 @@ available-stories {
     box-shadow: 0 0 0px;
 }
 
+.voa-layout-story.text-only {
+    background-image: none;
+    box-shadow: 0 0 0px;
+}
+
 .vtcmb td {
     background-color: silver;
     box-shadow: 0 0 10px #0074D9;
 }
 
 .text-heavy-td {
+    background-color: white !important;
+    box-shadow: 0 0 0px !important;
+}
+
+.text-only-td {
     background-color: white !important;
     box-shadow: 0 0 0px !important;
 }
