@@ -18,6 +18,7 @@ function get_voa_is_row_tall($posts) {
 function get_voa_top_posts() {
 
     $range = get_option("voa-layout-range", "daily");
+    $orphans = get_option("voa-layout-orphans", "show");
     #var_dump($range);
 
     // load layout config
@@ -69,7 +70,11 @@ function get_voa_top_posts() {
     }
 
     // break up posts into layout-rows for easier rendering
-    $ret["posts"] = voa_top_content_breakup_posts($row_layout, $posts_html);
+    $ret["posts"] = voa_top_content_breakup_posts(
+        $row_layout,
+        $posts_html,
+        $orphans === "hide" ? true : false
+    );
     return($ret);
 }
 
@@ -275,11 +280,12 @@ function voa_top_content_get_row_layout($day = false, $range = "daily") {
     return( $retrieved_layout );
 }
 
-function pre($a) {
+function pre($a, $label = "") {
     $r = rand(128, 255);
     $g = rand(128, 255);
     $b = rand(128, 255);
     echo "<PRE style='padding:1em; background-color:rgb({$r},{$g},{$b})'>";
+    if( $label ) echo "<h3 style='text-align:left; text-decoration:underline'>{$label}</h3>";
     echo htmlentities(print_r( $a, true ));
     echo "</PRE>";
 }
@@ -369,6 +375,11 @@ function wpa_4475122017_callback() {
         "monthly" => "monthly"
     );
 
+    $allowed_orphans = array(
+        "hide" => "hide",
+        "show" => "show"
+    );
+
     $requested_range = $_POST['layout']['range'];
     if( !isset($allowed_ranges[$requested_range]) ) {
         echo "ERROR: range not allowed?";
@@ -377,10 +388,21 @@ function wpa_4475122017_callback() {
         $requested_range = $allowed_ranges[$requested_range];
     }
 
+    $requested_orphans = $_POST['layout']['orphans'];
+    if( !isset($allowed_orphans[$requested_orphans]) ) {
+        echo "ERROR: orphan setting not allowed?";
+        wp_die();
+    } else {
+        $requested_orphans = $allowed_orphans[$requested_orphans];
+    }
+
     delete_option( "voa-layout-range" );
     update_option( "voa-layout-range", $requested_range );
 
-    echo "Changed range to {$requested_range}";
+    delete_option( "voa-layout-orphans" );
+    update_option( "voa-layout-orphans", $requested_orphans );
+
+    echo "Changed range to {$requested_range}, orphans to {$requested_orphans}";
     wp_die();
 }
 
@@ -434,6 +456,7 @@ function wpa_4471252017_callback() {
 function voa_top_content_admin_config_menu() {
 
     $range = get_option("voa-layout-range", "daily" );
+    $orphans = get_option("voa-layout-orphans", "show" );
 
     ?>
 
@@ -449,6 +472,14 @@ function voa_top_content_admin_config_menu() {
             <p><label><input type="radio" <?php if( $range === "monthly" ) { echo "checked='checked'"; } ?> name="voa-layout-range" value="monthly" /><strong> Monthly </strong> (Recommended if you post few times per month.)</label></p>
 
             <p>Warning: don't change this setting frequently, as it may break paginated links.</p>
+        </div>
+
+        <div class="card voa-layout-config">
+            <h3>New Posts</h3>
+            <p>If you save a layout for a day / week / month, what happens when you publish a new post?</p>
+
+            <p><label><input type="radio" <?php if( $orphans === "hide" ) { echo "checked='checked'"; } ?> name="voa-layout-orphans" value="hide" /><strong> Hide them </strong> (Recommended if you carefully manage the homepage.)</label></p>
+            <p><label><input type="radio" <?php if( $orphans === "show" ) { echo "checked='checked'"; } ?> name="voa-layout-orphans" value="show" /><strong> Add them to the page </strong> (Recommended if you don't manage the homepage often.)</label></p>
 
         </div>
 
@@ -459,7 +490,8 @@ function voa_top_content_admin_config_menu() {
         jQuery("#layout_config_submit").click(function() {
 
             var new_layout_config = {
-                range: jQuery("input[name=voa-layout-range]:checked").val()
+                range: jQuery("input[name=voa-layout-range]:checked").val(),
+                orphans: jQuery("input[name=voa-layout-orphans]:checked").val(),
             };
 
             jQuery.post( ajaxurl, {
@@ -724,11 +756,79 @@ function voa_top_content_layout_order_by_id( $row_layout ) {
     return( $o );
 }
 
+// given either a layour array or post array, return all post IDs
+function voa_top_content_find_ids($a) {
+    $ids = array();
+
+    if( isset($a["stories"]) ) {
+
+        // layout structure
+        foreach( $a["stories"] as $row => $stories ) {
+            foreach( $stories as $story_id ) {
+                $ids[] = $story_id;
+            }
+        }
+
+    } else {
+
+        // unordered posts html structure
+        foreach( $a as $post ) {
+            $ids[] = $post["id"];
+        }
+
+    }
+
+    return( array_unique($ids) );
+}
+
+// counts story placeholders
+function voa_top_content_count_layout_slots($layout) {
+    return( array_sum($layout["rows"]) );
+}
+
 /*
 input: layout preference, array of posts
 output: array of array of posts
 */
-function voa_top_content_breakup_posts( $row_layout, $unordered_posts_html ) {
+function voa_top_content_breakup_posts( $row_layout, $unordered_posts_html, $ignore_orphans = true ) {
+
+    if( $ignore_orphans === false ) {
+
+        // reality check: what do we have, or claim to have?
+        $available = voa_top_content_find_ids($unordered_posts_html);
+        $claimed = voa_top_content_find_ids($row_layout);
+
+        // number of content items VS number of requested layout items
+        $count_available = count($available);
+        $count_slots = voa_top_content_count_layout_slots($row_layout);
+
+        // reality check: what are we missing?
+        $unclaimed = array_diff($available, $claimed);
+        $missing = array_diff($claimed, $available);
+
+        // we're missing some items, lets make pattern slots
+        $count_difference = $count_available - $count_slots;
+
+        // pad the layout pattern
+        if( $count_difference > 0 ) {
+            $temp = array();
+            for( $i = 0; $i < $count_difference; $i++ ) {
+                foreach( $row_layout["rows"] as $id ) {
+                    $temp[] = $id;
+                }
+            }
+            $row_layout["rows"] = $temp;
+            $row_layout["row_count"] = count($row_layout["rows"]);
+        } else {
+            // no orphans?
+        }
+    }
+
+    return(voa_top_content_breakup_posts_worker($row_layout, $unordered_posts_html));
+}
+
+// wrapped so it can deal with orphans
+function voa_top_content_breakup_posts_worker( $row_layout, $unordered_posts_html) {
     $ret = array();
     $temp = array();
 
@@ -737,7 +837,7 @@ function voa_top_content_breakup_posts( $row_layout, $unordered_posts_html ) {
 
     // sort $posts_html by preferred layout ID
     $order = voa_top_content_layout_order_by_id($row_layout);
-
+#pre($order);die;
     $posts_html = array();
     foreach( $order as $order_item ) {
 
@@ -784,10 +884,8 @@ function voa_top_content_breakup_posts( $row_layout, $unordered_posts_html ) {
         $ret[] = $temp;
     }
 
-    // limit by stated number of rows, ignore rest
-    $ret = array_slice($ret, 0, $row_layout["row_count"]);
-
-    return( $ret );
+    $ret_new = array_slice($ret, 0, $row_layout["row_count"]);
+    return( $ret_new );
 }
 
 // full-width      half-width      quarter-width   quarter-width-small
@@ -817,57 +915,57 @@ function voa_top_content_get_image_url($thumbnail_id, $col, $cols = 1) {
 }
 
 function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img', $debug = false ) {
-    
+
     switch( $siz ) {
         case 'hero-intro':
             $imgsize = 'hero-intro';
             break;
-            
+
         case 'card-full':
             $imgsize = ( $cls == 'card-img' ? 'full-width' : 'half-width-square' );
             break;
-        
+
         case 'card-half':
             $imgsize = ( $cls == 'card-img' ? 'half-width-landscape' : 'quarter-width-short' );
             //echo "i am a card-half short";
             break;
-        
+
         case 'card-half card-tall':
             $imgsize = ( $cls == 'card-img' ? 'half-width-square' : 'half-width-landscape' );
             break;
-        
+
         case 'card-quarter':
             $imgsize = ( $cls == 'card-img' ? 'quarter-width-tall' : 'quarter-width-short' );
             break;
-        
+
         default:
             $imgsize = 'quarter-width-short';
             break;
     }
-    
+
     $image = wp_get_attachment_image_src( $thumbnail_id, $imgsize );
-    
+
     if ($debug) {
         echo "<br><span style='font-size:13px;'>";
-        
+
         echo "<br><strong>thumbnail_id: </strong>";
         var_dump($thumbnail_id);
-        
+
         echo "<br><strong>siz: </strong>";
         var_dump($siz);
-        
+
         echo "<br><strong>cls: </strong>";
         var_dump($cls);
-        
+
         echo "<br><strong>imgsize: </strong>";
         var_dump($imgsize);
-        
+
         echo "<br><strong>image: </strong>";
         var_dump($image);
-        
+
         echo "</span><br>";
     }
-    
+
     $image = $image[0];
     return( $image );
 }
