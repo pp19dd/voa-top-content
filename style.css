@@ -1343,8 +1343,13 @@ h1.site-title {
     top: 0%; }
   .card-full.card-txt a .bg-container {
     background-position: left top;
+    height: 100%;
     max-height: 100%;
-    max-width: calc(50% - 8px); } }
+    max-width: calc(50% - 8px);
+    position: absolute; }
+  .card-full.card-txt a .category,
+  .card-full.card-txt a .video-icon {
+    right: calc(50% + 12px); } }
 @media (min-width: 750px) {
   .card-row-3 > .story-card.card-half {
     flex-basis: 50%; }
