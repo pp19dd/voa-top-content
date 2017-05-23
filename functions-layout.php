@@ -731,7 +731,10 @@ function voa_top_content_layout_order_by_id( $row_layout ) {
                 // preference may not exist for older entries
                 if( isset( $row_layout["stories_cls"][$row_k][$story_k] ) ) {
                     $preference = $row_layout["stories_cls"][$row_k][$story_k];
-                    $story_cls = ($preference === "i") ? "card-img" : "card-txt";
+
+                    if( $preference === "i" ) $story_cls = "card-img";
+                    if( $preference === "t" ) $story_cls = "card-txt";
+                    if( $preference === "to" ) $story_cls = "card-noimg";
                 }
 
                 // slip in card size hint (f, h, q)
