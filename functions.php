@@ -4,52 +4,37 @@ require_once( "functions-widgets.php" );
 require_once( "functions-meta.php" );
 
 show_admin_bar( false );
-add_theme_support( "post-thumbnails" );
 remove_action( "wp_head", "print_emoji_detection_script", 7 );
 remove_action( "wp_print_styles", "print_emoji_styles" );
 wp_enqueue_script( "jquery" );
 
+function voa_theme_setup_options() {
+    add_theme_support( 'custom-header' );
+    add_theme_support( 'html5', array( 'search-form' ) );
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'title-tag' );
+}
+add_action( 'after_setup_theme', 'voa_theme_setup_options' );
+
+
 // crop: x can be left, center, right
 //       y can be top, center, bottom
-add_image_size( 'hero-intro',          2400, 1152, array("center", "center") );
-add_image_size( 'full-width',          1200,  576, array("center", "center") );
-add_image_size( 'half-width-square',    576,  576, array("center", "center") );
-add_image_size( 'half-width-landscape', 576,  207, array("center", "top"   ) );
-add_image_size( 'quarter-width-tall',   276,  576, array("center", "top"   ) );
-add_image_size( 'quarter-width-short',  276,  207, array("center", "center") );
-
-//add_image_size( 'quarter-width-small', 273, 218, array("left", "top") );
-
-/******* DONE --- but saving for reference; numbers slightly different above
-image sizes     w  x  h
-
-cards
-
-full-img    = 1200 x 576
-half-img    =  576 x 576
-quarter-img =  276 x 576
-
-full-txt    =  576 x 576 (same as half-img)
-half-txt    =  576 x 275
-quarter-txt =  276 x 207 (card-row-2 card-row-short card-txt will use this size too)
-
-card row 2, short:
-half-img    =  576 x 207 (576x275 is too big, i think?)
-half-txt    =  276 x 207
-
-articles
-
-hero-intro  = 2400 x 1152
-full width  =  800 x  500
-half width  =  400 x  250
-*******/
+add_image_size( 'full-width',              1200,  576, array("center", "center") );
+add_image_size( 'full-width-2x',           2400, 1152, array("center", "center") ); // 2x for high-DPI screens
+add_image_size( 'half-width-square',        576,  576, array("center", "center") );
+add_image_size( 'half-width-square-2x',    1152, 1152, array("center", "center") ); // 2x for high-DPI screens
+add_image_size( 'half-width-landscape',     576,  207, array("center", "top"   ) );
+add_image_size( 'half-width-landscape-2x', 1152,  414, array("center", "top"   ) ); // 2x for high-DPI screens
+add_image_size( 'quarter-width-tall',       276,  576, array("center", "top"   ) );
+add_image_size( 'quarter-width-tall-2x',    552, 1152, array("center", "top"   ) ); // 2x for high-DPI screens
+add_image_size( 'quarter-width-short',      276,  207, array("center", "center") );
+add_image_size( 'quarter-width-short-2x',   552,  414, array("center", "center") ); // 2x for high-DPI screens
 
 function top_content_custom_sizes( $sizes ) {
     return(
         array_merge(
             $sizes,
             array(
-                'hero-intro'           => __( 'hero-intro' ),
                 'full-width'           => __( 'full-width' ),
                 'half-width-square'    => __( 'half-width-square' ),
                 'half-width-landscape' => __( 'half-width-landscape' ),
@@ -64,15 +49,7 @@ add_filter( 'image_size_names_choose', 'top_content_custom_sizes' );
 
 
 
-function voa_theme_setup_options() {
-    add_theme_support( 'title-tag' );
-    add_theme_support( 'html5', array( 'search-form' ) );
-}
-add_action( 'after_setup_theme', 'voa_theme_setup_options' );
-
-/*
-voa_top_content_admin_menu function is located in functions-layout.php
-*/
+// voa_top_content_admin_menu function is located in functions-layout.php
 function voa_top_content_admin_menu_loader() {
     add_filter("admin_head", "voa_top_content_admin_menu_css" );
     add_menu_page("Homepage Layout", "Homepage Layout", "edit_posts", "voa-homepage-layout", "voa_top_content_admin_menu", "dashicons-schedule" );
