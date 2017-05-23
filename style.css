@@ -1282,6 +1282,12 @@ h1.site-title {
     height: 450px;
     overflow: hidden; }
 
+  .card-row-2.card-row-short > .story-card {
+    height: auto; }
+
+  .card-row-2.card-row-short > .card-img > a {
+    min-height: auto; }
+
   .story-card.card-half {
     flex-basis: 50%; }
 
@@ -1349,10 +1355,6 @@ h1.site-title {
     flex-direction: row;
     justify-content: space-between; }
 
-  .card-row-2.card-row-short .story-card {
-    height: 207px;
-    overflow: hidden; }
-
   .story-card {
     flex-basis: 0;
     height: 576px;
@@ -1393,13 +1395,14 @@ h1.site-title {
   .card-row-short > .card-half.card-txt a .text {
     margin-left: 50%;
     max-width: 50%;
-    padding-left: 12px;
-    position: absolute;
-    top: 0; }
+    padding-left: 12px; }
   .card-row-short > .card-half.card-txt a .category,
   .card-row-short > .card-half.card-txt a .video-icon {
     right: calc(50% + 12px); }
   .card-row-short > .card-half.card-txt a .bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: calc(50% - 12px); }
 
   .card-full.card-txt a .text {
