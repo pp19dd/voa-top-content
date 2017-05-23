@@ -1051,7 +1051,7 @@ h1.site-title {
 .story-card > a {
   background-color: #e6e6e6;
   color: #333;
-  display: block;
+  display: inline-block;
   height: 100%;
   margin: 0;
   padding: 0;
