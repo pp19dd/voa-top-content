@@ -385,7 +385,8 @@
 
 
 @media (min-width: 600px) {
-	.card-full.card-txt {
+	.card-full.card-txt,
+	.card-row-1 .card-1.card-txt {
 		a {
 			.text {
 				left: 50%;
@@ -405,6 +406,11 @@
 			.category,
 			.video-icon {
 				right: calc(50% + 12px);
+			}
+
+			.category {
+				top: auto;
+				bottom: .75rem;
 			}
 		}
 	}
@@ -503,7 +509,8 @@
 		}
 	}
 	
-	.card-full.card-txt {
+	.card-full.card-txt,
+	.card-row-1 .card-1.card-txt {
 		a {
 			.text {
 				max-width: calc(50% - 12px);
