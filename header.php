@@ -12,16 +12,12 @@ $vmeta['date_modified'] = ''; // $post->post_modified
 
 if ( is_front_page() ) {
 
-	$vmeta['canonical_url'] = home_url( '/' );
 	$vmeta['title'] = get_bloginfo( 'name' );
-	$vmeta['description'] = get_bloginfo( 'description' );
 	$vmeta['date_published'] = '2017-01-17';
 
 } else {
 
-	$vmeta['canonical_url'] = get_the_permalink();
 	$vmeta['title'] = get_the_title();
-	$vmeta['description'] = '';
 	$vmeta['date_published'] = ''; // $post->post_date
 
 }
@@ -32,27 +28,19 @@ if ( is_front_page() ) {
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta content="IE=edge" http-equiv="X-UA-Compatible" />
-
-	<link rel="canonical"            href="<?php echo $vmeta['canonical_url']; ?>" />
-	<meta name="standout"            content="<?php echo $vmeta['canonical_url']; ?>" />
-
+	
 	<!-- <meta name="title"               content="<?php echo $vmeta['title']; ?> | <?php echo $vmeta['title_suffix']; ?>" /> -->
-	<meta name="description"         content="<?php echo $vmeta['description']; ?>" itemprop="description" />
 	<meta name="keywords"            content="<?php echo $vmeta['keywords']; ?>" />
 	<meta name="news_keywords"       content="<?php echo $vmeta['keywords']; ?>" />
 
 	<meta property="og:site_name"    content="VOA" />
 	<meta property="og:type"         content="article" />
 	<meta property="og:title"        content="<?php echo $vmeta['title']; ?> | <?php echo $vmeta['title_suffix']; ?>" />
-	<meta property="og:url"          content="<?php echo $vmeta['canonical_url']; ?>" />
-	<meta property="og:description"  content="<?php echo $vmeta['description']; ?>" />
-
-	<meta name="twitter:card"        value="summary_large_image" />
+	
 	<meta name="twitter:site"        value="@VOANews" />
 	<meta name="twitter:creator"     content="@VOANews" />
 	<meta name="twitter:title"       content="<?php echo $vmeta['title']; ?> | <?php echo $vmeta['title_suffix']; ?>" />
-	<meta name="twitter:description" content="<?php echo $vmeta['description']; ?>" />
-	<meta name="twitter:url"         content="<?php echo $vmeta['canonical_url']; ?>" />
+	
 
 <?php
 // Y-m-d format
@@ -88,7 +76,7 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 
 	<header class="voa-masthead">
 		<div class="voa-masthead-inner">
-			<a class="voa-logo" href="//www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a>
+			<a class="voa-logo" href="http://www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a>
 			
 			<nav class="site-nav">
 				<div class="search-nav">
