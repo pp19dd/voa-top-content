@@ -46,11 +46,7 @@ function voa_head_meta_author() {
 function voa_head_meta_canonical_links() {
 	global $wp;
 	
-	if ( is_front_page() ) {
-		$current_url = home_url( '/' );
-	} else {
-		$current_url = home_url( '/' ).$wp->request.'/';
-	}
+	$current_url = trailingslashit( home_url( '/' ).$wp->request );
 	?>
 	<link rel="canonical"       href="<?php echo esc_attr( $current_url ); ?>" />
 	<meta name="standout"    content="<?php echo esc_attr( $current_url ); ?>" />
