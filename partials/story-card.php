@@ -44,7 +44,7 @@ if ( $post['thumbnail_id'] == '' ) {
 		<?php
 		$lang_service = trim( voa_language_service_tag( $post['id'], false ));
 		if ( $lang_service != '' ) {
-			echo '<div class="category">'.$lang_service.'</div>';
+			echo '<div class="card-label-category">'.$lang_service.'</div>';
 		}
 		?>
 
