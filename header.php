@@ -8,13 +8,12 @@ $vmeta = array();
 
 $vmeta['title_suffix'] = "Voice of America";
 $vmeta['template_directory_uri'] = get_template_directory_uri();
-$vmeta['image'] = '//www.voanews.com/Content/responsive/VOA/img/top_logo_news.png';
 $vmeta['date_modified'] = ''; // $post->post_modified
 
 if ( is_front_page() ) {
 
 	$vmeta['canonical_url'] = home_url( '/' );
-	$vmeta['title'] = "VOA Editor's Picks";
+	$vmeta['title'] = get_bloginfo( 'name' );
 	$vmeta['description'] = get_bloginfo( 'description' );
 	$vmeta['date_published'] = '2017-01-17';
 
@@ -25,10 +24,6 @@ if ( is_front_page() ) {
 	$vmeta['description'] = '';
 	$vmeta['date_published'] = ''; // $post->post_date
 
-	if ( is_single() && has_post_thumbnail( $post->ID ) ) {
-		// get the featured image
-		$vmeta['image'] = esc_attr( voa_top_content_get_image_url( get_post_thumbnail_id( $post->ID ), "full-width" ));
-	}
 }
 
 ?><!DOCTYPE html>
@@ -40,22 +35,16 @@ if ( is_front_page() ) {
 
 	<link rel="canonical"            href="<?php echo $vmeta['canonical_url']; ?>" />
 	<meta name="standout"            content="<?php echo $vmeta['canonical_url']; ?>" />
-	<link rel="image_src"            href="<?php echo $vmeta['image']; ?>" />
 
-	<meta name="title"               content="<?php echo $vmeta['title']; ?> | <?php echo $vmeta['title_suffix']; ?>" />
+	<!-- <meta name="title"               content="<?php echo $vmeta['title']; ?> | <?php echo $vmeta['title_suffix']; ?>" /> -->
 	<meta name="description"         content="<?php echo $vmeta['description']; ?>" itemprop="description" />
 	<meta name="keywords"            content="<?php echo $vmeta['keywords']; ?>" />
 	<meta name="news_keywords"       content="<?php echo $vmeta['keywords']; ?>" />
-
-	<?php if ( is_single() ) { ?>
-	<meta name="author"              content="<?php echo get_post_meta( $post->ID, '_voa_byline', true ); ?>" />
-	<?php } ?>
 
 	<meta property="og:site_name"    content="VOA" />
 	<meta property="og:type"         content="article" />
 	<meta property="og:title"        content="<?php echo $vmeta['title']; ?> | <?php echo $vmeta['title_suffix']; ?>" />
 	<meta property="og:url"          content="<?php echo $vmeta['canonical_url']; ?>" />
-	<meta property="og:image"        content="<?php echo $vmeta['image']; ?>" />
 	<meta property="og:description"  content="<?php echo $vmeta['description']; ?>" />
 
 	<meta name="twitter:card"        value="summary_large_image" />
@@ -64,7 +53,6 @@ if ( is_front_page() ) {
 	<meta name="twitter:title"       content="<?php echo $vmeta['title']; ?> | <?php echo $vmeta['title_suffix']; ?>" />
 	<meta name="twitter:description" content="<?php echo $vmeta['description']; ?>" />
 	<meta name="twitter:url"         content="<?php echo $vmeta['canonical_url']; ?>" />
-	<meta name="twitter:image"       content="<?php echo $vmeta['image']; ?>" />
 
 <?php
 // Y-m-d format
