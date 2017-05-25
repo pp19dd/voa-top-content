@@ -31,6 +31,8 @@ add_image_size( 'quarter-width-tall-2x',    552, 1152, array("center", "top"   )
 add_image_size( 'quarter-width-short',      276,  207, array("center", "center") );
 add_image_size( 'quarter-width-short-2x',   552,  414, array("center", "center") ); // 2x for high-DPI screens
 
+add_image_size( 'fb-share-image',          1200,  600, array("center", "center") );
+
 function top_content_custom_sizes( $sizes ) {
     return(
         array_merge(
