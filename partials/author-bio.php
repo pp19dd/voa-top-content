@@ -1,7 +1,7 @@
 <?php
 
 $o = get_option("voa_opt_comm");
-//if( isset( $o['show_author'] ) ) {
+if( isset( $o['show_author'] ) ) {
 
 	// set the current author
 	$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
@@ -39,4 +39,4 @@ $o = get_option("voa_opt_comm");
 	</div><!-- end .author-bio-box -->
 	
 <?php 
-//} # end if show author
+} # end if show author

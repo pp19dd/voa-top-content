@@ -57,6 +57,10 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 			<content>
 				<?php if (!$hero) { get_template_part( 'partials/single-basic-intro' ); } ?>
 				
+				<?php
+				$o = get_option("voa_opt_comm");
+				if( isset( $o['show_author'] ) ) {
+				?>
 				<section class="content-part article-author">
 
 					<?php $voa_byline = get_post_meta( get_the_ID(), '_voa_byline', true ); ?>
@@ -77,6 +81,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 					<div class="author-social"></div>
 
 				</section>
+				<?php } // end show_author ?>
 
 
 				<?php get_template_part( "partials/share-buttons" ); ?>
