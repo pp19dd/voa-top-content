@@ -7,6 +7,8 @@ require_once( "functions-head-meta-tags.php" );
 show_admin_bar( false );
 remove_action( "wp_head", "print_emoji_detection_script", 7 );
 remove_action( "wp_print_styles", "print_emoji_styles" );
+remove_action( "wp_head", "wp_generator" );
+
 wp_enqueue_script( "jquery" );
 
 function voa_theme_setup_options() {
