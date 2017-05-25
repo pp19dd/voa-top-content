@@ -1293,6 +1293,9 @@ h1.site-title {
   .card-row-2.card-row-short > .card-img > a {
     min-height: auto; }
 
+  .card-row-2 > .card-txt > a {
+    min-height: 207px; }
+
   .story-card.card-half {
     flex-basis: 50%; }
 
