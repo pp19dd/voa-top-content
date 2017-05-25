@@ -2,6 +2,7 @@
 require_once( "functions-layout.php" );
 require_once( "functions-widgets.php" );
 require_once( "functions-meta.php" );
+require_once( "functions-head-meta-tags.php" );
 
 show_admin_bar( false );
 remove_action( "wp_head", "print_emoji_detection_script", 7 );
