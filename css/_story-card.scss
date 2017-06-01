@@ -61,10 +61,10 @@
 }
 
 .story-card > a h2 {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	font-weight: 700;
 	line-height: 1.35;
-	margin: 0 0 1rem 0;
+	margin: 0 0 .5rem 0;
 	padding: 0;
 	text-decoration: none;
 	@include transition( all .5s ease );
@@ -377,7 +377,7 @@
 	.card-txt.card-half,
 	.card-txt.card-quarter {
 		a {
-			h2 { font-size: 1rem; margin-bottom: .5rem; }
+			h2 { font-size: 1rem; }
 			p.teaser { font-size: .9rem; }
 		}
 	}
@@ -437,6 +437,13 @@
 	.story-card.card-quarter {
 		flex-basis: 25%;
 	}
+	
+	.card-txt.card-half.card-tall {
+		a {
+			h2 { font-size: 1.2rem; }
+			p.teaser { font-size: .9rem; }
+		}
+	}
 
 }
 
@@ -461,6 +468,15 @@
 		margin-left: 12px;
 		margin-right: 12px;
 		width: calc(100% - 24px);
+	}
+	
+	.card-img a h2,	
+	.card-noimg a h2,	
+	.card-txt.card-half.card-tall a h2,
+	.card-full.card-txt a h2,
+	.card-row-1 .card-1.card-txt a h2 {
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
 	}
 	
 	.card-img.card-quarter a p.teaser {
@@ -511,6 +527,10 @@
 				width: calc(50% - 12px);
 			}
 		}
+	}
+	
+	.card-img.card-full a .text { 
+		max-width: calc(50% - 12px);
 	}
 	
 	.card-full.card-txt,
