@@ -1290,6 +1290,12 @@ h1.site-title {
     min-height: 450px;
     overflow: hidden; }
 
+  .card-row-2.card-row-short > .story-card {
+    min-height: 207px; }
+
+  .card-row-2.card-row-short > .story-card > a {
+    min-height: 207px; }
+
   .story-card.card-half {
     flex-basis: 50%; }
 
@@ -1426,6 +1432,7 @@ h1.site-title {
   .card-row-short > .card-half.card-txt a .video-icon {
     right: calc(50% + 12px); }
   .card-row-short > .card-half.card-txt a .bg-container {
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;

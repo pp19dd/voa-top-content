@@ -312,11 +312,11 @@
 	}
 	
 	.card-row-2.card-row-short > .story-card {
-		//height: auto;
+		min-height: 207px;
 	}
 	
-	.card-row-2.card-row-short > .card-img > a {
-		//min-height: auto;
+	.card-row-2.card-row-short > .story-card > a {
+		min-height: 207px;
 	}
 	
 	.card-row-2 > .card-txt > a {
@@ -513,6 +513,7 @@
 			}
 			
 			.bg-container {
+				height: 100%;
 				position: absolute;
 				top: 0;
 				left: 0;
