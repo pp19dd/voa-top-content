@@ -230,8 +230,10 @@
 
 
 .card-img {
+	min-height: 360px;
+	
 	a {
-		min-height: 360px;
+		//min-height: 360px;
 		
 		.text {
 			margin-left: .5rem;

@@ -79,14 +79,22 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 			<a class="voa-logo" href="http://www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a>
 			
 			<nav class="site-nav">
+				<!--
+				<div class="header-nav-override">
+					<a href="">Archives</a>
+					<a href="">Subscribe to the Newsletter</a>
+				</div>
+				-->
 				<div class="search-nav">
 					<a class="nav-trigger search-nav-trigger" href="#"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></a>
 					<div class="search-form-container"><?php get_search_form('true'); ?></div>
 				</div>
+				
 				<div class="blog-nav">
 					<a class="nav-trigger blog-nav-trigger" href="#"><i class="fa fa-lg fa-bars" aria-hidden="true"></i><span class="sr-only">Menu</span></a>
 					<?php wp_nav_menu( array( 'theme_location' => 'Header Navigation Menu' ) ); ?>
 				</div>
+				
 				<?php /* <div class="lang-nav">
 					<a class="nav-trigger lang-nav-trigger" href="#"><i class="fa fa-lg fa-language" aria-hidden="true"></i><span class="sr-only">Languages</span></a>
 				</div> */ ?>

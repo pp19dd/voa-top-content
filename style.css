@@ -1219,7 +1219,7 @@ h1.site-title {
   background-color: #1330bf;
   color: #fcfcfc; }
 
-.card-img a {
+.card-img {
   min-height: 360px; }
   .card-img a .text {
     margin-left: .5rem;
@@ -1258,23 +1258,23 @@ h1.site-title {
     font-weight: 400;
     line-height: 1.2;
     padding: .25em 0; }
-.card-img a:hover .bg-container {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); }
-.card-img a:hover h2 {
-  background-color: #1330bf;
-  -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-  box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf; }
-.card-img a:hover p.continue {
-  background-color: #eee;
-  -webkit-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
-  -mox-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
-  -ms-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
-  -o-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
-  box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
-  color: #1330bf; }
+  .card-img a:hover .bg-container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); }
+  .card-img a:hover h2 {
+    background-color: #1330bf;
+    -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+    -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+    -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+    -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+    box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf; }
+  .card-img a:hover p.continue {
+    background-color: #eee;
+    -webkit-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+    -mox-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+    -ms-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+    -o-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+    box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+    color: #1330bf; }
 
 @media (min-width: 450px) {
   .card-row {
