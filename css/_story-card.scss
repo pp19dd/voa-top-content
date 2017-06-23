@@ -27,6 +27,7 @@
 	color: $offblack;
 	display: inline-block;
 	height: 100%;
+	min-height: 300px;
 	margin: 0;
 	padding: 0;
 	position: relative;
@@ -189,7 +190,7 @@
 		}
 		
 		.card-label-category {
-			top: calc(300px - 2.5rem - 4px);
+			top: calc(207px - 2.5rem - 4px);
 			bottom: auto;
 			right: 0;
 			border-width: 2px 0 2px 2px;
@@ -204,7 +205,7 @@
 			right: 0;
 			bottom: auto;
 			left: 0;
-			height: 300px;
+			height: 207px;
 		}
 	}
 	
@@ -230,7 +231,7 @@
 
 
 .card-img {
-	min-height: 360px;
+	//zzzzzzmin-height: 360px;
 	
 	a {
 		//min-height: 360px;
@@ -309,16 +310,16 @@
 	.story-card {
 		flex-basis: 0;
 		//height: 450px;
-		min-height: 450px;
+		//zzzzzzmin-height: 450px;
 		overflow: hidden;
 	}
 	
-	.card-row-2.card-row-short > .story-card {
-		min-height: 207px;
+	.card-row-short > .story-card {
+		//zzzzzzmin-height: 207px;
 	}
 	
-	.card-row-2.card-row-short > .story-card > a {
-		min-height: 207px;
+	.card-row-short > .story-card > a {
+		//zzzzzzmin-height: 207px;
 	}
 	
 	.card-row-2 > .card-txt > a {
@@ -339,7 +340,7 @@
 	}
 
 	.story-card > a {
-		height: 100%;
+		xxxxheight: 100%;
 		margin-left: 8px;
 		margin-right: 8px;
 		width: calc(100% - 16px);
@@ -382,6 +383,7 @@
 
 
 @media (min-width: 600px) {
+	
 	.card-full.card-txt,
 	.card-row-1 .card-1.card-txt {
 		a {
@@ -422,6 +424,22 @@
 	.story-card {
 	// 	height: 450px;
 	}
+	
+	.story-card > a {
+		min-height: 450px;
+	}
+	
+	.card-txt {
+		a {
+			.card-label-category {
+				top: calc(300px - 2.5rem - 4px);
+			}
+			
+			.bg-container {
+				height: 300px;
+			}
+		}
+	}
 
 	.card-row-3 > .story-card.card-half {
 		flex-basis: 50%;
@@ -454,14 +472,19 @@
 	
 	.story-card {
 		flex-basis: 0;
-		min-height: 576px;
+		//zzzzzzmin-height: 576px;
 		margin-bottom: 24px;
 	}
 
 	.story-card > a {
+		min-height: 576px;
 		margin-left: 12px;
 		margin-right: 12px;
 		width: calc(100% - 24px);
+	}
+	
+	.card-row-short > .story-card > a {
+		min-height: 207px;
 	}
 	
 	.card-img a h2,	
@@ -512,6 +535,11 @@
 			.card-label-category,
 			.video-icon {
 				right: calc(50% + 12px);
+			}
+			
+			.card-label-category {
+				top: auto;
+				bottom: .75rem;
 			}
 			
 			.bg-container {

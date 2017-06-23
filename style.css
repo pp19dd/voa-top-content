@@ -150,12 +150,24 @@ rows {
 /* ======================================================================== */
 h1 {
   color: #333;
+  text-align: left;
+  margin: auto;
+  font-weight: 300;
+  font-size: 3.5rem; }
+
+.site-title {
+  color: #333;
   text-align: center;
   margin: auto;
   font-weight: 300;
   font-size: 3.5rem; }
 
 h1 a, h1 a:hover {
+  color: #333;
+  text-decoration: none; }
+
+.site-title > a,
+.site-title > a:hover {
   color: #333;
   text-decoration: none; }
 
@@ -532,7 +544,6 @@ sidebar {
   width: 31.333333%; }
 
 sidebar-inner {
-  padding-left: 1.75;
   padding-right: 1.50%; }
 
 sidebar h2 {
@@ -908,7 +919,7 @@ article > content .comments .comments-inner {
   h1 {
     font-size: 1.5em; } }
 /* mobile-first styles ***************************************************************************/
-h1.site-title {
+.site-title {
   line-height: 1;
   margin: 1rem auto;
   padding: 0; }
@@ -1057,6 +1068,7 @@ h1.site-title {
   color: #333;
   display: inline-block;
   height: 100%;
+  min-height: 300px;
   margin: 0;
   padding: 0;
   position: relative;
@@ -1195,7 +1207,7 @@ h1.site-title {
   padding: .5em;
   */ }
 .card-txt a .card-label-category {
-  top: calc(300px - 2.5rem - 4px);
+  top: calc(207px - 2.5rem - 4px);
   bottom: auto;
   right: 0;
   border-width: 2px 0 2px 2px;
@@ -1208,7 +1220,7 @@ h1.site-title {
   right: 0;
   bottom: auto;
   left: 0;
-  height: 300px; }
+  height: 207px; }
 .card-txt a:hover .bg-container {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); }
 .card-txt a:hover .text {
@@ -1219,62 +1231,60 @@ h1.site-title {
   background-color: #1330bf;
   color: #fcfcfc; }
 
-.card-img {
-  min-height: 360px; }
-  .card-img a .text {
-    margin-left: .5rem;
-    padding-top: .2rem; }
-  .card-img a h2 {
-    background-color: #333;
-    box-decoration-break: clone;
-    -webkit-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-    -mox-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-    -ms-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-    -o-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-    box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
-    color: #fcfcfc;
-    display: inline;
-    padding: .25rem 0; }
-  .card-img a .clearfix:after {
-    height: 1rem; }
-  .card-img a p.teaser {
-    display: none;
-    -webkit-transition: all 0.5s ease;
-    -mox-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease; }
-  .card-img a p.continue {
-    background-color: transparent;
-    box-decoration-break: clone;
-    -webkit-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-    -mox-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-    -ms-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-    -o-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-    box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
-    color: transparent;
-    display: inline;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.2;
-    padding: .25em 0; }
-  .card-img a:hover .bg-container {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); }
-  .card-img a:hover h2 {
-    background-color: #1330bf;
-    -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-    -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-    -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-    -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
-    box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf; }
-  .card-img a:hover p.continue {
-    background-color: #eee;
-    -webkit-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
-    -mox-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
-    -ms-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
-    -o-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
-    box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
-    color: #1330bf; }
+.card-img a .text {
+  margin-left: .5rem;
+  padding-top: .2rem; }
+.card-img a h2 {
+  background-color: #333;
+  box-decoration-break: clone;
+  -webkit-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  -mox-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  -ms-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  -o-box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  box-shadow: 0.5rem 0 0 #333, -0.5rem 0 0 #333;
+  color: #fcfcfc;
+  display: inline;
+  padding: .25rem 0; }
+.card-img a .clearfix:after {
+  height: 1rem; }
+.card-img a p.teaser {
+  display: none;
+  -webkit-transition: all 0.5s ease;
+  -mox-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+.card-img a p.continue {
+  background-color: transparent;
+  box-decoration-break: clone;
+  -webkit-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  -mox-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  -ms-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  -o-box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  box-shadow: 0.5rem 0 0 transparent, -0.5rem 0 0 transparent;
+  color: transparent;
+  display: inline;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2;
+  padding: .25em 0; }
+.card-img a:hover .bg-container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); }
+.card-img a:hover h2 {
+  background-color: #1330bf;
+  -webkit-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -mox-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -ms-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  -o-box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf;
+  box-shadow: 0.5rem 0 0 #1330bf, -0.5rem 0 0 #1330bf; }
+.card-img a:hover p.continue {
+  background-color: #eee;
+  -webkit-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+  -mox-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+  -ms-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+  -o-box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+  box-shadow: 0.5rem 0 0 #eee, -0.5rem 0 0 #eee;
+  color: #1330bf; }
 
 @media (min-width: 450px) {
   .card-row {
@@ -1287,14 +1297,7 @@ h1.site-title {
 
   .story-card {
     flex-basis: 0;
-    min-height: 450px;
     overflow: hidden; }
-
-  .card-row-2.card-row-short > .story-card {
-    min-height: 207px; }
-
-  .card-row-2.card-row-short > .story-card > a {
-    min-height: 207px; }
 
   .story-card.card-half {
     flex-basis: 50%; }
@@ -1307,7 +1310,7 @@ h1.site-title {
     flex-basis: 100%; }
 
   .story-card > a {
-    height: 100%;
+    xxxxheight: 100%;
     margin-left: 8px;
     margin-right: 8px;
     width: calc(100% - 16px); }
@@ -1363,6 +1366,14 @@ h1.site-title {
     top: auto;
     bottom: .75rem; } }
 @media (min-width: 750px) {
+  .story-card > a {
+    min-height: 450px; }
+
+  .card-txt a .card-label-category {
+    top: calc(300px - 2.5rem - 4px); }
+  .card-txt a .bg-container {
+    height: 300px; }
+
   .card-row-3 > .story-card.card-half {
     flex-basis: 50%; }
 
@@ -1381,13 +1392,16 @@ h1.site-title {
 
   .story-card {
     flex-basis: 0;
-    min-height: 576px;
     margin-bottom: 24px; }
 
   .story-card > a {
+    min-height: 576px;
     margin-left: 12px;
     margin-right: 12px;
     width: calc(100% - 24px); }
+
+  .card-row-short > .story-card > a {
+    min-height: 207px; }
 
   .card-img a h2,
   .card-noimg a h2,
@@ -1431,6 +1445,9 @@ h1.site-title {
   .card-row-short > .card-half.card-txt a .card-label-category,
   .card-row-short > .card-half.card-txt a .video-icon {
     right: calc(50% + 12px); }
+  .card-row-short > .card-half.card-txt a .card-label-category {
+    top: auto;
+    bottom: .75rem; }
   .card-row-short > .card-half.card-txt a .bg-container {
     height: 100%;
     position: absolute;
@@ -1725,7 +1742,7 @@ p.comment-form-url {
   .search-nav > .search-form-container {
     text-align: right; } }
 @media (min-width: 600px) {
-  h1.site-title {
+  .site-title {
     margin: 2rem auto; }
 
   .article-body > .alignleft {
@@ -1782,14 +1799,14 @@ p.comment-form-url {
   .hero-title > h2 {
     font-size: 1.2rem; } }
 @media (min-width: 960px) {
-  h1.site-title {
+  .site-title {
     margin: 3rem auto; }
 
   .author .author-avatar {
     height: 160px;
     width: 160px; } }
 @media (min-width: 1200px) {
-  h1.site-title {
+  .site-title {
     margin: 4rem auto; }
 
   .hero-title-container {

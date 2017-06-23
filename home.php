@@ -33,7 +33,7 @@ switch ( $query_range['range'] ) {
             </breakup>
         </row>
 <?php foreach( $posts_html["posts"] as $posts ) { ?>
-        <row class="card-row card-row-<?php echo count($posts) ?> <?php echo (get_voa_is_row_tall($posts) ? 'card-row-tall' : 'card-row-short'); ?>">
+        <row class="card-row card-row-<?php echo count($posts); if ( count($posts) == 2 ) { echo ' ' . (get_voa_is_row_tall($posts) ? 'card-row-tall' : 'card-row-short'); } ?>">
 <?php
         foreach( $posts as $k => $post ) {
             set_query_var( "k", $k );

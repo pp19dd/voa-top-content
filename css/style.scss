@@ -61,6 +61,14 @@ rows {
 
 h1 {
 	color: $offblack;
+	text-align: left;
+	margin: auto;
+	font-weight: 300;
+	font-size: 3.5rem;
+}
+
+.site-title {
+	color: $offblack;
 	text-align: center;
 	margin: auto;
 	font-weight: 300;
@@ -68,6 +76,12 @@ h1 {
 }
 
 h1 a, h1 a:hover { color: $offblack; text-decoration: none; }
+
+.site-title > a,
+.site-title > a:hover {
+	color: $offblack;
+	text-decoration: none;
+}
 
 h2 {
 	font-size: 1.5rem;
@@ -477,7 +491,7 @@ sidebar {
 }
 
 sidebar-inner {
-	padding-left:1.75;
+	//padding-left:0;
 	padding-right:1.50%;
 }
 
@@ -932,7 +946,7 @@ article > content .comments .comments-inner {
 
 /* mobile-first styles ***************************************************************************/
 
-h1.site-title {
+.site-title {
 	line-height: 1;
 	margin: 1rem auto;
 	padding: 0;
@@ -1287,7 +1301,7 @@ h1.site-title {
 
 @media (min-width: 600px) {
 	
-	h1.site-title { margin: 2rem auto; }
+	.site-title { margin: 2rem auto; }
 	
 	.article-body > .alignleft {
 		margin-left: -4rem;
@@ -1365,7 +1379,7 @@ h1.site-title {
 
 @media (min-width: 960px) {
 	
-	h1.site-title { margin: 3rem auto; }
+	.site-title { margin: 3rem auto; }
 	
 	.author .author-avatar { height: 160px; width: 160px; }
 	
@@ -1375,7 +1389,7 @@ h1.site-title {
 
 @media (min-width: 1200px) {
 	
-	h1.site-title { margin: 4rem auto; }
+	.site-title { margin: 4rem auto; }
 	
 	.hero-title-container {
 		top: 15%;

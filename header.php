@@ -61,7 +61,7 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 	<meta name="msapplication-TileImage" content="<?php echo $vmeta['template_directory_uri']; ?>/img/ico-144x144.png" />
 
 	<link rel="stylesheet" type="text/css" href="<?php echo $vmeta['template_directory_uri']; ?>/style.css?rand=<?php echo time(); ?>" />
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,400,700" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700" />
 	<link rel="stylesheet" href="<?php echo $vmeta['template_directory_uri']; ?>/css/font-awesome.min.css" />
 	
 	<?php // Polyfill.io reads the User-Agent header of each request and returns polyfills that are suitable for the requesting browser. Documentation: https://polyfill.io/v2/docs/ ?>
@@ -76,7 +76,7 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 
 	<header class="voa-masthead">
 		<div class="voa-masthead-inner">
-			<a class="voa-logo" href="http://www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a>
+			<a class="voa-logo" href="https://www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a>
 			
 			<nav class="site-nav">
 				<!--
@@ -104,18 +104,21 @@ $most_recent = voa_top_content_get_most_recently_published_day();
 	
 	<rows>
 		<row class="rows_1" style="margin-top: 0; padding-bottom: 0;">
-<?php if( isset( $_GET['preview_layout']) ) { ?>
 			
-			<h1 class="site-title" style="color:crimson">(Layout Preview)</h1>
+			<?php $header_tag = ( is_front_page() ? 'h1' : 'div' ); ?>
 			
-<?php } elseif ( get_header_image() != '' ) { ?>
+			<?php if( isset( $_GET['preview_layout']) ) { ?>
+				
+				<<?php echo $header_tag; ?> class="site-title" style="color:crimson">(Layout Preview)</<?php echo $header_tag; ?>>
 			
-			<h1 class="site-title"><a href="<?php echo home_url( '/' ); ?>"><img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="<?php bloginfo("name"); ?>" /></a></h1>
-			
-<?php } else { ?>
-			
-			<h1 class="site-title"><a href="<?php echo home_url( '/' ); ?>"><?php bloginfo("name"); ?></a></h1>
-			
-<?php } ?>
+			<?php } elseif ( get_header_image() != '' ) { ?>
+				
+				<<?php echo $header_tag; ?> class="site-title"><a href="<?php echo home_url( '/' ); ?>"><img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="<?php bloginfo("name"); ?>" /></a></<?php echo $header_tag; ?>>
+				
+			<?php } else { ?>
+				
+				<<?php echo $header_tag; ?> class="site-title"><a href="<?php echo home_url( '/' ); ?>"><?php bloginfo("name"); ?></a></<?php echo $header_tag; ?>>
+				
+			<?php } ?>
 		</row>
 	</rows>
