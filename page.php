@@ -17,10 +17,11 @@ the_post();
 		
 			<content>
 				
-				<?php //if (!$hero) { get_template_part( 'partials/single-basic-intro' ); } ?>
-				
-				<section class="content-part">
+				<header class="single-basic-intro">
 					<h1><?php the_title(); ?></h1>
+				</header>
+				
+				<section class="content-part article-body">
 					<?php the_content(); ?>
 				</section>
 				

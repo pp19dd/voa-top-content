@@ -17,9 +17,9 @@ the_post();
 		
 			<content>
 				
-				<section class="content-part">
+				<header class="single-basic-intro">
 					<h1><?php the_archive_title(); ?></h1>
-				</section>
+				</header>
 				
 				<?php 
 				$posts = new WP_Query(array('posts_per_page' => -1));

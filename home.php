@@ -53,47 +53,6 @@ if( !isset( $_GET['vday'])) {
 ?>
 
 <script>
-/*
-function voa_apply_events_cluster(selector) {
-
-    jQuery("article", selector).mouseover(function() {
-        jQuery(this).addClass("hovering");
-    }).mouseout(function() {
-        jQuery(this).removeClass("hovering");
-    });
-    jQuery("row.rows_3 article", selector).mouseover(function() {
-        jQuery("excerpt, continue", this).stop().animate({opacity: 1}, 200);
-    });
-    jQuery("row.rows_3 article", selector).mouseout(function() {
-        jQuery("excerpt, continue", this).stop().animate({opacity: 0}, 100);
-    });
-
-
-    jQuery("row.rows_1 article", selector).mouseover(function() {
-        jQuery("continue", this).stop().animate({opacity: 1}, 200);
-    });
-    jQuery("row.rows_1 article", selector).mouseout(function() {
-        jQuery("continue", this).stop().animate({opacity: 0}, 200);
-    });
-
-    jQuery("row.rows_2 article", selector).mouseover(function() {
-        jQuery(this).addClass("hovering");
-    }).mouseout(function() {
-        jQuery(this).removeClass("hovering");
-    });
-
-    jQuery(
-        "row.rows_3 article excerpt, " +
-        "row.rows_3 article continue, " +
-        "row.rows_1 article continue",
-        selector
-    ).css({
-        opacity: 0
-    });
-}
-
-voa_apply_events_cluster(jQuery("rows"));
-*/
 
 function voa_load_page(vday, that) {
     jQuery.get("?vday=" + vday, function(rh) {

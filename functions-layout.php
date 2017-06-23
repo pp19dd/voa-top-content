@@ -920,8 +920,8 @@ function voa_top_content_get_image_url($thumbnail_id, $col, $cols = 1) {
 function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img', $debug = false ) {
 
     switch( $siz ) {
-        case 'hero-intro':
-            $imgsize = 'hero-intro';
+        case 'full-width-2x':
+            $imgsize = 'full-width-2x';
             break;
 
         case 'card-full':

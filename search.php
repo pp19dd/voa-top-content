@@ -7,9 +7,11 @@
 		
 			<content>
 				
-				<section class="content-part">
-					
+				<header class="single-basic-intro">
 					<h1>Search Results</h1>
+				</header>
+				
+				<section class="content-part article-body">
 					
 					<?php
 					if ( have_posts() ) {	
