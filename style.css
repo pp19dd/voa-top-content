@@ -1644,9 +1644,42 @@ article > content .comments .comments-inner {
   color: #ddd;
   text-decoration: underline; }
 
-.article-excerpt img.size-quarter-width-short {
-  height: auto;
-  width: 276px; }
+.article-excerpt {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0; }
+
+.article-excerpt > a {
+  display: flex;
+  flex-direction: column; }
+
+.article-excerpt > a .excerpt-img {
+  margin-bottom: .5rem; }
+
+.article-excerpt > a h2 {
+  font-size: 1rem;
+  line-height: 1.35;
+  padding-bottom: .3rem; }
+
+.excerpt-text > p {
+  font-size: 1rem;
+  line-height: 1.35 !important;
+  margin-bottom: 0 !important; }
+
+.excerpt-text > p.excerpt-meta {
+  line-height: 1 !important;
+  margin-bottom: .3rem !important; }
+
+p.excerpt-meta .excerpt-date,
+p.excerpt-meta .excerpt-author {
+  color: #999;
+  font-size: .8rem; }
+
+.excerpt-text > p:not(.excerpt-meta) {
+  color: #333; }
+
+.article-excerpt > a:hover {
+  color: #333;
+  text-decoration: none; }
 
 /* comments **************************************************************************************/
 ol.comment-list {
@@ -1791,6 +1824,19 @@ p.comment-form-url {
     height: 120px;
     margin-right: 2rem;
     width: 120px; }
+
+  .article-excerpt > a {
+    flex-direction: row; }
+
+  .article-excerpt > a > .excerpt-img {
+    flex: 1 1 0; }
+
+  .article-excerpt > a h2 {
+    font-size: 1.2rem; }
+
+  .article-excerpt > a > .excerpt-text {
+    flex: 2 2 0;
+    padding-left: 1rem; }
 
   .blog-footer-inner {
     align-items: center;

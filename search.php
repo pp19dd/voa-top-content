@@ -8,7 +8,8 @@
 			<content>
 				
 				<header class="single-basic-intro">
-					<h1>Search Results</h1>
+					<h1>Search Results for: "<?php echo get_search_query(); ?>"</h1>
+					<div class="search-form-container"><?php get_search_form('true'); ?></div>
 				</header>
 				
 				<section class="content-part article-body">
@@ -18,6 +19,13 @@
 						while ( have_posts() ) : the_post();
 							get_template_part( 'partials/excerpt', get_post_format() );
 						endwhile; // end of The Loop
+						
+						// Previous/next page navigation.
+						the_posts_pagination( array(
+							//'prev_text'          => __( 'Previous page', 'twentysixteen' ),
+							//'next_text'          => __( 'Next page', 'twentysixteen' ),
+							//'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
+						) );
 						
 					} else {
 					?>
