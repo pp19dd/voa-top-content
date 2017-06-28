@@ -1648,6 +1648,9 @@ article > content .comments .comments-inner {
   border-bottom: 1px solid #ddd;
   padding: 1rem 0; }
 
+.article-excerpt:last-of-type {
+  border-bottom: none; }
+
 .article-excerpt > a {
   display: flex;
   flex-direction: column; }

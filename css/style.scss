@@ -1297,6 +1297,10 @@ article > content .comments .comments-inner {
 	padding: 1rem 0;
 }
 
+.article-excerpt:last-of-type {
+	border-bottom: none;
+}
+
 .article-excerpt > a {
 	display: flex;
 	flex-direction: column;

@@ -9,7 +9,6 @@
 				
 				<header class="single-basic-intro">
 					<h1>Search Results for: "<?php echo get_search_query(); ?>"</h1>
-					<div class="search-form-container"><?php get_search_form('true'); ?></div>
 				</header>
 				
 				<section class="content-part article-body">
@@ -26,6 +25,10 @@
 							//'next_text'          => __( 'Next page', 'twentysixteen' ),
 							//'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
 						) );
+
+						?>
+						<div class="search-form-container"><?php get_search_form('true'); ?></div>
+						<?php
 						
 					} else {
 					?>
@@ -43,7 +46,7 @@
 			<sidebar>
 				<sidebar-inner>
 					
-					<?php dynamic_sidebar( 'sidebar_basic_page' ); ?>
+					<?php dynamic_sidebar( 'sidebar_archive_page' ); ?>
 
 				</sidebar-inner>
 			</sidebar>
