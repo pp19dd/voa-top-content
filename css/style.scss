@@ -53,8 +53,13 @@ header, rows, footer {
 
 rows {
 	display: flex;
-	margin: auto;
+	flex-direction: column;
+	margin: 0 auto 1rem auto;
 	max-width: 1200px;
+}
+
+body > rows:first-of-type {
+	margin-bottom: 0;
 }
 
 /* ======================================================================== */
@@ -67,13 +72,13 @@ h1 {
 	font-size: 3.5rem;
 }
 
-.site-title {
+/*.site-title {
 	color: $vdkgray;
 	text-align: center;
 	margin: auto;
 	font-weight: 300;
 	font-size: 3.5rem;
-}
+}*/
 
 h1 a, h1 a:hover { color: $vdkgray; text-decoration: none; }
 
@@ -120,12 +125,6 @@ breakup h2 {
 
 /* ======================================================================== */
 
-rows {
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 1rem;
-}
-
 rows row.rows_1, rows row.rows_2, rows row.rows_3 {
 	display: flex;
 	flex-direction: row;
@@ -162,7 +161,7 @@ article > content {
 	width: 65.666666%;
 }
 
-.archive article > content { padding-top: 2rem; }
+.archive article > content { padding-top: 1rem; }
 
 .single  article > content,
 .archive article > content .content-part,
@@ -242,7 +241,11 @@ article > content .article-tags header {
 	border-color: $vltgray;
 	border-style: solid;
 	border-width: 1px 1px 0 1px;
-	padding-top: 2rem;
+	padding-top: 1rem;
+}
+
+body.archive .single-basic-intro {
+	padding-top: 0;
 }
 
 body:not(.single) .single-basic-intro,
@@ -667,7 +670,7 @@ article > content .comments .comments-inner {
 
 .page .archive-date > breakup,
 .archive .archive-date > breakup {
-	background-color: $bodybg;
+	//background-color: $bodybg;
 	padding: 2rem 0;
 }
 
@@ -960,9 +963,13 @@ article > content .comments .comments-inner {
 }
 
 .site-title {
+	color: $vdkgray;
+	font-weight: 300;
+	font-size: 2.5rem;
 	line-height: 1;
-	margin: 1rem auto;
+	margin: 1.5rem auto;
 	padding: 0;
+	text-align: center;
 }
 
 .voa-masthead {
@@ -1374,6 +1381,13 @@ p.excerpt-meta .excerpt-author {
 	
 	.site-title { margin: 2rem auto; }
 	
+	.single-basic-intro { padding-top: 2rem; padding-bottom: 2rem; }
+	.archive article > content { padding-top: 2rem; }
+	
+	body.archive .single-basic-intro {
+		padding-top: 0;
+	}
+	
 	.article-body > .alignleft {
 		margin-left: -4rem;
 		width: calc(50% + 4rem) !important;
@@ -1469,7 +1483,10 @@ p.excerpt-meta .excerpt-author {
 
 @media (min-width: 960px) {
 	
-	.site-title { margin: 3rem auto; }
+	.site-title { 
+		font-size: 3.5rem;
+		margin: 3rem auto;
+	}
 	
 	.author .author-avatar { height: 160px; width: 160px; }
 	
