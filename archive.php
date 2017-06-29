@@ -67,7 +67,7 @@ the_post();
 							$image = $image[0];
 							?>
 							<div class="teaser-img-container"><a class="teaser-img" href="<?php echo $url; ?>" 
-								style="background-image: url(<?php echo $image; ?>);"><?php voa_language_service_tag( $post->ID, true ); ?></a></div>
+								style="background-image: url(<?php echo $image; ?>);"><?php //voa_language_service_tag( $post->ID, true ); ?></a></div>
 							<h2><a href="<?php echo $url; ?>"><?php the_title(); ?></a></h2>
 						</article>
 						
