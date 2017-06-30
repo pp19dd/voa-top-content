@@ -1085,6 +1085,10 @@ article > content .comments .comments-inner {
 	text-align: center;
 }
 
+.article-body > .search-form-container {
+	margin-top: 3rem;
+}
+
 .search-form {
 	margin: 0 auto;
 	max-width: calc(1200px - 2rem);
@@ -1354,6 +1358,43 @@ p.excerpt-meta .excerpt-author {
 // 	height: auto;
 // 	//width: 276px;
 // }
+
+.pagination {
+	padding: 2rem 0 0 0;
+	text-align: center;
+}
+
+.pagination > .nav-links {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+}
+
+.pagination > .nav-links > .page-numbers {
+	background: $bodybg;
+	border: 2px solid $ultgray;
+	flex: 0 1 auto;
+	line-height: 1;
+	margin: 0 .25rem;
+	padding: .5em .75em;
+	text-decoration: none;
+}
+
+.pagination > .nav-links > a.page-numbers:hover {
+	background: $voablue;
+	border-color: $voablue;
+	color: $offwhite;
+}
+
+.pagination > .nav-links > .current {
+	background: $offwhite;
+	color: $vdkgray;
+}
+
+.screen-reader-text {
+	display: none;
+	visibility: hidden;
+}
 
 
 

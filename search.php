@@ -18,17 +18,13 @@
 						while ( have_posts() ) : the_post();
 							get_template_part( 'partials/excerpt', get_post_format() );
 						endwhile; // end of The Loop
-						
-						// Previous/next page navigation.
-						the_posts_pagination( array(
-							//'prev_text'          => __( 'Previous page', 'twentysixteen' ),
-							//'next_text'          => __( 'Next page', 'twentysixteen' ),
-							//'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
-						) );
-
 						?>
+						
 						<div class="search-form-container"><?php get_search_form('true'); ?></div>
+						
 						<?php
+						
+						get_template_part( 'partials/pagination' );
 						
 					} else {
 					?>

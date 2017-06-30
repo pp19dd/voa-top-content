@@ -1048,6 +1048,9 @@ article > content .comments .comments-inner {
   padding: 1rem;
   text-align: center; }
 
+.article-body > .search-form-container {
+  margin-top: 3rem; }
+
 .search-form {
   margin: 0 auto;
   max-width: calc(1200px - 2rem); }
@@ -1688,6 +1691,37 @@ p.excerpt-meta .excerpt-author {
 .article-excerpt > a:hover {
   color: #333;
   text-decoration: none; }
+
+.pagination {
+  padding: 2rem 0 0 0;
+  text-align: center; }
+
+.pagination > .nav-links {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center; }
+
+.pagination > .nav-links > .page-numbers {
+  background: #eee;
+  border: 2px solid #e6e6e6;
+  flex: 0 1 auto;
+  line-height: 1;
+  margin: 0 .25rem;
+  padding: .5em .75em;
+  text-decoration: none; }
+
+.pagination > .nav-links > a.page-numbers:hover {
+  background: #1330bf;
+  border-color: #1330bf;
+  color: #fcfcfc; }
+
+.pagination > .nav-links > .current {
+  background: #fcfcfc;
+  color: #333; }
+
+.screen-reader-text {
+  display: none;
+  visibility: hidden; }
 
 /* comments **************************************************************************************/
 ol.comment-list {
