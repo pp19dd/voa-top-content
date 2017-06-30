@@ -6,18 +6,18 @@ $voa_metrics_tracking_parameter = '?src=voa-editor-picks';
 // holder for VOA meta tag values
 $vmeta = array();
 
-$vmeta['title_suffix'] = "Voice of America";
-$vmeta['template_directory_uri'] = get_template_directory_uri();
+//$vmeta['title_suffix'] = "Voice of America";
+$top_content_template_directory_uri = get_template_directory_uri();
 $vmeta['date_modified'] = ''; // $post->post_modified
 
 if ( is_front_page() ) {
 
-	$vmeta['title'] = get_bloginfo( 'name' );
+	//$vmeta['title'] = get_bloginfo( 'name' );
 	$vmeta['date_published'] = '2017-01-17';
 
 } else {
 
-	$vmeta['title'] = get_the_title();
+	//$vmeta['title'] = get_the_title();
 	$vmeta['date_published'] = ''; // $post->post_date
 
 }
@@ -28,43 +28,32 @@ if ( is_front_page() ) {
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta content="IE=edge" http-equiv="X-UA-Compatible" />
-	
-	<!-- <meta name="title"               content="<?php echo $vmeta['title']; ?> | <?php echo $vmeta['title_suffix']; ?>" /> -->
-	<meta name="keywords"            content="<?php echo $vmeta['keywords']; ?>" />
-	<meta name="news_keywords"       content="<?php echo $vmeta['keywords']; ?>" />
 
 	<meta property="og:site_name"    content="VOA" />
 	<meta property="og:type"         content="article" />
-	<meta property="og:title"        content="<?php echo $vmeta['title']; ?> | <?php echo $vmeta['title_suffix']; ?>" />
 	
 	<meta name="twitter:site"        value="@VOANews" />
 	<meta name="twitter:creator"     content="@VOANews" />
-	<meta name="twitter:title"       content="<?php echo $vmeta['title']; ?> | <?php echo $vmeta['title_suffix']; ?>" />
 	
-
-<?php
-// Y-m-d format
-$most_recent = voa_top_content_get_most_recently_published_day();
-?>
-
+	<?php $most_recent = voa_top_content_get_most_recently_published_day(); // Y-m-d format ?>
 	<meta name="DISPLAYDATE"         content="<?php echo date( 'F j, Y', strtotime($most_recent) ); ?>" />
 	<meta itemprop="dateModified"    content="<?php echo $most_recent; ?>" />
 	<meta itemprop="datePublished"   content="<?php echo $most_recent; ?>" />
 
-	<link type="image/x-icon" rel="icon" href="<?php echo $vmeta['template_directory_uri']; ?>/img/favicon.ico" />
-	<link rel="shortcut icon" href="<?php echo $vmeta['template_directory_uri']; ?>/img/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo $vmeta['template_directory_uri']; ?>/img/ico-144x144.png" />
-	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $vmeta['template_directory_uri']; ?>/img/ico-114x114.png" />
-	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $vmeta['template_directory_uri']; ?>/img/ico-72x72.png" />
-	<link rel="apple-touch-icon-precomposed" href="<?php echo $vmeta['template_directory_uri']; ?>/img/ico-57x57.png" />
+	<link type="image/x-icon" rel="icon" href="<?php echo $top_content_template_directory_uri; ?>/img/favicon.ico" />
+	<link rel="shortcut icon" href="<?php echo $top_content_template_directory_uri; ?>/img/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo $top_content_template_directory_uri; ?>/img/ico-144x144.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $top_content_template_directory_uri; ?>/img/ico-114x114.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $top_content_template_directory_uri; ?>/img/ico-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" href="<?php echo $top_content_template_directory_uri; ?>/img/ico-57x57.png" />
 	<meta name="msapplication-TileColor" content="#ffffff" />
-	<meta name="msapplication-TileImage" content="<?php echo $vmeta['template_directory_uri']; ?>/img/ico-144x144.png" />
+	<meta name="msapplication-TileImage" content="<?php echo $top_content_template_directory_uri; ?>/img/ico-144x144.png" />
 
-	<link rel="stylesheet" type="text/css" href="<?php echo $vmeta['template_directory_uri']; ?>/style.css?rand=<?php echo time(); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $top_content_template_directory_uri; ?>/style.css?rand=<?php echo time(); ?>" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700" />
-	<link rel="stylesheet" href="<?php echo $vmeta['template_directory_uri']; ?>/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="<?php echo $top_content_template_directory_uri; ?>/css/font-awesome.min.css" />
 	
-	<?php // Polyfill.io reads the User-Agent header of each request and returns polyfills that are suitable for the requesting browser. Documentation: https://polyfill.io/v2/docs/ ?>
+	<!-- documentation at https://polyfill.io/v2/docs/ -->
 	<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 
 	<?php wp_head(); ?>

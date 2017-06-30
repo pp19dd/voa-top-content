@@ -14,8 +14,14 @@ function voa_head_meta_tags() {
 	// print the description meta tags
 	voa_head_meta_description();
 	
+	// print the keyword meta tags
+	voa_head_meta_keywords();
+	
 	// find and print share image meta tags
 	voa_head_meta_share_images();
+	
+	// set title for social (<title> set by WordPress)
+	voa_head_meta_share_title();
 	
 }
 
@@ -91,6 +97,24 @@ function voa_head_meta_description() {
 
 
 
+function voa_head_meta_keywords() {
+	$o = get_option( 'voa_opt_seo' );
+	
+	$o['voa_seo_keywords'] = trim( $o['voa_seo_keywords'] );
+		
+	if ( isset( $o['voa_seo_keywords'] ) && $o['voa_seo_keywords'] != '' ) {
+		$m_keywords = $o['voa_seo_keywords'];
+	} else {
+		$m_keywords = '';
+	}
+	?>
+	<meta name="keywords" content="<?php echo $m_keywords; ?>" />
+	<meta name="news_keywords" content="<?php echo $m_keywords; ?>" />
+	<?php
+}
+
+
+
 function voa_head_meta_share_images() {
 	global $post;
 	
@@ -111,5 +135,16 @@ function voa_head_meta_share_images() {
 	<meta property="og:image"        content="<?php echo esc_attr( $m_share_img[0] ); ?>" />
 	<meta property="og:image:width"  content="<?php echo esc_attr( $m_share_img[1] ); ?>" />
 	<meta property="og:image:height" content="<?php echo esc_attr( $m_share_img[2] ); ?>" />
+	<?php
+}
+
+function voa_head_meta_share_title() {
+	global $post;
+	
+	$share_title = esc_attr( wp_get_document_title() );
+	
+	?>
+	<meta property="og:title" content="<?php echo $share_title; ?>" />
+	<meta name="twitter:title" content="<?php echo $share_title; ?>" />
 	<?php
 }
