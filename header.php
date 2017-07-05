@@ -3,24 +3,8 @@
 // metrics tracking parameter to add to URLs (also on single.php for redirects)
 $voa_metrics_tracking_parameter = '?src=voa-editor-picks';
 
-// holder for VOA meta tag values
-$vmeta = array();
-
-//$vmeta['title_suffix'] = "Voice of America";
+// simplify template directory calls
 $top_content_template_directory_uri = get_template_directory_uri();
-$vmeta['date_modified'] = ''; // $post->post_modified
-
-if ( is_front_page() ) {
-
-	//$vmeta['title'] = get_bloginfo( 'name' );
-	$vmeta['date_published'] = '2017-01-17';
-
-} else {
-
-	//$vmeta['title'] = get_the_title();
-	$vmeta['date_published'] = ''; // $post->post_date
-
-}
 
 ?><!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -35,11 +19,6 @@ if ( is_front_page() ) {
 	<meta name="twitter:site"        value="@VOANews" />
 	<meta name="twitter:creator"     content="@VOANews" />
 	
-	<?php $most_recent = voa_top_content_get_most_recently_published_day(); // Y-m-d format ?>
-	<meta name="DISPLAYDATE"         content="<?php echo date( 'F j, Y', strtotime($most_recent) ); ?>" />
-	<meta itemprop="dateModified"    content="<?php echo $most_recent; ?>" />
-	<meta itemprop="datePublished"   content="<?php echo $most_recent; ?>" />
-
 	<link type="image/x-icon" rel="icon" href="<?php echo $top_content_template_directory_uri; ?>/img/favicon.ico" />
 	<link rel="shortcut icon" href="<?php echo $top_content_template_directory_uri; ?>/img/favicon.ico" />
 	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo $top_content_template_directory_uri; ?>/img/ico-144x144.png" />
@@ -70,7 +49,7 @@ if ( is_front_page() ) {
 			<nav class="site-nav">
 				
 				<div class="header-nav-newsletter-link">
-					<a href="">Subscribe<span class="big-screen"> to the Newsletter</span></a>
+					<a href="https://www.voanews.com/subscribe.html<?php echo $voa_metrics_tracking_parameter; ?>">Subscribe<span class="big-screen"> to the Newsletter</span></a>
 				</div>
 				
 				<div class="search-nav">

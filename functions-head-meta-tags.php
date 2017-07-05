@@ -16,6 +16,9 @@ function voa_head_meta_tags() {
 	
 	// print the keyword meta tags
 	voa_head_meta_keywords();
+
+	// print publication and modification dates
+	voa_head_meta_pub_dates();
 	
 	// find and print share image meta tags
 	voa_head_meta_share_images();
@@ -115,6 +118,31 @@ function voa_head_meta_keywords() {
 
 
 
+function voa_head_meta_pub_dates() {
+	global $post;
+
+	if ( is_front_page() ) {
+		$pub_date = voa_top_content_get_most_recently_published_day(); // Y-m-d format
+		$mod_date = $pub_date;
+
+	} elseif ( is_single() ) {
+		$pub_date = $post->post_date;
+		$mod_date = $post->post_modified;
+
+	} else {
+		$pub_date = $post->post_date;
+		$mod_date = $post->post_modified;
+
+	}
+	?>
+	<meta name="DISPLAYDATE"       content="<?php echo date( 'F j, Y', strtotime( $pub_date )); ?>" />
+	<meta itemprop="dateModified"  content="<?php echo date( 'Y-m-d',  strtotime( $mod_date )); ?>" />
+	<meta itemprop="datePublished" content="<?php echo date( 'Y-m-d',  strtotime( $pub_date )); ?>" />
+	<?php
+}
+
+
+
 function voa_head_meta_share_images() {
 	global $post;
 	
@@ -122,10 +150,13 @@ function voa_head_meta_share_images() {
 		// get share image for post
 		$m_share_img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'fb-share-image' );
 		$twitter_card_type = 'summary_large_image';
+		$img_size_exists = $m_share_img[3];
+
 	} else {
 		// use default voanews.com share image
 		$m_share_img = array( get_template_directory_uri().'/img/top_logo_news.png', 600, 600 );
 		$twitter_card_type = 'summary';
+		$img_size_exists = (bool) true;
 	}
 	?>
 	<meta name="twitter:card"          value="<?php echo $twitter_card_type; ?>" />
@@ -133,9 +164,12 @@ function voa_head_meta_share_images() {
 	<link rel="image_src"               href="<?php echo esc_attr( $m_share_img[0] ); ?>" />
 	<meta name="twitter:image"       content="<?php echo esc_attr( $m_share_img[0] ); ?>" />
 	<meta property="og:image"        content="<?php echo esc_attr( $m_share_img[0] ); ?>" />
+
+	<?php if ( $img_size_exists ) { ?>
 	<meta property="og:image:width"  content="<?php echo esc_attr( $m_share_img[1] ); ?>" />
 	<meta property="og:image:height" content="<?php echo esc_attr( $m_share_img[2] ); ?>" />
 	<?php
+	}
 }
 
 function voa_head_meta_share_title() {
