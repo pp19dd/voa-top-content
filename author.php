@@ -23,36 +23,26 @@ $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('a
 				<section class="content-part">
 					<?php get_template_part( 'partials/author-bio' ); ?>
 				</section>
-
-				<?php if ( have_posts() ) : ?>
-				<section class="archive-teasers content-part ">
-
-					<?php while ( have_posts() ) : the_post(); ?>
+				
+				<section class="content-part article-body">
+					
+					<?php if ( have_posts() ) {	?>
+					
+					<h2>Recent posts by <?php echo $curauth->display_name; ?>:</h2>
+					
+					<?php
+						while ( have_posts() ) : the_post();
+							get_template_part( 'partials/excerpt', get_post_format() );
+						endwhile; // end of The Loop
 						
-						<article class="archive-teaser">
-							<?php 
-							$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'quarter-width-small' );
-							$image = $image[0];
-							?>
-							<div class="teaser-img-container"><a class="teaser-img" href="<?php the_permalink(); ?>" 
-								style="background-image: url(<?php echo $image; ?>);"><?php //the_time('F j, Y'); ?></a></div>
-							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-						</article>
+						get_template_part( 'partials/pagination' );
 						
-					<?php endwhile; // end of The Loop ?>
+					} else {
+					?>
+					<p><?php _e('No posts by this author.'); ?></p>
+					<?php } ?>
 					
 				</section>
-				
-				<section class="content-part">
-					<div class="nav-previous alignleft"><?php next_posts_link( 'Older posts' ); ?></div>
-					<div class="nav-next alignright"><?php previous_posts_link( 'Newer posts' ); ?></div>
-				</section>
-				
-				<?php else: ?>
-				<section class="content-part no-results">
-					<p><?php _e('No posts by this author.'); ?></p>
-				</section>
-				<?php endif; ?>
 				
 			</content>
 			

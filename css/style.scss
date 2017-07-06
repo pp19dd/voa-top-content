@@ -260,7 +260,8 @@ body:not(.single) article > content {
 	border-bottom-width: 1px;
 }
 
-.single-basic-intro h1 {
+.single-basic-intro h1,
+.author-bio-box h1 {
 	font-size: 2rem;
 	font-weight: 700;
 	margin-bottom: 0;
@@ -297,7 +298,7 @@ body:not(.single) article > content {
 	padding-top: 2rem;
 }
 
-.single .author-avatar { height: 67px; width: 67px; margin-right: .5rem; }
+.single .author-avatar { height: 67px; width: 67px; margin-right: 1rem; }
 .single .author-avatar img { border-radius: 36px; margin-right: 1rem; }
 
 
@@ -876,7 +877,8 @@ article > content .comments .comments-inner {
 		padding-right: 0;
 	}
 
-	.single-basic-intro h1 {
+	.single-basic-intro h1,
+	.author-bio-box h1 {
 		font-size: 1.5em;
 		font-weight: 700;
 		padding: 0 1rem;
@@ -1224,11 +1226,12 @@ article > content .comments .comments-inner {
 .author-bio-box .author-avatar {
 	float: left;
 	margin: 0 1rem .5rem 0;
+	overflow: hidden;
 	height: 80px;
 	width: 80px;
 }
 
-.author-bio-box .author-avatar img { border-radius: 10px; }
+.author-bio-box .author-avatar img { /* border-radius: 10px; */ }
 
 .author-bio-box .author-bio { }
 
@@ -1456,7 +1459,6 @@ p.excerpt-meta .excerpt-author {
 	
 	.author-bio-box .author-avatar { 
 		height: 120px;
-		margin-right: 2rem;
 		width: 120px;
 	}
 	
