@@ -193,6 +193,9 @@ article > content .article-tags {
 	padding-bottom: 2rem;
 }
 
+// fixes a layout quirk when posts start with an extra <p></p> before text/images
+article > content .article-body { padding-top: 1px; }
+
 article > content .article-tags,
 article > content .adjacent-post {
 	border-bottom: 1px solid $vltgray;
