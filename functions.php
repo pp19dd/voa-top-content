@@ -26,10 +26,14 @@ add_image_size( 'full-width',              1200,  576, array("center", "center")
 add_image_size( 'full-width-2x',           2400, 1152, array("center", "center") ); // 2x for high-DPI screens
 add_image_size( 'half-width-square',        576,  576, array("center", "center") );
 add_image_size( 'half-width-square-2x',    1152, 1152, array("center", "center") ); // 2x for high-DPI screens
+add_image_size( 'half-width-mid',           576,  375, array("center", "top"   ) );
+add_image_size( 'half-width-mid-2x',       1152,  750, array("center", "top"   ) ); // 2x for high-DPI screens
 add_image_size( 'half-width-landscape',     576,  207, array("center", "top"   ) );
 add_image_size( 'half-width-landscape-2x', 1152,  414, array("center", "top"   ) ); // 2x for high-DPI screens
 add_image_size( 'quarter-width-tall',       276,  576, array("center", "top"   ) );
 add_image_size( 'quarter-width-tall-2x',    552, 1152, array("center", "top"   ) ); // 2x for high-DPI screens
+add_image_size( 'quarter-width-mid',        276,  375, array("center", "top") );
+add_image_size( 'quarter-width-mid-2x',     552,  750, array("center", "top") ); // 2x for high-DPI screens
 add_image_size( 'quarter-width-short',      276,  207, array("center", "center") );
 add_image_size( 'quarter-width-short-2x',   552,  414, array("center", "center") ); // 2x for high-DPI screens
 
@@ -42,8 +46,10 @@ function top_content_custom_sizes( $sizes ) {
             array(
                 'full-width'           => __( 'full-width' ),
                 'half-width-square'    => __( 'half-width-square' ),
+                'half-width-mid'       => __( 'half-width-mid' ),
                 'half-width-landscape' => __( 'half-width-landscape' ),
                 'quarter-width-tall'   => __( 'quarter-width-tall' ),
+                'quarter-width-mid'    => __( 'quarter-width-mid' ),
                 'quarter-width-short'  => __( 'quarter-width-short' )
             )
         )
@@ -222,7 +228,6 @@ add_filter('get_image_tag_class', 'my_image_class_filter');
 
 
 
-
 // adds social media links to user profile page
 // added by smekosh on 2014-08-26
 function voa_social_media_links($profile_fields) {
@@ -240,3 +245,36 @@ function voa_social_media_links($profile_fields) {
 }
 
 add_filter('user_contactmethods', 'voa_social_media_links');
+
+
+
+function generate_missing_image_size( $image_ID ) {
+
+    echo $image_ID;
+    
+    $image->ID = $image_ID;
+    
+    $fullsizepath = get_attached_file( $image->ID );
+
+    if ( false === $fullsizepath || ! file_exists( $fullsizepath ) ) {
+        //$this->die_json_error_msg( $image->ID, sprintf( __( 'The originally uploaded image file cannot be found at %s', 'regenerate-thumbnails' ), '<code>' . esc_html( $fullsizepath ) . '</code>' ) );
+        echo 'uploaded file not found';
+    }
+
+    $metadata = wp_generate_attachment_metadata( $image->ID, $fullsizepath );
+
+    if ( is_wp_error( $metadata ) ) {
+        //$this->die_json_error_msg( $image->ID, $metadata->get_error_message() );
+        echo 'wp error thrown';
+    }
+    
+    if ( empty( $metadata ) ) {
+        //$this->die_json_error_msg( $image->ID, __( 'Unknown failure reason.', 'regenerate-thumbnails' ) );
+        echo 'unknown failure';
+    }
+
+    // If this fails, then it just means that nothing was changed (old value == new value)
+    wp_update_attachment_metadata( $image->ID, $metadata );
+    
+    echo 'done';
+}

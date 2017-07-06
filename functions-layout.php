@@ -929,16 +929,16 @@ function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img'
             break;
 
         case 'card-half':
-            $imgsize = ( $cls == 'card-img' ? 'half-width-landscape' : 'quarter-width-short' );
+            $imgsize = ( $cls == 'card-img' ? 'half-width-landscape' : 'quarter-width-mid' );
             //echo "i am a card-half short";
             break;
 
         case 'card-half card-tall':
-            $imgsize = ( $cls == 'card-img' ? 'half-width-square' : 'half-width-landscape' );
+            $imgsize = ( $cls == 'card-img' ? 'half-width-square' : 'half-width-mid' );
             break;
 
         case 'card-quarter':
-            $imgsize = ( $cls == 'card-img' ? 'quarter-width-tall' : 'quarter-width-short' );
+            $imgsize = ( $cls == 'card-img' ? 'quarter-width-tall' : 'quarter-width-mid' );
             break;
 
         default:

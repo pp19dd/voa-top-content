@@ -1,5 +1,7 @@
 <?php
 
+include( ABSPATH . 'wp-admin/includes/image.php' );
+
 // metrics tracking parameter to add to URLs (also on single.php for redirects)
 $voa_metrics_tracking_parameter = '?src=voa-editor-picks';
 
