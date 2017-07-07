@@ -75,8 +75,10 @@ function voa_head_meta_description() {
 		
 		if ( $subhed != '' ) {
 			$m_description = $subhed;
-		} else {
+		} elseif ( has_excerpt() ) {
 			$m_description = get_the_excerpt();
+		} else {
+			$m_description = wp_trim_words( $post->post_content, 20, '' );
 		}
 		
 	} else {
@@ -93,8 +95,8 @@ function voa_head_meta_description() {
 	}
 	?>
 	<meta name="description" itemprop="description" content="<?php echo esc_attr( text_shortenerer( $m_description, 157, '...' ) ); ?>" />
-	<meta property="og:description"  content="<?php echo esc_attr( text_shortenerer( $m_description, 197, '...' ) ); ?>" />
-	<meta name="twitter:description" content="<?php echo esc_attr( text_shortenerer( $m_description, 197, '...' ) ); ?>" />
+	<meta property="og:description"  content="<?php echo esc_attr( text_shortenerer( $m_description, 157, '...' ) ); ?>" />
+	<meta name="twitter:description" content="<?php echo esc_attr( text_shortenerer( $m_description, 97, '...' ) ); ?>" />
 	<?php
 }
 
