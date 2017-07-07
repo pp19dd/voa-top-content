@@ -1,14 +1,4 @@
-<?php
-
-include( ABSPATH . 'wp-admin/includes/image.php' );
-
-// metrics tracking parameter to add to URLs (also on single.php for redirects)
-$voa_metrics_tracking_parameter = '?src=voa-editor-picks';
-
-// simplify template directory calls
-$top_content_template_directory_uri = get_template_directory_uri();
-
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 	<meta charset="utf-8" />
@@ -21,18 +11,18 @@ $top_content_template_directory_uri = get_template_directory_uri();
 	<meta name="twitter:site"        value="@VOANews" />
 	<meta name="twitter:creator"     content="@VOANews" />
 	
-	<link type="image/x-icon" rel="icon" href="<?php echo $top_content_template_directory_uri; ?>/img/favicon.ico" />
-	<link rel="shortcut icon" href="<?php echo $top_content_template_directory_uri; ?>/img/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo $top_content_template_directory_uri; ?>/img/ico-144x144.png" />
-	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $top_content_template_directory_uri; ?>/img/ico-114x114.png" />
-	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $top_content_template_directory_uri; ?>/img/ico-72x72.png" />
-	<link rel="apple-touch-icon-precomposed" href="<?php echo $top_content_template_directory_uri; ?>/img/ico-57x57.png" />
+	<link type="image/x-icon" rel="icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" />
+	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_template_directory_uri(); ?>/img/ico-144x144.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_template_directory_uri(); ?>/img/ico-114x114.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_template_directory_uri(); ?>/img/ico-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" href="<?php echo get_template_directory_uri(); ?>/img/ico-57x57.png" />
 	<meta name="msapplication-TileColor" content="#ffffff" />
-	<meta name="msapplication-TileImage" content="<?php echo $top_content_template_directory_uri; ?>/img/ico-144x144.png" />
+	<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/img/ico-144x144.png" />
 
-	<link rel="stylesheet" type="text/css" href="<?php echo $top_content_template_directory_uri; ?>/style.css?rand=<?php echo time(); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/style.css?rand=<?php echo time(); ?>" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700" />
-	<link rel="stylesheet" href="<?php echo $top_content_template_directory_uri; ?>/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font-awesome.min.css" />
 	
 	<!-- documentation at https://polyfill.io/v2/docs/ -->
 	<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
@@ -46,13 +36,15 @@ $top_content_template_directory_uri = get_template_directory_uri();
 
 	<header class="voa-masthead">
 		<div class="voa-masthead-inner">
-			<a class="voa-logo" href="https://www.voanews.com/<?php echo $voa_metrics_tracking_parameter; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a>
+			<a class="voa-logo" href="https://www.voanews.com/<?php echo VOA_METRICS_TRACKING_PARAMETER; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a>
 			
 			<nav class="site-nav">
 				
+				<?php if ( VOA_EDITORS_PICKS ) { ?>
 				<div class="header-nav-newsletter-link">
-					<a href="https://www.voanews.com/subscribe.html<?php echo $voa_metrics_tracking_parameter; ?>">Subscribe<span class="big-screen"> to the Newsletter</span></a>
+					<a href="https://www.voanews.com/subscribe.html<?php echo VOA_METRICS_TRACKING_PARAMETER; ?>">Subscribe<span class="big-screen"> to the Newsletter</span></a>
 				</div>
+				<?php } // if VOA_EDITORS_PICKS ?>
 				
 				<div class="search-nav">
 					<a class="nav-trigger search-nav-trigger" href="#"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></a>

@@ -6,7 +6,7 @@ function voa_redirect() {
 	$redirect_url = trim(get_post_meta( $post->ID, "_voa_redirect_url", true ));
 
 	if( strlen( $redirect_url ) > 0 ) {
-		wp_redirect( $redirect_url.'?src=voa-editor-picks', 302 );
+		wp_redirect( $redirect_url.VOA_METRICS_TRACKING_PARAMETER, 302 );
 		exit;
 	}
 }

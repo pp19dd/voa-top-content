@@ -4,6 +4,9 @@ require_once( "functions-widgets.php" );
 require_once( "functions-meta.php" );
 require_once( "functions-head-meta-tags.php" );
 
+// used for on-demand image resizing
+require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
 show_admin_bar( false );
 remove_action( "wp_head", "print_emoji_detection_script", 7 );
 remove_action( "wp_print_styles", "print_emoji_styles" );
@@ -20,6 +23,16 @@ function voa_theme_setup_options() {
 add_action( 'after_setup_theme', 'voa_theme_setup_options' );
 
 
+
+// establish whether this is the Editor's Picks blog or not
+$blog_name_sanitized = sanitize_title_for_query( get_bloginfo('name'));
+define( 'VOA_EDITORS_PICKS', ($blog_name_sanitized == 'editors-picks' ? true : false ) );
+
+// metrics tracking parameter to add to URLs (also on single.php for redirects)
+define( 'VOA_METRICS_TRACKING_PARAMETER', ( VOA_EDITORS_PICKS ? '?src=voa-editor-picks' : '' ) );
+
+
+
 // crop: x can be left, center, right
 //       y can be top, center, bottom
 add_image_size( 'full-width',              1200,  576, array("center", "center") );
@@ -32,8 +45,8 @@ add_image_size( 'half-width-landscape',     576,  207, array("center", "top"   )
 add_image_size( 'half-width-landscape-2x', 1152,  414, array("center", "top"   ) ); // 2x for high-DPI screens
 add_image_size( 'quarter-width-tall',       276,  576, array("center", "top"   ) );
 add_image_size( 'quarter-width-tall-2x',    552, 1152, array("center", "top"   ) ); // 2x for high-DPI screens
-add_image_size( 'quarter-width-mid',        276,  375, array("center", "top") );
-add_image_size( 'quarter-width-mid-2x',     552,  750, array("center", "top") ); // 2x for high-DPI screens
+add_image_size( 'quarter-width-mid',        276,  375, array("center", "top"   ) );
+add_image_size( 'quarter-width-mid-2x',     552,  750, array("center", "top"   ) ); // 2x for high-DPI screens
 add_image_size( 'quarter-width-short',      276,  207, array("center", "center") );
 add_image_size( 'quarter-width-short-2x',   552,  414, array("center", "center") ); // 2x for high-DPI screens
 
