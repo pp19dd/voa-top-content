@@ -1,4 +1,4 @@
-
+<?php /*
 <script type="text/javascript">
     var utag_data = {
     entity:"VOA",
@@ -24,8 +24,7 @@
     pub_weekday:"Tuesday"
 }
 </script>
- 
- 
+
 <script type="text/javascript">
 (function(a,b,c,d){
 a='//tags.tiqcdn.com/utag/bbg/voa-nonpangea/prod/utag.js';
@@ -33,8 +32,7 @@ b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=
 a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
 })();
 </script>
-
-<?php /*
+*/ ?>
 <!-- Google Tag Manager 2016-09-01 -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K83649"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -44,4 +42,3 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K83649');</script>
 <!-- End Google Tag Manager -->
-*/ ?>
