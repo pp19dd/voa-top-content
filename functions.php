@@ -291,3 +291,7 @@ function generate_missing_image_size( $image_ID ) {
     
     echo 'done';
 }
+
+
+
+include( "functions-amp.php" );
