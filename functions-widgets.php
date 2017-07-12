@@ -297,7 +297,8 @@ class VOA_Recent_Posts extends WP_Widget {
 						</div>
 						
 						<?php if ( has_post_thumbnail() ) { ?>
-						<div class="widget-card-img"><?php the_post_thumbnail( 'quarter-width-small' ); ?></div>
+						<?php voa_generate_missing_image_size( get_post_thumbnail_id(), 'quarter-width-short' ); ?>
+						<div class="widget-card-img"><?php the_post_thumbnail( 'quarter-width-short' ); ?></div>
 						<?php } ?>
 					</a>
 				</article>

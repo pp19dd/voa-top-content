@@ -150,7 +150,7 @@ function voa_head_meta_share_images() {
 	
 	if ( is_single() && has_post_thumbnail( $post->ID ) ) {
 		// get share image for post
-		$m_share_img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'fb-share-image' );
+		$m_share_img = voa_wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'fb-share-image' );
 		$twitter_card_type = 'summary_large_image';
 		$img_size_exists = $m_share_img[3];
 

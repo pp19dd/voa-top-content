@@ -63,7 +63,7 @@ the_post();
 						
 						<article class="archive-teaser">
 							<?php 
-							$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'quarter-width-small' );
+							$image = voa_wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'quarter-width-short' );
 							$image = $image[0];
 							?>
 							<div class="teaser-img-container"><a class="teaser-img" href="<?php echo $url; ?>" 

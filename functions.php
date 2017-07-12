@@ -261,35 +261,83 @@ add_filter('user_contactmethods', 'voa_social_media_links');
 
 
 
-function generate_missing_image_size( $image_ID ) {
-
-    echo $image_ID;
+function voa_wp_get_attachment_image_src( $image_ID, $named_image_size ) {
+    $img = wp_get_attachment_image_src( $image_ID, $named_image_size );
     
-    $image->ID = $image_ID;
-    
-    $fullsizepath = get_attached_file( $image->ID );
-
-    if ( false === $fullsizepath || ! file_exists( $fullsizepath ) ) {
-        //$this->die_json_error_msg( $image->ID, sprintf( __( 'The originally uploaded image file cannot be found at %s', 'regenerate-thumbnails' ), '<code>' . esc_html( $fullsizepath ) . '</code>' ) );
-        echo 'uploaded file not found';
-    }
-
-    $metadata = wp_generate_attachment_metadata( $image->ID, $fullsizepath );
-
-    if ( is_wp_error( $metadata ) ) {
-        //$this->die_json_error_msg( $image->ID, $metadata->get_error_message() );
-        echo 'wp error thrown';
+    if ( $img[3] === false ) {
+        voa_generate_missing_image_size( $image_ID, $named_image_size );
+        $img = wp_get_attachment_image_src( $image_ID, $named_image_size );
     }
     
-    if ( empty( $metadata ) ) {
-        //$this->die_json_error_msg( $image->ID, __( 'Unknown failure reason.', 'regenerate-thumbnails' ) );
-        echo 'unknown failure';
+    return $img;
+}
+
+
+
+function voa_generate_missing_image_size( $image_ID, $named_image_size, $force_resize = false, $debug = false ) {
+    
+    global $_wp_additional_image_sizes;
+    
+    // get the originally uploaded image path
+    $o_img = get_attached_file( $image_ID );
+    
+    if ($debug) { echo $o_img.'<br>'; }
+    
+    if ( false === $o_img || ! file_exists( $o_img ) ) {
+        if ($debug) { echo sprintf( 'The originally uploaded image file cannot be found at %s', esc_html( $o_img ) ); }
+        die;
+    }
+    
+    $meta = wp_get_attachment_metadata( $image_ID );
+    
+    $o_img_meta_size_exists = in_array( $named_image_size, $meta['sizes'] );
+    
+    if ( $force_resize || !$o_img_meta_size_exists ) {
+        
+        // this will NOT work for thumbnail, medium, medium_large, or large!
+        $named_img_specs = array( 
+            'width'  => $_wp_additional_image_sizes[$named_image_size]['width'], 
+            'height' => $_wp_additional_image_sizes[$named_image_size]['height'], 
+            'crop'   => $_wp_additional_image_sizes[$named_image_size]['crop']
+        );
+        
+        // resize original uploaded image
+        $o_resized = image_make_intermediate_size( 
+            $o_img, 
+            $named_img_specs['width'], 
+            $named_img_specs['height'], 
+            array(
+                $named_img_specs['crop'][0], 
+                $named_img_specs['crop'][1]
+            )
+        );
+        
+        if ( $o_resized === false ) {
+            if ($debug) { echo 'image_make_intermediate_size failed'; }
+            die;
+        }
+        
+        // add new cropped image to WP attachment metadata
+        $meta['sizes'][$named_image_size] = $o_resized;
+        
+        // replace old metadata; failure means new meta == old meta
+        wp_update_attachment_metadata( $image_ID, $meta );
     }
 
-    // If this fails, then it just means that nothing was changed (old value == new value)
-    wp_update_attachment_metadata( $image->ID, $metadata );
+    // REMOVE THIS LATER: regenerates ALL image sizes
+    // $meta = wp_generate_attachment_metadata( $image_ID, $o_img );
+
+    if ( is_wp_error( $meta ) ) {
+        if ($debug) { echo $meta->get_error_message(); }
+        die;
+    }
     
-    echo 'done';
+    if ( empty( $meta ) ) {
+        if ($debug) { echo 'unknown failure'; }
+        die;
+    }
+    
+    return (bool) true;
 }
 
 

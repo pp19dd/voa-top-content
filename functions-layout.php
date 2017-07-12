@@ -947,6 +947,16 @@ function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img'
     }
 
     $image = wp_get_attachment_image_src( $thumbnail_id, $imgsize );
+    
+    if ( $image[3] === false ) {
+        
+        if ( voa_generate_missing_image_size( $thumbnail_id, $imgsize, false, $debug ) ) {
+            $image = wp_get_attachment_image_src( $thumbnail_id, $imgsize );
+        } else {
+            if ($debug) { 'failed to generate new image size'; }
+            die;
+        }
+    }
 
     if ($debug) {
         echo "<br><span style='font-size:13px;'>";

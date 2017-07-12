@@ -13,7 +13,8 @@ if ( $post['thumbnail_id'] != '' ) {
 	// used for all .card-img and .card-txt hovers
 	$bg_hover_gradient = 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) )';
 	
-	//generate_missing_image_size($post['thumbnail_id']);
+	// WARNING: re-enable the next line to regenerate (and destroy crops) for ALL images on this page
+	// wp_generate_attachment_metadata( $post['thumbnail_id'], get_attached_file( $post['thumbnail_id'] ));
 	
 	$breakpoint_img_mobile = wp_get_attachment_image_src( $post['thumbnail_id'], ($post['cls'] == 'card-img' ? 'half-width-square' : 'quarter-width-short'))[0];
 	$breakpoint_img_larger = voa_top_content_get_image_url_2( $post['thumbnail_id'], $post['siz'], $post['cls'], ( $_GET['debugimages'] == 'yes' ? true : false ) );
