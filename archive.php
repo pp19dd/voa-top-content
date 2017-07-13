@@ -21,65 +21,45 @@ the_post();
 					<h1><?php the_archive_title(); ?></h1>
 				</header>
 				
-				<?php 
-				$posts = new WP_Query(array('posts_per_page' => -1));
-				if ($posts->have_posts()) {
-					$date_format = 'l, F j';
-					$prev_day = '';
-					?>
+				<section class="content-part article-body">
 					
-					<section>
+					<?php 
+					$cat_args = array(
+						'title_li'   => '',
+						'number'     => 10,
+						'orderby'    => 'count',
+						'order'      => 'DESC',
+						'hide_empty' => true
+					);
 					
-					<?php
-					while ($posts->have_posts()) {
+					if ( VOA_EDITORS_PICKS ) { 
+						// only display sub-categories (languages) from the "VOA Language Services" category
+						$voa_lang_serv_cat_meta = get_term_by( 'slug', 'voa-language-services', 'category', 'ARRAY_A', 'raw' );
+						$cat_args['child_of'] 	= $voa_lang_serv_cat_meta['term_id'];
+					}
+					
+					$categories = get_categories( $cat_args );
+					
+					foreach ( $categories as $cat ) {
+						echo '<h2><a href="'.esc_url( get_category_link( $cat->cat_ID ) ).'" title="'.esc_attr( $cat->cat_name ).'">'.$cat->cat_name.'</a></h2>';
 						
-						$posts->the_post();
-						if (get_the_date( $date_format ) != $prev_day) {
-							if ($prev_day !== '') { 
-								?>
-								
-								</section></section><section>
-								
-								<?php
+						$posts = new WP_Query( array( 
+							'cat' => $cat->cat_ID,
+							'posts_per_page' => 3
+						));
+						
+						if ( $posts->have_posts() ) {
+							echo '<section class="archive-teasers">';
+							while ( $posts->have_posts() ) {
+								$posts->the_post();
+								get_template_part( 'partials/excerpt-compact' );
 							}
-							$prev_day = get_the_date( $date_format );
-							?>
-							
-							<header class="archive-date">
-								<breakup>
-									<blank-space></blank-space>
-									<h2><?php echo $prev_day; ?></h2>
-									<blank-space></blank-space>
-								</breakup>
-							</header>
-							
-							<section class="archive-teasers">
-							
-							<?php
+							echo '</section>';
 						}
-
-						$url = get_the_permalink( $post->ID );
-						?>
-						
-						<article class="archive-teaser">
-							<?php 
-							$image = voa_wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'quarter-width-short' );
-							$image = $image[0];
-							?>
-							<div class="teaser-img-container"><a class="teaser-img" href="<?php echo $url; ?>" 
-								style="background-image: url(<?php echo $image; ?>);"><?php //voa_language_service_tag( $post->ID, true ); ?></a></div>
-							<h2><a href="<?php echo $url; ?>"><?php the_title(); ?></a></h2>
-						</article>
-						
-						<?php
 					}
 					?>
 					
-					</section></section>
-					
-					<?php
-				}
-				?>
+				</section>
 				
 			</content>
 			
