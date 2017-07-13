@@ -57,6 +57,7 @@ if(
 				<?php
 					wp_list_comments( array(
 						'style'       => 'ol',
+						'type'        => 'comment',
 						'short_ping'  => true,
 						'avatar_size' => 67
 					) );
