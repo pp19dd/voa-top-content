@@ -912,12 +912,12 @@ function voa_top_content_get_image_url($thumbnail_id, $col, $cols = 1) {
             $size = $col;
         break;
     }
-    $image = wp_get_attachment_image_src($thumbnail_id, $size);
+    $image = voa_wp_get_attachment_image_src($thumbnail_id, $size);
     $image = $image[0];
     return( $image );
 }
 
-function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img', $debug = false ) {
+function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img', $row_count, $debug = false ) {
 
     switch( $siz ) {
         case 'full-width-2x':
@@ -929,8 +929,11 @@ function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img'
             break;
 
         case 'card-half':
-            $imgsize = ( $cls == 'card-img' ? 'half-width-landscape' : 'quarter-width-mid' );
-            //echo "i am a card-half short";
+            if ( $row_count == 3 ) {
+                $imgsize = ( $cls == 'card-img' ? 'half-width-square' : 'half-width-mid' );
+            } else {
+                $imgsize = ( $cls == 'card-img' ? 'half-width-landscape' : 'quarter-width-short' );
+            }
             break;
 
         case 'card-half card-tall':
@@ -1004,14 +1007,16 @@ function voa_top_content_adjacent_post($direction = 'previous') {
 
     if ( $adjacent ) {
 
-        $adjacent_thumbnail_id = get_post_thumbnail_id( $adjacent->ID );
-        $adjacent_image_url = voa_top_content_get_image_url($adjacent_thumbnail_id, "quarter-width-small", 2);
+        $adjacent_image = voa_wp_get_attachment_image_src( 
+            get_post_thumbnail_id( $adjacent->ID ), 
+            'quarter-width-short'
+        );
 
         $voa_adjacent = array(
             'ID' => $adjacent->ID,
             'post_title' => $adjacent->post_title,
             'permalink' => get_permalink( $adjacent->ID ),
-            'image_url' => $adjacent_image_url
+            'image_url' => $adjacent_image[0]
         );
 
         return $voa_adjacent;

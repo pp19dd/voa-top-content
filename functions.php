@@ -261,11 +261,12 @@ add_filter('user_contactmethods', 'voa_social_media_links');
 
 
 
-function voa_wp_get_attachment_image_src( $image_ID, $named_image_size ) {
+// wrapper for wp_get_attachment_image_src() that generates the requested image size if it doesn't already exist
+function voa_wp_get_attachment_image_src( $image_ID, $named_image_size, $force_resize = false, $debug = false ) {
     $img = wp_get_attachment_image_src( $image_ID, $named_image_size );
     
     if ( $img[3] === false ) {
-        voa_generate_missing_image_size( $image_ID, $named_image_size );
+        voa_generate_missing_image_size( $image_ID, $named_image_size, $force_resize, $debug );
         $img = wp_get_attachment_image_src( $image_ID, $named_image_size );
     }
     
@@ -292,7 +293,7 @@ function voa_generate_missing_image_size( $image_ID, $named_image_size, $force_r
     
     $o_img_meta_size_exists = in_array( $named_image_size, $meta['sizes'] );
     
-    if ( $force_resize || !$o_img_meta_size_exists ) {
+    if ( $force_resize === true || $o_img_meta_size_exists === false ) {
         
         // this will NOT work for thumbnail, medium, medium_large, or large!
         $named_img_specs = array( 
@@ -313,15 +314,20 @@ function voa_generate_missing_image_size( $image_ID, $named_image_size, $force_r
         );
         
         if ( $o_resized === false ) {
-            if ($debug) { echo 'image_make_intermediate_size failed'; }
-            die;
+        
+            if ($debug) { 
+                echo 'image_make_intermediate_size failed. maybe original image is too small to downsize?';
+                pre( print_r( $o_resized ) );
+            }
+        
+        } else {
+            
+            // add new cropped image to WP attachment metadata
+            $meta['sizes'][$named_image_size] = $o_resized;
+            
+            // replace old metadata; failure means new meta == old meta
+            wp_update_attachment_metadata( $image_ID, $meta );
         }
-        
-        // add new cropped image to WP attachment metadata
-        $meta['sizes'][$named_image_size] = $o_resized;
-        
-        // replace old metadata; failure means new meta == old meta
-        wp_update_attachment_metadata( $image_ID, $meta );
     }
 
     // REMOVE THIS LATER: regenerates ALL image sizes

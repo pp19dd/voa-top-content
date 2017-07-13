@@ -1,15 +1,31 @@
 <?php
 $thumbnail_id = get_post_thumbnail_id( $post->ID );
 
-$image        = voa_top_content_get_image_url_2( $thumbnail_id, "full-width-2x", 'card-img', false );
 $subhed       = trim( get_post_meta( $post->ID, "_voa_post_subhed", true ));
 $caption      = trim(get_post($thumbnail_id)->post_content);
 $hero_style   = trim( get_post_meta( $post->ID, "_voa_hero_text_style", true ));
 ?>
 
+<style type="text/css">
+
+		.hero-intro { background-image: url( <?php echo voa_wp_get_attachment_image_src( $thumbnail_id, 'half-width-square' )[0]; ?> ); }
+	
+	@media (min-width: 450px) {
+		.hero-intro { background-image: url( <?php echo voa_wp_get_attachment_image_src( $thumbnail_id, 'half-width-mid-2x' )[0]; ?> ); }
+	}
+	
+	@media (min-width: 750px) {
+		.hero-intro { background-image: url( <?php echo voa_wp_get_attachment_image_src( $thumbnail_id, 'full-width' )[0]; ?> ); }
+	}
+	
+	@media (min-width: 960px) {
+		.hero-intro { background-image: url( <?php echo voa_wp_get_attachment_image_src( $thumbnail_id, 'full-width-2x' )[0]; ?> ); }
+	}
+</style>
+
 <antirows>
 	<row class="hero-row">
-		<section class="hero-intro <?php echo ($hero_style != '' ? $hero_style : 'hero-light-on-dark'); ?>" style="background-image: url(<?php echo $image; ?>);">
+		<section class="hero-intro <?php echo ($hero_style != '' ? $hero_style : 'hero-light-on-dark'); ?>">
 			
 			<header class="hero-title-container">
 				<div class="hero-title">

@@ -16,8 +16,8 @@ if ( $post['thumbnail_id'] != '' ) {
 	// WARNING: re-enable the next line to regenerate (and destroy crops) for ALL images on this page
 	// wp_generate_attachment_metadata( $post['thumbnail_id'], get_attached_file( $post['thumbnail_id'] ));
 	
-	$breakpoint_img_mobile = wp_get_attachment_image_src( $post['thumbnail_id'], ($post['cls'] == 'card-img' ? 'half-width-square' : 'quarter-width-short'))[0];
-	$breakpoint_img_larger = voa_top_content_get_image_url_2( $post['thumbnail_id'], $post['siz'], $post['cls'], ( $_GET['debugimages'] == 'yes' ? true : false ) );
+	$breakpoint_img_mobile = voa_wp_get_attachment_image_src( $post['thumbnail_id'], ($post['cls'] == 'card-img' ? 'half-width-square' : 'quarter-width-short'))[0];
+	$breakpoint_img_larger = voa_top_content_get_image_url_2( $post['thumbnail_id'], $post['siz'], $post['cls'], $row_meta['count'], ( $_GET['debugimages'] == 'yes' ? true : false ) );
 ?>
 <style type="text/css">
 	/* default to mobile layout */
