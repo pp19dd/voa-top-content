@@ -29,7 +29,7 @@ $twitter_text = urlencode( text_shortenerer( get_the_title(), 100, '...' ) );
 			
 			<li class="share-linkedin"><a title="Share on LinkedIn" href="//www.linkedin.com/shareArticle?mini=true&url=<?php echo $share_link; ?>&title=<?php echo $share_title; ?>&summary=<?php echo $share_description; ?>&source=<?php echo $linkedin_source; ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 			
-			<li class="share-pinterest"><a title="Pin this on Pinterest" href="//www.pinterest.com/pin/create/button/?url=<?php echo $share_link; ?>&media=<?php echo $share_image; ?>&description=<?php echo $share_title; ?>"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+			<?php /* <li class="share-pinterest"><a title="Pin this on Pinterest" href="//www.pinterest.com/pin/create/button/?url=<?php echo $share_link; ?>&media=<?php echo $share_image; ?>&description=<?php echo $share_title; ?>"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li> */ ?>
 			
 			<li class="share-reddit"><a title="Submit to reddit" href="//www.reddit.com/submit?url=<?php echo $share_link; ?>&title=<?php echo $share_title; ?>"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
 			

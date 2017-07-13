@@ -6,7 +6,7 @@
 	</div>
 </footer>
 
-<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+<?php /* <script async defer src="//assets.pinterest.com/js/pinit.js"></script> */ ?>
 
 <script type="text/javascript">
 	var $j = jQuery.noConflict();
