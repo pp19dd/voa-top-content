@@ -37,7 +37,7 @@ if(
 
 	<header><?php 
 		echo $comments_number;
-		echo ($comments_number === 1 ? ' Comment' : ' Comments' );
+		echo ($comments_number == 1 ? ' Comment' : ' Comments' );
 	?></header>
 
 <?php } else { // Check for have_comments(). ?>
