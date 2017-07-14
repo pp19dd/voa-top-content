@@ -181,20 +181,42 @@ function voa_has_redirect_url( $post_id ) {
 
 function voa_language_service_tag( $post_id, $display = true ) {
 
-    $cat = get_the_category( $post_id );
-
-    if ( $cat[0]->slug && $cat[0]->slug != 'uncategorized' ) {
-
-        if ( $display == true ) {
-
-            echo '<div class="language-service lang-'.$cat[0]->slug.'"><div class="language-service-inner">'.$cat[0]->name.'</div></div>';
-
-        } else {
-
-            return $cat[0]->name;
+    // categories for this post
+    $categories = get_the_category( $post_id );
+    
+    $good_cats = array();
+    
+    foreach ( $categories as $cat ) {
+        if ( $cat->slug != 'uncategorized' ) {
+            $good_cats[] = $cat;
         }
-
     }
+    
+    if ( VOA_EDITORS_PICKS ) {
+        
+        $voa_lang_serv_cat_meta = get_term_by( 'slug', 'voa-language-services', 'category', 'ARRAY_A', 'raw' );
+        $voa_lang_serv_cat_ID   = $voa_lang_serv_cat_meta['term_id'];
+        
+        $lang_cats = array();
+        
+        foreach ( $good_cats as $cat ) {
+            if ( $cat->category_parent == $voa_lang_serv_cat_ID && $cat->slug != 'voa-english' ) {
+                $lang_cats[] = $cat;
+            }
+        }
+        
+        $good_cats = $lang_cats;
+    }
+    
+    if ( count( $good_cats ) > 0 ) {
+        
+        if ( $display == true ) {
+            echo '<div class="language-service lang-'.$good_cats[0]->slug.'"><div class="language-service-inner">'.$good_cats[0]->name.'</div></div>';
+        } else {
+            return $good_cats[0]->name;
+        }
+    }
+
 }
 
 
