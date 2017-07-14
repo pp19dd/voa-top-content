@@ -156,7 +156,9 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 			<sidebar>
 				<sidebar-inner>
 
+					<?php if ( comments_open() || have_comments() ) { ?>
 					<div id="comment-shortcut"><a href="#comment-section"><span class="comment-icon"><i class="fa fa-comment fa-2x" aria-hidden="true"></i></span><span class="comment-text"><span class="comment-count"><?php echo $comment_count . ' Comment' . ($comment_count != 1 ? 's' : ''); ?></span> <span class="comment-cta">Join the Discussion</span></span></a></div>
+					<?php } ?>
 
 					<?php dynamic_sidebar( 'sidebar_article_right' ); ?>
 
