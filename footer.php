@@ -2,7 +2,15 @@
 <footer class="blog-footer">
 	<div class="blog-footer-inner">
 		<a class="voa-logo" href="https://www.voanews.com/<?php echo VOA_METRICS_TRACKING_PARAMETER; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" height="20" alt="VOA" /></a>
-		<div class="footer-nav-menu"><?php wp_nav_menu( array( 'theme_location' => 'Footer List Menu' ) ); ?></div>
+		<div class="footer-nav-menu"><?php 
+			wp_nav_menu( array( 
+				'theme_location' => 'blog_footer_menu',
+				'container'       => 'div',
+				'container_class' => 'menu',
+				'menu_class'      => '',
+				'depth'           => 1
+			));
+		?></div>
 	</div>
 </footer>
 

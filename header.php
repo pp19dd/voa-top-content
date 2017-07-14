@@ -53,7 +53,15 @@
 				
 				<div class="blog-nav">
 					<a class="nav-trigger blog-nav-trigger" href="#"><i class="fa fa-lg fa-bars" aria-hidden="true"></i><span class="sr-only">Menu</span></a>
-					<?php wp_nav_menu( array( 'theme_location' => 'Header Navigation Menu' ) ); ?>
+					<?php 
+						wp_nav_menu( array( 
+							'theme_location'  => 'blog_header_menu',
+							'container'       => 'div',
+							'container_class' => 'menu',
+							'menu_class'      => '',
+							'depth'           => 1
+						));
+					?>
 				</div>
 				
 				<?php /* <div class="lang-nav">
