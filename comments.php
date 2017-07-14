@@ -49,7 +49,7 @@ if(
 
 	<div class="comments-inner">
 	
-		<?php if ( have_comments() ) : ?>
+		<?php if ( have_comments() ) { ?>
 			
 			<?php the_comments_navigation(); ?>
 
@@ -66,20 +66,17 @@ if(
 
 			<?php the_comments_navigation(); ?>
 
-		<?php endif; // Check for have_comments(). ?>
+		<?php } // Check for have_comments(). ?>
+
+		<?php if ( ! comments_open() && post_type_supports( get_post_type(), 'comments' ) ) { ?>
+			<p class="no-comments">Comments are closed.</p>
+		<?php } ?>
 
 		<?php
-			// If comments are closed and there are comments, let's leave a little note, shall we?
-			if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
-		?>
-			<p class="no-comments"><?php _e( 'Comments are closed.', 'twentysixteen' ); ?></p>
-		<?php endif; ?>
-
-		<?php
-			comment_form( array(
-				'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
-				'title_reply_after'  => '</h2>',
-			) );
+		comment_form( array(
+			'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
+			'title_reply_after'  => '</h2>',
+		) );
 		?>
 
 	</div><!-- .comments-inner -->
