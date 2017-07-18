@@ -424,7 +424,7 @@ function wpa_4471252017_callback() {
             ) {
                 foreach( $_POST["layout"]["stories"] as $row => $ids ) {
                     foreach( $ids as $story ) {
-                        $story_id = $story["id"];
+                        $story_id = $story;
                         $wp_story_id = intval($story_id);
                         $status = get_post_status( $wp_story_id );
                         if( $status === "draft" ) {
@@ -950,9 +950,9 @@ function voa_top_content_get_image_url_2( $thumbnail_id, $siz, $cls = 'card-img'
     }
 
     $image = wp_get_attachment_image_src( $thumbnail_id, $imgsize );
-    
+
     if ( $image[3] === false ) {
-        
+
         if ( voa_generate_missing_image_size( $thumbnail_id, $imgsize, false, $debug ) ) {
             $image = wp_get_attachment_image_src( $thumbnail_id, $imgsize );
         } else {
@@ -1007,8 +1007,8 @@ function voa_top_content_adjacent_post($direction = 'previous') {
 
     if ( $adjacent ) {
 
-        $adjacent_image = voa_wp_get_attachment_image_src( 
-            get_post_thumbnail_id( $adjacent->ID ), 
+        $adjacent_image = voa_wp_get_attachment_image_src(
+            get_post_thumbnail_id( $adjacent->ID ),
             'quarter-width-short'
         );
 
