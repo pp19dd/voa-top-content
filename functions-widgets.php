@@ -194,7 +194,7 @@ class VOA_Top_Tags extends WP_Widget {
 		
 		<div class="top-tags-widget">
 						
-			<h2 class="sidebar-title">Top Tags</h2>
+			<h2 class="sidebar-title"><?php _e( 'Top Tags', 'voa-top-content' ); ?></h2>
 		
 			<div class="top-tags">
 				
@@ -204,7 +204,12 @@ class VOA_Top_Tags extends WP_Widget {
 				foreach( $tags as $tag ) {
 				?>
 				
-				<li><a href="<?php echo get_tag_link( $tag->term_id ); ?>"><span class="tag"><?php echo $tag->name; ?></span><span class="tag-count"><?php echo $tag->count; ?> post<?php echo ($tag->count != 1 ? 's' : ''); ?></span></a></li>
+				<li><a href="<?php echo get_tag_link( $tag->term_id ); ?>"><span class="tag"><?php echo $tag->name; ?></span><span class="tag-count"><?php 
+					printf(
+						_n( '%s Post', '%s Posts', $tag->count, 'voa-top-content' ), 
+						number_format_i18n( $tag->count )
+					);
+					?></span></a></li>
 				
 				<?php } // end foreach tag ?>
 				</ul><!-- end .tags -->
@@ -282,7 +287,6 @@ class VOA_Recent_Posts extends WP_Widget {
 		?>
 		
 		<div class="voa-recent-posts-widget widget">
-			<!-- <h2 class="sidebar-title">Recent Posts</h2> -->
 			<div class="recent-posts">
 				<?php
 				while ( $RPW_query->have_posts() ) {

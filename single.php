@@ -23,9 +23,14 @@ $intro_style = get_post_meta( $post->ID, "_voa_post_intro_style", true );
 $hero = ( substr( $intro_style, 0, 4 ) == 'hero' ? (bool) true : (bool) false );
 
 
-
-// direct FB API call; TODO needs caching and better error checking
-//$comment_count = voa_fb_comment_count( get_the_permalink() );
+if( isset( $o['voa_commenting'] ) && $o['voa_commenting'] == 'facebook' ) {
+	// direct FB API call; TODO needs caching and better error checking
+	// $comment_count = voa_fb_comment_count( get_the_permalink() );
+} elseif ( !isset( $o['voa_commenting'] ) || (isset( $o['voa_commenting'] ) && $o['voa_commenting'] == 'traditional' ) ) {
+	$comment_count = get_comments_number();
+} else {
+	$comment_count = 0;
+}
 
 
 if ( !function_exists( 'voa_the_content') || !is_single() ) {
@@ -89,17 +94,18 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 
 				<section class="content-part article-body"><?php the_content(); ?></section>
 
+				
 				<?php get_template_part( "partials/share-buttons" ); ?>
 
 
 				<section class="content-part article-categories">
-					<header><i class="fa fa-tag fa-lg" aria-hidden="true"></i><span class="header-text">Categories</span></header>
+					<header><i class="fa fa-tag fa-lg" aria-hidden="true"></i><span class="header-text"><?php _e( 'Categories', 'voa-top-content' ); ?></span></header>
 					<?php the_category( ', '); ?>
 				</section>
 
 
 				<section class="content-part article-tags">
-					<header><i class="fa fa-tags fa-lg" aria-hidden="true"></i><span class="header-text">Tags</span></header>
+					<header><i class="fa fa-tags fa-lg" aria-hidden="true"></i><span class="header-text"><?php _e( 'Tags', 'voa-top-content' ); ?></span></header>
 					<?php the_tags( '', ', ', '' ); ?>
 				</section>
 
@@ -113,13 +119,13 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 						<div class="adjacent-post-image"><a href="<?php echo $prev_post['permalink']; ?>"><img src="<?php echo $prev_post['image_url']; ?>" /></a></div>
 
 						<div class="adjacent-post-text">
-							<p><a href="<?php echo $prev_post['permalink']; ?>">Previous Post</a></p>
+							<p><a href="<?php echo $prev_post['permalink']; ?>"><?php _e( 'Previous Post', 'voa-top-content' ); ?></a></p>
 							<h4><a href="<?php echo $prev_post['permalink']; ?>"><?php echo $prev_post['post_title']; ?></a></h4>
 						</div>
 
 						<?php } else { ?>
 							<div class="adjacent-post-text no-previous-post">
-								<p>There are no previous posts.</p>
+								<p><?php _e( 'There are no previous posts.', 'voa-top-content' ); ?></p>
 							</div>
 						<?php } ?>
 						</div>
@@ -130,7 +136,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 						<?php if ( $next_post = voa_top_content_adjacent_post('next') ) { ?>
 
 						<div class="adjacent-post-text">
-							<p><a href="<?php echo $next_post['permalink']; ?>">Next Post</a></p>
+							<p><a href="<?php echo $next_post['permalink']; ?>"><?php _e( 'Next Post', 'voa-top-content' ); ?></a></p>
 							<h4><a href="<?php echo $next_post['permalink']; ?>"><?php echo $next_post['post_title']; ?></a></h4>
 						</div>
 
@@ -138,7 +144,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 
 						<?php } else { ?>
 							<div class="adjacent-post-text no-next-post">
-								<p>You're viewing the latest post.</p>
+								<p><?php _e( "You're viewing the latest post.", 'voa-top-content' ); ?></p>
 							</div>
 						<?php } ?>
 						</div>
@@ -157,7 +163,13 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 				<sidebar-inner>
 
 					<?php if ( comments_open() || have_comments() ) { ?>
-					<div id="comment-shortcut"><a href="#comment-section"><span class="comment-icon"><i class="fa fa-comment fa-2x" aria-hidden="true"></i></span><span class="comment-text"><span class="comment-count"><?php echo $comment_count . ' Comment' . ($comment_count != 1 ? 's' : ''); ?></span> <span class="comment-cta">Join the Discussion</span></span></a></div>
+					<div id="comment-shortcut"><a href="#comment-section"><span class="comment-icon"><i class="fa fa-comment fa-2x" aria-hidden="true"></i></span><span class="comment-text"><span class="comment-count"><?php 
+						printf(
+							_n( '%s Comment', '%s Comments', $comment_count, 'voa-top-content' ), 
+							number_format_i18n( $comment_count )
+						);
+						?></span>
+						<span class="comment-cta"><?php _e( 'Join the Discussion', 'voa-top-content' ); ?></span></span></a></div>
 					<?php } ?>
 
 					<?php dynamic_sidebar( 'sidebar_article_right' ); ?>

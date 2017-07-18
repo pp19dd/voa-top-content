@@ -36,7 +36,7 @@
 
 	<header class="voa-masthead">
 		<div class="voa-masthead-inner">
-			<a class="voa-logo" href="https://www.voanews.com/<?php echo VOA_METRICS_TRACKING_PARAMETER; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a>
+			<a class="voa-logo" title="<?php esc_attr_e( 'Return to VOA', 'voa-top-content' ); ?>" href="https://www.voanews.com/<?php echo VOA_METRICS_TRACKING_PARAMETER; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a>
 			
 			<nav class="site-nav">
 				
@@ -47,12 +47,12 @@
 				<?php } // if VOA_EDITORS_PICKS ?>
 				
 				<div class="search-nav">
-					<a class="nav-trigger search-nav-trigger" href="#"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></a>
+					<a class="nav-trigger search-nav-trigger" href="#"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only"><?php _ex( 'Search', 'button', 'voa-top-content' ); ?></span></a>
 					<div class="search-form-container"><?php get_search_form('true'); ?></div>
 				</div>
 				
 				<div class="blog-nav">
-					<a class="nav-trigger blog-nav-trigger" href="#"><i class="fa fa-lg fa-bars" aria-hidden="true"></i><span class="sr-only">Menu</span></a>
+					<a class="nav-trigger blog-nav-trigger" href="#"><i class="fa fa-lg fa-bars" aria-hidden="true"></i><span class="sr-only"><?php _ex( 'Menu', 'button', 'voa-top-content' ); ?></span></a>
 					<?php 
 						wp_nav_menu( array( 
 							'theme_location'  => 'blog_header_menu',

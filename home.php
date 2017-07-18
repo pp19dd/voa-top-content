@@ -52,7 +52,7 @@ switch ( $query_range['range'] ) {
 <?php } #foreach posts_html  ?>
     </rows>
 <?php if( $posts_html["voa_day_previous"] !== false ) { ?>
-    <div class="lazy-load-button" onclick="voa_load_page('<?php echo $posts_html["voa_day_previous"] ?>', this)"><span class="lazy-load-button-text">show more stories</span></div>
+    <div class="lazy-load-button" onclick="voa_load_page('<?php echo $posts_html["voa_day_previous"] ?>', this)"><span class="lazy-load-button-text"><?php _ex( 'show more stories', 'button', 'voa-top-content' ); ?></span></div>
 <?php } ?>
 
 <?php

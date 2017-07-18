@@ -8,7 +8,7 @@
 			<content>
 				
 				<header class="single-basic-intro">
-					<h1>Search Results for: "<?php echo get_search_query(); ?>"</h1>
+					<h1><?php printf( __( 'Search Results for: "%s"', 'voa-top-content' ), get_search_query() ); ?></h1>
 				</header>
 				
 				<section class="content-part article-body">
@@ -29,7 +29,7 @@
 					} else {
 					?>
 					
-					<p>No results found for your search. Search again?</p>
+					<p><?php _e( 'No results found for your search. Search again?', 'voa-top-content' ); ?></p>
 					<div class="search-form-container"><?php get_search_form('true'); ?></div>
 						
 					<?php } ?>

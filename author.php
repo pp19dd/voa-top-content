@@ -28,7 +28,10 @@ $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('a
 					
 					<?php if ( have_posts() ) {	?>
 					
-					<h2>Recent posts by <?php echo $curauth->display_name; ?>:</h2>
+					<h2><?php 
+					/* translators: the variable is a stand-in for the author's name */
+					printf( __( 'Recent posts by %s:', 'voa-top-content' ), $curauth->display_name );
+					?></h2>
 					
 					<?php
 						while ( have_posts() ) : the_post();
@@ -39,7 +42,7 @@ $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('a
 						
 					} else {
 					?>
-					<p><?php _e('No posts by this author.'); ?></p>
+					<p><?php _e( 'No posts by this author.', 'voa-top-content' ); ?></p>
 					<?php } ?>
 					
 				</section>

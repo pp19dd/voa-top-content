@@ -38,7 +38,7 @@ if ( $post['thumbnail_id'] != '' ) {
 		<section class="text">
 			<h2 class="clearfix"><?php echo $post["title"] ?></h2>
 			<p class="clearfix teaser"><?php echo $post["excerpt"] ?></p>
-			<p class="continue">Continue reading</p>
+			<p class="continue"><?php _e( 'Continue reading', 'voa-top-content' ); ?></p>
 		</section>
 
 		<?php

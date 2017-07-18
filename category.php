@@ -24,7 +24,7 @@
 					} else {
 					?>
 					
-					<p>No results found this tag.</p>
+					<p><?php _e( 'No results found for this category.', 'voa-top-content' ); ?></p>
 					
 					<div class="search-form-container"><?php get_search_form('true'); ?></div>
 						

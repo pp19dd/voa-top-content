@@ -19,6 +19,8 @@ function voa_theme_setup_options() {
     add_theme_support( 'html5', array( 'search-form' ) );
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'title-tag' );
+    
+    //load_theme_textdomain( 'voa-top-content', get_template_directory() . '/languages' );
 }
 add_action( 'after_setup_theme', 'voa_theme_setup_options' );
 
@@ -57,13 +59,13 @@ function top_content_custom_sizes( $sizes ) {
         array_merge(
             $sizes,
             array(
-                'full-width'           => __( 'full-width' ),
-                'half-width-square'    => __( 'half-width-square' ),
-                'half-width-mid'       => __( 'half-width-mid' ),
-                'half-width-landscape' => __( 'half-width-landscape' ),
-                'quarter-width-tall'   => __( 'quarter-width-tall' ),
-                'quarter-width-mid'    => __( 'quarter-width-mid' ),
-                'quarter-width-short'  => __( 'quarter-width-short' )
+                'full-width'           => 'full-width',
+                'half-width-square'    => 'half-width-square',
+                'half-width-mid'       => 'half-width-mid',
+                'half-width-landscape' => 'half-width-landscape',
+                'quarter-width-tall'   => 'quarter-width-tall',
+                'quarter-width-mid'    => 'quarter-width-mid',
+                'quarter-width-short'  => 'quarter-width-short'
             )
         )
     );
