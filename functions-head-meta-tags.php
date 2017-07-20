@@ -76,12 +76,13 @@ function voa_head_meta_description() {
 		if ( $subhed != '' ) {
 			$m_description = $subhed;
 		} elseif ( has_excerpt() ) {
-			$m_description = get_the_excerpt();
+			$m_description = strip_shortcodes( wp_strip_all_tags( get_the_excerpt(), true ) );
 		} else {
-			$m_description = wp_trim_words( $post->post_content, 20, '' );
+			$m_description = wp_trim_words( strip_shortcodes( wp_strip_all_tags( $post->post_content, true ) ), 20, '' );
 		}
-		
-	} else {
+	}
+	
+	if ( !is_single() || $m_description == '' ) {
 		
 		$o = get_option( 'voa_opt_seo' );
 		$o['voa_seo_description'] = trim( $o['voa_seo_description'] );
