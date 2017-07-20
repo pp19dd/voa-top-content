@@ -26,6 +26,40 @@ add_action( 'after_setup_theme', 'voa_theme_setup_options' );
 
 
 
+function voa_set_locale() {
+    
+    $o = get_option( 'voa_opt_directory' );
+    
+    switch ( $o['voa_language'] ) {
+        
+        // case 'armenian':
+        //     return '';
+        // case 'azeri':
+        //     return 'az';
+        // case 'georgian':
+        //     return '';
+        // case 'khmer':
+        //     return '';
+        // case 'kurdish':
+        //     return '';
+        // case 'russian':
+        //     return 'ru';
+        // case 'spanish':
+        //     return '';
+        // case 'turkish':
+        //     return '';
+        // case 'ukrainian':
+        //     return '';
+        // case 'uzbek':
+        //     return '';
+        default:
+            return 'en_US';
+    }
+}
+add_filter( 'locale', 'voa_set_locale' );
+
+
+
 // establish whether this is the Editor's Picks blog or not
 $blog_name_sanitized = sanitize_title_for_query( get_bloginfo('name'));
 define( 'VOA_EDITORS_PICKS', ($blog_name_sanitized == 'editors-picks' ? true : false ) );

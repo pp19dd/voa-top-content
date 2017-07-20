@@ -10,8 +10,7 @@
 		<div class="excerpt-text">
 			<h2><?php the_title(); ?></h2>
 			<p class="excerpt-meta">
-				<time class="excerpt-date" datetime="<?php the_time( 'c' ); ?>"><?php the_time( 'F j, Y' ); ?></time>
-				<?php /* TODO <span class="excerpt-author"><?php the_author(); ?></span> */ ?>
+				<?php get_template_part( 'partials/article-date' ); ?>
 			</p>
 			<?php the_excerpt(); ?>
 		</div>

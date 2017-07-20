@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: VOA "
 "Top Content v2.0\n"
 "POT-Creation-Date: "
-"2017-07-18 17:19-0400\n"
+"2017-07-20 18:27-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your "
 "Name <you@example.com>\n"
@@ -154,9 +154,29 @@ msgctxt "button"
 msgid "Menu"
 msgstr ""
 
-#: home.php:55
+#: home.php:15
+msgctxt "date month range"
+msgid "F Y"
+msgstr ""
+
+#: home.php:20
+msgctxt "date week range"
+msgid "F j"
+msgstr ""
+
+#: home.php:26
+msgctxt "date daily range"
+msgid "l, F j"
+msgstr ""
+
+#: home.php:58
 msgctxt "button"
 msgid "show more stories"
+msgstr ""
+
+#: partials/article-date.php:2
+msgctxt "article date"
+msgid "F j, Y"
 msgstr ""
 
 #: partials/pagination.php:6

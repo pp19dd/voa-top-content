@@ -80,7 +80,7 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 							<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>"><?php the_author(); ?></a>
 							<?php } ?>
 						</address>
-						<time class="pubdate"><?php the_date(); ?></time>
+						<?php get_template_part( 'partials/article-date' ); ?>
 					</div>
 
 					<div class="author-social"></div>

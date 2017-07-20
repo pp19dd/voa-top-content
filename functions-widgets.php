@@ -297,7 +297,7 @@ class VOA_Recent_Posts extends WP_Widget {
 					<a href="<?php the_permalink(); ?>">
 						<div class="widget-card-text">
 							<h3><?php echo get_the_title(); ?></h3>
-							<time datetime="<?php the_time( 'c' ); ?>"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php the_time( 'F j, Y' ); ?></time>
+							<?php get_template_part( 'partials/article-date' ); ?>
 						</div>
 						
 						<?php if ( has_post_thumbnail() ) { ?>
