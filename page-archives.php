@@ -18,7 +18,7 @@ the_post();
 			<content>
 				
 				<header class="single-basic-intro">
-					<h1><?php the_archive_title(); ?></h1>
+					<h1><?php the_title(); ?></h1>
 				</header>
 				
 				<section class="content-part article-body">

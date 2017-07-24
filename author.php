@@ -1,9 +1,5 @@
 <?php
 
-/*
-Template Name: Archives
-*/
-
 get_header();
 
 the_post();
