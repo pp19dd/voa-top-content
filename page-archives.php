@@ -40,11 +40,14 @@ the_post();
 					
 					$categories = get_categories( $cat_args );
 					
+					$shown_posts = array();
+					
 					foreach ( $categories as $cat ) {
 						echo '<h2><a href="'.esc_url( get_category_link( $cat->cat_ID ) ).'" title="'.esc_attr( $cat->cat_name ).'">'.$cat->cat_name.'</a></h2>';
 						
 						$posts = new WP_Query( array( 
-							'cat' => $cat->cat_ID,
+							'cat'            => $cat->cat_ID,
+							//'post__not_in' => $shown_posts, // TODO: make this an option at some point
 							'posts_per_page' => 3
 						));
 						
@@ -53,6 +56,7 @@ the_post();
 							while ( $posts->have_posts() ) {
 								$posts->the_post();
 								get_template_part( 'partials/excerpt-compact' );
+								$shown_posts[] = $post->ID;
 							}
 							echo '</section>';
 						}
