@@ -344,7 +344,7 @@ function voa_generate_missing_image_size( $image_ID, $named_image_size, $force_r
     
     if ( false === $o_img || ! file_exists( $o_img ) ) {
         if ($debug) { echo sprintf( 'The originally uploaded image file cannot be found at %s', esc_html( $o_img ) ); }
-        die;
+        return;
     }
     
     $meta = wp_get_attachment_metadata( $image_ID );
@@ -393,12 +393,12 @@ function voa_generate_missing_image_size( $image_ID, $named_image_size, $force_r
 
     if ( is_wp_error( $meta ) ) {
         if ($debug) { echo $meta->get_error_message(); }
-        die;
+        return;
     }
     
     if ( empty( $meta ) ) {
         if ($debug) { echo 'unknown failure'; }
-        die;
+        return;
     }
     
     return (bool) true;
