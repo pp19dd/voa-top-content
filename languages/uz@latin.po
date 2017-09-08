@@ -128,7 +128,7 @@ msgstr "j-F"
 #: home.php:26
 msgctxt "date daily range"
 msgid "l, F j"
-msgstr ""
+msgstr "l, j-F"
 
 #: home.php:58
 msgctxt "button"
