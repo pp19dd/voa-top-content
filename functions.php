@@ -20,12 +20,14 @@ function voa_theme_setup_options() {
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'title-tag' );
     
-    //load_theme_textdomain( 'voa-top-content', get_template_directory() . '/languages' );
+    // load_theme_textdomain() tells WP where to find translations for this theme
+    load_theme_textdomain( 'voa-top-content', get_template_directory() . '/languages' );
 }
 add_action( 'after_setup_theme', 'voa_theme_setup_options' );
 
 
 
+// voa_set_locale() requires the VOA Options 2013 plugin for translations
 function voa_set_locale() {
     
     $o = get_option( 'voa_opt_directory' );
@@ -50,8 +52,8 @@ function voa_set_locale() {
         //     return '';
         // case 'ukrainian':
         //     return '';
-        // case 'uzbek':
-        //     return '';
+        case 'uzbek':
+            return 'uz';
         default:
             return 'en_US';
     }
