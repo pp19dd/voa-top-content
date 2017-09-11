@@ -47,12 +47,12 @@
 				<?php } // if VOA_EDITORS_PICKS ?>
 				
 				<div class="search-nav">
-					<a class="nav-trigger search-nav-trigger" href="#"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only"><?php _ex( 'Search', 'button', 'voa-top-content' ); ?></span></a>
+					<a class="nav-trigger search-nav-trigger" href="#" title="<?php echo esc_attr_x( 'Search', 'button', 'voa-top-content' ); ?>"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only"><?php _ex( 'Search', 'button', 'voa-top-content' ); ?></span></a>
 					<div class="search-form-container"><?php get_search_form('true'); ?></div>
 				</div>
 				
 				<div class="blog-nav">
-					<a class="nav-trigger blog-nav-trigger" href="#"><i class="fa fa-lg fa-bars" aria-hidden="true"></i><span class="sr-only"><?php _ex( 'Menu', 'button', 'voa-top-content' ); ?></span></a>
+					<a class="nav-trigger blog-nav-trigger" href="#" title="<?php echo esc_attr_x( 'Menu', 'button', 'voa-top-content' ); ?>"><i class="fa fa-lg fa-bars" aria-hidden="true"></i><span class="sr-only"><?php _ex( 'Menu', 'button', 'voa-top-content' ); ?></span></a>
 					<?php 
 						wp_nav_menu( array( 
 							'theme_location'  => 'blog_header_menu',

@@ -90,7 +90,7 @@ if(
 		);
 		
 		comment_form( array(
-			'comment_notes_before' => '<p class="comment-notes"><span id="email-notes">' . __( 'Your email address will not be published.' ) . '</span> ' . __( 'All fields required.', 'voa-top-content' ) . '</p>',
+			'comment_notes_before' => '<p class="comment-notes"><span id="email-notes">' . __( 'Your email address will not be published.', 'voa-top-content' ) . '</span> ' . __( 'All fields required.', 'voa-top-content' ) . '</p>',
 			'comment_notes_after'  => '',
 			'title_reply_before'   => '<h2 id="reply-title" class="comment-reply-title">',
 			'title_reply_after'    => '</h2>',
