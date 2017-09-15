@@ -36,8 +36,8 @@ function voa_set_locale() {
         
         // case 'armenian':
         //     return '';
-        // case 'azeri':
-        //     return 'az';
+        case 'azeri':
+            return 'az';
         // case 'georgian':
         //     return '';
         // case 'khmer':
@@ -48,8 +48,8 @@ function voa_set_locale() {
         //     return 'ru';
         // case 'spanish':
         //     return '';
-        // case 'turkish':
-        //     return '';
+        case 'turkish':
+            return 'tr';
         // case 'ukrainian':
         //     return '';
         case 'uzbek':
