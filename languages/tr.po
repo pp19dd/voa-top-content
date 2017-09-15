@@ -1,0 +1,238 @@
+# WordPress Blank Pot
+# Copyright (C) 2014 ...
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: VOA Top Content v2.0\n"
+"POT-Creation-Date: 2017-07-20 18:27-0400\n"
+"PO-Revision-Date: \n"
+"Language-Team: VOA Digital <voadigital@voanews.com>\n"
+"Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 2.0.3\n"
+"Last-Translator: \n"
+"Language: tr\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: author.php:33
+#, php-format
+msgid "Recent posts by %s:"
+msgstr "Yazarın son yazdıkları %s:"
+
+#: author.php:45
+msgid "No posts by this author."
+msgstr "Bu yazara ait yazı yok."
+
+#: category.php:27
+msgid "No results found for this category."
+msgstr "Bu kategori için sonuç bulunamadı."
+
+#: comments.php:40 single.php:168
+#, php-format
+msgid "%s Comment"
+msgid_plural "%s Comments"
+msgstr[0] "%s Yorum"
+msgstr[1] "%s Yorumlar"
+
+#: comments.php:47 comments.php:115
+msgid "Comments"
+msgstr "Yorumlar"
+
+#: comments.php:75
+msgid "Comments are closed."
+msgstr "Yorumlar kapandı."
+
+#: comments.php:85
+msgctxt "noun"
+msgid "Name"
+msgstr "İsim"
+
+#: comments.php:87
+msgctxt "noun"
+msgid "Email"
+msgstr "Elektronik posta"
+
+#: comments.php:93
+msgid "Your email address will not be published."
+msgstr "Elektronik posta adresiniz yayınlanmayacak."
+
+#: comments.php:93
+msgid "All fields required."
+msgstr "Tüm alanların doldurulması zorunlu."
+
+#: comments.php:97
+#, php-format
+msgid "Replying to %s"
+msgstr "Yazara yanıt verin %s"
+
+#: comments.php:100
+msgid "Cancel"
+msgstr "İptal"
+
+#: comments.php:101
+msgctxt "submit button"
+msgid "Post Comment"
+msgstr "Yorum yazın"
+
+#: comments.php:102
+msgid "Leave a Comment"
+msgstr "Yorum bırakın"
+
+#: comments.php:103
+msgctxt "noun"
+msgid "Comment"
+msgstr "Yorum"
+
+#: functions-widgets.php:197
+msgid "Top Tags"
+msgstr "En çok tıklanan etiketler"
+
+#: functions-widgets.php:209
+#, php-format
+msgid "%s Post"
+msgid_plural "%s Posts"
+msgstr[0] "%s Yazı"
+msgstr[1] "%s Yazılar"
+
+#: header.php:39
+msgid "Return to VOA"
+msgstr "Amerika’nın Sesi’ne dönün"
+
+#: header.php:50
+msgctxt "button"
+msgid "Search"
+msgstr "Arama"
+
+#: header.php:55
+msgctxt "button"
+msgid "Menu"
+msgstr "Menü"
+
+#: home.php:15
+msgctxt "date month range"
+msgid "F Y"
+msgstr "F Y"
+
+#: home.php:20
+msgctxt "date week range"
+msgid "F j"
+msgstr "j F"
+
+#: home.php:26
+msgctxt "date daily range"
+msgid "l, F j"
+msgstr "F j, l"
+
+#: home.php:58
+msgctxt "button"
+msgid "show more stories"
+msgstr "Diğer yazıları da göster"
+
+#: partials/article-date.php:2
+msgctxt "article date"
+msgid "F j, Y"
+msgstr "F j, Y"
+
+#: partials/pagination.php:6
+msgid "Newer"
+msgstr "Yeniler"
+
+#: partials/pagination.php:7
+msgid "Older"
+msgstr "Eskiler"
+
+#: partials/pagination.php:8
+msgid "Page"
+msgstr "Sayfa"
+
+#: partials/share-buttons.php:23
+msgctxt "verb"
+msgid "Share"
+msgstr "Paylaş"
+
+#: partials/share-buttons.php:26
+msgid "Share on Facebook"
+msgstr "Facebook’ta paylaş"
+
+#: partials/share-buttons.php:28
+msgid "Share on Google+"
+msgstr "Google+’da paylaş"
+
+#: partials/share-buttons.php:30
+msgid "Share on LinkedIn"
+msgstr "LinkedIn’de paylaş"
+
+#: partials/share-buttons.php:34
+msgid "Submit to reddit"
+msgstr "reddit’te paylaş"
+
+#: partials/share-buttons.php:36
+msgid "Share on Twitter"
+msgstr "Twitter’da paylaş"
+
+#: partials/story-card.php:41
+msgid "Continue reading"
+msgstr "Okumaya devam et"
+
+#: search.php:11
+#, php-format
+msgid "Search Results for: \"%s\""
+msgstr "Sonuçları ara “%s”"
+
+#: search.php:32
+msgid "No results found for your search. Search again?"
+msgstr "Arama sonucu bulunamadı. Bir daha aramak ister misiniz?"
+
+#: searchform.php:4 searchform.php:8
+msgctxt "label"
+msgid "Search for:"
+msgstr "Ara:"
+
+#: searchform.php:6
+msgctxt "placeholder"
+msgid "Search …"
+msgstr "Ara …"
+
+#: searchform.php:10
+msgctxt "submit button"
+msgid "Search"
+msgstr "Ara"
+
+#: single.php:102
+msgid "Categories"
+msgstr "Kategoriler"
+
+#: single.php:108
+msgid "Tags"
+msgstr "Etiketler"
+
+#: single.php:122
+msgid "Previous Post"
+msgstr "Bir önceki yazı"
+
+#: single.php:128
+msgid "There are no previous posts."
+msgstr "Önceki yazılar yok."
+
+#: single.php:139
+msgid "Next Post"
+msgstr "Bir sonraki yazı"
+
+#: single.php:147
+msgid "You're viewing the latest post."
+msgstr "Son yazıyı okuyorsunuz."
+
+#: single.php:172
+msgid "Join the Discussion"
+msgstr "Tartışmaya katıl"
+
+#: tag.php:27
+msgid "No results found for this tag."
+msgstr "Bu etiket için sonuç bulunamadı."
