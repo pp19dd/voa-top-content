@@ -559,16 +559,17 @@ sidebar {
 sidebar-inner {
   padding-right: 1.50%; }
 
-sidebar h2 {
+.sidebar-title {
   border-bottom: 4px solid #1330bf;
   font-size: 0.8em;
   color: #1330bf;
+  margin-bottom: 1.25em;
   padding-bottom: .25em;
   padding-left: 1em;
   text-transform: uppercase; }
 
-sidebar h2 a,
-sidebar h2 a:hover {
+.sidebar-title a,
+.sidebar-title a:hover {
   color: #1330bf !important;
   text-decoration: none !important; }
 
@@ -1623,6 +1624,13 @@ article > content .comments .comments-inner {
 .article-body ul li {
   margin-bottom: .5rem; }
 
+/* .article-body h3 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1.35;
+	margin: 0;
+	padding: 1.5rem 0 .5rem 0;
+} */
 .article-body a {
   text-decoration: none; }
 
@@ -1728,6 +1736,16 @@ p.excerpt-meta .excerpt-author {
 .screen-reader-text {
   display: none;
   visibility: hidden; }
+
+.sidebar-widget .textwidget {
+  font-size: 15px;
+  line-height: 1.66; }
+
+.sidebar-widget .textwidget img.alignleft {
+  float: left;
+  height: auto !important;
+  margin: .3rem 1rem .66rem 0;
+  width: 50% !important; }
 
 /* comments **************************************************************************************/
 ol.comment-list {

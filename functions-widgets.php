@@ -126,7 +126,7 @@ class VOA_Top_Tags extends WP_Widget {
 		<style type="text/css">
 			
 			.top-tags-widget .top-tags {
-				font-size: 1em;
+				font-size: 1rem;
 				line-height: 2em;
 				margin: .8em;
 			}
@@ -140,9 +140,9 @@ class VOA_Top_Tags extends WP_Widget {
 
 			.top-tags-widget .tags li {
 				background-color: #e6e6e6;
-				border-color: #ddd;
+				border-color: #e6e6e6;
 				border-style: solid;
-				border-width: 1px 0;
+				border-width: 1px;
 				color: #ccc;
 				margin-bottom: .5em;
 			}
@@ -153,10 +153,10 @@ class VOA_Top_Tags extends WP_Widget {
 				display: inline-block;
 				height: 2em;
 				line-height: 2em;
-				padding: 0 1.5em 0 1em;
+				padding: 0 1.5em 0 .66em;
 				position: relative;
 				text-decoration: none;
-				transition: color 0.2s;
+				transition: all 0.2s;
 			}
 
 			.top-tags-widget .tag::after {
@@ -168,24 +168,27 @@ class VOA_Top_Tags extends WP_Widget {
 				position: absolute;
 				right: 0;
 				top: 0;
+				transition: all 0.2s;
 			}
 
 			.top-tags-widget .tag:hover {
 				background-color: #d41010;
 				color: #fff;
+				transition: all 0.2s;
 			}
 
 			.top-tags-widget .tag:hover::after {
 				border-left-color: #d41010;
+				transition: all 0.2s;
 			}
 
 			.top-tags-widget .tag-count {
-				border-right: .75em solid #fff;
+				/* border-right: .66rem solid #fff; */
 				color: #999;
 				float: right;
 				font-size: .75em;
 				font-weight: 300;
-				padding-right: .75em;
+				padding-right: .66rem;
 				text-decoration: none;
 				text-transform: uppercase;
 			}
