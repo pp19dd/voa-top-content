@@ -267,7 +267,7 @@ function voa_top_content_widgets_init() {
     register_sidebar( array(
         'name'          => 'Article right sidebar',
         'id'            => 'sidebar_article_right',
-        'before_widget' => '<div class="sidebar-widget">',
+        'before_widget' => '<div id="%1$s" class="sidebar-widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h2 class="sidebar-title">',
         'after_title'   => '</h2>',
@@ -276,7 +276,7 @@ function voa_top_content_widgets_init() {
     register_sidebar( array(
         'name'          => 'Archive Page Sidebar',
         'id'            => 'sidebar_archive_page',
-        'before_widget' => '<div class="sidebar-widget">',
+        'before_widget' => '<div id="%1$s" class="sidebar-widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h2 class="sidebar-title">',
         'after_title'   => '</h2>',
@@ -285,7 +285,7 @@ function voa_top_content_widgets_init() {
     register_sidebar( array(
         'name'          => 'Basic Page Sidebar',
         'id'            => 'sidebar_basic_page',
-        'before_widget' => '<div class="sidebar-widget">',
+        'before_widget' => '<div id="%1$s" class="sidebar-widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h2 class="sidebar-title">',
         'after_title'   => '</h2>',
