@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: VOA "
 "Top Content v2.0\n"
 "POT-Creation-Date: "
-"2017-07-20 18:27-0400\n"
+"2017-11-07 19:13-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your "
 "Name <you@example.com>\n"
@@ -47,16 +47,16 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Language: en_US\n"
 "X-Generator: Poedit "
-"2.0.2\n"
+"2.0.3\n"
 "X-Poedit-"
 "SearchPath-0: .\n"
 
-#: author.php:33
+#: author.php:29
 #, php-format
 msgid "Recent posts by %s:"
 msgstr ""
 
-#: author.php:45
+#: author.php:41
 msgid ""
 "No posts by this author."
 msgstr ""
@@ -129,20 +129,616 @@ msgctxt "noun"
 msgid "Comment"
 msgstr ""
 
-#: functions-widgets.php:197
+#: footer.php:4
+#: header.php:39
+msgid "Return to VOA"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:212
+#: copy.php:221
+#: copy.php:230
+#: functions-dates-i18n-voa.php:124
+#: functions-dates-i18n-voa.php:133
+#: functions-dates-i18n-voa.php:142
+#: functions-dates-i18n.php:10
+#: functions-dates-i18n.php:19
+#: functions-dates-i18n.php:28
+msgid "Sunday"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:213
+#: copy.php:222
+#: copy.php:231
+#: functions-dates-i18n-voa.php:125
+#: functions-dates-i18n-voa.php:134
+#: functions-dates-i18n-voa.php:143
+#: functions-dates-i18n.php:11
+#: functions-dates-i18n.php:20
+#: functions-dates-i18n.php:29
+msgid "Monday"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:214
+#: copy.php:223
+#: copy.php:232
+#: functions-dates-i18n-voa.php:126
+#: functions-dates-i18n-voa.php:135
+#: functions-dates-i18n-voa.php:144
+#: functions-dates-i18n.php:12
+#: functions-dates-i18n.php:21
+#: functions-dates-i18n.php:30
+msgid "Tuesday"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:215
+#: copy.php:224
+#: copy.php:233
+#: functions-dates-i18n-voa.php:127
+#: functions-dates-i18n-voa.php:136
+#: functions-dates-i18n-voa.php:145
+#: functions-dates-i18n.php:13
+#: functions-dates-i18n.php:22
+#: functions-dates-i18n.php:31
+msgid "Wednesday"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:216
+#: copy.php:225
+#: copy.php:234
+#: functions-dates-i18n-voa.php:128
+#: functions-dates-i18n-voa.php:137
+#: functions-dates-i18n-voa.php:146
+#: functions-dates-i18n.php:14
+#: functions-dates-i18n.php:23
+#: functions-dates-i18n.php:32
+msgid "Thursday"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:217
+#: copy.php:226
+#: copy.php:235
+#: functions-dates-i18n-voa.php:129
+#: functions-dates-i18n-voa.php:138
+#: functions-dates-i18n-voa.php:147
+#: functions-dates-i18n.php:15
+#: functions-dates-i18n.php:24
+#: functions-dates-i18n.php:33
+msgid "Friday"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:218
+#: copy.php:227
+#: copy.php:236
+#: functions-dates-i18n-voa.php:130
+#: functions-dates-i18n-voa.php:139
+#: functions-dates-i18n-voa.php:148
+#: functions-dates-i18n.php:16
+#: functions-dates-i18n.php:25
+#: functions-dates-i18n.php:34
+msgid "Saturday"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:221
+#: functions-dates-i18n-voa.php:133
+#: functions-dates-i18n.php:19
+msgctxt "Sunday initial"
+msgid "S"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:222
+#: functions-dates-i18n-voa.php:134
+#: functions-dates-i18n.php:20
+msgctxt "Monday initial"
+msgid "M"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:223
+#: functions-dates-i18n-voa.php:135
+#: functions-dates-i18n.php:21
+msgctxt "Tuesday initial"
+msgid "T"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:224
+#: functions-dates-i18n-voa.php:136
+#: functions-dates-i18n.php:22
+msgctxt "Wednesday initial"
+msgid "W"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:225
+#: functions-dates-i18n-voa.php:137
+#: functions-dates-i18n.php:23
+msgctxt "Thursday initial"
+msgid "T"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:226
+#: functions-dates-i18n-voa.php:138
+#: functions-dates-i18n.php:24
+msgctxt "Friday initial"
+msgid "F"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:227
+#: functions-dates-i18n-voa.php:139
+#: functions-dates-i18n.php:25
+msgctxt "Saturday initial"
+msgid "S"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:230
+#: functions-dates-i18n-voa.php:142
+#: functions-dates-i18n.php:28
+msgid "Sun"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:231
+#: functions-dates-i18n-voa.php:143
+#: functions-dates-i18n.php:29
+msgid "Mon"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:232
+#: functions-dates-i18n-voa.php:144
+#: functions-dates-i18n.php:30
+msgid "Tue"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:233
+#: functions-dates-i18n-voa.php:145
+#: functions-dates-i18n.php:31
+msgid "Wed"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:234
+#: functions-dates-i18n-voa.php:146
+#: functions-dates-i18n.php:32
+msgid "Thu"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:235
+#: functions-dates-i18n-voa.php:147
+#: functions-dates-i18n.php:33
+msgid "Fri"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:236
+#: functions-dates-i18n-voa.php:148
+#: functions-dates-i18n.php:34
+msgid "Sat"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:239
+#: copy.php:267
+#: functions-dates-i18n-voa.php:151
+#: functions-dates-i18n-voa.php:179
+#: functions-dates-i18n.php:37
+#: functions-dates-i18n.php:65
+msgid "January"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:240
+#: copy.php:268
+#: functions-dates-i18n-voa.php:152
+#: functions-dates-i18n-voa.php:180
+#: functions-dates-i18n.php:38
+#: functions-dates-i18n.php:66
+msgid "February"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:241
+#: copy.php:269
+#: functions-dates-i18n-voa.php:153
+#: functions-dates-i18n-voa.php:181
+#: functions-dates-i18n.php:39
+#: functions-dates-i18n.php:67
+msgid "March"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:242
+#: copy.php:270
+#: functions-dates-i18n-voa.php:154
+#: functions-dates-i18n-voa.php:182
+#: functions-dates-i18n.php:40
+#: functions-dates-i18n.php:68
+msgid "April"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:243
+#: copy.php:271
+#: functions-dates-i18n-voa.php:155
+#: functions-dates-i18n-voa.php:183
+#: functions-dates-i18n.php:41
+#: functions-dates-i18n.php:69
+msgid "May"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:244
+#: copy.php:272
+#: functions-dates-i18n-voa.php:156
+#: functions-dates-i18n-voa.php:184
+#: functions-dates-i18n.php:42
+#: functions-dates-i18n.php:70
+msgid "June"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:245
+#: copy.php:273
+#: functions-dates-i18n-voa.php:157
+#: functions-dates-i18n-voa.php:185
+#: functions-dates-i18n.php:43
+#: functions-dates-i18n.php:71
+msgid "July"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:246
+#: copy.php:274
+#: functions-dates-i18n-voa.php:158
+#: functions-dates-i18n-voa.php:186
+#: functions-dates-i18n.php:44
+#: functions-dates-i18n.php:72
+msgid "August"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:247
+#: copy.php:275
+#: functions-dates-i18n-voa.php:159
+#: functions-dates-i18n-voa.php:187
+#: functions-dates-i18n.php:45
+#: functions-dates-i18n.php:73
+msgid "September"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:248
+#: copy.php:276
+#: functions-dates-i18n-voa.php:160
+#: functions-dates-i18n-voa.php:188
+#: functions-dates-i18n.php:46
+#: functions-dates-i18n.php:74
+msgid "October"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:249
+#: copy.php:277
+#: functions-dates-i18n-voa.php:161
+#: functions-dates-i18n-voa.php:189
+#: functions-dates-i18n.php:47
+#: functions-dates-i18n.php:75
+msgid "November"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:250
+#: copy.php:278
+#: functions-dates-i18n-voa.php:162
+#: functions-dates-i18n-voa.php:190
+#: functions-dates-i18n.php:48
+#: functions-dates-i18n.php:76
+msgid "December"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:253
+#: functions-dates-i18n-voa.php:165
+#: functions-dates-i18n.php:51
+msgctxt "genitive"
+msgid "January"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:254
+#: functions-dates-i18n-voa.php:166
+#: functions-dates-i18n.php:52
+msgctxt "genitive"
+msgid "February"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:255
+#: functions-dates-i18n-voa.php:167
+#: functions-dates-i18n.php:53
+msgctxt "genitive"
+msgid "March"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:256
+#: functions-dates-i18n-voa.php:168
+#: functions-dates-i18n.php:54
+msgctxt "genitive"
+msgid "April"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:257
+#: functions-dates-i18n-voa.php:169
+#: functions-dates-i18n.php:55
+msgctxt "genitive"
+msgid "May"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:258
+#: functions-dates-i18n-voa.php:170
+#: functions-dates-i18n.php:56
+msgctxt "genitive"
+msgid "June"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:259
+#: functions-dates-i18n-voa.php:171
+#: functions-dates-i18n.php:57
+msgctxt "genitive"
+msgid "July"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:260
+#: functions-dates-i18n-voa.php:172
+#: functions-dates-i18n.php:58
+msgctxt "genitive"
+msgid "August"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:261
+#: functions-dates-i18n-voa.php:173
+#: functions-dates-i18n.php:59
+msgctxt "genitive"
+msgid "September"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:262
+#: functions-dates-i18n-voa.php:174
+#: functions-dates-i18n.php:60
+msgctxt "genitive"
+msgid "October"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:263
+#: functions-dates-i18n-voa.php:175
+#: functions-dates-i18n.php:61
+msgctxt "genitive"
+msgid "November"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:264
+#: functions-dates-i18n-voa.php:176
+#: functions-dates-i18n.php:62
+msgctxt "genitive"
+msgid "December"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:267
+#: functions-dates-i18n-voa.php:179
+#: functions-dates-i18n.php:65
+msgctxt ""
+"January abbreviation"
+msgid "Jan"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:268
+#: functions-dates-i18n-voa.php:180
+#: functions-dates-i18n.php:66
+msgctxt ""
+"February abbreviation"
+msgid "Feb"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:269
+#: functions-dates-i18n-voa.php:181
+#: functions-dates-i18n.php:67
+msgctxt ""
+"March abbreviation"
+msgid "Mar"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:270
+#: functions-dates-i18n-voa.php:182
+#: functions-dates-i18n.php:68
+msgctxt ""
+"April abbreviation"
+msgid "Apr"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:271
+#: functions-dates-i18n-voa.php:183
+#: functions-dates-i18n.php:69
+msgctxt "May abbreviation"
+msgid "May"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:272
+#: functions-dates-i18n-voa.php:184
+#: functions-dates-i18n.php:70
+msgctxt "June abbreviation"
+msgid "Jun"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:273
+#: functions-dates-i18n-voa.php:185
+#: functions-dates-i18n.php:71
+msgctxt "July abbreviation"
+msgid "Jul"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:274
+#: functions-dates-i18n-voa.php:186
+#: functions-dates-i18n.php:72
+msgctxt ""
+"August abbreviation"
+msgid "Aug"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:275
+#: functions-dates-i18n-voa.php:187
+#: functions-dates-i18n.php:73
+msgctxt ""
+"September abbreviation"
+msgid "Sep"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:276
+#: functions-dates-i18n-voa.php:188
+#: functions-dates-i18n.php:74
+msgctxt ""
+"October abbreviation"
+msgid "Oct"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:277
+#: functions-dates-i18n-voa.php:189
+#: functions-dates-i18n.php:75
+msgctxt ""
+"November abbreviation"
+msgid "Nov"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:278
+#: functions-dates-i18n-voa.php:190
+#: functions-dates-i18n.php:76
+msgctxt ""
+"December abbreviation"
+msgid "Dec"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:281
+#: functions-dates-i18n-voa.php:193
+#: functions-dates-i18n.php:79
+msgid "am"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:282
+#: functions-dates-i18n-voa.php:194
+#: functions-dates-i18n.php:80
+msgid "pm"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:283
+#: functions-dates-i18n-voa.php:195
+#: functions-dates-i18n.php:81
+msgid "AM"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:284
+#: functions-dates-i18n-voa.php:196
+#: functions-dates-i18n.php:82
+msgid "PM"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:290
+#: functions-dates-i18n-voa.php:202
+#: functions-dates-i18n.php:88
+msgid "number_format_thousands_sep"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:303
+#: functions-dates-i18n-voa.php:215
+#: functions-dates-i18n.php:101
+msgid "number_format_decimal_point"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:311
+#: functions-dates-i18n-voa.php:223
+#: functions-dates-i18n.php:109
+msgctxt "text direction"
+msgid "ltr"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:328
+#: functions-dates-i18n-voa.php:234
+#, php-format
+msgid ""
+"The %s directory of the "
+"develop repository must "
+"be used for RTL."
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:479
+#: functions-dates-i18n-voa.php:275
+msgid "F j, Y"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:481
+#: functions-dates-i18n-voa.php:277
+msgid "g:i a"
+msgstr ""
+
+#: functions-dates-i18n-voa
+#: copy.php:483
+#: functions-dates-i18n-voa.php:279
+msgid "F j, Y g:i a"
+msgstr ""
+
+#: functions-widgets.php:200
 msgid "Top Tags"
 msgstr ""
 
-#: functions-widgets.php:209
+#: functions-widgets.php:212
 #, php-format
 msgid "%s Post"
 msgid_plural "%s Posts"
 msgstr[0] ""
 msgstr[1] ""
-
-#: header.php:39
-msgid "Return to VOA"
-msgstr ""
 
 #: header.php:50
 msgctxt "button"

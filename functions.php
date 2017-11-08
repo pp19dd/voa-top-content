@@ -3,6 +3,7 @@ require_once( "functions-layout.php" );
 require_once( "functions-widgets.php" );
 require_once( "functions-meta.php" );
 require_once( "functions-head-meta-tags.php" );
+//require_once( "functions-date-localizations.php" );
 
 // used for on-demand image resizing
 require_once( ABSPATH . 'wp-admin/includes/image.php' );
@@ -19,7 +20,7 @@ function voa_theme_setup_options() {
     add_theme_support( 'html5', array( 'search-form' ) );
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'title-tag' );
-    
+
     // load_theme_textdomain() tells WP where to find translations for this theme
     load_theme_textdomain( 'voa-top-content', get_template_directory() . '/languages' );
 }
