@@ -3,7 +3,7 @@ require_once( "functions-layout.php" );
 require_once( "functions-widgets.php" );
 require_once( "functions-meta.php" );
 require_once( "functions-head-meta-tags.php" );
-//require_once( "functions-date-localizations.php" );
+require_once( "functions-date-localizations.php" );
 
 // used for on-demand image resizing
 require_once( ABSPATH . 'wp-admin/includes/image.php' );

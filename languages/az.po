@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VOA Top Content v2.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2017-11-07 13:42-0500\n"
+"POT-Creation-Date: 2017-11-13 17:15-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: VOA Digital <voadigital@voanews.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,"
 "_nc:4c,1,2\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: author.php:29
@@ -97,409 +97,287 @@ msgstr "Şərh"
 msgid "Return to VOA"
 msgstr "Amerikanın Səsinə qayıt"
 
-#: functions-dates-i18n-voa copy.php:212 copy.php:221 copy.php:230
-#: functions-dates-i18n-voa.php:124 functions-dates-i18n-voa.php:133
-#: functions-dates-i18n-voa.php:142 functions-dates-i18n.php:10
-#: functions-dates-i18n.php:19 functions-dates-i18n.php:28
+#: functions-date-localizations.php:35 functions-date-localizations.php:44
+#: functions-date-localizations.php:53
 msgid "Sunday"
-msgstr ""
+msgstr "Bazar"
 
-#: functions-dates-i18n-voa copy.php:213 copy.php:222 copy.php:231
-#: functions-dates-i18n-voa.php:125 functions-dates-i18n-voa.php:134
-#: functions-dates-i18n-voa.php:143 functions-dates-i18n.php:11
-#: functions-dates-i18n.php:20 functions-dates-i18n.php:29
+#: functions-date-localizations.php:36 functions-date-localizations.php:45
+#: functions-date-localizations.php:54
 msgid "Monday"
-msgstr ""
+msgstr "Bazar ertəsi"
 
-#: functions-dates-i18n-voa copy.php:214 copy.php:223 copy.php:232
-#: functions-dates-i18n-voa.php:126 functions-dates-i18n-voa.php:135
-#: functions-dates-i18n-voa.php:144 functions-dates-i18n.php:12
-#: functions-dates-i18n.php:21 functions-dates-i18n.php:30
+#: functions-date-localizations.php:37 functions-date-localizations.php:46
+#: functions-date-localizations.php:55
 msgid "Tuesday"
-msgstr ""
+msgstr "Çərşənbə axşamı"
 
-#: functions-dates-i18n-voa copy.php:215 copy.php:224 copy.php:233
-#: functions-dates-i18n-voa.php:127 functions-dates-i18n-voa.php:136
-#: functions-dates-i18n-voa.php:145 functions-dates-i18n.php:13
-#: functions-dates-i18n.php:22 functions-dates-i18n.php:31
+#: functions-date-localizations.php:38 functions-date-localizations.php:47
+#: functions-date-localizations.php:56
 msgid "Wednesday"
-msgstr ""
+msgstr "Çərşənbə"
 
-#: functions-dates-i18n-voa copy.php:216 copy.php:225 copy.php:234
-#: functions-dates-i18n-voa.php:128 functions-dates-i18n-voa.php:137
-#: functions-dates-i18n-voa.php:146 functions-dates-i18n.php:14
-#: functions-dates-i18n.php:23 functions-dates-i18n.php:32
+#: functions-date-localizations.php:39 functions-date-localizations.php:48
+#: functions-date-localizations.php:57
 msgid "Thursday"
-msgstr ""
+msgstr "Cümə axşamı"
 
-#: functions-dates-i18n-voa copy.php:217 copy.php:226 copy.php:235
-#: functions-dates-i18n-voa.php:129 functions-dates-i18n-voa.php:138
-#: functions-dates-i18n-voa.php:147 functions-dates-i18n.php:15
-#: functions-dates-i18n.php:24 functions-dates-i18n.php:33
+#: functions-date-localizations.php:40 functions-date-localizations.php:49
+#: functions-date-localizations.php:58
 msgid "Friday"
-msgstr ""
+msgstr "Cümə"
 
-#: functions-dates-i18n-voa copy.php:218 copy.php:227 copy.php:236
-#: functions-dates-i18n-voa.php:130 functions-dates-i18n-voa.php:139
-#: functions-dates-i18n-voa.php:148 functions-dates-i18n.php:16
-#: functions-dates-i18n.php:25 functions-dates-i18n.php:34
+#: functions-date-localizations.php:41 functions-date-localizations.php:50
+#: functions-date-localizations.php:59
 msgid "Saturday"
-msgstr ""
+msgstr "Şənbə"
 
-#: functions-dates-i18n-voa copy.php:221 functions-dates-i18n-voa.php:133
-#: functions-dates-i18n.php:19
+#: functions-date-localizations.php:44
 msgctxt "Sunday initial"
 msgid "S"
 msgstr ""
 
-#: functions-dates-i18n-voa copy.php:222 functions-dates-i18n-voa.php:134
-#: functions-dates-i18n.php:20
+#: functions-date-localizations.php:45
 msgctxt "Monday initial"
 msgid "M"
-msgstr ""
+msgstr "BE"
 
-#: functions-dates-i18n-voa copy.php:223 functions-dates-i18n-voa.php:135
-#: functions-dates-i18n.php:21
+#: functions-date-localizations.php:46
 msgctxt "Tuesday initial"
 msgid "T"
-msgstr ""
+msgstr "ÇA"
 
-#: functions-dates-i18n-voa copy.php:224 functions-dates-i18n-voa.php:136
-#: functions-dates-i18n.php:22
+#: functions-date-localizations.php:47
 msgctxt "Wednesday initial"
 msgid "W"
-msgstr ""
+msgstr "Ç"
 
-#: functions-dates-i18n-voa copy.php:225 functions-dates-i18n-voa.php:137
-#: functions-dates-i18n.php:23
+#: functions-date-localizations.php:48
 msgctxt "Thursday initial"
 msgid "T"
-msgstr ""
+msgstr "CA"
 
-#: functions-dates-i18n-voa copy.php:226 functions-dates-i18n-voa.php:138
-#: functions-dates-i18n.php:24
+#: functions-date-localizations.php:49
 msgctxt "Friday initial"
 msgid "F"
-msgstr ""
+msgstr "C"
 
-#: functions-dates-i18n-voa copy.php:227 functions-dates-i18n-voa.php:139
-#: functions-dates-i18n.php:25
+#: functions-date-localizations.php:50
 msgctxt "Saturday initial"
 msgid "S"
-msgstr ""
+msgstr "Ş"
 
-#: functions-dates-i18n-voa copy.php:230 functions-dates-i18n-voa.php:142
-#: functions-dates-i18n.php:28
+#: functions-date-localizations.php:53
 msgid "Sun"
-msgstr ""
+msgstr "Bz"
 
-#: functions-dates-i18n-voa copy.php:231 functions-dates-i18n-voa.php:143
-#: functions-dates-i18n.php:29
+#: functions-date-localizations.php:54
 msgid "Mon"
-msgstr ""
+msgstr "Be"
 
-#: functions-dates-i18n-voa copy.php:232 functions-dates-i18n-voa.php:144
-#: functions-dates-i18n.php:30
+#: functions-date-localizations.php:55
 msgid "Tue"
-msgstr ""
+msgstr "Ça"
 
-#: functions-dates-i18n-voa copy.php:233 functions-dates-i18n-voa.php:145
-#: functions-dates-i18n.php:31
+#: functions-date-localizations.php:56
 msgid "Wed"
-msgstr ""
+msgstr "Ç"
 
-#: functions-dates-i18n-voa copy.php:234 functions-dates-i18n-voa.php:146
-#: functions-dates-i18n.php:32
+#: functions-date-localizations.php:57
 msgid "Thu"
-msgstr ""
+msgstr "Ca"
 
-#: functions-dates-i18n-voa copy.php:235 functions-dates-i18n-voa.php:147
-#: functions-dates-i18n.php:33
+#: functions-date-localizations.php:58
 msgid "Fri"
-msgstr ""
+msgstr "C"
 
-#: functions-dates-i18n-voa copy.php:236 functions-dates-i18n-voa.php:148
-#: functions-dates-i18n.php:34
+#: functions-date-localizations.php:59
 msgid "Sat"
-msgstr ""
+msgstr "Şb"
 
-#: functions-dates-i18n-voa copy.php:239 copy.php:267
-#: functions-dates-i18n-voa.php:151 functions-dates-i18n-voa.php:179
-#: functions-dates-i18n.php:37 functions-dates-i18n.php:65
+#: functions-date-localizations.php:62 functions-date-localizations.php:90
 msgid "January"
 msgstr "Yanvar"
 
-#: functions-dates-i18n-voa copy.php:240 copy.php:268
-#: functions-dates-i18n-voa.php:152 functions-dates-i18n-voa.php:180
-#: functions-dates-i18n.php:38 functions-dates-i18n.php:66
+#: functions-date-localizations.php:63 functions-date-localizations.php:91
 msgid "February"
 msgstr "Fevral"
 
-#: functions-dates-i18n-voa copy.php:241 copy.php:269
-#: functions-dates-i18n-voa.php:153 functions-dates-i18n-voa.php:181
-#: functions-dates-i18n.php:39 functions-dates-i18n.php:67
+#: functions-date-localizations.php:64 functions-date-localizations.php:92
 msgid "March"
 msgstr "Mart"
 
-#: functions-dates-i18n-voa copy.php:242 copy.php:270
-#: functions-dates-i18n-voa.php:154 functions-dates-i18n-voa.php:182
-#: functions-dates-i18n.php:40 functions-dates-i18n.php:68
+#: functions-date-localizations.php:65 functions-date-localizations.php:93
 msgid "April"
 msgstr "Aprel"
 
-#: functions-dates-i18n-voa copy.php:243 copy.php:271
-#: functions-dates-i18n-voa.php:155 functions-dates-i18n-voa.php:183
-#: functions-dates-i18n.php:41 functions-dates-i18n.php:69
+#: functions-date-localizations.php:66 functions-date-localizations.php:94
 msgid "May"
 msgstr "May"
 
-#: functions-dates-i18n-voa copy.php:244 copy.php:272
-#: functions-dates-i18n-voa.php:156 functions-dates-i18n-voa.php:184
-#: functions-dates-i18n.php:42 functions-dates-i18n.php:70
+#: functions-date-localizations.php:67 functions-date-localizations.php:95
 msgid "June"
 msgstr "İyun"
 
-#: functions-dates-i18n-voa copy.php:245 copy.php:273
-#: functions-dates-i18n-voa.php:157 functions-dates-i18n-voa.php:185
-#: functions-dates-i18n.php:43 functions-dates-i18n.php:71
+#: functions-date-localizations.php:68 functions-date-localizations.php:96
 msgid "July"
 msgstr "İyul"
 
-#: functions-dates-i18n-voa copy.php:246 copy.php:274
-#: functions-dates-i18n-voa.php:158 functions-dates-i18n-voa.php:186
-#: functions-dates-i18n.php:44 functions-dates-i18n.php:72
+#: functions-date-localizations.php:69 functions-date-localizations.php:97
 msgid "August"
 msgstr "Avqust"
 
-#: functions-dates-i18n-voa copy.php:247 copy.php:275
-#: functions-dates-i18n-voa.php:159 functions-dates-i18n-voa.php:187
-#: functions-dates-i18n.php:45 functions-dates-i18n.php:73
+#: functions-date-localizations.php:70 functions-date-localizations.php:98
 msgid "September"
 msgstr "Sentyabr"
 
-#: functions-dates-i18n-voa copy.php:248 copy.php:276
-#: functions-dates-i18n-voa.php:160 functions-dates-i18n-voa.php:188
-#: functions-dates-i18n.php:46 functions-dates-i18n.php:74
+#: functions-date-localizations.php:71 functions-date-localizations.php:99
 msgid "October"
 msgstr "Oktyabr"
 
-#: functions-dates-i18n-voa copy.php:249 copy.php:277
-#: functions-dates-i18n-voa.php:161 functions-dates-i18n-voa.php:189
-#: functions-dates-i18n.php:47 functions-dates-i18n.php:75
+#: functions-date-localizations.php:72 functions-date-localizations.php:100
 msgid "November"
 msgstr "Noyabr"
 
-#: functions-dates-i18n-voa copy.php:250 copy.php:278
-#: functions-dates-i18n-voa.php:162 functions-dates-i18n-voa.php:190
-#: functions-dates-i18n.php:48 functions-dates-i18n.php:76
+#: functions-date-localizations.php:73 functions-date-localizations.php:101
 msgid "December"
 msgstr "Dekabr"
 
-#: functions-dates-i18n-voa copy.php:253 functions-dates-i18n-voa.php:165
-#: functions-dates-i18n.php:51
+#: functions-date-localizations.php:76
 msgctxt "genitive"
 msgid "January"
 msgstr "Yanvar"
 
-#: functions-dates-i18n-voa copy.php:254 functions-dates-i18n-voa.php:166
-#: functions-dates-i18n.php:52
+#: functions-date-localizations.php:77
 msgctxt "genitive"
 msgid "February"
 msgstr "Fevral"
 
-#: functions-dates-i18n-voa copy.php:255 functions-dates-i18n-voa.php:167
-#: functions-dates-i18n.php:53
+#: functions-date-localizations.php:78
 msgctxt "genitive"
 msgid "March"
 msgstr "Mart"
 
-#: functions-dates-i18n-voa copy.php:256 functions-dates-i18n-voa.php:168
-#: functions-dates-i18n.php:54
+#: functions-date-localizations.php:79
 msgctxt "genitive"
 msgid "April"
 msgstr "Aprel"
 
-#: functions-dates-i18n-voa copy.php:257 functions-dates-i18n-voa.php:169
-#: functions-dates-i18n.php:55
+#: functions-date-localizations.php:80
 msgctxt "genitive"
 msgid "May"
 msgstr "May"
 
-#: functions-dates-i18n-voa copy.php:258 functions-dates-i18n-voa.php:170
-#: functions-dates-i18n.php:56
+#: functions-date-localizations.php:81
 msgctxt "genitive"
 msgid "June"
 msgstr "İyun"
 
-#: functions-dates-i18n-voa copy.php:259 functions-dates-i18n-voa.php:171
-#: functions-dates-i18n.php:57
+#: functions-date-localizations.php:82
 msgctxt "genitive"
 msgid "July"
 msgstr "İyul"
 
-#: functions-dates-i18n-voa copy.php:260 functions-dates-i18n-voa.php:172
-#: functions-dates-i18n.php:58
+#: functions-date-localizations.php:83
 msgctxt "genitive"
 msgid "August"
 msgstr "Avqust"
 
-#: functions-dates-i18n-voa copy.php:261 functions-dates-i18n-voa.php:173
-#: functions-dates-i18n.php:59
+#: functions-date-localizations.php:84
 msgctxt "genitive"
 msgid "September"
 msgstr "Sentyabr"
 
-#: functions-dates-i18n-voa copy.php:262 functions-dates-i18n-voa.php:174
-#: functions-dates-i18n.php:60
+#: functions-date-localizations.php:85
 msgctxt "genitive"
 msgid "October"
 msgstr "Oktyabr"
 
-#: functions-dates-i18n-voa copy.php:263 functions-dates-i18n-voa.php:175
-#: functions-dates-i18n.php:61
+#: functions-date-localizations.php:86
 msgctxt "genitive"
 msgid "November"
 msgstr "Noyabr"
 
-#: functions-dates-i18n-voa copy.php:264 functions-dates-i18n-voa.php:176
-#: functions-dates-i18n.php:62
+#: functions-date-localizations.php:87
 msgctxt "genitive"
 msgid "December"
 msgstr "Dekabr"
 
-#: functions-dates-i18n-voa copy.php:267 functions-dates-i18n-voa.php:179
-#: functions-dates-i18n.php:65
+#: functions-date-localizations.php:90
 msgctxt "January abbreviation"
 msgid "Jan"
 msgstr "Yan"
 
-#: functions-dates-i18n-voa copy.php:268 functions-dates-i18n-voa.php:180
-#: functions-dates-i18n.php:66
+#: functions-date-localizations.php:91
 msgctxt "February abbreviation"
 msgid "Feb"
 msgstr "Fev"
 
-#: functions-dates-i18n-voa copy.php:269 functions-dates-i18n-voa.php:181
-#: functions-dates-i18n.php:67
+#: functions-date-localizations.php:92
 msgctxt "March abbreviation"
 msgid "Mar"
-msgstr ""
+msgstr "Mar"
 
-#: functions-dates-i18n-voa copy.php:270 functions-dates-i18n-voa.php:182
-#: functions-dates-i18n.php:68
+#: functions-date-localizations.php:93
 msgctxt "April abbreviation"
 msgid "Apr"
-msgstr ""
+msgstr "Apr"
 
-#: functions-dates-i18n-voa copy.php:271 functions-dates-i18n-voa.php:183
-#: functions-dates-i18n.php:69
+#: functions-date-localizations.php:94
 msgctxt "May abbreviation"
 msgid "May"
-msgstr ""
+msgstr "May"
 
-#: functions-dates-i18n-voa copy.php:272 functions-dates-i18n-voa.php:184
-#: functions-dates-i18n.php:70
+#: functions-date-localizations.php:95
 msgctxt "June abbreviation"
 msgid "Jun"
 msgstr "Junlalala"
 
-#: functions-dates-i18n-voa copy.php:273 functions-dates-i18n-voa.php:185
-#: functions-dates-i18n.php:71
+#: functions-date-localizations.php:96
 msgctxt "July abbreviation"
 msgid "Jul"
-msgstr ""
+msgstr "İyl"
 
-#: functions-dates-i18n-voa copy.php:274 functions-dates-i18n-voa.php:186
-#: functions-dates-i18n.php:72
+#: functions-date-localizations.php:97
 msgctxt "August abbreviation"
 msgid "Aug"
-msgstr ""
+msgstr "Avq"
 
-#: functions-dates-i18n-voa copy.php:275 functions-dates-i18n-voa.php:187
-#: functions-dates-i18n.php:73
+#: functions-date-localizations.php:98
 msgctxt "September abbreviation"
 msgid "Sep"
-msgstr ""
+msgstr "Sen"
 
-#: functions-dates-i18n-voa copy.php:276 functions-dates-i18n-voa.php:188
-#: functions-dates-i18n.php:74
+#: functions-date-localizations.php:99
 msgctxt "October abbreviation"
 msgid "Oct"
-msgstr ""
+msgstr "Okt"
 
-#: functions-dates-i18n-voa copy.php:277 functions-dates-i18n-voa.php:189
-#: functions-dates-i18n.php:75
+#: functions-date-localizations.php:100
 msgctxt "November abbreviation"
 msgid "Nov"
-msgstr ""
+msgstr "Noy"
 
-#: functions-dates-i18n-voa copy.php:278 functions-dates-i18n-voa.php:190
-#: functions-dates-i18n.php:76
+#: functions-date-localizations.php:101
 msgctxt "December abbreviation"
 msgid "Dec"
-msgstr ""
+msgstr "Dek"
 
-#: functions-dates-i18n-voa copy.php:281 functions-dates-i18n-voa.php:193
-#: functions-dates-i18n.php:79
-#, fuzzy
-#| msgctxt "noun"
-#| msgid "Name"
+#: functions-date-localizations.php:104
 msgid "am"
-msgstr "Ad"
+msgstr "səhər"
 
-#: functions-dates-i18n-voa copy.php:282 functions-dates-i18n-voa.php:194
-#: functions-dates-i18n.php:80
+#: functions-date-localizations.php:105
 msgid "pm"
-msgstr ""
+msgstr "axşam"
 
-#: functions-dates-i18n-voa copy.php:283 functions-dates-i18n-voa.php:195
-#: functions-dates-i18n.php:81
+#: functions-date-localizations.php:106
 msgid "AM"
-msgstr ""
+msgstr "Səhər"
 
-#: functions-dates-i18n-voa copy.php:284 functions-dates-i18n-voa.php:196
-#: functions-dates-i18n.php:82
+#: functions-date-localizations.php:107
 msgid "PM"
-msgstr ""
-
-#: functions-dates-i18n-voa copy.php:290 functions-dates-i18n-voa.php:202
-#: functions-dates-i18n.php:88
-msgid "number_format_thousands_sep"
-msgstr ""
-
-#: functions-dates-i18n-voa copy.php:303 functions-dates-i18n-voa.php:215
-#: functions-dates-i18n.php:101
-msgid "number_format_decimal_point"
-msgstr ""
-
-#: functions-dates-i18n-voa copy.php:311 functions-dates-i18n-voa.php:223
-#: functions-dates-i18n.php:109
-msgctxt "text direction"
-msgid "ltr"
-msgstr ""
-
-#: functions-dates-i18n-voa copy.php:328 functions-dates-i18n-voa.php:234
-#, php-format
-msgid "The %s directory of the develop repository must be used for RTL."
-msgstr ""
-
-#: functions-dates-i18n-voa copy.php:479 functions-dates-i18n-voa.php:275
-#, fuzzy
-#| msgctxt "article date"
-#| msgid "F j, Y"
-msgid "F j, Y"
-msgstr "F j, Y"
-
-#: functions-dates-i18n-voa copy.php:481 functions-dates-i18n-voa.php:277
-msgid "g:i a"
-msgstr ""
-
-#: functions-dates-i18n-voa copy.php:483 functions-dates-i18n-voa.php:279
-#, fuzzy
-#| msgctxt "article date"
-#| msgid "F j, Y"
-msgid "F j, Y g:i a"
-msgstr "F j, Y"
+msgstr "Axşam"
 
 #: functions-widgets.php:200
 msgid "Top Tags"
@@ -643,3 +521,16 @@ msgstr "Müzakirəyə qoşul"
 #: tag.php:27
 msgid "No results found for this tag."
 msgstr "Bu tag üçün nəticə tapılmadı."
+
+#, fuzzy
+#~| msgctxt "article date"
+#~| msgid "F j, Y"
+#~ msgctxt "article date"
+#~ msgid "l, F j, Y"
+#~ msgstr "F j, Y"
+
+#, fuzzy
+#~| msgctxt "article date"
+#~| msgid "F j, Y"
+#~ msgid "F j, Y g:i a"
+#~ msgstr "F j, Y"
