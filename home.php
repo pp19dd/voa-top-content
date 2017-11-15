@@ -12,18 +12,18 @@ $query_range = voa_layout_day_to_actual_date_range($posts_html["voa_day"]);
 switch ( $query_range['range'] ) {
     case 'monthly':
         //$post_breakup_heading = date( 'F Y', $query_range['start'] ); # January 2017
-        $post_breakup_heading = date_i18n( _x( 'F Y', 'date month range', 'voa-top-content' ), $query_range['start'] );
+        $post_breakup_heading = voa_date_localizer( _x( 'F Y', 'date month range', 'voa-top-content' ), $query_range['start'] );
         break;
         
     case 'weekly':
         //$post_breakup_heading = date( 'F j', $query_range['start'] ). " &ndash; ".date( 'F j', $query_range['end'] ); # January 9 - January 16
-        $post_breakup_heading = date_i18n( _x( 'F j', 'date week range', 'voa-top-content' ), $query_range['start'] ) . " &dash; " . date_i18n( _x( 'F j', 'date week range', 'voa-top-content' ), $query_range['end'] );
+        $post_breakup_heading = voa_date_localizer( _x( 'F j', 'date week range', 'voa-top-content' ), $query_range['start'] ) . " &dash; " . voa_date_localizer( _x( 'F j', 'date week range', 'voa-top-content' ), $query_range['end'] );
         break;
         
     default:
         // daily, like Editor's Picks
         //$post_breakup_heading = date( 'l, F j', $query_range['start'] ); # Monday, January 9
-        $post_breakup_heading = date_i18n( _x( 'l, F j', 'date daily range', 'voa-top-content' ), $query_range['start'] );
+        $post_breakup_heading = voa_date_localizer( _x( 'l, F j', 'date daily range', 'voa-top-content' ), $query_range['start'] );
 }
 ?>
     
