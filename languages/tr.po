@@ -4,29 +4,32 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: VOA Top Content v2.0\n"
-"POT-Creation-Date: 2017-07-20 18:27-0400\n"
-"PO-Revision-Date: \n"
-"Language-Team: VOA Digital <voadigital@voanews.com>\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
+"POT-Creation-Date: 2017-11-13 17:16-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: VOA Digital <voadigital@voanews.com>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;"
+"_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;"
+"__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.0.3\n"
-"Last-Translator: \n"
-"Language: tr\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: author.php:33
+#: author.php:29
 #, php-format
 msgid "Recent posts by %s:"
 msgstr "Yazarın son yazdıkları %s:"
 
-#: author.php:45
+#: author.php:41
 msgid "No posts by this author."
 msgstr "Bu yazara ait yazı yok."
 
@@ -90,20 +93,302 @@ msgctxt "noun"
 msgid "Comment"
 msgstr "Yorum"
 
-#: functions-widgets.php:197
+#: footer.php:4 header.php:39
+msgid "Return to VOA"
+msgstr "Amerika’nın Sesi’ne dönün"
+
+#: functions-date-localizations.php:35 functions-date-localizations.php:44
+#: functions-date-localizations.php:53
+msgid "Sunday"
+msgstr "Pazar"
+
+#: functions-date-localizations.php:36 functions-date-localizations.php:45
+#: functions-date-localizations.php:54
+msgid "Monday"
+msgstr "Pazartesi"
+
+#: functions-date-localizations.php:37 functions-date-localizations.php:46
+#: functions-date-localizations.php:55
+msgid "Tuesday"
+msgstr "Salı"
+
+#: functions-date-localizations.php:38 functions-date-localizations.php:47
+#: functions-date-localizations.php:56
+msgid "Wednesday"
+msgstr "Çarşamba"
+
+#: functions-date-localizations.php:39 functions-date-localizations.php:48
+#: functions-date-localizations.php:57
+msgid "Thursday"
+msgstr "Perşembe"
+
+#: functions-date-localizations.php:40 functions-date-localizations.php:49
+#: functions-date-localizations.php:58
+msgid "Friday"
+msgstr "Cuma"
+
+#: functions-date-localizations.php:41 functions-date-localizations.php:50
+#: functions-date-localizations.php:59
+msgid "Saturday"
+msgstr "Cumartesi"
+
+#: functions-date-localizations.php:44
+msgctxt "Sunday initial"
+msgid "S"
+msgstr "P"
+
+#: functions-date-localizations.php:45
+msgctxt "Monday initial"
+msgid "M"
+msgstr "P"
+
+#: functions-date-localizations.php:46
+msgctxt "Tuesday initial"
+msgid "T"
+msgstr "S"
+
+#: functions-date-localizations.php:47
+msgctxt "Wednesday initial"
+msgid "W"
+msgstr "Ç"
+
+#: functions-date-localizations.php:48
+msgctxt "Thursday initial"
+msgid "T"
+msgstr "P"
+
+#: functions-date-localizations.php:49
+msgctxt "Friday initial"
+msgid "F"
+msgstr "C"
+
+#: functions-date-localizations.php:50
+msgctxt "Saturday initial"
+msgid "S"
+msgstr "C"
+
+#: functions-date-localizations.php:53
+msgid "Sun"
+msgstr "Paz"
+
+#: functions-date-localizations.php:54
+msgid "Mon"
+msgstr "Pts"
+
+#: functions-date-localizations.php:55
+msgid "Tue"
+msgstr "Sal"
+
+#: functions-date-localizations.php:56
+msgid "Wed"
+msgstr "Çar"
+
+#: functions-date-localizations.php:57
+msgid "Thu"
+msgstr "Per"
+
+#: functions-date-localizations.php:58
+msgid "Fri"
+msgstr "Cum"
+
+#: functions-date-localizations.php:59
+msgid "Sat"
+msgstr "Cts"
+
+#: functions-date-localizations.php:62 functions-date-localizations.php:90
+msgid "January"
+msgstr "Ocak"
+
+#: functions-date-localizations.php:63 functions-date-localizations.php:91
+msgid "February"
+msgstr "Şubat"
+
+#: functions-date-localizations.php:64 functions-date-localizations.php:92
+msgid "March"
+msgstr "Mart"
+
+#: functions-date-localizations.php:65 functions-date-localizations.php:93
+msgid "April"
+msgstr "Nisan"
+
+#: functions-date-localizations.php:66 functions-date-localizations.php:94
+msgid "May"
+msgstr "Mayıs"
+
+#: functions-date-localizations.php:67 functions-date-localizations.php:95
+msgid "June"
+msgstr "Haziran"
+
+#: functions-date-localizations.php:68 functions-date-localizations.php:96
+msgid "July"
+msgstr "Temmuz"
+
+#: functions-date-localizations.php:69 functions-date-localizations.php:97
+msgid "August"
+msgstr "Ağustos"
+
+#: functions-date-localizations.php:70 functions-date-localizations.php:98
+msgid "September"
+msgstr "Eylül"
+
+#: functions-date-localizations.php:71 functions-date-localizations.php:99
+msgid "October"
+msgstr "Ekim"
+
+#: functions-date-localizations.php:72 functions-date-localizations.php:100
+msgid "November"
+msgstr "Kasım"
+
+#: functions-date-localizations.php:73 functions-date-localizations.php:101
+msgid "December"
+msgstr "Aralık"
+
+#: functions-date-localizations.php:76
+msgctxt "genitive"
+msgid "January"
+msgstr "Ocak"
+
+#: functions-date-localizations.php:77
+msgctxt "genitive"
+msgid "February"
+msgstr "Şubat"
+
+#: functions-date-localizations.php:78
+msgctxt "genitive"
+msgid "March"
+msgstr "Mart"
+
+#: functions-date-localizations.php:79
+msgctxt "genitive"
+msgid "April"
+msgstr "Nisan"
+
+#: functions-date-localizations.php:80
+msgctxt "genitive"
+msgid "May"
+msgstr "Mayıs"
+
+#: functions-date-localizations.php:81
+msgctxt "genitive"
+msgid "June"
+msgstr "Haziran"
+
+#: functions-date-localizations.php:82
+msgctxt "genitive"
+msgid "July"
+msgstr "Temmuz"
+
+#: functions-date-localizations.php:83
+msgctxt "genitive"
+msgid "August"
+msgstr "Ağustos"
+
+#: functions-date-localizations.php:84
+msgctxt "genitive"
+msgid "September"
+msgstr "Eylül"
+
+#: functions-date-localizations.php:85
+msgctxt "genitive"
+msgid "October"
+msgstr "Ekim"
+
+#: functions-date-localizations.php:86
+msgctxt "genitive"
+msgid "November"
+msgstr "Kasım"
+
+#: functions-date-localizations.php:87
+msgctxt "genitive"
+msgid "December"
+msgstr "Aralık"
+
+#: functions-date-localizations.php:90
+msgctxt "January abbreviation"
+msgid "Jan"
+msgstr "Oca"
+
+#: functions-date-localizations.php:91
+msgctxt "February abbreviation"
+msgid "Feb"
+msgstr "Şub"
+
+#: functions-date-localizations.php:92
+msgctxt "March abbreviation"
+msgid "Mar"
+msgstr "Mar"
+
+#: functions-date-localizations.php:93
+msgctxt "April abbreviation"
+msgid "Apr"
+msgstr "Nis"
+
+#: functions-date-localizations.php:94
+msgctxt "May abbreviation"
+msgid "May"
+msgstr "May"
+
+#: functions-date-localizations.php:95
+msgctxt "June abbreviation"
+msgid "Jun"
+msgstr "Haz"
+
+#: functions-date-localizations.php:96
+msgctxt "July abbreviation"
+msgid "Jul"
+msgstr "Tem"
+
+#: functions-date-localizations.php:97
+msgctxt "August abbreviation"
+msgid "Aug"
+msgstr "Ağu"
+
+#: functions-date-localizations.php:98
+msgctxt "September abbreviation"
+msgid "Sep"
+msgstr "Eyl"
+
+#: functions-date-localizations.php:99
+msgctxt "October abbreviation"
+msgid "Oct"
+msgstr "Eki"
+
+#: functions-date-localizations.php:100
+msgctxt "November abbreviation"
+msgid "Nov"
+msgstr "Kas"
+
+#: functions-date-localizations.php:101
+msgctxt "December abbreviation"
+msgid "Dec"
+msgstr "Ara"
+
+#: functions-date-localizations.php:104
+msgid "am"
+msgstr "am"
+
+#: functions-date-localizations.php:105
+msgid "pm"
+msgstr "pm"
+
+#: functions-date-localizations.php:106
+msgid "AM"
+msgstr "AM"
+
+#: functions-date-localizations.php:107
+msgid "PM"
+msgstr "PM"
+
+#: functions-widgets.php:200
 msgid "Top Tags"
 msgstr "En çok tıklanan etiketler"
 
-#: functions-widgets.php:209
+#: functions-widgets.php:212
 #, php-format
 msgid "%s Post"
 msgid_plural "%s Posts"
 msgstr[0] "%s Yazı"
 msgstr[1] "%s Yazılar"
-
-#: header.php:39
-msgid "Return to VOA"
-msgstr "Amerika’nın Sesi’ne dönün"
 
 #: header.php:50
 msgctxt "button"
