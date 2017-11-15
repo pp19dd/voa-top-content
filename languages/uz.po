@@ -99,293 +99,284 @@ msgstr "“Amerika Ovozi”ga qaytish"
 #: functions-date-localizations.php:35 functions-date-localizations.php:44
 #: functions-date-localizations.php:53
 msgid "Sunday"
-msgstr ""
+msgstr "Yakshanba"
 
 #: functions-date-localizations.php:36 functions-date-localizations.php:45
 #: functions-date-localizations.php:54
 msgid "Monday"
-msgstr ""
+msgstr "Dushanba"
 
 #: functions-date-localizations.php:37 functions-date-localizations.php:46
 #: functions-date-localizations.php:55
 msgid "Tuesday"
-msgstr ""
+msgstr "Seshanba"
 
 #: functions-date-localizations.php:38 functions-date-localizations.php:47
 #: functions-date-localizations.php:56
 msgid "Wednesday"
-msgstr ""
+msgstr "Chorshanba"
 
 #: functions-date-localizations.php:39 functions-date-localizations.php:48
 #: functions-date-localizations.php:57
 msgid "Thursday"
-msgstr ""
+msgstr "Payshanba"
 
 #: functions-date-localizations.php:40 functions-date-localizations.php:49
 #: functions-date-localizations.php:58
 msgid "Friday"
-msgstr ""
+msgstr "Juma"
 
 #: functions-date-localizations.php:41 functions-date-localizations.php:50
 #: functions-date-localizations.php:59
 msgid "Saturday"
-msgstr ""
+msgstr "Shanba"
 
 #: functions-date-localizations.php:44
 msgctxt "Sunday initial"
 msgid "S"
-msgstr ""
+msgstr "Ya"
 
 #: functions-date-localizations.php:45
 msgctxt "Monday initial"
 msgid "M"
-msgstr ""
+msgstr "Du"
 
 #: functions-date-localizations.php:46
 msgctxt "Tuesday initial"
 msgid "T"
-msgstr ""
+msgstr "Se"
 
 #: functions-date-localizations.php:47
 msgctxt "Wednesday initial"
 msgid "W"
-msgstr ""
+msgstr "Ch"
 
 #: functions-date-localizations.php:48
 msgctxt "Thursday initial"
 msgid "T"
-msgstr ""
+msgstr "Pa"
 
 #: functions-date-localizations.php:49
 msgctxt "Friday initial"
 msgid "F"
-msgstr ""
+msgstr "Ju"
 
 #: functions-date-localizations.php:50
 msgctxt "Saturday initial"
 msgid "S"
-msgstr ""
+msgstr "Sh"
 
 #: functions-date-localizations.php:53
 msgid "Sun"
-msgstr ""
+msgstr "Yak"
 
 #: functions-date-localizations.php:54
 msgid "Mon"
-msgstr ""
+msgstr "Dush"
 
 #: functions-date-localizations.php:55
 msgid "Tue"
-msgstr ""
+msgstr "Sesh"
 
 #: functions-date-localizations.php:56
 msgid "Wed"
-msgstr ""
+msgstr "Chor"
 
 #: functions-date-localizations.php:57
 msgid "Thu"
-msgstr ""
+msgstr "Pay"
 
 #: functions-date-localizations.php:58
 msgid "Fri"
-msgstr ""
+msgstr "Jum"
 
 #: functions-date-localizations.php:59
 msgid "Sat"
-msgstr ""
+msgstr "Shan"
 
 #: functions-date-localizations.php:62 functions-date-localizations.php:90
 msgid "January"
-msgstr ""
+msgstr "Yanvar"
 
 #: functions-date-localizations.php:63 functions-date-localizations.php:91
 msgid "February"
-msgstr ""
+msgstr "Fevral"
 
 #: functions-date-localizations.php:64 functions-date-localizations.php:92
-#, fuzzy
-#| msgctxt "button"
-#| msgid "Search"
 msgid "March"
-msgstr "Qidirish"
+msgstr "Mart"
 
 #: functions-date-localizations.php:65 functions-date-localizations.php:93
 msgid "April"
-msgstr ""
+msgstr "Aprel"
 
 #: functions-date-localizations.php:66 functions-date-localizations.php:94
 msgid "May"
-msgstr ""
+msgstr "May"
 
 #: functions-date-localizations.php:67 functions-date-localizations.php:95
 msgid "June"
-msgstr ""
+msgstr "Iyun"
 
 #: functions-date-localizations.php:68 functions-date-localizations.php:96
 msgid "July"
-msgstr ""
+msgstr "Iyul"
 
 #: functions-date-localizations.php:69 functions-date-localizations.php:97
 msgid "August"
-msgstr ""
+msgstr "Avgust"
 
 #: functions-date-localizations.php:70 functions-date-localizations.php:98
 msgid "September"
-msgstr ""
+msgstr "Sentabr"
 
 #: functions-date-localizations.php:71 functions-date-localizations.php:99
 msgid "October"
-msgstr ""
+msgstr "Oktabr"
 
 #: functions-date-localizations.php:72 functions-date-localizations.php:100
 msgid "November"
-msgstr ""
+msgstr "Noyabr"
 
 #: functions-date-localizations.php:73 functions-date-localizations.php:101
 msgid "December"
-msgstr ""
+msgstr "Dekabr"
 
 #: functions-date-localizations.php:76
 msgctxt "genitive"
 msgid "January"
-msgstr ""
+msgstr "Yanvar"
 
 #: functions-date-localizations.php:77
 msgctxt "genitive"
 msgid "February"
-msgstr ""
+msgstr "Fevral"
 
 #: functions-date-localizations.php:78
-#, fuzzy
-#| msgctxt "button"
-#| msgid "Search"
 msgctxt "genitive"
 msgid "March"
-msgstr "Qidirish"
+msgstr "Mart"
 
 #: functions-date-localizations.php:79
 msgctxt "genitive"
 msgid "April"
-msgstr ""
+msgstr "Aprel"
 
 #: functions-date-localizations.php:80
 msgctxt "genitive"
 msgid "May"
-msgstr ""
+msgstr "May"
 
 #: functions-date-localizations.php:81
 msgctxt "genitive"
 msgid "June"
-msgstr ""
+msgstr "Iyun"
 
 #: functions-date-localizations.php:82
 msgctxt "genitive"
 msgid "July"
-msgstr ""
+msgstr "Iyul"
 
 #: functions-date-localizations.php:83
 msgctxt "genitive"
 msgid "August"
-msgstr ""
+msgstr "Avgust"
 
 #: functions-date-localizations.php:84
 msgctxt "genitive"
 msgid "September"
-msgstr ""
+msgstr "Sentyabr"
 
 #: functions-date-localizations.php:85
 msgctxt "genitive"
 msgid "October"
-msgstr ""
+msgstr "Oktyabr"
 
 #: functions-date-localizations.php:86
 msgctxt "genitive"
 msgid "November"
-msgstr ""
+msgstr "Noyabr"
 
 #: functions-date-localizations.php:87
 msgctxt "genitive"
 msgid "December"
-msgstr ""
+msgstr "Dekabr"
 
 #: functions-date-localizations.php:90
 msgctxt "January abbreviation"
 msgid "Jan"
-msgstr ""
+msgstr "Yan"
 
 #: functions-date-localizations.php:91
 msgctxt "February abbreviation"
 msgid "Feb"
-msgstr ""
+msgstr "Fev"
 
 #: functions-date-localizations.php:92
 msgctxt "March abbreviation"
 msgid "Mar"
-msgstr ""
+msgstr "Mar"
 
 #: functions-date-localizations.php:93
 msgctxt "April abbreviation"
 msgid "Apr"
-msgstr ""
+msgstr "Apr"
 
 #: functions-date-localizations.php:94
 msgctxt "May abbreviation"
 msgid "May"
-msgstr ""
+msgstr "May"
 
 #: functions-date-localizations.php:95
 msgctxt "June abbreviation"
 msgid "Jun"
-msgstr ""
+msgstr "Iyun"
 
 #: functions-date-localizations.php:96
 msgctxt "July abbreviation"
 msgid "Jul"
-msgstr ""
+msgstr "Iyul"
 
 #: functions-date-localizations.php:97
 msgctxt "August abbreviation"
 msgid "Aug"
-msgstr ""
+msgstr "Avg"
 
 #: functions-date-localizations.php:98
 msgctxt "September abbreviation"
 msgid "Sep"
-msgstr ""
+msgstr "Sen"
 
 #: functions-date-localizations.php:99
 msgctxt "October abbreviation"
 msgid "Oct"
-msgstr ""
+msgstr "Okt"
 
 #: functions-date-localizations.php:100
 msgctxt "November abbreviation"
 msgid "Nov"
-msgstr ""
+msgstr "Noy"
 
 #: functions-date-localizations.php:101
 msgctxt "December abbreviation"
 msgid "Dec"
-msgstr ""
+msgstr "Dek"
 
 #: functions-date-localizations.php:104
-#, fuzzy
-#| msgctxt "noun"
-#| msgid "Name"
 msgid "am"
-msgstr "Ism"
+msgstr "am"
 
 #: functions-date-localizations.php:105
 msgid "pm"
-msgstr ""
+msgstr "pm"
 
 #: functions-date-localizations.php:106
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #: functions-date-localizations.php:107
 msgid "PM"
-msgstr ""
+msgstr "PM"
 
 #: functions-widgets.php:200
 msgid "Top Tags"
