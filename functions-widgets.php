@@ -448,6 +448,7 @@ class VOA_Categories extends WP_Widget {
 				
 				<ul class="tags">
 				<?php 
+				$terms = get_terms( array( 'taxonomy' => 'category', 'orderby' => 'name', 'order' => 'ASC', 'number' => 10 ) );
 				
 				foreach( $terms as $term ) {
 				?>
