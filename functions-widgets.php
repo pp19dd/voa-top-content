@@ -448,7 +448,7 @@ class VOA_Categories extends WP_Widget {
 				
 				<ul class="tags">
 				<?php 
-				$terms = get_terms( array( 'taxonomy' => 'category', 'orderby' => 'name', 'order' => 'ASC', 'number' => 10 ) );
+				$terms = get_terms( array( 'taxonomy' => 'category', 'orderby' => $instance['orderby'], 'order' => $instance['order'], 'number' => $instance['number'] ) );
 				
 				foreach( $terms as $term ) {
 				?>
@@ -477,6 +477,36 @@ class VOA_Categories extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		// outputs the options form on admin
+		$defaults = array( 
+			'orderby' => 'name',
+			'order'   => 'ASC',
+			'number'  => 10
+		);
+		
+		foreach ( $instance as $k => $v ) {
+			if ( trim($v) == '' ) {
+				$instance[$k] = $defaults[$k];
+			}
+		}
+		
+		?>
+		
+		<p>
+			<label for="<?php echo $this->get_field_id( 'orderby' ); ?>">Sort by:</label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>" value="<?php echo esc_attr( $instance['orderby'] ); ?>">
+		</p>
+		
+		<p>
+			<label for="<?php echo $this->get_field_id( 'order' ); ?>">Sort order (ASC or DESC):</label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>" value="<?php echo esc_attr( $instance['order'] ); ?>">
+		</p>
+		
+		<p>
+			<label for="<?php echo $this->get_field_id( 'number' ); ?>">Maximum displayed (use 0 for all):</label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" value="<?php echo esc_attr( $instance['number'] ); ?>">
+		</p>
+		
+		<?php
 	}
 
 	/**
@@ -487,5 +517,10 @@ class VOA_Categories extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 		// processes widget options to be saved
+		$instance = $old_instance;
+		$instance['orderby'] = strip_tags( $new_instance['orderby'] );
+		$instance['order']   = strip_tags( $new_instance['order'] );
+		$instance['number']  = strip_tags( $new_instance['number'] );
+		return $instance;
 	}
 }
