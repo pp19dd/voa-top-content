@@ -261,6 +261,7 @@ article > content .comments {
   margin-bottom: 1rem; }
 
 article > content .article-author,
+article > content .pubdate-no-author,
 article > content .article-share,
 article > content .article-body,
 article > content .article-categories,

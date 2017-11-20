@@ -86,6 +86,15 @@ if ( !function_exists( 'voa_the_content') || !is_single() ) {
 					<div class="author-social"></div>
 
 				</section>
+				
+				<?php } else { ?>
+				
+				<section class="content-part pubdate-no-author">
+					<div class="author-pubdate">
+						<?php get_template_part( 'partials/article-date' ); ?>
+					</div>
+				</section>
+				
 				<?php } // end show_author ?>
 
 
