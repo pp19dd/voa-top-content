@@ -56,7 +56,7 @@ function voa_set_locale() {
         case 'uzbek':
             return 'uz';
         default:
-            return 'en_US';
+            return 'en';
     }
 }
 add_filter( 'locale', 'voa_set_locale' );
