@@ -24,7 +24,7 @@ body {
 	background-color: $bodybg; 
 	color: $vdkgray;
 	font-family: 'Lato', sans-serif; 
-	font-weight: 400; 
+	font-weight: 400;
 }
 
 img {
@@ -1430,6 +1430,7 @@ p.excerpt-meta .excerpt-author {
 
 
 
+.voa-archive-widget .vaw-list-container,
 .top-tags-widget .top-tags,
 .widget_archive ul,
 .widget_categories ul {
@@ -1438,6 +1439,7 @@ p.excerpt-meta .excerpt-author {
 	margin: .8em;
 }
 
+.voa-archive-widget .vaw-list,
 .top-tags-widget .tags,
 .widget_archive > ul,
 .widget_categories > ul {
@@ -1452,6 +1454,7 @@ p.excerpt-meta .excerpt-author {
 	margin: .8em;
 }
 
+.voa-archive-widget .vaw-list li,
 .top-tags-widget .tags li,
 .widget_archive > ul > li,
 .widget_categories > ul > li {
@@ -1461,6 +1464,7 @@ p.excerpt-meta .excerpt-author {
 	border-width: 1px;
 	color: #ccc;
 	font-size: 1em;
+	height: 2em;
 	margin-bottom: .5em;
 	padding: 0;
 }
@@ -1468,6 +1472,7 @@ p.excerpt-meta .excerpt-author {
 .widget_archive > ul > li,
 .widget_categories > ul > li { color: $ultgray; }
 
+.voa-archive-widget .vaw-list li .vaw-text,
 .top-tags-widget .tag,
 .widget_archive > ul > li > a,
 .widget_categories > ul > li > a {
@@ -1480,8 +1485,14 @@ p.excerpt-meta .excerpt-author {
 	position: relative;
 	text-decoration: none;
 	transition: all 0.2s;
+	
+	max-width: 60%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
+.voa-archive-widget .vaw-list li .vaw-text::after,
 .top-tags-widget .tag::after,
 .widget_archive > ul > li > a::after,
 .widget_categories > ul > li > a::after {
@@ -1496,6 +1507,7 @@ p.excerpt-meta .excerpt-author {
 	transition: all 0.2s;
 }
 
+.voa-archive-widget .vaw-list li .vaw-text:hover,
 .top-tags-widget .tag:hover,
 .widget_archive > ul > li > a:hover,
 .widget_categories > ul > li > a:hover {
@@ -1505,6 +1517,7 @@ p.excerpt-meta .excerpt-author {
 	transition: all 0.2s;
 }
 
+.voa-archive-widget .vaw-list li .vaw-text:hover::after,
 .top-tags-widget .tag:hover::after,
 .widget_archive > ul > li > a:hover::after,
 .widget_categories > ul > li > a:hover::after {
@@ -1512,6 +1525,7 @@ p.excerpt-meta .excerpt-author {
 	transition: all 0.2s;
 }
 
+.voa-archive-widget .vaw-list li .vaw-count,
 .top-tags-widget .tag-count,
 .widget_archive > ul > li > *:not(a),
 .widget_categories > ul > li > *:not(a) {

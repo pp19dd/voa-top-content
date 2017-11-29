@@ -5,6 +5,7 @@ add_action( 'widgets_init', function(){
 	register_widget( 'VOA_Top_Tags' );
 	register_widget( 'VOA_Recent_Posts' );
 	register_widget( 'VOA_Categories' );
+	//register_widget( 'VOA_Archives_Monthly' );
 });
 
 class VOA_Newsletter_Teaser extends WP_Widget {
@@ -124,91 +125,19 @@ class VOA_Top_Tags extends WP_Widget {
 		// outputs the content of the widget
 		?>
 		
-		<style type="text/css">
-			
-			.top-tags-widget .top-tags {
-				font-size: 1rem;
-				line-height: 2em;
-				margin: .8em;
-			}
-
-			.top-tags-widget .tags {
-				list-style: none;
-				margin: 0;
-				overflow: hidden;
-				padding: 0;
-			}
-
-			.top-tags-widget .tags li {
-				background-color: #e6e6e6;
-				border-color: #e6e6e6;
-				border-style: solid;
-				border-width: 1px;
-				color: #ccc;
-				margin-bottom: .5em;
-			}
-
-			.top-tags-widget .tag {
-				background: #fff;
-				color: #1330bf;
-				display: inline-block;
-				height: 2em;
-				line-height: 2em;
-				padding: 0 1.5em 0 .66em;
-				position: relative;
-				text-decoration: none;
-				transition: all 0.2s;
-			}
-
-			.top-tags-widget .tag::after {
-				background: #e6e6e6;
-				border-bottom: 1em solid transparent;
-				border-left: 1em solid #fff;
-				border-top: 1em solid transparent;
-				content: '';
-				position: absolute;
-				right: 0;
-				top: 0;
-				transition: all 0.2s;
-			}
-
-			.top-tags-widget .tag:hover {
-				background-color: #d41010;
-				color: #fff;
-				transition: all 0.2s;
-			}
-
-			.top-tags-widget .tag:hover::after {
-				border-left-color: #d41010;
-				transition: all 0.2s;
-			}
-
-			.top-tags-widget .tag-count {
-				/* border-right: .66rem solid #fff; */
-				color: #999;
-				float: right;
-				font-size: .75em;
-				font-weight: 300;
-				padding-right: .66rem;
-				text-decoration: none;
-				text-transform: uppercase;
-			}
-			
-		</style>
-		
-		<div class="top-tags-widget">
+		<div class="voa-archive-widget">
 						
-			<h2 class="sidebar-title"><?php _e( 'Top Tags', 'voa-top-content' ); ?></h2>
+			<h2 class="voa-archive-widget-title sidebar-title"><?php _e( 'Top Tags', 'voa-top-content' ); ?></h2>
 		
-			<div class="top-tags">
+			<div class="vaw-list-container">
 				
-				<ul class="tags">
+				<ul class="vaw-list">
 				<?php 
 				$tags = get_tags( array( 'orderby' => 'count', 'order' => 'DESC', 'number' => 10 ) );
 				foreach( $tags as $tag ) {
 				?>
 				
-				<li><a href="<?php echo get_tag_link( $tag->term_id ); ?>"><span class="tag"><?php echo $tag->name; ?></span><span class="tag-count"><?php 
+				<li><a href="<?php echo get_tag_link( $tag->term_id ); ?>"><span class="vaw-text"><?php echo $tag->name; ?></span><span class="vaw-count"><?php 
 					printf(
 						_n( '%s Post', '%s Posts', $tag->count, 'voa-top-content' ), 
 						number_format_i18n( $tag->count )
@@ -345,6 +274,8 @@ class VOA_Recent_Posts extends WP_Widget {
 	}
 }
 
+
+
 class VOA_Categories extends WP_Widget {
 
 	/**
@@ -368,92 +299,20 @@ class VOA_Categories extends WP_Widget {
 		// outputs the content of the widget
 		?>
 		
-		<style type="text/css">
-			
-			.top-tags-widget .top-tags {
-				font-size: 1rem;
-				line-height: 2em;
-				margin: .8em;
-			}
-
-			.top-tags-widget .tags {
-				list-style: none;
-				margin: 0;
-				overflow: hidden;
-				padding: 0;
-			}
-
-			.top-tags-widget .tags li {
-				background-color: #e6e6e6;
-				border-color: #e6e6e6;
-				border-style: solid;
-				border-width: 1px;
-				color: #ccc;
-				margin-bottom: .5em;
-			}
-
-			.top-tags-widget .tag {
-				background: #fff;
-				color: #1330bf;
-				display: inline-block;
-				height: 2em;
-				line-height: 2em;
-				padding: 0 1.5em 0 .66em;
-				position: relative;
-				text-decoration: none;
-				transition: all 0.2s;
-			}
-
-			.top-tags-widget .tag::after {
-				background: #e6e6e6;
-				border-bottom: 1em solid transparent;
-				border-left: 1em solid #fff;
-				border-top: 1em solid transparent;
-				content: '';
-				position: absolute;
-				right: 0;
-				top: 0;
-				transition: all 0.2s;
-			}
-
-			.top-tags-widget .tag:hover {
-				background-color: #d41010;
-				color: #fff;
-				transition: all 0.2s;
-			}
-
-			.top-tags-widget .tag:hover::after {
-				border-left-color: #d41010;
-				transition: all 0.2s;
-			}
-
-			.top-tags-widget .tag-count {
-				/* border-right: .66rem solid #fff; */
-				color: #999;
-				float: right;
-				font-size: .75em;
-				font-weight: 300;
-				padding-right: .66rem;
-				text-decoration: none;
-				text-transform: uppercase;
-			}
-			
-		</style>
-		
-		<div class="top-tags-widget">
+		<div class="voa-archive-widget">
 						
-			<h2 class="sidebar-title"><?php _e( 'Categories', 'voa-top-content' ); ?></h2>
+			<h2 class="voa-archive-widget-title sidebar-title"><?php _e( 'Categories', 'voa-top-content' ); ?></h2>
 		
-			<div class="top-tags">
+			<div class="vaw-list-container">
 				
-				<ul class="tags">
+				<ul class="vaw-list">
 				<?php 
 				$terms = get_terms( array( 'taxonomy' => 'category', 'orderby' => $instance['orderby'], 'order' => $instance['order'], 'number' => $instance['number'] ) );
 				
 				foreach( $terms as $term ) {
 				?>
 				
-				<li><a href="<?php echo get_term_link( $term->term_id ); ?>"><span class="tag"><?php echo $term->name; ?></span><span class="tag-count"><?php 
+				<li><a href="<?php echo get_term_link( $term->term_id ); ?>"><span class="vaw-text"><?php echo $term->name; ?></span><span class="vaw-count"><?php 
 					printf(
 						_n( '%s Post', '%s Posts', $term->count, 'voa-top-content' ), 
 						number_format_i18n( $term->count )
