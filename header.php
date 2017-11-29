@@ -21,7 +21,7 @@
 	<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/img/ico-144x144.png" />
 
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/style.css?rand=<?php echo time(); ?>" />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700" />
+	<?php locate_template( 'languages/'.get_bloginfo('language').'.php', true, true ); ?>
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font-awesome.min.css" />
 	
 	<!-- documentation at https://polyfill.io/v2/docs/ -->
