@@ -268,6 +268,9 @@ article > content .article-categories,
 article > content .article-tags {
   padding-bottom: 2rem; }
 
+article > content .pubdate-no-author {
+  padding-top: 2rem; }
+
 article > content .article-body {
   padding-top: 1px; }
 
@@ -1978,7 +1981,7 @@ p.no-comments {
 
   .single-basic-intro {
     padding-top: 2rem;
-    padding-bottom: 1rem; }
+    padding-bottom: 0; }
 
   .archive article > content {
     padding-top: 2rem; }

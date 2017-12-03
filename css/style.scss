@@ -194,6 +194,8 @@ article > content .article-tags {
 	padding-bottom: 2rem;
 }
 
+article > content .pubdate-no-author { padding-top: 2rem; }
+
 // fixes a layout quirk when posts start with an extra <p></p> before text/images
 article > content .article-body { padding-top: 1px; }
 
@@ -1569,7 +1571,7 @@ p.excerpt-meta .excerpt-author {
 	
 	.site-title { margin: 2rem auto; }
 	
-	.single-basic-intro { padding-top: 2rem; padding-bottom: 1rem; }
+	.single-basic-intro { padding-top: 2rem; padding-bottom: 0; }
 	.archive article > content { padding-top: 2rem; }
 	
 	body.archive .single-basic-intro {
