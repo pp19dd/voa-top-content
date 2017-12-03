@@ -2,7 +2,8 @@
 $thumbnail_id = get_post_thumbnail_id( $post->ID );
 
 $subhed       = trim( get_post_meta( $post->ID, "_voa_post_subhed", true ));
-$caption      = trim(get_post($thumbnail_id)->post_content);
+//$caption      = trim( get_post( $thumbnail_id )->post_content );
+$caption      = trim( get_the_post_thumbnail_caption( $post->ID ));
 $hero_style   = trim( get_post_meta( $post->ID, "_voa_hero_text_style", true ));
 ?>
 

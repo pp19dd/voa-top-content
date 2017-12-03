@@ -1,5 +1,6 @@
 <?php
-$caption = trim(get_post(get_post_thumbnail_id())->post_content);
+//$caption = trim( get_post( get_post_thumbnail_id())->post_content );
+$caption = trim( get_the_post_thumbnail_caption( $post->ID ));
 $subhed  = trim( get_post_meta( $post->ID, "_voa_post_subhed", true ));
 ?>
 
