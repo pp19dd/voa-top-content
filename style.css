@@ -134,10 +134,12 @@ a:hover, a:active {
   text-decoration: underline; }
 
 ::-moz-selection {
-  background-color: #7fdbff; }
+  background-color: #d41010;
+  color: #ffffff; }
 
 ::selection {
-  background-color: #7fdbff; }
+  background-color: #d41010;
+  color: #ffffff; }
 
 header, rows, footer {
   font-size: 18px; }
