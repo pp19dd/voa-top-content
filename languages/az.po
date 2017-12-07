@@ -21,7 +21,7 @@ msgstr ""
 "_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,"
 "_nc:4c,1,2\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: author.php:29
@@ -418,7 +418,7 @@ msgstr "l, F j"
 #: home.php:58
 msgctxt "button"
 msgid "show more stories"
-msgstr "əlavə hekayələr göstər"
+msgstr "əlavə məqalələr göstər"
 
 #: partials/article-date.php:2
 msgctxt "article date"
