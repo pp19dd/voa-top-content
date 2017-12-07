@@ -154,9 +154,11 @@ function voa_head_meta_share_images() {
 		$m_share_img = voa_wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'fb-share-image' );
 		$twitter_card_type = 'summary_large_image';
 		$img_size_exists = $m_share_img[3];
-
-	} else {
+	}
+	
+	if ( !$img_size_exists ) {
 		// use default voanews.com share image
+		// prevents empty meta tags; sometimes has_post_thumbnail() returns false positives
 		$m_share_img = array( get_template_directory_uri().'/img/top_logo_news.png', 600, 600 );
 		$twitter_card_type = 'summary';
 		$img_size_exists = (bool) true;
@@ -168,11 +170,9 @@ function voa_head_meta_share_images() {
 	<meta name="twitter:image"       content="<?php echo esc_attr( $m_share_img[0] ); ?>" />
 	<meta property="og:image"        content="<?php echo esc_attr( $m_share_img[0] ); ?>" />
 
-	<?php if ( $img_size_exists ) { ?>
 	<meta property="og:image:width"  content="<?php echo esc_attr( $m_share_img[1] ); ?>" />
 	<meta property="og:image:height" content="<?php echo esc_attr( $m_share_img[2] ); ?>" />
 	<?php
-	}
 }
 
 function voa_head_meta_share_title() {
