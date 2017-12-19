@@ -11,7 +11,7 @@ $fb_app_id = '490219017808002';
 
 $linkedin_source = urlencode( 'VOA News' );
 
-$twitter_account = esc_attr_x( '@VOANews', 'Service Twitter Username', 'voa-top-content' );;
+$twitter_account = esc_attr_x( 'VOANews', 'Service Twitter Username', 'voa-top-content' );
 
 /* tweet text length must be 103 chars or LESS after shortened url and via @VOANews */
 $twitter_text = urlencode( text_shortenerer( get_the_title(), 100, '...' ) );

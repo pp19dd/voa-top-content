@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VOA Top Content v2.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2017-12-19 11:18-0500\n"
+"POT-Creation-Date: 2017-12-19 11:39-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: VOA Digital <voadigital@voanews.com>\n"
@@ -399,8 +399,8 @@ msgstr "VOA"
 
 #: header.php:11 header.php:12 partials/share-buttons.php:14
 msgctxt "Service Twitter Username"
-msgid "@VOANews"
-msgstr "@AmerikaOvozi"
+msgid "VOANews"
+msgstr "AmerikaOvozi"
 
 #: header.php:39
 msgctxt "VOA Homepage URL"

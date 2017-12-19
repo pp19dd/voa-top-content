@@ -8,8 +8,8 @@
 	<meta property="og:site_name"    content="<?php echo esc_attr_x( 'VOA', 'Facebook og:sitename', 'voa-top-content' ); ?>" />
 	<meta property="og:type"         content="article" />
 	
-	<meta name="twitter:site"        value="<?php echo esc_attr_x( '@VOANews', 'Service Twitter Username', 'voa-top-content' ); ?>" />
-	<meta name="twitter:creator"     content="<?php echo esc_attr_x( '@VOANews', 'Service Twitter Username', 'voa-top-content' ); ?>" />
+	<meta name="twitter:site"        value="@<?php echo esc_attr_x( 'VOANews', 'Service Twitter Username', 'voa-top-content' ); ?>" />
+	<meta name="twitter:creator"     content="@<?php echo esc_attr_x( 'VOANews', 'Service Twitter Username', 'voa-top-content' ); ?>" />
 	
 	<link type="image/x-icon" rel="icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" />
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" />

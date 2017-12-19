@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: VOA Top "
 "Content v2.0\n"
 "POT-Creation-Date: 2017-12-19 "
-"11:13-0500\n"
+"11:38-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name "
 "<you@example.com>\n"
@@ -441,7 +441,7 @@ msgstr ""
 #: header.php:11 header.php:12
 #: partials/share-buttons.php:14
 msgctxt "Service Twitter Username"
-msgid "@VOANews"
+msgid "VOANews"
 msgstr ""
 
 #: header.php:39
