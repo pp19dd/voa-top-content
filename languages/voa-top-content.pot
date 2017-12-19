@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VOA Top "
 "Content v2.0\n"
-"POT-Creation-Date: 2017-11-13 "
-"17:15-0500\n"
+"POT-Creation-Date: 2017-12-19 "
+"11:13-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name "
 "<you@example.com>\n"
@@ -35,7 +35,7 @@ msgstr ""
 "_nc:4c,1,2\n"
 "X-Poedit-Basepath: ..\n"
 "Language: en_US\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: author.php:29
@@ -53,7 +53,7 @@ msgid ""
 "category."
 msgstr ""
 
-#: comments.php:40 single.php:168
+#: comments.php:40 single.php:177
 #, php-format
 msgid "%s Comment"
 msgid_plural "%s Comments"
@@ -416,16 +416,38 @@ msgstr ""
 msgid "PM"
 msgstr ""
 
-#: functions-widgets.php:200
+#: functions-widgets.php:130
 msgid "Top Tags"
 msgstr ""
 
-#: functions-widgets.php:212
+#: functions-widgets.php:142
+#: functions-widgets.php:317
 #, php-format
 msgid "%s Post"
 msgid_plural "%s Posts"
 msgstr[0] ""
 msgstr[1] ""
+
+#: functions-widgets.php:304
+#: single.php:111
+msgid "Categories"
+msgstr ""
+
+#: header.php:8
+msgctxt "Facebook og:sitename"
+msgid "VOA"
+msgstr ""
+
+#: header.php:11 header.php:12
+#: partials/share-buttons.php:14
+msgctxt "Service Twitter Username"
+msgid "@VOANews"
+msgstr ""
+
+#: header.php:39
+msgctxt "VOA Homepage URL"
+msgid "https://www.voanews.com/"
+msgstr ""
 
 #: header.php:50
 msgctxt "button"
@@ -530,33 +552,29 @@ msgctxt "submit button"
 msgid "Search"
 msgstr ""
 
-#: single.php:102
-msgid "Categories"
-msgstr ""
-
-#: single.php:108
+#: single.php:117
 msgid "Tags"
 msgstr ""
 
-#: single.php:122
+#: single.php:131
 msgid "Previous Post"
 msgstr ""
 
-#: single.php:128
+#: single.php:137
 msgid ""
 "There are no previous posts."
 msgstr ""
 
-#: single.php:139
+#: single.php:148
 msgid "Next Post"
 msgstr ""
 
-#: single.php:147
+#: single.php:156
 msgid ""
 "You're viewing the latest post."
 msgstr ""
 
-#: single.php:172
+#: single.php:181
 msgid "Join the Discussion"
 msgstr ""
 

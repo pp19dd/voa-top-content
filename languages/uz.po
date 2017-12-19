@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VOA Top Content v2.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2017-11-13 17:17-0500\n"
+"POT-Creation-Date: 2017-12-19 11:18-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: VOA Digital <voadigital@voanews.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;"
 "__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: author.php:29
@@ -37,7 +37,7 @@ msgstr "Bu muallifning maqolalari yo’q."
 msgid "No results found for this category."
 msgstr "Bu bo’lim uchun biror natija topilmadi."
 
-#: comments.php:40 single.php:168
+#: comments.php:40 single.php:177
 #, php-format
 msgid "%s Comment"
 msgid_plural "%s Comments"
@@ -378,15 +378,34 @@ msgstr "AM"
 msgid "PM"
 msgstr "PM"
 
-#: functions-widgets.php:200
+#: functions-widgets.php:130
 msgid "Top Tags"
 msgstr "Asosiy teglar"
 
-#: functions-widgets.php:212
+#: functions-widgets.php:142 functions-widgets.php:317
 #, php-format
 msgid "%s Post"
 msgid_plural "%s Posts"
 msgstr[0] "%s maqola"
+
+#: functions-widgets.php:304 single.php:111
+msgid "Categories"
+msgstr "Bo’limlar"
+
+#: header.php:8
+msgctxt "Facebook og:sitename"
+msgid "VOA"
+msgstr "VOA"
+
+#: header.php:11 header.php:12 partials/share-buttons.php:14
+msgctxt "Service Twitter Username"
+msgid "@VOANews"
+msgstr "@AmerikaOvozi"
+
+#: header.php:39
+msgctxt "VOA Homepage URL"
+msgid "https://www.voanews.com/"
+msgstr "https://www.amerikaovozi.com/"
 
 #: header.php:50
 msgctxt "button"
@@ -488,31 +507,27 @@ msgctxt "submit button"
 msgid "Search"
 msgstr "Qidiruv"
 
-#: single.php:102
-msgid "Categories"
-msgstr "Bo’limlar"
-
-#: single.php:108
+#: single.php:117
 msgid "Tags"
 msgstr "Teglar"
 
-#: single.php:122
+#: single.php:131
 msgid "Previous Post"
 msgstr "Avvalgi maqola"
 
-#: single.php:128
+#: single.php:137
 msgid "There are no previous posts."
 msgstr "Avvalgi maqolalar yo’q."
 
-#: single.php:139
+#: single.php:148
 msgid "Next Post"
 msgstr "Keyingi maqola"
 
-#: single.php:147
+#: single.php:156
 msgid "You're viewing the latest post."
 msgstr "Eng so’nggi maqolani ko’ryapsiz."
 
-#: single.php:172
+#: single.php:181
 msgid "Join the Discussion"
 msgstr "Bahsga qo’shiling"
 

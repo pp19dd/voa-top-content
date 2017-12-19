@@ -5,11 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta content="IE=edge" http-equiv="X-UA-Compatible" />
 
-	<meta property="og:site_name"    content="VOA" />
+	<meta property="og:site_name"    content="<?php echo esc_attr_x( 'VOA', 'Facebook og:sitename', 'voa-top-content' ); ?>" />
 	<meta property="og:type"         content="article" />
 	
-	<meta name="twitter:site"        value="@VOANews" />
-	<meta name="twitter:creator"     content="@VOANews" />
+	<meta name="twitter:site"        value="<?php echo esc_attr_x( '@VOANews', 'Service Twitter Username', 'voa-top-content' ); ?>" />
+	<meta name="twitter:creator"     content="<?php echo esc_attr_x( '@VOANews', 'Service Twitter Username', 'voa-top-content' ); ?>" />
 	
 	<link type="image/x-icon" rel="icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" />
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" />
@@ -36,7 +36,7 @@
 
 	<header class="voa-masthead">
 		<div class="voa-masthead-inner">
-			<a class="voa-logo" title="<?php esc_attr_e( 'Return to VOA', 'voa-top-content' ); ?>" href="https://www.voanews.com/<?php echo VOA_METRICS_TRACKING_PARAMETER; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a>
+			<a class="voa-logo" title="<?php esc_attr_e( 'Return to VOA', 'voa-top-content' ); ?>" href="<?php echo esc_attr_x( 'https://www.voanews.com/', 'VOA Homepage URL', 'voa-top-content' ); ?><?php echo VOA_METRICS_TRACKING_PARAMETER; ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/voa-logo_142x60_2x_f8f8f8.png" width="71" height="30" border="0" alt="VOA" /></a>
 			
 			<nav class="site-nav">
 				

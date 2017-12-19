@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VOA Top Content v2.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2017-11-13 17:15-0500\n"
+"POT-Creation-Date: 2017-12-19 11:13-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: VOA Digital <voadigital@voanews.com>\n"
@@ -37,7 +37,7 @@ msgstr "Bu müəllifin yazıları yoxdur."
 msgid "No results found for this category."
 msgstr "Bu kateqoriyada nəticələr tapılmadı."
 
-#: comments.php:40 single.php:168
+#: comments.php:40 single.php:177
 #, php-format
 msgid "%s Comment"
 msgid_plural "%s Comments"
@@ -135,7 +135,7 @@ msgstr "Şənbə"
 #: functions-date-localizations.php:44
 msgctxt "Sunday initial"
 msgid "S"
-msgstr ""
+msgstr "B"
 
 #: functions-date-localizations.php:45
 msgctxt "Monday initial"
@@ -379,16 +379,35 @@ msgstr "Səhər"
 msgid "PM"
 msgstr "Axşam"
 
-#: functions-widgets.php:200
+#: functions-widgets.php:130
 msgid "Top Tags"
 msgstr "Baş Taglar"
 
-#: functions-widgets.php:212
+#: functions-widgets.php:142 functions-widgets.php:317
 #, php-format
 msgid "%s Post"
 msgid_plural "%s Posts"
 msgstr[0] "%s Yaz"
 msgstr[1] "%s Yazılar"
+
+#: functions-widgets.php:304 single.php:111
+msgid "Categories"
+msgstr "Kateqoriyalar"
+
+#: header.php:8
+msgctxt "Facebook og:sitename"
+msgid "VOA"
+msgstr "VOA"
+
+#: header.php:11 header.php:12 partials/share-buttons.php:14
+msgctxt "Service Twitter Username"
+msgid "@VOANews"
+msgstr "@voaazeri"
+
+#: header.php:39
+msgctxt "VOA Homepage URL"
+msgid "https://www.voanews.com/"
+msgstr "https://www.amerikaninsesi.org/"
 
 #: header.php:50
 msgctxt "button"
@@ -490,31 +509,27 @@ msgctxt "submit button"
 msgid "Search"
 msgstr "Axtar"
 
-#: single.php:102
-msgid "Categories"
-msgstr "Kateqoriyalar"
-
-#: single.php:108
+#: single.php:117
 msgid "Tags"
 msgstr "Taglar"
 
-#: single.php:122
+#: single.php:131
 msgid "Previous Post"
 msgstr "Əvvəlki Yazı"
 
-#: single.php:128
+#: single.php:137
 msgid "There are no previous posts."
 msgstr "Əvvəlki yazılar yoxdur."
 
-#: single.php:139
+#: single.php:148
 msgid "Next Post"
 msgstr "Növbəti yazı"
 
-#: single.php:147
+#: single.php:156
 msgid "You're viewing the latest post."
 msgstr "Siz sonuncu yazını görürsünüz."
 
-#: single.php:172
+#: single.php:181
 msgid "Join the Discussion"
 msgstr "Müzakirəyə qoşul"
 
