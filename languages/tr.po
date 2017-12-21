@@ -388,7 +388,7 @@ msgstr "En çok tıklanan etiketler"
 msgid "%s Post"
 msgid_plural "%s Posts"
 msgstr[0] "%s Yazı"
-msgstr[1] "%s Yazılar"
+msgstr[1] "%s Yazı"
 
 #: functions-widgets.php:304 single.php:111
 msgid "Categories"
@@ -442,7 +442,7 @@ msgstr "Diğer yazıları da göster"
 #: partials/article-date.php:2
 msgctxt "article date"
 msgid "F j, Y"
-msgstr "F j, Y"
+msgstr "j F Y"
 
 #: partials/pagination.php:6
 msgid "Newer"
@@ -527,7 +527,7 @@ msgstr "Bir sonraki yazı"
 
 #: single.php:156
 msgid "You're viewing the latest post."
-msgstr "Son yazıyı okuyorsunuz."
+msgstr "Son yazıyı okuyorsunuz"
 
 #: single.php:181
 msgid "Join the Discussion"
