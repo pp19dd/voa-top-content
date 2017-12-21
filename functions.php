@@ -352,7 +352,7 @@ function voa_generate_missing_image_size( $image_ID, $named_image_size, $force_r
     
     $meta = wp_get_attachment_metadata( $image_ID );
     
-    $o_img_meta_size_exists = in_array( $named_image_size, $meta['sizes'] );
+    $o_img_meta_size_exists = array_key_exists( $named_image_size, $meta['sizes'] );
     
     if ( $force_resize === true || $o_img_meta_size_exists === false ) {
         
